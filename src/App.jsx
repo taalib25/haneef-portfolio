@@ -1,15 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, Phone, Mail, MapPin, Linkedin, Twitter, Award, Users, TrendingUp, Briefcase } from 'lucide-react'
+import { ArrowRight, Phone, Mail, MapPin, Award, Users, Briefcase } from 'lucide-react'
 
 // Scroll progress
 const ScrollProgress = () => {
   const { scrollYProgress } = useScroll()
   return (
-    <motion.div
-      className="fixed top-0 left-0 h-1 bg-red-600 z-50"
-      style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
-    />
+    <motion.div className="fixed top-0 left-0 h-1 bg-red-600 z-50" style={{ scaleX: scrollYProgress, transformOrigin: "0%" }} />
   )
 }
 
@@ -35,15 +32,11 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-40 transition-all ${scrolled ? 'bg-[#0a0a0a]/95 border-b border-zinc-800' : 'bg-transparent'}`}>
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tight text-white">
-          HANEEF<span className="text-red-600">.</span>
-        </a>
+        <a href="#" className="text-xl font-bold tracking-tight text-white">HANEEF<span className="text-red-600">.</span></a>
         
         <div className="hidden md:flex items-center gap-8">
           {links.map(link => (
-            <a key={link.name} href={link.href} className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
-              {link.name}
-            </a>
+            <a key={link.name} href={link.href} className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">{link.name}</a>
           ))}
           <a href="#contact" className="px-4 py-2 bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors flex items-center gap-2">
             Contact <ArrowRight size={14} />
@@ -60,9 +53,7 @@ const Navigation = () => {
       {mobileOpen && (
         <div className="md:hidden bg-[#0a0a0a] px-6 py-4 border-t border-zinc-800">
           {links.map(link => (
-            <a key={link.name} href={link.href} className="block py-3 text-zinc-400 hover:text-white" onClick={() => setMobileOpen(false)}>
-              {link.name}
-            </a>
+            <a key={link.name} href={link.href} className="block py-3 text-zinc-400 hover:text-white" onClick={() => setMobileOpen(false)}>{link.name}</a>
           ))}
         </div>
       )}
@@ -80,18 +71,14 @@ const Hero = () => {
       
       <div className="max-w-6xl mx-auto px-6 py-32 relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <p className="text-red-500 font-semibold tracking-widest uppercase text-sm mb-4">
-            PR Strategist & Rotaract Leader
-          </p>
+          <p className="text-red-500 font-semibold tracking-widest uppercase text-sm mb-4">PR Strategist & Rotaract Leader</p>
           
           <h1 className="text-6xl md:text-8xl font-bold text-white leading-none tracking-tight mb-6">
             HANEEF<br />
             <span className="text-zinc-600">MOHAMED</span>
           </h1>
           
-          <p className="text-xl text-zinc-400 mb-8 max-w-lg">
-            Building narratives. Strengthening reputations. Leading with purpose.
-          </p>
+          <p className="text-xl text-zinc-400 mb-8 max-w-lg">Building narratives. Strengthening reputations. Leading with purpose.</p>
           
           <div className="flex gap-4">
             <a href="#contact" className="px-6 py-3 bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors inline-flex items-center gap-2">
@@ -104,34 +91,18 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Stats */}
       <div className="absolute bottom-10 left-6 right-6 max-w-6xl mx-auto flex gap-10">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center">
-            <Users className="text-red-500" size={18} />
-          </div>
-          <div>
-            <p className="text-2xl font-bold text-white">7+</p>
-            <p className="text-xs text-zinc-500 uppercase tracking-wider">Years</p>
-          </div>
+          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center"><Users className="text-red-500" size={18} /></div>
+          <div><p className="text-2xl font-bold text-white">7+</p><p className="text-xs text-zinc-500 uppercase tracking-wider">Years</p></div>
         </div>
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center">
-            <Briefcase className="text-red-500" size={18} />
-          </div>
-          <div>
-            <p className="text-2xl font-bold text-white">50+</p>
-            <p className="text-xs text-zinc-500 uppercase tracking-wider">Projects</p>
-          </div>
+          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center"><Briefcase className="text-red-500" size={18} /></div>
+          <div><p className="text-2xl font-bold text-white">50+</p><p className="text-xs text-zinc-500 uppercase tracking-wider">Projects</p></div>
         </div>
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center">
-            <Award className="text-red-500" size={18} />
-          </div>
-          <div>
-            <p className="text-2xl font-bold text-white">5</p>
-            <p className="text-xs text-zinc-500 uppercase tracking-wider">Awards</p>
-          </div>
+          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center"><Award className="text-red-500" size={18} /></div>
+          <div><p className="text-2xl font-bold text-white">5</p><p className="text-xs text-zinc-500 uppercase tracking-wider">Awards</p></div>
         </div>
       </div>
     </section>
@@ -149,15 +120,9 @@ const About = () => {
             <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
           </div>
           <div className="space-y-4 text-zinc-400 leading-relaxed">
-            <p>
-              I'm <span className="text-white font-medium">Haneef Mohamed</span> — a PR professional and Rotaract leader passionate about building meaningful connections and strengthening reputations.
-            </p>
-            <p>
-              With over 7 years of experience in developing and implementing marketing strategies, I bring flexibility and strong business relationships to every project.
-            </p>
-            <p>
-              My leadership philosophy centers on <span className="text-white font-medium">Strategic Empathy</span> — understanding people before guiding them, creating environments where others can succeed.
-            </p>
+            <p>I'm <span className="text-white font-medium">Haneef Mohamed</span> — a PR professional and Rotaract leader passionate about building meaningful connections and strengthening reputations.</p>
+            <p>Over several years of experience in developing and implementing marketing strategies for various industries. I am flexible and do have a good business relationship with the people I work with. Learning and applying my experiences in the real world are a constant in my life.</p>
+            <p>My leadership philosophy centers on <span className="text-white font-medium">Strategic Empathy</span> — understanding people before guiding them, creating environments where others can succeed.</p>
           </div>
         </div>
       </div>
@@ -168,30 +133,12 @@ const About = () => {
 // Experience
 const Experience = () => {
   const experiences = [
-    {
-      period: "May 2023 - Present",
-      title: "Strategic PR & Reputation Executive",
-      company: "PR Wire",
-      description: "Develop and execute strategies to create and uphold positive public image for clients. Create marketing communication strategies and build media relationships."
-    },
-    {
-      period: "July 2022 - March 2023",
-      title: "Business Development Executive", 
-      company: "ChildFund Sri Lanka",
-      description: "International development sector organization supporting over 200,000 children, youth, families and communities across 10 districts."
-    },
-    {
-      period: "2024 - 2025",
-      title: "President",
-      company: "Rotaract Club of Colombo Mid Town",
-      description: "Led team of 50 members, 10+ community projects. Achieved 20% increase in member satisfaction and 15% improvement in outcomes."
-    },
-    {
-      period: "2019 - 2024",
-      title: "Leadership Roles",
-      company: "Rotaract Club of Colombo Mid Town",
-      description: "Director PR, Club Service Director, International Service Director. Won awards for social media and digital communications (40% visibility increase)."
-    }
+    { period: "May 2023 - Present", title: "Strategic PR & Reputation Executive", company: "PR Wire", description: "Develop and execute strategies to create and uphold positive public image for clients. Support execution of PR strategy, reviewing all PR activities seasonally. Create marketing communication strategies with marketing team. Build relationships with target audience, external partners, and key media outlets." },
+    { period: "July 2022 - March 2023", title: "Business Development Executive", company: "ChildFund Sri Lanka", description: "International development sector organization working with children and youth. Operating in ten districts, supporting over 200,000 children, youth, families and communities." },
+    { period: "2024 - 2025", title: "President", company: "Rotaract Club of Colombo Mid Town", description: "Led a team of 50 members, overseeing the execution of 10+ community service projects, resulting in a 20% increase in member satisfaction and a 15% improvement in project outcomes." },
+    { period: "2023 - 2024", title: "Sergeant At Arms", company: "Rotaract Club of Colombo Mid Town", description: "Maintained order and facilitated smooth club operations." },
+    { period: "2022 - 2023", title: "Club Service Director", company: "Rotaract Club of Colombo Mid Town", description: "Spearheaded a new outreach strategy that boosted new member enrollment by 30% within one year." },
+    { period: "2019 - 2020", title: "Director Public Relations", company: "Rotaract Club of Colombo Mid Town", description: "Efforts resulting in 2 prestigious awards for Most Outstanding Social Media Campaign and Most Outstanding Digital Communications, increasing club visibility by 40%." }
   ]
 
   return (
@@ -202,16 +149,8 @@ const Experience = () => {
         
         <div className="space-y-8">
           {experiences.map((exp, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex gap-6"
-            >
-              <div className="w-24 flex-shrink-0">
-                <span className="text-sm text-zinc-500">{exp.period}</span>
-              </div>
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex gap-6">
+              <div className="w-24 flex-shrink-0"><span className="text-sm text-zinc-500">{exp.period}</span></div>
               <div className="flex-1 pb-8 border-b border-zinc-800">
                 <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
                 <p className="text-red-500 text-sm mb-2">{exp.company}</p>
@@ -243,17 +182,8 @@ const Achievements = () => {
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {achievements.map((award, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#1a1a1a] border border-zinc-800 p-6 hover:border-red-600/50 transition-colors"
-            >
-              <div className="flex items-start justify-between mb-3">
-                <Award className="text-red-600" size={24} />
-                <span className="text-red-500 font-semibold">{award.year}</span>
-              </div>
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-[#1a1a1a] border border-zinc-800 p-6 hover:border-red-600/50 transition-colors">
+              <div className="flex items-start justify-between mb-3"><Award className="text-red-600" size={24} /><span className="text-red-500 font-semibold">{award.year}</span></div>
               <h3 className="text-white font-semibold mb-1">{award.title}</h3>
               <p className="text-zinc-500 text-sm">{award.org}</p>
             </motion.div>
@@ -266,11 +196,7 @@ const Achievements = () => {
 
 // Skills
 const Skills = () => {
-  const skills = [
-    "Team Leadership", "Project Management", "Event Planning", "Communication",
-    "Public Speaking", "Fundraising", "Volunteer Coordination", "Community Outreach",
-    "Collaboration", "Problem-Solving", "Time Management"
-  ]
+  const skills = ["Team Leadership", "Project Management", "Event Planning", "Communication", "Public Speaking", "Fundraising", "Volunteer Coordination", "Community Outreach", "Collaboration", "Problem-Solving", "Time Management"]
 
   return (
     <section id="skills" className="py-20 bg-[#0a0a0a]">
@@ -280,12 +206,7 @@ const Skills = () => {
         
         <div className="flex flex-wrap gap-2">
           {skills.map((skill, i) => (
-            <span
-              key={i}
-              className="px-4 py-2 bg-[#1a1a1a] border border-zinc-800 text-zinc-300 text-sm font-medium hover:border-red-600 hover:text-white transition-colors"
-            >
-              {skill}
-            </span>
+            <span key={i} className="px-4 py-2 bg-[#1a1a1a] border border-zinc-800 text-zinc-300 text-sm font-medium hover:border-red-600 hover:text-white transition-colors">{skill}</span>
           ))}
         </div>
       </div>
@@ -338,11 +259,7 @@ const Contact = () => {
           {contacts.map((contact, i) => {
             const Icon = contact.icon
             return contact.href ? (
-              <a
-                key={i}
-                href={contact.href}
-                className="bg-[#1a1a1a] border border-zinc-800 p-6 hover:border-red-600 transition-colors group"
-              >
+              <a key={i} href={contact.href} className="bg-[#1a1a1a] border border-zinc-800 p-6 hover:border-red-600 transition-colors group">
                 <Icon className="text-red-600 mx-auto mb-3" size={24} />
                 <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">{contact.label}</p>
                 <p className="text-white font-medium text-sm">{contact.value}</p>
@@ -357,9 +274,7 @@ const Contact = () => {
           })}
         </div>
 
-        <p className="text-zinc-600 text-sm mt-12">
-          &copy; {new Date().getFullYear()} Haneef Mohamed. All rights reserved.
-        </p>
+        <p className="text-zinc-600 text-sm mt-12">&copy; {new Date().getFullYear()} Haneef Mohamed. All rights reserved.</p>
       </div>
     </section>
   )
