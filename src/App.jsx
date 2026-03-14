@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react'
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
-// Smooth scroll progress bar
+// Scroll Progress
 const ScrollProgress = () => {
   const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 })
-
   return (
-    <motion.div 
-      className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-hover)] origin-left z-[1000]"
-      style={{ scaleX }}
+    <motion.div
+      className="fixed top-0 left-0 h-1 bg-red-600 z-50"
+      style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
     />
   )
 }
@@ -17,7 +15,7 @@ const ScrollProgress = () => {
 // Navigation
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -25,7 +23,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
+  const links = [
     { name: 'About', href: '#about' },
     { name: 'Experience', href: '#experience' },
     { name: 'Achievements', href: '#achievements' },
@@ -34,162 +32,97 @@ const Navigation = () => {
   ]
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-[var(--color-bg)]/95 backdrop-blur-md border-b border-[var(--color-border)]' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          <motion.a 
-            href="#"
-            className="flex items-center gap-3"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="text-xl sm:text-2xl font-bold text-[var(--color-text)] tracking-wider">
-              HANEEF
-            </span>
-          </motion.a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text)]"
-                whileHover={{ y: -2 }}
-              >
-                {item.name}
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-[var(--color-text)]"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-sm border-b border-zinc-800' : 'bg-transparent'}`}>
+      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="#" className="text-2xl font-black tracking-tighter text-white">
+          HANEEF<span className="text-red-600">.</span>
+        </a>
+        
+        <div className="hidden md:flex items-center gap-8">
+          {links.map(link => (
+            <a key={link.name} href={link.href} className="text-sm font-medium text-zinc-400 hover:text-white transition-colors uppercase tracking-wider">
+              {link.name}
+            </a>
+          ))}
+          <a href="#contact" className="px-5 py-2 bg-red-600 text-white text-sm font-bold uppercase tracking-wider hover:bg-red-700 transition-colors">
+            Let's Talk
+          </a>
         </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden pb-4"
-            >
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block py-2 text-[var(--color-text-secondary)] hover:text-[var(--color-text)]"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <button className="md:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+          </svg>
+        </button>
       </div>
-    </motion.nav>
+
+      {mobileOpen && (
+        <div className="md:hidden bg-black/95 px-6 py-4 border-t border-zinc-800">
+          {links.map(link => (
+            <a key={link.name} href={link.href} className="block py-3 text-zinc-400 hover:text-white" onClick={() => setMobileOpen(false)}>
+              {link.name}
+            </a>
+          ))}
+        </div>
+      )}
+    </nav>
   )
 }
 
-// Section Header Component
-const SectionHeader = ({ label, title, subtitle }) => (
-  <div className="mb-12 sm:mb-16">
-    <span className="text-sm font-medium text-[var(--color-accent)] uppercase tracking-widest">{label}</span>
-    <h2 className="font-[var(--font-display)] text-3xl sm:text-4xl text-[var(--color-text)] mt-2">{title}</h2>
-    {subtitle && <p className="text-[var(--color-text-secondary)] mt-3 max-w-xl">{subtitle}</p>}
-  </div>
-)
-
 // Hero Section
 const Hero = () => {
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, 150])
-  const opacity = useTransform(scrollY, [0, 400], [1, 0])
-
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
-      {/* Background accents */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-[var(--color-accent)]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-56 h-56 sm:w-80 sm:h-80 bg-[var(--color-accent)]/5 rounded-full blur-3xl" />
+    <section className="min-h-screen flex items-center bg-black relative overflow-hidden">
+      {/* Bold background element */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[120px]" />
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[800px] h-[800px] bg-zinc-900/50 rounded-full" />
+      
+      <div className="max-w-6xl mx-auto px-6 py-32 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl"
+        >
+          <p className="text-red-500 font-bold tracking-[0.3em] uppercase mb-6">
+            PR Strategist & Rotaract Leader
+          </p>
+          
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter mb-8">
+            HANEEF<br />
+            <span className="text-zinc-700">MOHAMED</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-10 max-w-xl">
+            Building narratives. Strengthening reputations. Leading with purpose.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4">
+            <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 bg-red-600 text-white font-bold uppercase tracking-wider hover:bg-red-700 transition-all hover:scale-105">
+              Get In Touch
+            </a>
+            <a href="#experience" className="inline-flex items-center justify-center px-8 py-4 border border-zinc-700 text-white font-bold uppercase tracking-wider hover:border-white transition-all">
+              View Work
+            </a>
+          </div>
+        </motion.div>
       </div>
 
-      <motion.div style={{ y, opacity }} className="relative z-10 max-w-3xl mx-auto">
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="inline-block text-xs sm:text-sm font-medium text-[var(--color-accent)] uppercase tracking-[0.2em] mb-4"
-        >
-          PR Strategist & Rotaract Leader
-        </motion.span>
-        
-        <motion.h1
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="font-bold text-5xl sm:text-7xl lg:text-8xl leading-none text-[var(--color-text)] mb-4"
-        >
-          HANEEF
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-lg sm:text-xl text-[var(--color-text-secondary)] mb-8"
-        >
-          Building Narratives, Strengthening Reputations
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-[var(--color-text-secondary)] max-w-lg mx-auto mb-10 text-sm sm:text-base"
-        >
-          Strategic PR & Reputation Executive with 7+ years leading impactful community service projects and building meaningful connections.
-        </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <a
-            href="#contact"
-            className="inline-block px-6 py-3 bg-[var(--color-accent)] text-white font-medium text-sm uppercase tracking-wider hover:bg-[var(--color-accent-hover)]"
-          >
-            Get In Touch
-          </a>
-          <a
-            href="#experience"
-            className="inline-block px-6 py-3 border-2 border-[var(--color-border)] text-[var(--color-text)] font-medium text-sm uppercase tracking-wider hover:border-[var(--color-accent)]"
-          >
-            View Experience
-          </a>
-        </motion.div>
-      </motion.div>
+      {/* Side stats */}
+      <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-8 text-right">
+        <div>
+          <p className="text-4xl font-black text-white">7+</p>
+          <p className="text-sm text-zinc-500 uppercase tracking-wider">Years Experience</p>
+        </div>
+        <div>
+          <p className="text-4xl font-black text-white">50+</p>
+          <p className="text-sm text-zinc-500 uppercase tracking-wider">Projects Led</p>
+        </div>
+        <div>
+          <p className="text-4xl font-black text-white">5</p>
+          <p className="text-sm text-zinc-500 uppercase tracking-wider">Awards Won</p>
+        </div>
+      </div>
     </section>
   )
 }
@@ -197,99 +130,83 @@ const Hero = () => {
 // About Section
 const About = () => {
   return (
-    <section id="about" className="py-16 sm:py-24 bg-[var(--color-bg-secondary)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader label="01" title="About Me" />
-        
-        <div className="max-w-3xl">
-          <p className="text-lg sm:text-xl text-[var(--color-text)] leading-relaxed mb-6">
-            I'm <span className="text-[var(--color-accent)]">Haneef Mohamed</span> — a PR professional and Rotaract leader passionate about building narratives and strengthening reputations.
-          </p>
-          <p className="text-[var(--color-text-secondary)] leading-relaxed mb-6">
-            Over several years of experience in developing and implementing marketing strategies for various industries. I am flexible and have good business relationships with the people I work with.
-          </p>
-          <p className="text-[var(--color-text-secondary)] leading-relaxed">
-            Learning and applying my experiences in the real world are a constant in my life. I ensure that the wheel of this learning process keeps turning and my work shows this dedication.
-          </p>
+    <section id="about" className="py-24 md:py-32 bg-zinc-950">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
+          <div>
+            <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4">01 / About</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-8">
+              Transforming vision into <span className="text-red-600">impact</span>
+            </h2>
+          </div>
+          <div className="space-y-6">
+            <p className="text-lg text-zinc-300 leading-relaxed">
+              I'm <span className="text-white font-semibold">Haneef Mohamed</span> — a PR professional and Rotaract leader passionate about building meaningful connections and strengthening reputations.
+            </p>
+            <p className="text-zinc-400 leading-relaxed">
+              With over 7 years of experience in developing and implementing marketing strategies, I bring flexibility and strong business relationships to every project. Learning and applying experiences in the real world is a constant in my life.
+            </p>
+            <p className="text-zinc-400 leading-relaxed">
+              My leadership philosophy centers on <span className="text-white font-semibold">Strategic Empathy</span> — understanding people before guiding them, creating environments where others can succeed.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-// Experience Section
+// Experience Section  
 const Experience = () => {
   const experiences = [
     {
-      year: "May 2023 - Present",
+      period: "May 2023 - Present",
       title: "Strategic PR & Reputation Executive",
       company: "PR Wire",
-      description: "Develop and execute strategies to create and uphold a positive public image for clients. Support execution of PR strategy, reviewing all PR activities seasonally. Create marketing communication strategies with marketing team. Build relationships with target audience, external partners, and key media outlets.",
-      icon: "💼"
+      description: "Developing and executing strategies to create and uphold positive public images for clients. Creating marketing communication strategies and building media relationships."
     },
     {
-      year: "July 2022 - March 2023",
-      title: "Business Development Executive",
+      period: "July 2022 - March 2023",
+      title: "Business Development Executive", 
       company: "ChildFund Sri Lanka",
-      description: "International development sector organization working with children and youth. Operating in ten districts, supporting over 200,000 children, youth, families and communities.",
-      icon: "👥"
+      description: "International development sector organization supporting over 200,000 children, youth, families and communities across 10 districts in Sri Lanka."
     },
     {
-      year: "2024 - 2025",
+      period: "2024 - 2025",
       title: "President",
       company: "Rotaract Club of Colombo Mid Town",
-      description: "Led a team of 50 members, 10+ community service projects. Achieved 20% increase in member satisfaction and 15% improvement in project outcomes.",
-      icon: "🎯"
+      description: "Led team of 50 members. 10+ community projects. Achieved 20% increase in member satisfaction and 15% improvement in outcomes."
     },
     {
-      year: "2023 - 2024",
-      title: "Sergeant At Arms",
+      period: "2019 - 2024",
+      title: "Various Leadership Roles",
       company: "Rotaract Club of Colombo Mid Town",
-      description: "Maintained order and facilitated smooth club operations.",
-      icon: "⚖️"
-    },
-    {
-      year: "2022 - 2023",
-      title: "Club Service Director",
-      company: "Rotaract Club of Colombo Mid Town",
-      description: "Spearheaded new outreach strategy that boosted new member enrollment by 30% within one year.",
-      icon: "🤝"
-    },
-    {
-      year: "2019 - 2020",
-      title: "Director Public Relations",
-      company: "Rotaract Club of Colombo Mid Town",
-      description: "Efforts resulting in 2 prestigious awards - Most Outstanding Social Media Campaign and Most Outstanding Digital Communications, increasing club visibility by 40%.",
-      icon: "📣"
+      description: "Director PR, Club Service Director, International Service Director. Won awards for social media and digital communications (40% visibility increase)."
     }
   ]
 
   return (
-    <section id="experience" className="py-16 sm:py-24 bg-[var(--color-bg)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader label="02" title="Experience" />
+    <section id="experience" className="py-24 md:py-32 bg-black">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4">02 / Experience</p>
+        <h2 className="text-4xl md:text-5xl font-black text-white mb-16">Track Record</h2>
         
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
+        <div className="space-y-8">
+          {experiences.map((exp, i) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={i}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="p-5 sm:p-6 border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)]/30 transition-all duration-300 rounded-xl"
+              transition={{ delay: i * 0.1 }}
+              className="group relative pl-8 border-l-2 border-zinc-800 hover:border-red-600 transition-colors"
             >
-              <div className="flex items-start gap-4">
-                <span className="text-3xl flex-shrink-0">{exp.icon}</span>
-                <div className="flex-1">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                    <h3 className="font-semibold text-lg text-[var(--color-text)]">{exp.title}</h3>
-                    <span className="text-xs text-[var(--color-accent)] uppercase tracking-wider whitespace-nowrap">{exp.year}</span>
-                  </div>
-                  <p className="text-[var(--color-accent)] text-sm mb-3">{exp.company}</p>
-                  <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">{exp.description}</p>
-                </div>
-              </div>
+              <div className="absolute -left-[9px] top-0 w-4 h-4 bg-zinc-800 group-hover:bg-red-600 rounded-full transition-colors" />
+              
+              <span className="text-sm text-zinc-500 font-medium mb-2 block">{exp.period}</span>
+              <h3 className="text-2xl font-bold text-white mb-1">{exp.title}</h3>
+              <p className="text-red-500 font-semibold mb-3">{exp.company}</p>
+              <p className="text-zinc-400 max-w-2xl">{exp.description}</p>
             </motion.div>
           ))}
         </div>
@@ -301,57 +218,33 @@ const Experience = () => {
 // Achievements Section
 const Achievements = () => {
   const achievements = [
-    { 
-      title: "Most Popular Rotaractor", 
-      year: "2025",
-      description: "Rotaract District Conference",
-      icon: "🏆"
-    },
-    { 
-      title: "Volunteer of the Year", 
-      year: "2024",
-      description: "New Generations Asia Awards",
-      icon: "⭐"
-    },
-    { 
-      title: "Best Team Leader", 
-      year: "2023",
-      description: "RYLA",
-      icon: "👑"
-    },
-    { 
-      title: "Most Outstanding Social Media Campaign", 
-      year: "2020",
-      description: "Silver Award",
-      icon: "📱"
-    },
-    { 
-      title: "Most Outstanding Digital Communications", 
-      year: "2020",
-      description: "Bronze Award",
-      icon: "💬"
-    }
+    { title: "Most Popular Rotaractor", year: "2025", org: "Rotaract District Conference", icon: "🏆" },
+    { title: "Volunteer of the Year", year: "2024", org: "New Generations Asia Awards", icon: "⭐" },
+    { title: "Best Team Leader", year: "2023", org: "RYLA", icon: "👑" },
+    { title: "Social Media Campaign", year: "2020", org: "Silver Award", icon: "📱" },
+    { title: "Digital Communications", year: "2020", org: "Bronze Award", icon: "💬" }
   ]
 
   return (
-    <section id="achievements" className="py-16 sm:py-24 bg-[var(--color-bg-secondary)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader label="03" title="Achievements" />
+    <section id="achievements" className="py-24 md:py-32 bg-zinc-900">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4">03 / Recognition</p>
+        <h2 className="text-4xl md:text-5xl font-black text-white mb-12">Awards & Honors</h2>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {achievements.map((achievement, index) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {achievements.map((award, i) => (
             <motion.div
-              key={index}
+              key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="p-5 border border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-accent)]/50 transition-all duration-300 rounded-xl text-center"
+              transition={{ delay: i * 0.1 }}
+              className="bg-black border border-zinc-800 p-8 hover:border-red-600/50 transition-all group"
             >
-              <span className="text-4xl mb-3 block">{achievement.icon}</span>
-              <h4 className="font-semibold text-[var(--color-text)] mb-1">{achievement.title}</h4>
-              <p className="text-[var(--color-accent)] text-sm mb-2">{achievement.year}</p>
-              <p className="text-[var(--color-text-secondary)] text-sm">{achievement.description}</p>
+              <span className="text-4xl mb-4 block">{award.icon}</span>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">{award.title}</h3>
+              <p className="text-zinc-500 text-sm">{award.org}</p>
+              <p className="text-red-600 font-bold mt-3">{award.year}</p>
             </motion.div>
           ))}
         </div>
@@ -363,26 +256,26 @@ const Achievements = () => {
 // Skills Section
 const Skills = () => {
   const skills = [
-    "Team Leadership", "Project Management", "Event Planning", 
-    "Communication", "Public Speaking", "Fundraising", 
-    "Volunteer Coordination", "Community Outreach", "Collaboration", 
-    "Problem-Solving", "Time Management"
+    "Team Leadership", "Project Management", "Event Planning", "Communication",
+    "Public Speaking", "Fundraising", "Volunteer Coordination", "Community Outreach",
+    "Collaboration", "Problem-Solving", "Time Management"
   ]
 
   return (
-    <section id="skills" className="py-16 sm:py-24 bg-[var(--color-bg)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader label="04" title="Skills" />
+    <section id="skills" className="py-24 md:py-32 bg-black">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4">04 / Capabilities</p>
+        <h2 className="text-4xl md:text-5xl font-black text-white mb-12">Skills</h2>
         
         <div className="flex flex-wrap gap-3">
-          {skills.map((skill, index) => (
+          {skills.map((skill, i) => (
             <motion.span
-              key={index}
+              key={i}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.3 }}
-              className="px-4 py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-[var(--color-text)] text-sm rounded-full hover:border-[var(--color-accent)] transition-colors"
+              transition={{ delay: i * 0.05 }}
+              className="px-6 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium hover:bg-red-600 hover:text-white hover:border-red-600 transition-all cursor-default"
             >
               {skill}
             </motion.span>
@@ -393,70 +286,32 @@ const Skills = () => {
   )
 }
 
-// Education Section
-const Education = () => {
-  const education = [
-    {
-      title: "Diploma in Marketing",
-      institution: "CIM at Strategy College of Business"
-    },
-    {
-      title: "Primary & Secondary Education",
-      institution: "Amal International School"
-    }
-  ]
-
-  return (
-    <section className="py-16 sm:py-24 bg-[var(--color-bg-secondary)]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader label="05" title="Education" />
-        
-        <div className="space-y-4 max-w-2xl">
-          {education.map((edu, index) => (
-            <div key={index} className="p-5 border border-[var(--color-border)] bg-[var(--color-bg)] rounded-xl">
-              <h4 className="font-semibold text-[var(--color-text)]">{edu.title}</h4>
-              <p className="text-[var(--color-text-secondary)] text-sm">{edu.institution}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 // Contact Section
 const Contact = () => {
-  const contactInfo = [
-    { label: "Phone", value: "+94 77 044 7021", icon: "📱", href: "tel:+94770447021" },
-    { label: "Email", value: "haneef.rotaract3220@gmail.com", icon: "✉️", href: "mailto:haneef.rotaract3220@gmail.com" },
-    { label: "Location", value: "Colombo, Sri Lanka", icon: "📍", href: null }
-  ]
-
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-[var(--color-bg)]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <SectionHeader label="06" title="Get In Touch" />
+    <section id="contact" className="py-24 md:py-32 bg-zinc-950">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4">05 / Contact</p>
+        <h2 className="text-4xl md:text-6xl font-black text-white mb-8">Let's Work<br /><span className="text-red-600">Together</span></h2>
+        <p className="text-xl text-zinc-400 mb-12">Ready to make an impact? Let's connect.</p>
         
-        <div className="grid sm:grid-cols-3 gap-6 mb-10">
-          {contactInfo.map((info, index) => (
-            <motion.a
-              key={index}
-              href={info.href || '#'}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`p-6 border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)]/50 transition-all duration-300 rounded-xl ${!info.href ? 'cursor-default' : ''}`}
-            >
-              <span className="text-3xl mb-3 block">{info.icon}</span>
-              <p className="text-xs text-[var(--color-accent)] uppercase tracking-wider mb-1">{info.label}</p>
-              <p className="text-[var(--color-text)] text-sm break-all">{info.value}</p>
-            </motion.a>
-          ))}
+        <div className="grid sm:grid-cols-3 gap-6 mb-12">
+          <a href="tel:+94770447021" className="p-6 bg-zinc-900 border border-zinc-800 hover:border-red-600 transition-all group">
+            <p className="text-zinc-500 text-sm uppercase mb-2">Phone</p>
+            <p className="text-white font-bold group-hover:text-red-500 transition-colors">+94 77 044 7021</p>
+          </a>
+          <a href="mailto:haneef.rotaract3220@gmail.com" className="p-6 bg-zinc-900 border border-zinc-800 hover:border-red-600 transition-all group">
+            <p className="text-zinc-500 text-sm uppercase mb-2">Email</p>
+            <p className="text-white font-bold group-hover:text-red-500 transition-colors text-sm">haneef.rotaract3220<br />@gmail.com</p>
+          </a>
+          <div className="p-6 bg-zinc-900 border border-zinc-800">
+            <p className="text-zinc-500 text-sm uppercase mb-2">Location</p>
+            <p className="text-white font-bold">Colombo, Sri Lanka</p>
+          </div>
         </div>
 
-        <p className="text-[var(--color-text-secondary)] text-sm">
-          © {new Date().getFullYear()} Haneef Mohamed — Rotaract Club of Colombo Mid Town
+        <p className="text-zinc-600 text-sm">
+          © {new Date().getFullYear()} Haneef Mohamed. All rights reserved.
         </p>
       </div>
     </section>
@@ -466,7 +321,7 @@ const Contact = () => {
 // Main App
 function App() {
   return (
-    <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)]">
+    <div className="bg-black min-h-screen text-white font-sans">
       <ScrollProgress />
       <Navigation />
       <Hero />
@@ -474,7 +329,6 @@ function App() {
       <Experience />
       <Achievements />
       <Skills />
-      <Education />
       <Contact />
     </div>
   )
