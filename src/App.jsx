@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowRight, Phone, Mail, MapPin, Linkedin, Twitter, Award, Users, TrendingUp, Briefcase } from 'lucide-react'
 
-// Scroll Progress
+// Scroll progress
 const ScrollProgress = () => {
   const { scrollYProgress } = useScroll()
   return (
@@ -32,24 +33,24 @@ const Navigation = () => {
   ]
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-black/95 backdrop-blur-sm border-b border-zinc-800' : 'bg-transparent'}`}>
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="#" className="text-2xl font-black tracking-tighter text-white">
+    <nav className={`fixed top-0 left-0 right-0 z-40 transition-all ${scrolled ? 'bg-[#0a0a0a]/95 border-b border-zinc-800' : 'bg-transparent'}`}>
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="#" className="text-xl font-bold tracking-tight text-white">
           HANEEF<span className="text-red-600">.</span>
         </a>
         
         <div className="hidden md:flex items-center gap-8">
           {links.map(link => (
-            <a key={link.name} href={link.href} className="text-sm font-medium text-zinc-400 hover:text-white transition-colors uppercase tracking-wider">
+            <a key={link.name} href={link.href} className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
               {link.name}
             </a>
           ))}
-          <a href="#contact" className="px-4 py-2 bg-red-600 text-white text-sm font-bold uppercase tracking-wider hover:bg-red-700 transition-colors whitespace-nowrap">
-            Contact
+          <a href="#contact" className="px-4 py-2 bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors flex items-center gap-2">
+            Contact <ArrowRight size={14} />
           </a>
         </div>
 
-        <button className="md:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
+        <button className="md:hidden text-white p-2" onClick={() => setMobileOpen(!mobileOpen)}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={mobileOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
           </svg>
@@ -57,7 +58,7 @@ const Navigation = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-black/95 px-6 py-4 border-t border-zinc-800">
+        <div className="md:hidden bg-[#0a0a0a] px-6 py-4 border-t border-zinc-800">
           {links.map(link => (
             <a key={link.name} href={link.href} className="block py-3 text-zinc-400 hover:text-white" onClick={() => setMobileOpen(false)}>
               {link.name}
@@ -69,201 +70,153 @@ const Navigation = () => {
   )
 }
 
-// Hero Section
+// Hero
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center bg-black relative overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/10 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute left-1/4 top-1/4 w-[400px] h-[400px] bg-red-900/20 rounded-full blur-[100px]" />
-      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[800px] h-[800px] bg-zinc-900/50 rounded-full" />
+    <section className="min-h-screen flex items-center bg-[#0a0a0a] relative">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-red-600/10 rounded-full blur-[100px]" />
+      </div>
       
       <div className="max-w-6xl mx-auto px-6 py-32 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-3xl"
-        >
-          <motion.p 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-red-500 font-bold tracking-[0.3em] uppercase mb-6 text-sm md:text-base"
-          >
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <p className="text-red-500 font-semibold tracking-widest uppercase text-sm mb-4">
             PR Strategist & Rotaract Leader
-          </motion.p>
+          </p>
           
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-6xl md:text-8xl lg:text-9xl font-black text-white leading-[0.9] tracking-tighter mb-8"
-          >
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-none tracking-tight mb-6">
             HANEEF<br />
             <span className="text-zinc-600">MOHAMED</span>
-          </motion.h1>
+          </h1>
           
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-xl md:text-2xl text-zinc-400 font-light leading-relaxed mb-10 max-w-xl"
-          >
+          <p className="text-xl text-zinc-400 mb-8 max-w-lg">
             Building narratives. Strengthening reputations. Leading with purpose.
-          </motion.p>
+          </p>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 bg-red-600 text-white font-bold uppercase tracking-wider hover:bg-red-700 transition-all hover:scale-105 hover:shadow-lg hover:shadow-red-600/25">
-              Get In Touch
+          <div className="flex gap-4">
+            <a href="#contact" className="px-6 py-3 bg-red-600 text-white font-semibold hover:bg-red-700 transition-colors inline-flex items-center gap-2">
+              Get in Touch <ArrowRight size={16} />
             </a>
-            <a href="#experience" className="inline-flex items-center justify-center px-8 py-4 border-2 border-zinc-700 text-white font-bold uppercase tracking-wider hover:border-red-600 hover:text-red-500 transition-all group">
-              View Work
-              <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+            <a href="#experience" className="px-6 py-3 border border-zinc-700 text-white font-semibold hover:border-zinc-500 transition-colors">
+              View Experience
             </a>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
 
-      <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-8 text-right">
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }}>
-          <p className="text-5xl font-black text-white">7+</p>
-          <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1">Years Experience</p>
-        </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.9 }}>
-          <p className="text-5xl font-black text-white">50+</p>
-          <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1">Projects Led</p>
-        </motion.div>
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1 }}>
-          <p className="text-5xl font-black text-white">5</p>
-          <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1">Awards Won</p>
-        </motion.div>
-      </div>
-      
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div 
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-6 h-10 border-2 border-zinc-600 rounded-full flex justify-center pt-2"
-        >
-          <motion.div className="w-1 h-2 bg-red-600 rounded-full" />
-        </motion.div>
-      </motion.div>
-    </section>
-  )
-}
-
-// About Section
-const About = () => {
-  return (
-    <section id="about" className="py-24 md:py-32 bg-zinc-950">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm">01 / About</p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-8">
-              Transforming vision into <span className="text-red-600">impact</span>
-            </h2>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
-          >
-            <p className="text-lg md:text-xl text-zinc-300 leading-relaxed">
-              I'm <span className="text-white font-bold">Haneef Mohamed</span> — a PR professional and Rotaract leader passionate about building meaningful connections and strengthening reputations.
-            </p>
-            <p className="text-zinc-400 leading-relaxed text-lg">
-              With over 7 years of experience in developing and implementing marketing strategies, I bring flexibility and strong business relationships to every project. Learning and applying experiences in the real world is a constant in my life.
-            </p>
-            <p className="text-zinc-400 leading-relaxed text-lg">
-              My leadership philosophy centers on <span className="text-white font-bold">Strategic Empathy</span> — understanding people before guiding them, creating environments where others can succeed.
-            </p>
-          </motion.div>
+      {/* Stats */}
+      <div className="absolute bottom-10 left-6 right-6 max-w-6xl mx-auto flex gap-10">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center">
+            <Users className="text-red-500" size={18} />
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-white">7+</p>
+            <p className="text-xs text-zinc-500 uppercase tracking-wider">Years</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center">
+            <Briefcase className="text-red-500" size={18} />
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-white">50+</p>
+            <p className="text-xs text-zinc-500 uppercase tracking-wider">Projects</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center">
+            <Award className="text-red-500" size={18} />
+          </div>
+          <div>
+            <p className="text-2xl font-bold text-white">5</p>
+            <p className="text-xs text-zinc-500 uppercase tracking-wider">Awards</p>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-// Experience Section  
+// About
+const About = () => {
+  return (
+    <section id="about" className="py-20 bg-[#0f0f0f]">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12">
+          <div>
+            <p className="text-red-500 font-semibold text-sm tracking-widest uppercase mb-2">01 / About</p>
+            <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
+          </div>
+          <div className="space-y-4 text-zinc-400 leading-relaxed">
+            <p>
+              I'm <span className="text-white font-medium">Haneef Mohamed</span> — a PR professional and Rotaract leader passionate about building meaningful connections and strengthening reputations.
+            </p>
+            <p>
+              With over 7 years of experience in developing and implementing marketing strategies, I bring flexibility and strong business relationships to every project.
+            </p>
+            <p>
+              My leadership philosophy centers on <span className="text-white font-medium">Strategic Empathy</span> — understanding people before guiding them, creating environments where others can succeed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Experience
 const Experience = () => {
   const experiences = [
     {
       period: "May 2023 - Present",
       title: "Strategic PR & Reputation Executive",
       company: "PR Wire",
-      description: "Developing and executing strategies to create and uphold positive public images for clients. Creating marketing communication strategies and building media relationships."
+      description: "Develop and execute strategies to create and uphold positive public image for clients. Create marketing communication strategies and build media relationships."
     },
     {
       period: "July 2022 - March 2023",
       title: "Business Development Executive", 
       company: "ChildFund Sri Lanka",
-      description: "International development sector organization supporting over 200,000 children, youth, families and communities across 10 districts in Sri Lanka."
+      description: "International development sector organization supporting over 200,000 children, youth, families and communities across 10 districts."
     },
     {
       period: "2024 - 2025",
       title: "President",
       company: "Rotaract Club of Colombo Mid Town",
-      description: "Led team of 50 members. 10+ community projects. Achieved 20% increase in member satisfaction and 15% improvement in outcomes."
+      description: "Led team of 50 members, 10+ community projects. Achieved 20% increase in member satisfaction and 15% improvement in outcomes."
     },
     {
       period: "2019 - 2024",
-      title: "Various Leadership Roles",
+      title: "Leadership Roles",
       company: "Rotaract Club of Colombo Mid Town",
       description: "Director PR, Club Service Director, International Service Director. Won awards for social media and digital communications (40% visibility increase)."
     }
   ]
 
   return (
-    <section id="experience" className="py-24 md:py-32 bg-black">
+    <section id="experience" className="py-20 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm">02 / Experience</p>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-16">Track Record</h2>
-        </motion.div>
+        <p className="text-red-500 font-semibold text-sm tracking-widest uppercase mb-2">02 / Experience</p>
+        <h2 className="text-4xl font-bold text-white mb-12">Experience</h2>
         
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative pl-8 md:pl-12 border-l-2 border-zinc-800 hover:border-red-600 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex gap-6"
             >
-              <div className="absolute -left-[9px] top-0 w-4 h-4 bg-zinc-800 group-hover:bg-red-600 rounded-full transition-colors duration-300" />
-              
-              <div className="flex flex-col md:flex-row md:items-baseline md:gap-6 mb-3">
-                <span className="text-sm text-zinc-500 font-medium mb-1 md:mb-0">{exp.period}</span>
+              <div className="w-24 flex-shrink-0">
+                <span className="text-sm text-zinc-500">{exp.period}</span>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">{exp.title}</h3>
-              <p className="text-red-500 font-semibold mb-3 text-lg">{exp.company}</p>
-              <p className="text-zinc-400 max-w-2xl leading-relaxed">{exp.description}</p>
+              <div className="flex-1 pb-8 border-b border-zinc-800">
+                <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
+                <p className="text-red-500 text-sm mb-2">{exp.company}</p>
+                <p className="text-zinc-400 text-sm leading-relaxed">{exp.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -272,44 +225,37 @@ const Experience = () => {
   )
 }
 
-// Achievements Section
+// Achievements
 const Achievements = () => {
   const achievements = [
-    { title: "Most Popular Rotaractor", year: "2025", org: "Rotaract District Conference", icon: "🏆" },
-    { title: "Volunteer of the Year", year: "2024", org: "New Generations Asia Awards", icon: "⭐" },
-    { title: "Best Team Leader", year: "2023", org: "RYLA", icon: "👑" },
-    { title: "Social Media Campaign", year: "2020", org: "Silver Award", icon: "📱" },
-    { title: "Digital Communications", year: "2020", org: "Bronze Award", icon: "💬" }
+    { title: "Most Popular Rotaractor", year: "2025", org: "Rotaract District Conference" },
+    { title: "Volunteer of the Year", year: "2024", org: "New Generations Asia Awards" },
+    { title: "Best Team Leader", year: "2023", org: "RYLA" },
+    { title: "Social Media Campaign", year: "2020", org: "Silver Award" },
+    { title: "Digital Communications", year: "2020", org: "Bronze Award" }
   ]
 
   return (
-    <section id="achievements" className="py-24 md:py-32 bg-zinc-950">
+    <section id="achievements" className="py-20 bg-[#0f0f0f]">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm">03 / Recognition</p>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-12">Awards & Honors</h2>
-        </motion.div>
+        <p className="text-red-500 font-semibold text-sm tracking-widest uppercase mb-2">03 / Recognition</p>
+        <h2 className="text-4xl font-bold text-white mb-12">Awards & Honors</h2>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {achievements.map((award, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="bg-black border border-zinc-800 p-8 hover:border-red-600 hover:shadow-lg hover:shadow-red-600/10 transition-all duration-300 group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#1a1a1a] border border-zinc-800 p-6 hover:border-red-600/50 transition-colors"
             >
-              <span className="text-5xl mb-6 block">{award.icon}</span>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-red-500 transition-colors">{award.title}</h3>
-              <p className="text-zinc-500 text-sm mb-3">{award.org}</p>
-              <p className="text-red-600 font-black text-2xl">{award.year}</p>
+              <div className="flex items-start justify-between mb-3">
+                <Award className="text-red-600" size={24} />
+                <span className="text-red-500 font-semibold">{award.year}</span>
+              </div>
+              <h3 className="text-white font-semibold mb-1">{award.title}</h3>
+              <p className="text-zinc-500 text-sm">{award.org}</p>
             </motion.div>
           ))}
         </div>
@@ -318,7 +264,7 @@ const Achievements = () => {
   )
 }
 
-// Skills Section
+// Skills
 const Skills = () => {
   const skills = [
     "Team Leadership", "Project Management", "Event Planning", "Communication",
@@ -327,31 +273,19 @@ const Skills = () => {
   ]
 
   return (
-    <section id="skills" className="py-24 md:py-32 bg-black">
+    <section id="skills" className="py-20 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm">04 / Capabilities</p>
-          <h2 className="text-4xl md:text-6xl font-black text-white mb-12">Skills</h2>
-        </motion.div>
+        <p className="text-red-500 font-semibold text-sm tracking-widest uppercase mb-2">04 / Capabilities</p>
+        <h2 className="text-4xl font-bold text-white mb-8">Skills</h2>
         
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-2">
           {skills.map((skill, i) => (
-            <motion.span
+            <span
               key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
-              whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300 cursor-default"
+              className="px-4 py-2 bg-[#1a1a1a] border border-zinc-800 text-zinc-300 text-sm font-medium hover:border-red-600 hover:text-white transition-colors"
             >
               {skill}
-            </motion.span>
+            </span>
           ))}
         </div>
       </div>
@@ -359,72 +293,82 @@ const Skills = () => {
   )
 }
 
-// Contact Section
-const Contact = () => {
+// Education
+const Education = () => {
+  const education = [
+    { title: "Diploma in Marketing", institution: "CIM at Strategy College of Business" },
+    { title: "Primary & Secondary Education", institution: "Amal International School" }
+  ]
+
   return (
-    <section id="contact" className="py-24 md:py-32 bg-zinc-950">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-red-500 font-bold tracking-[0.2em] uppercase mb-4 text-sm">05 / Contact</p>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8">Let's Work<br /><span className="text-red-600">Together</span></h2>
-          <p className="text-xl text-zinc-400 mb-12">Ready to make an impact? Let's connect.</p>
-        </motion.div>
+    <section className="py-20 bg-[#0f0f0f]">
+      <div className="max-w-6xl mx-auto px-6">
+        <p className="text-red-500 font-semibold text-sm tracking-widest uppercase mb-2">05 / Education</p>
+        <h2 className="text-4xl font-bold text-white mb-8">Education</h2>
         
-        <div className="grid sm:grid-cols-3 gap-6 mb-12">
-          <motion.a 
-            href="tel:+94770447021" 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            whileHover={{ y: -5 }}
-            className="p-6 bg-zinc-900 border border-zinc-800 hover:border-red-600 transition-all duration-300 group"
-          >
-            <p className="text-zinc-500 text-sm uppercase mb-2 tracking-wider">Phone</p>
-            <p className="text-white font-bold group-hover:text-red-500 transition-colors">+94 77 044 7021</p>
-          </motion.a>
-          <motion.a 
-            href="mailto:haneef.rotaract3220@gmail.com" 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            whileHover={{ y: -5 }}
-            className="p-6 bg-zinc-900 border border-zinc-800 hover:border-red-600 transition-all duration-300 group"
-          >
-            <p className="text-zinc-500 text-sm uppercase mb-2 tracking-wider">Email</p>
-            <p className="text-white font-bold group-hover:text-red-500 transition-colors text-sm">haneef.rotaract3220<br />@gmail.com</p>
-          </motion.a>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            whileHover={{ y: -5 }}
-            className="p-6 bg-zinc-900 border border-zinc-800 hover:border-red-600 transition-all duration-300"
-          >
-            <p className="text-zinc-500 text-sm uppercase mb-2 tracking-wider">Location</p>
-            <p className="text-white font-bold">Colombo, Sri Lanka</p>
-          </motion.div>
+        <div className="space-y-4 max-w-2xl">
+          {education.map((edu, i) => (
+            <div key={i} className="bg-[#1a1a1a] border border-zinc-800 p-4">
+              <h3 className="text-white font-semibold">{edu.title}</h3>
+              <p className="text-zinc-500 text-sm">{edu.institution}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Contact
+const Contact = () => {
+  const contacts = [
+    { icon: Phone, label: "Phone", value: "+94 77 044 7021", href: "tel:+94770447021" },
+    { icon: Mail, label: "Email", value: "haneef.rotaract3220@gmail.com", href: "mailto:haneef.rotaract3220@gmail.com" },
+    { icon: MapPin, label: "Location", value: "Colombo, Sri Lanka", href: null }
+  ]
+
+  return (
+    <section id="contact" className="py-20 bg-[#0a0a0a]">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <p className="text-red-500 font-semibold text-sm tracking-widest uppercase mb-2">06 / Contact</p>
+        <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+        <p className="text-zinc-400 mb-12">Ready to make an impact? Let's connect.</p>
+        
+        <div className="grid sm:grid-cols-3 gap-4">
+          {contacts.map((contact, i) => {
+            const Icon = contact.icon
+            return contact.href ? (
+              <a
+                key={i}
+                href={contact.href}
+                className="bg-[#1a1a1a] border border-zinc-800 p-6 hover:border-red-600 transition-colors group"
+              >
+                <Icon className="text-red-600 mx-auto mb-3" size={24} />
+                <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">{contact.label}</p>
+                <p className="text-white font-medium text-sm">{contact.value}</p>
+              </a>
+            ) : (
+              <div key={i} className="bg-[#1a1a1a] border border-zinc-800 p-6">
+                <Icon className="text-red-600 mx-auto mb-3" size={24} />
+                <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">{contact.label}</p>
+                <p className="text-white font-medium text-sm">{contact.value}</p>
+              </div>
+            )
+          })}
         </div>
 
-        <p className="text-zinc-600 text-sm">
-          © {new Date().getFullYear()} Haneef Mohamed. All rights reserved.
+        <p className="text-zinc-600 text-sm mt-12">
+          &copy; {new Date().getFullYear()} Haneef Mohamed. All rights reserved.
         </p>
       </div>
     </section>
   )
 }
 
-// Main App
+// Main
 function App() {
   return (
-    <div className="bg-black min-h-screen text-white font-sans">
+    <div className="bg-[#0a0a0a] min-h-screen text-white font-sans">
       <ScrollProgress />
       <Navigation />
       <Hero />
@@ -432,6 +376,7 @@ function App() {
       <Experience />
       <Achievements />
       <Skills />
+      <Education />
       <Contact />
     </div>
   )
