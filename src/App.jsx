@@ -281,7 +281,7 @@ const Hero = () => {
           transition={{ delay: 0.2 }}
           className="inline-block text-xs sm:text-sm font-medium text-[var(--color-accent)] uppercase tracking-[0.3em] mb-6"
         >
-          Rotaract Club of Colombo Mid Town
+          PR Strategist & Rotaract Leader
         </motion.span>
         
         <motion.h1
@@ -299,7 +299,7 @@ const Hero = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="font-[var(--font-heading)] text-xl sm:text-2xl md:text-3xl text-[var(--color-text-secondary)] italic max-w-2xl mx-auto mb-4"
         >
-          45th President · <span className="text-[var(--color-accent)] not-italic font-medium">Immediate Past President</span>
+          Building Narratives, Strengthening Reputations
         </motion.p>
 
         <motion.p
@@ -308,7 +308,7 @@ const Hero = () => {
           transition={{ delay: 0.6, duration: 0.6 }}
           className="text-[var(--color-text-secondary)] max-w-xl mx-auto mb-12 text-lg leading-relaxed"
         >
-          Revived <span className="text-[var(--color-accent)] font-medium">Project iGenius</span> after 5-year hiatus — securing the club's first international recognition in 9 years.
+          Strategic PR & Reputation Executive with 7+ years leading impactful community service projects and building meaningful connections.
         </motion.p>
         
         <motion.div
@@ -407,7 +407,7 @@ const About = () => {
         <SectionHeader 
           label="01" 
           title="About Me" 
-          subtitle="A transformative leader dedicated to community service and youth empowerment in Sri Lanka's Rotaract movement."
+          subtitle="Over several years of experience in developing and implementing marketing strategies for various industries. I am flexible and have good business relationships with the people I work with."
         />
         
         <div className="grid md:grid-cols-2 gap-12 md:gap-20">
@@ -422,7 +422,7 @@ const About = () => {
               I'm <span className="text-[var(--color-accent)]">Haneef Mohamed</span> — a passionate advocate for positive change.
             </p>
             <p className="text-[var(--color-text-secondary)] leading-relaxed text-lg">
-              As the 45th President of the Rotaract Club of Colombo Mid Town (2024-2025), I'm now serving as Immediate Past President (IPP), dedicated to elevating community service and youth empowerment to new heights.
+              As the 45th President of the PR Strategist & Rotaract Leader (2024-2025), I'm now serving as Immediate Past President (IPP), dedicated to elevating community service and youth empowerment to new heights.
             </p>
             <p className="text-[var(--color-text-secondary)] leading-relaxed">
               My defining achievement came when I revived <span className="text-[var(--color-accent)] font-medium">Project iGenius</span> after a 5-year hiatus — resulting in the club's first international recognition in 9 years. This milestone represents my commitment to reviving legacy projects and achieving what others thought impossible.
@@ -484,28 +484,46 @@ const About = () => {
 const Journey = () => {
   const milestones = [
     {
-      year: "2025 - Present",
-      title: "Immediate Past President (IPP)",
-      description: "Transitioning from presidential leadership, focused on guiding the club's next chapter and supporting new initiatives while mentoring future leaders.",
-      icon: "👑"
+      year: "May 2023 - Present",
+      title: "Strategic PR & Reputation Executive",
+      company: "PR Wire",
+      description: "Develop and execute strategies to create and uphold a positive public image for clients. Create marketing communication strategies with the marketing team.",
+      icon: "💼"
+    },
+    {
+      year: "July 2022 - March 2023",
+      title: "Business Development Executive",
+      company: "ChildFund Sri Lanka",
+      description: "International development sector organization supporting over 200,000 children, youth, families and communities across 10 districts.",
+      icon: "👥"
     },
     {
       year: "2024 - 2025",
-      title: "45th President",
-      description: "Led the Rotaract Club of Colombo Mid Town through a transformative year. Revived Project iGenius after 5-year hiatus, achieving the club's first international recognition in 9 years.",
+      title: "President",
+      company: "Rotaract Club of Colombo Mid Town",
+      description: "Led a team of 50 members, 10+ community service projects. Achieved 20% increase in member satisfaction and 15% improvement in project outcomes.",
       icon: "🎯"
     },
     {
-      year: "2019",
-      title: "Co-Director of Public Relations",
-      description: "Managed club communications, brand visibility, and community outreach efforts. Built strong relationships with media and partner organizations.",
-      icon: "📣"
+      year: "2023 - 2024",
+      title: "Sergeant At Arms",
+      company: "Rotaract Club of Colombo Mid Town",
+      description: "Maintained order and facilitated smooth club operations.",
+      icon: "⚖️"
     },
     {
-      year: "2019",
-      title: "Joined Rotaract",
-      description: "Began my journey as a dedicated member of the Rotaract Club of Colombo Mid Town, driven by a passion for community service.",
-      icon: "🌟"
+      year: "2022 - 2023",
+      title: "Club Service Director",
+      company: "Rotaract Club of Colombo Mid Town",
+      description: "Spearheaded new outreach strategy that boosted new member enrollment by 30% within one year.",
+      icon: "🤝"
+    },
+    {
+      year: "2019 - 2020",
+      title: "Director Public Relations",
+      company: "Rotaract Club of Colombo Mid Town",
+      description: "Efforts resulting in 2 prestigious awards - Most Outstanding Social Media Campaign and Most Outstanding Digital Communications, increasing club visibility by 40%.",
+      icon: "📣"
     }
   ]
 
@@ -515,7 +533,7 @@ const Journey = () => {
         <SectionHeader 
           label="02" 
           title="My Journey"
-          subtitle="A timeline of growth, leadership, and service to the community."
+          subtitle="A timeline of professional experience and leadership roles."
         />
         
         <div className="relative">
@@ -528,7 +546,7 @@ const Journey = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.6 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
                 className={`relative flex items-start gap-8 ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}
@@ -538,18 +556,19 @@ const Journey = () => {
                 <div className={`ml-12 md:ml-0 md:w-[calc(50%-3rem)] ${
                   index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'
                 }`}>
-                  <div className={`flex items-center gap-3 mb-3 ${
-                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                  }`}>
-                    <span className="text-4xl">{milestone.icon}</span>
-                    <span className="text-sm font-semibold text-[var(--color-accent)] uppercase tracking-wider">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-3xl">{milestone.icon}</span>
+                    <span className="text-sm font-medium text-[var(--color-accent)] uppercase tracking-wider">
                       {milestone.year}
                     </span>
                   </div>
-                  <h3 className="font-[var(--font-heading)] text-2xl md:text-3xl font-medium text-[var(--color-text)] mb-3">
+                  <h3 className="font-[var(--font-heading)] text-xl md:text-2xl font-medium text-[var(--color-text)] mb-1">
                     {milestone.title}
                   </h3>
-                  <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                  {milestone.company && (
+                    <p className="text-[var(--color-accent)] text-sm mb-2">{milestone.company}</p>
+                  )}
+                  <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
                     {milestone.description}
                   </p>
                 </div>
@@ -561,13 +580,12 @@ const Journey = () => {
     </section>
   )
 }
-
 const Projects = () => {
   const projects = [
     {
       id: 1,
       title: "Project iGenius",
-      description: "An inter-school quiz competition featuring 10 themed rounds with audio and visual elements. Originally launched around 2013, I successfully revived this flagship initiative after a 5-year hiatus during my 2024-25 presidency. This achievement marked the club's first international recognition in 9 years — a historic milestone for the Rotaract Club of Colombo Mid Town.",
+      description: "An inter-school quiz competition featuring 10 themed rounds with audio and visual elements. Originally launched around 2013, I successfully revived this flagship initiative after a 5-year hiatus during my 2024-25 presidency. This achievement marked the club's first international recognition in 9 years — a historic milestone for the PR Strategist & Rotaract Leader.",
       category: "Education & Innovation",
       impact: "First International Win in 9 Years",
       year: "2024-2025",
@@ -737,13 +755,13 @@ const Achievements = () => {
     { 
       title: "First International Recognition in 9 Years", 
       year: "2024-2025",
-      description: "Revived Project iGenius after 5-year hiatus — historic achievement for Rotaract Club of Colombo Mid Town",
+      description: "Revived Project iGenius after 5-year hiatus — historic achievement for PR Strategist & Rotaract Leader",
       icon: "🏆"
     },
     { 
       title: "45th President", 
       year: "2024-2025",
-      description: "Elected as the 45th President of Rotaract Club of Colombo Mid Town — a testament to leadership and trust",
+      description: "Elected as the 45th President of PR Strategist & Rotaract Leader — a testament to leadership and trust",
       icon: "👑"
     },
     { 
@@ -840,9 +858,10 @@ const Achievements = () => {
 
 const Contact = () => {
   const contactInfo = [
-    { label: "Email", value: "haneef.rotaract@gmail.com", icon: "✉️", href: "mailto:haneef.rotaract@gmail.com" },
+    { label: "Email", value: "haneef.rotaract3220@gmail.com", icon: "✉️", href: "mailto:haneef.rotaract3220@gmail.com" },
+    { label: "Phone", value: "+94 77 044 7021", icon: "📱", href: "tel:+94770447021" },
     { label: "Location", value: "Colombo, Sri Lanka", icon: "📍", href: null },
-    { label: "Club", value: "Rotaract Club of Colombo Mid Town", icon: "🎯", href: "https://www.rotaractcolomomidtown.org" }
+    { label: "Club", value: "PR Strategist & Rotaract Leader", icon: "🎯", href: "https://www.rotaractcolomomidtown.org" }
   ]
 
   const socialLinks = [
@@ -902,12 +921,12 @@ const Contact = () => {
           </div>
           
           <motion.a
-            href="mailto:haneef.rotaract@gmail.com"
+            href="mailto:haneef.rotaract3220@gmail.com"
             className="inline-block font-[var(--font-heading)] text-2xl md:text-3xl italic text-[var(--color-text)] border-b-2 border-[var(--color-accent)] pb-2 hover:text-[var(--color-accent)] transition-colors mb-16"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            haneef.rotaract@gmail.com
+            haneef.rotaract3220@gmail.com
           </motion.a>
           
           <div className="flex flex-wrap justify-center gap-8 md:gap-12">
@@ -949,7 +968,7 @@ const Contact = () => {
             <span className="text-[var(--color-text-muted)] font-[var(--font-display)] tracking-wider">ROTARACT</span>
           </div>
           <p className="text-sm text-[var(--color-text-muted)]">
-            © {new Date().getFullYear()} Haneef Mohamed — Rotaract Club of Colombo Mid Town
+            © {new Date().getFullYear()} Haneef Mohamed — PR Strategist & Rotaract Leader
           </p>
           <p className="text-xs text-[var(--color-text-muted)]/60 mt-2 uppercase tracking-widest">
             Service Above Self
