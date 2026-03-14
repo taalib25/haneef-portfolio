@@ -187,3 +187,77 @@ How will we measure improvement?
 *Generated: 2026-03-15*
 *For: Haneef Mohamed Portfolio Website*
 *By: Talos (AI Assistant)*
+
+---
+
+## Research Findings (from 3 Sub-Agents)
+
+### 1. Best Portfolio Designs (ui-research-1)
+
+**Top References:**
+- Daniella Marynova (framer.com/gallery/daniella-marynova) - Case study narratives
+- Vence (framer.com/marketplace/templates/vence/) - Agency templates
+- Viral by Hamza Ehsan - Social media metrics
+- Cappen (cappen.com) - Scroll effects
+- Brand Appart (brandappart.com) - Investor-ready
+- Ragged Edge (raggededge.com) - Bold branding
+
+**Key Principles:**
+- Data-driven case studies (Problem → Strategy → Execution → Metrics)
+- Metrics-first approach (ROI, engagement, conversions)
+- Visual-first for campaign content
+- Social proof integration
+- Lead generation features
+
+### 2. UI Libraries & Tools (ui-research-2)
+
+**Recommended Stack:**
+- **UI:** shadcn/ui (copy-paste, own the code)
+- **Animation:** Motion (formerly Framer Motion)
+- **Icons:** Lucide (2000+ free icons)
+
+**Install:**
+```bash
+pnpm dlx shadcn@latest init
+npm install motion lucide-react
+```
+
+**Free Illustrations:**
+- Undraw (undraw.co)
+- Manypixels (manypixels.co)
+- Open Doodles (opendoodles.com)
+
+### 3. Color & Typography (ui-research-3)
+
+**Recommended Palette (Trust & Authority):**
+- Primary: Deep Navy `#1A365D`
+- Secondary: Slate `#4A5568`
+- Accent: Gold `#D69E2E`
+- Background: Warm White `#FAF9F7`
+
+**Recommended Fonts:**
+- Headings: Playfair Display (serif, executive feel)
+- Body: Inter (clean, readable)
+
+**Theme:** Light theme recommended for PR/Leadership (builds trust)
+
+---
+
+## Curated Resources
+
+### Templates to Study
+1. https://framer.com/marketplace/templates/viral - Metrics-focused
+2. https://framer.com/marketplace/templates/sociallift - Social media
+3. https://framer.com/marketplace/templates/convertify - Results-focused
+
+### Inspiration
+- https://cappen.com - Scroll effects
+- https://raggededge.com - Bold branding
+- https://brandappart.com - Design for startups
+
+### Tools
+- UI: https://ui.shadcn.com
+- Icons: https://lucide.dev
+- Illustrations: https://undraw.co
+- Animations: https://motion.dev
+- Lottie: https://lottiefiles.com
