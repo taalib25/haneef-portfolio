@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
@@ -54,7 +54,7 @@ export default function CustomCursor() {
           y: mouseY,
         }}
       />
-
+      
       {/* Ring (Lagged) */}
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 border border-[var(--t2)] rounded-full pointer-events-none z-[99] -translate-x-1/2 -translate-y-1/2"
