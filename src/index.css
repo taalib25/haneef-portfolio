@@ -1,42 +1,230 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+/* ============================================
+    FONT LOADING - Fontshare + Google Fonts
+    ============================================ */
 
-@import "tailwindcss";
-@plugin "daisyui";
+/* Import display font */
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap");
 
+/* Import JetBrains Mono for better monospace */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap");
+
+/* Import Inter for cleaner body text */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+/* Now define the theme and root variables after imports */
 @theme {
-  --font-outfit: 'Outfit', sans-serif;
-  --font-playfair: 'Playfair Display', serif;
-  --font-inter: 'Inter', sans-serif;
+  --font-display: "Clash Display", "DM Serif Display", Georgia, serif;
+
+  /* Clean, readable body font */
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* JetBrains Mono - modern, readable monospace */
+  --font-mono: "JetBrains Mono", "SF Mono", "Monaco", "Inconsolata", monospace;
+
+  /* ── SURFACES - Simplified Color Scheme */
+  --color-bg: #fdf8f2;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #fff9f4;
+  --color-bg-hero: #780000;
+  --color-bg-campaign: #fdf0d5;
+
+  /* ── COLOR PALETTE */
+  --color-crimson: #c1121f;
+  --color-crimson-dark: #780000;
+  --color-crimson-dim: rgba(193, 18, 31, 0.08);
+  --color-crimson-border: rgba(193, 18, 31, 0.18);
+
+  --color-navy: #003049;
+  --color-navy-light: #669bbc;
+  --color-navy-dim: rgba(0, 48, 73, 0.08);
+  --color-navy-border: rgba(0, 48, 73, 0.15);
+
+  /* ── TEXT COLORS */
+  --color-t1: #0f0608; /* Primary text */
+  --color-t2: #5a3d3a; /* Secondary text */
+  --color-t3: #9a7f7a; /* Tertiary text */
+  --color-ta: #c1121f; /* Accent text */
+  --color-tb: #003049; /* Secondary accent text */
+
+  /* ── HERO TEXT */
+  --color-ht1: #fdf8f2; /* Hero primary */
+  --color-ht2: rgba(253, 248, 242, 0.85); /* Hero secondary */
+  --color-hta: #fdf0d5; /* Hero accent */
+
+  /* ── CAMPAIGN TEXT */
+  --color-ct1: #0f0608;
+  --color-ct2: #3a2a22;
+  --color-cta: #780000;
+  --color-cb: rgba(120, 0, 0, 0.15);
+
+  /* ── BORDERS */
+  --color-border: rgba(15, 6, 8, 0.08);
+  --color-border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
+  --color-border-strong: rgba(15, 6, 8, 0.16);
+
+  /* ── TYPOGRAPHY SCALES — Increased 20% for better readability */
+  --text-t-xs: 1.05rem; /* Tag pills/mono small */
+  --text-t-sm: 1.125rem; /* Section sub-labels */
+  --text-t-base: 1.35rem; /* Body/paragraph */
+  --text-t-lg: 1.5rem; /* Card body */
+  --text-t-xl: 2.4rem; /* Card titles */
+  --text-t-2xl: clamp(3rem, 5vw, 5rem); /* Recognition titles */
+  --text-t-3xl: 3.3rem; /* Hero card title */
+  --text-t-4xl: clamp(4.8rem, 8vw, 8.5rem); /* Section headlines */
+  --text-t-hero: clamp(5.4rem, 12vw, 10rem); /* Contact hero */
+  --text-t-philosophy: clamp(5.4rem, 10vw, 9.5rem); /* Philosophy cascade */
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  /* ── SURFACES */
+  --bg: #fdf8f2;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fff9f4;
+  --bg-hero: #780000;
+  --bg-campaign: #fdf0d5;
+
+  /* ── COLOR PALETTE */
+  --crimson: #c1121f;
+  --crimson-dark: #780000;
+  --crimson-dim: rgba(193, 18, 31, 0.08);
+  --crimson-border: rgba(193, 18, 31, 0.18);
+  --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
+
+  --navy: #003049;
+  --navy-light: #669bbc;
+  --navy-dim: rgba(0, 48, 73, 0.08);
+  --navy-border: rgba(0, 48, 73, 0.15);
+
+  /* ── TEXT COLORS */
+  --t1: #0f0608; /* Primary */
+  --t2: #5a3d3a; /* Secondary */
+  --t3: #9a7f7a; /* Tertiary */
+  --ta: #c1121f; /* Accent */
+  --tb: #003049; /* Navy accent */
+
+  /* ── TEXT ON HERO */
+  --ht1: #fdf8f2;
+  --ht2: rgba(253, 248, 242, 0.85);
+  --hta: #fdf0d5;
+
+  /* ── TEXT ON CAMPAIGN */
+  --ct1: #0f0608;
+  --ct2: #3a2a22;
+  --cta: #780000;
+  --cb: rgba(120, 0, 0, 0.15);
+
+  /* ── BORDERS */
+  --border: rgba(15, 6, 8, 0.08);
+  --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
+  --border-strong: rgba(15, 6, 8, 0.16);
+
+  /* ── TYPOGRAPHY SCALES — Increased 20% for better readability */
+  --t-xs: 1.05rem; /* Tag pills/mono small */
+  --t-sm: 1.125rem; /* Section sub-labels */
+  --t-base: 1.35rem; /* Body/paragraph */
+  --t-lg: 1.5rem; /* Card body */
+  --t-xl: 2.4rem; /* Card titles */
+  --t-2xl: clamp(3rem, 5vw, 5rem); /* Recognition titles */
+  --t-3xl: 3.3rem; /* Hero card title */
+  --t-4xl: clamp(4.8rem, 8vw, 8.5rem); /* Section headlines */
+  --t-hero: clamp(5.4rem, 12vw, 10rem); /* Contact "READY TO TALK?" */
+  --t-philosophy: clamp(5.4rem, 10vw, 9.5rem); /* Philosophy cascade */
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* Tailwind import should come after theme definition */
+@import "tailwindcss";
 
-body {
-  font-family: 'Outfit', sans-serif;
-  background-color: #0a0a0a;
-  color: #fafafa;
-  -webkit-font-smoothing: antialiased;
+::selection {
+  background: var(--crimson);
+  color: white;
+}
+:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 4px;
 }
 
 ::-webkit-scrollbar {
   width: 6px;
 }
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--crimson-dark);
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #dc2626;
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--t1);
+  font-family: var(--font-body);
+  font-weight: 400;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%; /* Base font-size 16px for proper scaling */
+  font-variant-numeric: tabular-nums;
+}
+
+/* Better font rendering and smoothing */
+body,
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1;
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ── Hero Noise Texture */
+.hero-noise {
+  position: relative;
+}
+
+.hero-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* ── Consistent card styles across sections */
+.card-standard {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.card-hover:hover {
+  background-color: var(--bg-card-hover);
+  border: 1px solid var(--crimson-border);
+}
+
+/* Fix for font-display attribute */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
 }
