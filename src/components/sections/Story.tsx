@@ -90,8 +90,8 @@ export default function Story() {
       ref={containerRef}
       className="py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-(--bg)"
     >
-      {/* 2px crimson line at top of section opener */}
-      <div className="h-[2px] w-[60px] bg-(--crimson) mb-8 md:mb-12" />
+      {/* 2px crimson line at top of section opener (full width) */}
+      <div className="h-[2px] w-full bg-(--crimson) mb-12" />
 
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
@@ -112,7 +112,7 @@ export default function Story() {
         >
           {/* Section Label — Chapter-book style */}
           <motion.p
-            className="font-mono text-(--ta) text-t-xs tracking-[0.20em] uppercase mb-4 md:mb-6"
+            className="font-mono text-(--ta) text-t-xs tracking-[0.10em] uppercase mb-4 md:mb-6"
             initial={
               !prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }
             }
@@ -161,7 +161,7 @@ export default function Story() {
             className="space-y-4 md:space-y-6 max-w-6xl"
           >
             <motion.p
-              className="font-body text-t-base text-(--t2) leading-[1.75] text-justify"
+              className="font-body text-t-base text-(--t2) leading-[1.75]"
               variants={itemVariant}
             >
               My professional journey has been shaped by the power of
@@ -203,31 +203,15 @@ export default function Story() {
                     // Non-hero entries get bottom separator
                     !isHero && "border-b border-(--border)"
                   )}
-                  initial={
-                    !prefersReducedMotion
-                      ? { opacity: 0, y: 24 }
-                      : { opacity: 1 }
-                  }
-                  whileInView={
-                    !prefersReducedMotion
-                      ? { opacity: 1, y: 0 }
-                      : { opacity: 1 }
-                  }
-                  transition={
-                    !prefersReducedMotion
-                      ? { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-                      : undefined
-                  }
-                  viewport={{ once: true, amount: 0.2 }}
                 >
                    {/* Desktop: Two column layout */}
                   <div className="flex flex-col md:flex-row gap-3 md:gap-4">
                     {/* Left column: Year and Type */}
-                    <div className="md:w-28 shrink-0 flex flex-row md:flex-col gap-2 md:gap-2 items-start md:items-start">
+                    <div className="md:w-28 shrink-0 flex flex-row md:flex-col gap-2 md:gap-2 items-start md:items-start pt-1">
                       {/* Year — Refined typography, less prominent */}
                       <span
                         className={cn(
-                          "font-display text-[1.5rem] md:text-[1.75rem] text-(--t1) leading-[1] tracking-[-0.02em] relative",
+                          "font-display text-[1.5rem] md:text-[1.75rem] text-(--t1) leading-[1] tracking-[-0.02em] relative whitespace-nowrap",
                           isHero ? "text-(--crimson)" : "", // Hero entry has crimson year
                         )}
                       >
@@ -274,31 +258,31 @@ export default function Story() {
                         {item.title}
                       </h3>
 
-                      {/* Organisation */}
-                      <p className="font-mono text-[0.8rem] text-(--t3) uppercase tracking-wide mb-3">
+                      {/* Organisation — Jakarta Sans sentence case, quiet */}
+                      <p className="font-body text-[0.85rem] text-(--t3) font-normal mb-3">
                         {item.organisation}
                       </p>
 
-                      {/* Body text — Justified for better readability */}
+                      {/* Body text — Left-aligned for readability */}
                        <div className="font-body text-t-base text-(--t2) leading-[1.75] max-w-6xl">
                         {item.body.split("\n\n").map((paragraph, i) => (
-                          <p key={i} className="mb-4 last:mb-0 text-justify">
+                          <p key={i} className="mb-4 last:mb-0">
                             {paragraph}
                           </p>
                         ))}
                       </div>
 
-                      {/* Stat Pills */}
+                      {/* Stat Pills — Match Work section style */}
                       {item.statPills && item.statPills.length > 0 && (
                         <div className="flex flex-wrap gap-2 mt-3">
                           {item.statPills.map((pill, i) => (
                             <span
                               key={i}
                               className={cn(
-                                "font-mono text-[0.8rem] text-(--t1) px-2.5 py-1",
+                                "font-body text-[0.8rem] font-medium px-3 py-1 rounded-[2px]",
                                 isHero
-                                  ? "bg-(--crimson-dim) border border-(--crimson-border)"
-                                  : "bg-(--bg-card) border border-(--border)",
+                                  ? "text-(--crimson) bg-(--crimson-dim) border border-(--crimson-border)"
+                                  : "text-(--crimson) bg-(--crimson-dim) border border-(--crimson-border)",
                               )}
                             >
                               {pill}

@@ -228,3 +228,55 @@ html {
 .font-mono {
   font-family: var(--font-mono);
 }
+
+/* ── GLOBAL TYPOGRAPHIC REFINEMENTS */
+
+/* Clash Display headlines - tight letter spacing for authority */
+.font-display {
+  letter-spacing: -0.015em;
+}
+
+.font-display.text-\[clamp\(2\.5rem\,5vw\,4rem\)\],
+.font-display.text-\[clamp\(4rem\,10vw\,7rem\)\],
+.font-display.text-\[clamp\(2rem\,4vw\,3rem\)\],
+.font-display.text-\[clamp\(2rem\,5vw\,4rem\)\],
+[class*="text-t-3xl"],
+[class*="text-t-4xl"],
+[class*="text-t-hero"],
+[class*="text-t-philosophy"] {
+  letter-spacing: -0.025em;
+}
+
+/* Jakarta Sans body text - zero tracking */
+.font-body {
+  letter-spacing: 0;
+}
+
+/* Jakarta Sans headings (card titles, sub-headings) - slight tightening */
+.font-body.font-semibold,
+.font-body[class*="text-[1."] {
+  letter-spacing: -0.01em;
+}
+
+/* JetBrains Mono - reduced tracking (was 0.20em, now 0.10em max) */
+.font-mono {
+  letter-spacing: 0.10em;
+}
+
+/* Mobile: further reduce mono tracking for narrow screens */
+@media (max-width: 767px) {
+  .font-mono {
+    letter-spacing: 0.06em;
+  }
+}
+
+/* No justified text anywhere - left align for readability */
+p {
+  text-align: left;
+  max-width: 68ch;
+}
+
+/* Remove text-transform uppercase from body elements - preserve only for section labels */
+.font-body:not(.font-mono) {
+  text-transform: none;
+}
