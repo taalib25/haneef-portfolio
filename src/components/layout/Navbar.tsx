@@ -41,7 +41,9 @@ export default function Navbar() {
         className={cn(
           'fixed top-0 left-0 w-full z-50 transition-all duration-300 flex items-center',
           'h-[56px] md:h-[64px] px-6 md:px-12 lg:px-20',
-          scrolled ? 'bg-[rgba(10,10,10,0.96)] backdrop-blur-[12px]' : 'bg-transparent'
+          scrolled 
+            ? 'bg-[rgba(253,248,242,0.95)] backdrop-blur-[12px]' 
+            : 'bg-transparent'
         )}
       >
         <div className="flex w-full max-w-[1200px] mx-auto justify-between items-center">
@@ -59,7 +61,10 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  'font-mono uppercase text-[var(--t-xs)] tracking-widest text-[var(--t1)] transition-colors',
+                  'font-mono uppercase text-[var(--t-xs)] tracking-widest transition-colors',
+                  scrolled 
+                    ? 'text-[var(--t1)]' 
+                    : 'text-[var(--hta)]', // Light text when over hero
                   activeSection === link.href.substring(1) && 'border-b-2 border-[var(--crimson)]'
                 )}
               >
@@ -70,7 +75,12 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-[var(--t1)]"
+            className={cn(
+              'md:hidden transition-colors',
+              scrolled 
+                ? 'text-[var(--t1)]' 
+                : 'text-[var(--hta)]' // Light text when over hero
+            )}
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open Menu"
           >
@@ -97,9 +107,9 @@ export default function Navbar() {
         </div>
         
         <div className="flex flex-col gap-8 mt-16">
-          {navLinks.map((link) => (
+          {navLinks.map((link, index) => (
             <a
-              key={link.name}
+              key={link.name + index}
               href={link.href}
               onClick={() => setMobileMenuOpen(false)}
               className="font-mono uppercase text-[var(--t-lg)] tracking-widest text-[var(--t1)]"

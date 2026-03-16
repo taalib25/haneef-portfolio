@@ -1,106 +1,235 @@
-import { useEffect, useState } from 'react';
-import { cn } from '../../lib/cn';
+import { useEffect, useState } from "react";
+import { motion, type Variants } from "framer-motion";
+import { cn } from "../../lib/cn";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
+
+const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
+const EASE_OUT = "easeOut" as const;
+
+// Animation variants
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: EASE_SMOOTH },
+  },
+};
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.8, ease: EASE_OUT },
+  },
+};
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     setLoaded(true);
+    
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
   return (
     <section
       id="hero"
       className={cn(
-        'relative w-full min-h-[100svh] flex flex-col justify-center items-center bg-[var(--bg)] overflow-hidden transition-opacity duration-300',
-        loaded ? 'opacity-100' : 'opacity-0'
+        "relative w-full min-h-[100svh] min-h-[680px] bg-[var(--bg-hero)] overflow-hidden",
+        loaded ? "opacity-100" : "opacity-0",
+        "duration-500 transition-opacity"
       )}
     >
-      {/* Desktop Layout */}
-      <div className="hidden md:grid grid-cols-3 gap-8 w-full max-w-[1400px] px-12 lg:px-20 items-center z-10 pt-20">
-        {/* Left Details */}
-        <div className="flex flex-col items-end text-right space-y-16">
-          <div>
-            <p className="font-mono text-[var(--ta)] text-[var(--t-xs)] tracking-widest uppercase mb-3">Role</p>
-            <h2 className="font-display text-[var(--t-2xl)] text-[var(--t1)] uppercase leading-[1.1]">PR Strategist</h2>
-          </div>
-          <div>
-            <p className="font-mono text-[var(--ta)] text-[var(--t-xs)] tracking-widest uppercase mb-3">Current</p>
-            <h2 className="font-display text-[var(--t-2xl)] text-[var(--t1)] uppercase leading-[1.1]">Rotaract<br/>President</h2>
-          </div>
-        </div>
-
-        {/* Center Image */}
-        <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden border border-[var(--crimson-border)] shadow-[0_0_40px_rgba(193,18,31,0.15)] group">
-          <img 
-            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" 
-            alt="Haneef Mohamed" 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-            referrerPolicy="no-referrer"
+      {/* Desktop Portrait Image - Full height right panel */}
+      {!isMobile && (
+        <div 
+          className="absolute right-0 top-0 bottom-0 w-[42%] hidden md:block overflow-hidden"
+          style={{
+            background: 'linear-gradient(to right, var(--bg-hero) 0%, transparent 30%)'
+          }}
+        >
+          <img
+            src="/portrait.png"
+            alt="Haneef Mohamed"
+            className="w-full h-full object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-90" />
-          <div className="absolute bottom-8 left-0 right-0 text-center px-4">
-            <h1 className="font-display text-[var(--t-3xl)] text-[var(--t1)] uppercase tracking-tight mb-4">Haneef<br/>Mohamed</h1>
-            <div className="flex justify-center gap-4">
-              <a href="#story" className="inline-flex justify-center items-center bg-[var(--crimson)] text-[var(--ct1)] font-mono text-[10px] uppercase tracking-widest px-6 py-3 hover:bg-[var(--crimson-dark)] transition-colors">
-                The Story
-              </a>
-              <a href="#campaign" className="inline-flex justify-center items-center border border-[var(--crimson-border)] text-[var(--ta)] font-mono text-[10px] uppercase tracking-widest px-6 py-3 hover:bg-[var(--crimson-dim)] transition-colors bg-[var(--bg)]/50 backdrop-blur-sm">
-                Campaign
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Details */}
-        <div className="flex flex-col items-start text-left space-y-16">
-          <div>
-            <p className="font-mono text-[var(--ta)] text-[var(--t-xs)] tracking-widest uppercase mb-3">Candidate</p>
-            <h2 className="font-display text-[var(--t-2xl)] text-[var(--t1)] uppercase leading-[1.1]">District Rotaract<br/>Representative</h2>
-          </div>
-          <div>
-            <p className="font-mono text-[var(--ta)] text-[var(--t-xs)] tracking-widest uppercase mb-3">Region</p>
-            <h2 className="font-display text-[var(--t-2xl)] text-[var(--t1)] uppercase leading-[1.1]">District 3220<br/><span className="text-[var(--t2)] text-[var(--t-lg)] mt-2 block">Sri Lanka & Maldives</span></h2>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Layout */}
-      <div className="md:hidden flex flex-col w-full px-6 pt-24 pb-12 z-10 min-h-[100svh] justify-center">
-        <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden mb-10 border border-[var(--crimson-border)]">
-          <img 
-            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800&auto=format&fit=crop" 
-            alt="Haneef Mohamed" 
-            className="w-full h-full object-cover" 
-            referrerPolicy="no-referrer"
+          {/* Left edge gradient to blend portrait with crimson background */}
+          <div 
+            className="absolute left-0 top-0 bottom-0 w-1/3 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, var(--bg-hero) 0%, transparent 60%)'
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-[var(--bg)]/40 to-transparent opacity-90" />
-          <div className="absolute bottom-6 left-6 right-6">
-            <h1 className="font-display text-[var(--t-4xl)] text-[var(--t1)] uppercase tracking-tight leading-[0.9] mb-3">Haneef<br/>Mohamed</h1>
-            <p className="font-mono text-[var(--ta)] text-[var(--t-xs)] tracking-widest uppercase">Candidate for DRR 3220</p>
-          </div>
         </div>
-        
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8 mb-10">
-          <div>
-            <p className="font-mono text-[var(--ta)] text-[10px] tracking-widest uppercase mb-2">Role</p>
-            <h2 className="font-display text-[var(--t-lg)] text-[var(--t1)] uppercase leading-tight">PR Strategist</h2>
-          </div>
-          <div>
-            <p className="font-mono text-[var(--ta)] text-[10px] tracking-widest uppercase mb-2">Current</p>
-            <h2 className="font-display text-[var(--t-lg)] text-[var(--t1)] uppercase leading-tight">Rotaract<br/>President</h2>
-          </div>
-        </div>
+      )}
 
-        <div className="flex flex-col gap-3 w-full">
-          <a href="#story" className="w-full inline-flex justify-center items-center bg-[var(--crimson)] text-[var(--ct1)] font-mono text-[var(--t-sm)] uppercase tracking-widest px-8 py-4 hover:bg-[var(--crimson-dark)] transition-colors">
-            READ THE STORY ↓
-          </a>
-          <a href="#campaign" className="w-full inline-flex justify-center items-center border border-[var(--crimson-border)] text-[var(--ta)] font-mono text-[var(--t-sm)] uppercase tracking-widest px-8 py-4 hover:bg-[var(--crimson-dim)] transition-colors">
-            THE CAMPAIGN
-          </a>
+      {/* Mobile Portrait - Above content */}
+      {isMobile && (
+        <div className="w-full relative h-[55vw] max-h-[320px] overflow-hidden md:hidden">
+          <img
+            src="/portrait.png"
+            alt="Haneef Mohamed"
+            className="w-full h-full object-cover object-top"
+          />
+          {/* Bottom gradient for mobile portrait */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-[50%]"
+            style={{
+              background: 'linear-gradient(to bottom, transparent 0%, var(--bg-hero) 60%)'
+            }}
+          />
         </div>
-      </div>
+      )}
+
+      {/* Desktop Layout - Name anchored bottom-left */}
+      {!isMobile ? (
+        <>
+          {/* Main Name - Massive, anchored bottom-left */}
+          <motion.div
+            className="absolute bottom-[12%] left-[5%] z-10"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 60 } : { opacity: 1, y: 0 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.9, ease: EASE_SMOOTH }}
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <h1
+              className="font-display font-bold text-[clamp(5rem,14vw,11rem)] text-[color:var(--ht1)] leading-[0.85] tracking-[-0.04em] uppercase"
+              style={{ 
+                lineHeight: '0.85',
+                letterSpacing: '-0.04em'
+              }}
+            >
+              HANEEF<br/>MOHAMED
+            </h1>
+          </motion.div>
+
+          {/* Horizontal Rule - Below name */}
+          <motion.div
+            className="absolute left-[5%] z-10"
+            style={{ bottom: 'calc(12% + clamp(5rem,14vw,11rem) * 0.85 + 2rem)' }}
+            initial={!prefersReducedMotion ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, scaleX: 1 } : { opacity: 1 }}
+            transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div 
+              className="w-[clamp(320px,50vw,600px)] h-[1px]"
+              style={{ background: 'rgba(253,248,242,0.20)' }}
+            />
+          </motion.div>
+
+          {/* Role Line - Below the rule */}
+          <motion.p
+            className="absolute left-[5%] z-10 font-body font-light text-[1rem] text-[rgba(253,248,242,0.65)]"
+            style={{ bottom: 'calc(12% + clamp(5rem,14vw,11rem) * 0.85 + 3rem)' }}
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            PR Strategist · Rotaract President · DRR Candidate
+          </motion.p>
+
+          {/* CTAs - Below the role line */}
+          <motion.div
+            className="absolute left-[5%] z-10 flex gap-4"
+            style={{ bottom: 'calc(12% + clamp(5rem,14vw,11rem) * 0.85 + 5.5rem)' }}
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <a
+              href="#story"
+              className="inline-flex justify-center items-center bg-[var(--hta)] text-[color:var(--crimson-dark)] font-mono text-[var(--t-sm)] uppercase tracking-widest min-h-[48px] px-8 py-4 border-0 no-underline hover:opacity-90 transition-opacity"
+            >
+              The Story
+            </a>
+            <a
+              href="#campaign"
+              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-[color:var(--ht1)] font-mono text-[var(--t-sm)] uppercase tracking-widest min-h-[48px] px-8 py-4 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
+            >
+              Campaign
+            </a>
+          </motion.div>
+        </>
+      ) : (
+        /* Mobile Layout - Simpler, stacked */
+        <div className="relative z-10 px-6 pt-8 pb-12 flex flex-col">
+          {/* Name */}
+          <motion.h1
+            className="font-display font-bold text-[clamp(3.5rem,14vw,5.5rem)] text-[color:var(--ht1)] leading-[0.88] tracking-[-0.04em] uppercase mb-6"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 40 } : { opacity: 1, y: 0 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH }}
+            viewport={{ once: true }}
+          >
+            HANEEF<br/>MOHAMED
+          </motion.h1>
+
+          {/* Horizontal Rule */}
+          <motion.div
+            className="w-full h-[1px] mb-4"
+            style={{ background: 'rgba(253,248,242,0.20)' }}
+            initial={!prefersReducedMotion ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, scaleX: 1 } : { opacity: 1 }}
+            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.1 }}
+            viewport={{ once: true }}
+          />
+
+          {/* Role Line */}
+          <motion.p
+            className="font-body font-light text-[0.95rem] text-[rgba(253,248,242,0.65)] mb-6"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            PR Strategist · Rotaract President · DRR Candidate
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            className="flex flex-col gap-3"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <a
+              href="#story"
+              className="inline-flex justify-center items-center bg-[var(--hta)] text-[color:var(--crimson-dark)] font-mono text-[var(--t-sm)] uppercase tracking-widest min-h-[52px] py-4 border-0 no-underline"
+            >
+              The Story
+            </a>
+            <a
+              href="#campaign"
+              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-[color:var(--ht1)] font-mono text-[var(--t-sm)] uppercase tracking-widest min-h-[52px] py-4 bg-transparent"
+            >
+              Campaign
+            </a>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Bottom gradient transition */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[120px] z-20 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, transparent, var(--bg))",
+        }}
+      />
     </section>
   );
 }
