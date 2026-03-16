@@ -1,37 +1,15 @@
 import { useEffect, useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "../../lib/cn";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
-const EASE_OUT = "easeOut" as const;
-
-// Animation variants
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: EASE_SMOOTH },
-  },
-};
-
-const fadeIn: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.8, ease: EASE_OUT },
-  },
-};
 
 export default function Hero() {
-  const [loaded, setLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    setLoaded(true);
-
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -47,30 +25,65 @@ export default function Hero() {
       id="hero"
       className={cn(
         "relative w-full min-h-170 md:min-h-svh bg-(--bg-hero) overflow-hidden",
-        loaded ? "opacity-100" : "opacity-0",
-        "duration-500 transition-opacity",
       )}
     >
+      {/* Ray effect - subtle lighter crimson lines radiating from center */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Multiple subtle ray lines at varying angles */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `repeating-linear-gradient(
+              90deg,
+              transparent,
+              transparent 120px,
+              rgba(253, 248, 242, 0.03) 120px,
+              rgba(253, 248, 242, 0.03) 121px
+            )`
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `repeating-linear-gradient(
+              60deg,
+              transparent,
+              transparent 150px,
+              rgba(253, 248, 242, 0.02) 150px,
+              rgba(253, 248, 242, 0.02) 151px
+            )`
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `repeating-linear-gradient(
+              120deg,
+              transparent,
+              transparent 180px,
+              rgba(253, 248, 242, 0.02) 180px,
+              rgba(253, 248, 242, 0.02) 181px
+            )`
+          }}
+        />
+      </div>
+
       {/* Desktop Portrait Image - Full height right panel */}
       {!isMobile && (
         <div
           className="absolute right-0 top-0 bottom-0 w-[42%] hidden md:block overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(to right, var(--bg-hero) 0%, transparent 30%)",
-          }}
         >
           <img
             src="/portrait.png"
             alt="Haneef Mohamed"
             className="w-full h-full object-cover object-top"
           />
-          {/* Left edge gradient to blend portrait with crimson background */}
+          {/* Left edge solid color overlay to blend portrait with crimson background */}
           <div
             className="absolute left-0 top-0 bottom-0 w-1/3 pointer-events-none"
             style={{
-              background:
-                "linear-gradient(to right, var(--bg-hero) 0%, transparent 60%)",
+              backgroundColor: "var(--bg-hero)",
+              opacity: "0.6",
             }}
           />
         </div>
@@ -78,18 +91,18 @@ export default function Hero() {
 
       {/* Mobile Portrait - Above content */}
       {isMobile && (
-        <div className="w-full relative h-[55vw] max-h-80 overflow-hidden md:hidden">
+        <div className="w-full relative h-[60vw] max-h-[320px] overflow-hidden md:hidden">
           <img
             src="/portrait.png"
             alt="Haneef Mohamed"
             className="w-full h-full object-cover object-top"
           />
-          {/* Bottom gradient for mobile portrait */}
+          {/* Bottom solid color overlay for mobile portrait */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-[50%]"
+            className="absolute bottom-0 left-0 right-0 h-[40%]"
             style={{
-              background:
-                "linear-gradient(to bottom, transparent 0%, var(--bg-hero) 60%)",
+              backgroundColor: "var(--bg-hero)",
+              opacity: "0.5",
             }}
           />
         </div>
@@ -100,20 +113,13 @@ export default function Hero() {
         <>
           {/* Main Name - Massive, anchored bottom-left */}
           <motion.div
-            className="absolute bottom-[12%] left-[5%] z-10"
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, y: 60 }
-                : { opacity: 1, y: 0 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-            }
+            className="absolute bottom-[8%] left-[4%] z-10"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 60 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
             transition={{ duration: 0.9, ease: EASE_SMOOTH }}
-            viewport={{ once: true, amount: 0.2 }}
           >
             <h1
-              className="font-display font-bold text-t-hero text-(--ht1) leading-[0.85] tracking-[-0.04em] uppercase"
+              className="font-display font-bold text-[clamp(4rem,10vw,7rem)] text-(--ht1) leading-[0.85] tracking-[-0.04em] uppercase"
               style={{
                 lineHeight: "0.85",
                 letterSpacing: "-0.04em",
@@ -127,20 +133,13 @@ export default function Hero() {
 
           {/* Horizontal Rule - Below name */}
           <motion.div
-            className="absolute left-[5%] z-10"
+            className="absolute left-[4%] z-10"
             style={{
-              bottom: "calc(12% + clamp(5rem,14vw,11rem) * 0.85 + 2rem)",
+              bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 2rem)",
             }}
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, scaleX: 0 }
-                : { opacity: 1, scaleX: 1 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, scaleX: 1 } : { opacity: 1 }
-            }
+            initial={!prefersReducedMotion ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+            animate={!prefersReducedMotion ? { opacity: 1, scaleX: 1 } : { opacity: 1 }}
             transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.2 }}
-            viewport={{ once: true }}
           >
             <div
               className="w-[clamp(320px,50vw,600px)] h-px"
@@ -148,73 +147,52 @@ export default function Hero() {
             />
           </motion.div>
 
-          {/* Role Line - Below the rule */}
+          {/* Role Line - Smaller, cleaner, no monospace */}
           <motion.p
-            className="absolute left-[5%] z-10 font-body font-light text-[1rem] text-[rgba(253,248,242,0.65)]"
+            className="absolute left-[4%] z-10 font-body font-light text-[1.05rem] text-[rgba(253,248,242,0.65)] tracking-wide"
             style={{
-              bottom: "calc(12% + clamp(5rem,14vw,11rem) * 0.85 + 3rem)",
+              bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 3rem)",
             }}
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, y: 20 }
-                : { opacity: 1, y: 0 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-            }
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
             transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
-            viewport={{ once: true }}
           >
             PR Strategist · Rotaract President · DRR Candidate
           </motion.p>
 
-          {/* CTAs - Below the role line */}
+          {/* CTAs - Clean buttons with display font, not monospace */}
           <motion.div
-            className="absolute left-[5%] z-10 flex gap-4"
+            className="absolute left-[4%] z-10 flex gap-4"
             style={{
-              bottom: "calc(12% + clamp(5rem,14vw,11rem) * 0.85 + 5.5rem)",
+              bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 5.5rem)",
             }}
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, y: 20 }
-                : { opacity: 1, y: 0 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-            }
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
             transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.4 }}
-            viewport={{ once: true }}
           >
             <a
               href="#story"
-              className="inline-flex justify-center items-center bg-(--hta) text-(--crimson-dark) font-mono text-(length:--t-sm) uppercase tracking-widest min-h-12 px-8 py-4 border-0 no-underline hover:opacity-90 transition-opacity"
+              className="inline-flex justify-center items-center bg-(--hta) text-(--crimson-dark) font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-8 py-4 border-0 no-underline hover:opacity-90 transition-opacity"
             >
               The Story
             </a>
             <a
               href="#campaign"
-              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-(--ht1) font-mono text-(length:--t-sm) uppercase tracking-widest min-h-12 px-8 py-4 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
+              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-(--ht1) font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-8 py-4 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
             >
               Campaign
             </a>
           </motion.div>
         </>
       ) : (
-        /* Mobile Layout - Simpler, stacked */
-        <div className="relative z-10 px-6 pt-8 pb-12 flex flex-col">
+        // Mobile Layout - Simpler, stacked
+        <div className="relative z-10 px-5 pt-8 pb-10 flex flex-col">
           {/* Name */}
           <motion.h1
-            className="font-display font-bold text-[clamp(3.5rem,14vw,5.5rem)] text-(--ht1) leading-[0.88] tracking-[-0.04em] uppercase mb-6"
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, y: 40 }
-                : { opacity: 1, y: 0 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-            }
-            transition={{ duration: 0.7, ease: EASE_SMOOTH }}
-            viewport={{ once: true }}
+            className="font-display font-bold text-[clamp(2.8rem,11vw,4rem)] text-(--ht1) leading-[0.9] tracking-[-0.03em] uppercase mb-3"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.6, ease: EASE_SMOOTH }}
           >
             HANEEF
             <br />
@@ -223,74 +201,45 @@ export default function Hero() {
 
           {/* Horizontal Rule */}
           <motion.div
-            className="w-full h-px mb-4"
+            className="w-full h-px mb-3"
             style={{ background: "rgba(253,248,242,0.20)" }}
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, scaleX: 0 }
-                : { opacity: 1, scaleX: 1 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, scaleX: 1 } : { opacity: 1 }
-            }
-            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.1 }}
-            viewport={{ once: true }}
+            initial={!prefersReducedMotion ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+            animate={!prefersReducedMotion ? { opacity: 1, scaleX: 1 } : { opacity: 1 }}
+            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.1 }}
           />
 
-          {/* Role Line */}
+          {/* Role Line - Smaller, cleaner */}
           <motion.p
-            className="font-body font-light text-[0.95rem] text-[rgba(253,248,242,0.65)] mb-6"
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, y: 20 }
-                : { opacity: 1, y: 0 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-            }
-            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.2 }}
-            viewport={{ once: true }}
+            className="font-body font-light text-[0.95rem] text-[rgba(253,248,242,0.65)] tracking-wide mb-5"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 15 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.15 }}
           >
             PR Strategist · Rotaract President · DRR Candidate
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs - Clean buttons with display font */}
           <motion.div
-            className="flex flex-col gap-3"
-            initial={
-              !prefersReducedMotion
-                ? { opacity: 0, y: 20 }
-                : { opacity: 1, y: 0 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-            }
-            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.3 }}
-            viewport={{ once: true }}
+            className="flex flex-col gap-2.5"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 15 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.25 }}
           >
             <a
               href="#story"
-              className="inline-flex justify-center items-center bg-(--hta) text-(--crimson-dark) font-mono text-(length:--t-sm) uppercase tracking-widest min-h-13 py-4 border-0 no-underline"
+              className="inline-flex justify-center items-center bg-(--hta) text-(--crimson-dark) font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 border-0 no-underline"
             >
               The Story
             </a>
             <a
               href="#campaign"
-              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-(--ht1) font-mono text-(length:--t-sm) uppercase tracking-widest min-h-13 py-4 bg-transparent"
+              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.35)] text-(--ht1) font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
             >
               Campaign
             </a>
           </motion.div>
         </div>
       )}
-
-      {/* Bottom gradient transition */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-30 z-20 pointer-events-none"
-        style={{
-          background: "linear-gradient(to bottom, transparent, var(--bg))",
-        }}
-      />
     </section>
   );
 }

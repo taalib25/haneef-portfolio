@@ -11,15 +11,6 @@ gsap.registerPlugin(ScrollTrigger);
 const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
 
 // Animation variants for scrolling effects
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: EASE_SMOOTH },
-  },
-};
-
 const staggerContainer = {
   visible: {
     transition: {
@@ -97,12 +88,15 @@ export default function Story() {
     <section
       id="story"
       ref={containerRef}
-      className="py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-(--bg)"
+      className="py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-(--bg)"
     >
-      <div className="max-w-300 mx-auto">
+      {/* 2px crimson line at top of section opener */}
+      <div className="h-[2px] w-[60px] bg-(--crimson) mb-8 md:mb-12" />
+
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
-          className="mb-24"
+          className="mb-16 md:mb-20"
           initial={
             !prefersReducedMotion ? { opacity: 0, y: 24 } : { opacity: 1 }
           }
@@ -118,7 +112,7 @@ export default function Story() {
         >
           {/* Section Label — Chapter-book style */}
           <motion.p
-            className="font-mono text-(--ta) text-t-xs tracking-[0.20em] uppercase mb-6"
+            className="font-mono text-(--ta) text-t-xs tracking-[0.20em] uppercase mb-4 md:mb-6"
             initial={
               !prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }
             }
@@ -135,9 +129,9 @@ export default function Story() {
             [ 01 — THE STORY ]
           </motion.p>
 
-          {/* Section Headline — Massive */}
+          {/* Section Headline — Scaled down */}
           <motion.h2
-            className="font-display text-t-4xl text-(--t1) leading-[0.92] tracking-[-0.025em] uppercase mb-8"
+            className="font-display text-t-4xl text-(--t1) leading-[0.92] tracking-[-0.025em] uppercase mb-6 md:mb-8"
             initial={
               !prefersReducedMotion ? { opacity: 0, y: 24 } : { opacity: 1 }
             }
@@ -164,10 +158,10 @@ export default function Story() {
             initial={!prefersReducedMotion ? "hidden" : "visible"}
             whileInView={!prefersReducedMotion ? "visible" : undefined}
             viewport={{ once: true, amount: 0.1 }}
-            className="space-y-6 max-w-150"
+            className="space-y-4 md:space-y-6 max-w-6xl"
           >
             <motion.p
-              className="font-body text-t-base text-(--t2) leading-[1.75]"
+              className="font-body text-t-base text-(--t2) leading-[1.75] text-justify"
               variants={itemVariant}
             >
               My professional journey has been shaped by the power of
@@ -192,8 +186,6 @@ export default function Story() {
           }
           viewport={{ once: true, amount: 0.1 }}
         >
-          {/* No vertical line through the section - removed per requirements */}
-
           <div className="flex flex-col">
             {timelineData.map((item, index) => {
               const isHero = item.isHero;
@@ -205,9 +197,11 @@ export default function Story() {
                     entriesRef.current[index] = el;
                   }}
                   className={cn(
-                    "relative w-full py-10 md:py-10 border-b border-(--border)",
-                    isHero &&
-                      "border-l-[3px] border-l-(--crimson) pl-4 md:pl-6",
+                    "relative w-full py-6 md:py-8",
+                    // Hero entry gets 4px crimson left border
+                    isHero && "border-l-4 border-l-(--crimson) pl-4 md:pl-6",
+                    // Non-hero entries get bottom separator
+                    !isHero && "border-b border-(--border)"
                   )}
                   initial={
                     !prefersReducedMotion
@@ -226,24 +220,27 @@ export default function Story() {
                   }
                   viewport={{ once: true, amount: 0.2 }}
                 >
-                  {/* Desktop: Two column layout */}
-                  <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+                   {/* Desktop: Two column layout */}
+                  <div className="flex flex-col md:flex-row gap-3 md:gap-4">
                     {/* Left column: Year and Type */}
-                    <div className="md:w-50 shrink-0 flex flex-col md:flex-col gap-3 md:gap-4 items-start">
-                      {/* Year — BIG environmental typography (Clash Display, not mono!) */}
+                    <div className="md:w-28 shrink-0 flex flex-row md:flex-col gap-2 md:gap-2 items-start md:items-start">
+                      {/* Year — Refined typography, less prominent */}
                       <span
                         className={cn(
-                          "font-display text-[clamp(2.5rem,5vw,3rem)] text-(--t1) leading-[0.9] tracking-[-0.025em]",
+                          "font-display text-[1.5rem] md:text-[1.75rem] text-(--t1) leading-[1] tracking-[-0.02em] relative",
                           isHero ? "text-(--crimson)" : "", // Hero entry has crimson year
                         )}
                       >
                         {item.year}
+                        {/* Subtle crimson underline on year labels */}
+                        <span className="absolute left-0 bottom-[-3px] h-[1.5px] w-[30px] bg-(--crimson) transition-all duration-300 ease-[0.16,1,0.3,1] group-hover:w-[60px]">
+                        </span>
                       </span>
 
                       {/* Type tag — small pill below year */}
                       <span
                         className={cn(
-                          "font-mono text-[0.6rem] tracking-[0.20em] uppercase px-2.5 py-1 border rounded-sm",
+                          "font-mono text-[0.75rem] tracking-[0.15em] uppercase px-2 py-0.5 border rounded-sm",
                           isHero
                             ? "bg-(--crimson-dim) text-(--crimson) border-(--crimson-border)"
                             : getTypeBadgeStyle(item.type),
@@ -254,13 +251,13 @@ export default function Story() {
                     </div>
 
                     {/* Right column: Content */}
-                    <div className="flex-1 max-w-155">
-                      {/* Vertical separator line on left edge of right column */}
+                      <div className="flex-1 max-w-6xl group">
+                       {/* Vertical separator line on left edge of right column */}
                       <div
                         className={cn(
-                          "absolute left-50 top-0 bottom-0 w-px pointer-events-none",
+                          "absolute left-28 top-0 bottom-0 w-px pointer-events-none",
                           isHero
-                            ? "bg-(--crimson) h-[calc(100%-5rem)]"
+                            ? "bg-(--crimson) h-[calc(100%-3rem)]"
                             : "bg-(--border)",
                         )}
                       />
@@ -268,22 +265,24 @@ export default function Story() {
                       {/* Title — Hero gets larger size */}
                       <h3
                         className={cn(
-                          "font-display text-(--t1) mb-4 uppercase leading-[1.1]",
-                          isHero ? "text-[2.25rem]" : "text-t-xl",
+                          "font-display text-(--t1) mb-3 uppercase leading-[1.1] transition-colors duration-300 ease-[0.16,1,0.3,1]",
+                          isHero ? "text-[1.75rem]" : "text-[1.5rem]",
+                          // Title colour shift to --ta on hover
+                          "hover:text-(--ta)"
                         )}
                       >
                         {item.title}
                       </h3>
 
                       {/* Organisation */}
-                      <p className="font-mono text-[0.65rem] text-(--t3) uppercase tracking-wide mb-4">
+                      <p className="font-mono text-[0.8rem] text-(--t3) uppercase tracking-wide mb-3">
                         {item.organisation}
                       </p>
 
-                      {/* Body text */}
-                      <div className="font-body text-t-base text-(--t2) leading-[1.8] max-w-155">
+                      {/* Body text — Justified for better readability */}
+                       <div className="font-body text-t-base text-(--t2) leading-[1.75] max-w-6xl">
                         {item.body.split("\n\n").map((paragraph, i) => (
-                          <p key={i} className="mb-5 last:mb-0">
+                          <p key={i} className="mb-4 last:mb-0 text-justify">
                             {paragraph}
                           </p>
                         ))}
@@ -291,12 +290,12 @@ export default function Story() {
 
                       {/* Stat Pills */}
                       {item.statPills && item.statPills.length > 0 && (
-                        <div className="flex flex-wrap gap-3 mt-4">
+                        <div className="flex flex-wrap gap-2 mt-3">
                           {item.statPills.map((pill, i) => (
                             <span
                               key={i}
                               className={cn(
-                                "font-mono text-[0.75rem] text-(--t1) px-3 py-1.5",
+                                "font-mono text-[0.8rem] text-(--t1) px-2.5 py-1",
                                 isHero
                                   ? "bg-(--crimson-dim) border border-(--crimson-border)"
                                   : "bg-(--bg-card) border border-(--border)",
@@ -310,15 +309,15 @@ export default function Story() {
 
                       {/* Awards */}
                       {item.awards && item.awards.length > 0 && (
-                        <div className="mt-4 pt-3 border-t border-(--border)">
-                          <p className="font-mono text-[0.65rem] text-(--ta) tracking-widest uppercase mb-2">
+                        <div className="mt-3 pt-2.5 border-t border-(--border)">
+                          <p className="font-mono text-[0.8rem] text-(--ta) tracking-widest uppercase mb-1.5">
                             AWARDS
                           </p>
-                          <ul className="flex flex-col gap-2">
+                          <ul className="flex flex-col gap-1.5">
                             {item.awards.map((award, i) => (
                               <li
                                 key={i}
-                                className="font-body text-[0.95rem] text-(--t2) italic"
+                                className="font-body text-[0.9rem] text-(--t2) italic"
                               >
                                 {award}
                               </li>

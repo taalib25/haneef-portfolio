@@ -2,30 +2,31 @@ import { StrictMode, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import Lenis from '@studio-freight/lenis';
-import { gsap } from 'gsap';
+import Lenis from 'lenis';
 
-// Initialize Lenis smooth scrolling
+// Initialize Lenis smooth scrolling - Fixed for smooth, non-glitchy experience
 function initSmoothScroll() {
   const lenis = new Lenis({
-    lerp: 0.08, // slow, heavy scroll like a printed page turning
+    lerp: 0.1, // Lower = smoother but slower, higher = faster but can feel glitchy
+    duration: 1.2, // Longer duration = smoother scroll
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -8 * t)), // Natural easing curve
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
     smoothWheel: true,
-    touchMultiplier: 1.5, // responsive on touch
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // smooth easing
+    wheelMultiplier: 1, // Don't amplify wheel input
+    touchMultiplier: 1, // Don't amplify touch input
+    infinite: false,
   });
 
-  // Integrate with GSAP's ticker for ScrollTrigger compatibility
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-  
-  gsap.ticker.lagSmoothing(0);
+  // RequestAnimationFrame loop for smooth updates
+  function raf(time: number) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
   // Clean up on unmount
   return () => {
-    gsap.ticker.remove((time) => {
-      lenis.raf(time * 1000);
-    });
     lenis.destroy();
   };
 }

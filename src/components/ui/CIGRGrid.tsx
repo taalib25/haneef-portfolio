@@ -38,29 +38,29 @@ export default function CIGRGrid() {
         {cigrData.map((item, index) => (
           <motion.div
             key={index}
-            className="p-8"
+            className="p-6 md:p-8"
             style={{ backgroundColor: item.bgColor }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.7, 
+            transition={{
+              duration: 0.7,
               ease: [0.16, 1, 0.3, 1],
               delay: index * 0.1
             }}
             viewport={{ once: true }}
           >
             <div className="mb-6">
-              <span 
-                className="font-display text-[5rem] leading-none block mb-4"
+              <span
+                className="font-display text-[5rem] md:text-[6rem] leading-none block mb-4 font-bold"
                 style={{ color: item.color }}
               >
                 {item.letter}
               </span>
-              <p className="font-mono text-[0.65rem] tracking-[0.20em] uppercase mb-4" style={{ color: item.color }}>
+              <p className="font-mono text-[1.05rem] tracking-[0.20em] uppercase mb-4" style={{ color: item.color }}>
                 {item.title}
               </p>
             </div>
-            <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.75]">
+            <p className="font-body text-[1.15rem] text-[var(--ct2)] leading-[1.75]">
               {item.body}
             </p>
           </motion.div>

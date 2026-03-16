@@ -1,22 +1,25 @@
 /* ============================================
-   FONT LOADING - Fontshare + Google Fonts (Properly Linked)
-   Using imported font stylesheets instead of broken font-face
-   ============================================ */
+    FONT LOADING - Fontshare + Google Fonts
+    ============================================ */
 
-/* 
- * Properly import fonts first - not using broken @font-face 
- */
+/* Import display font */
 @import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap");
+
+/* Import JetBrains Mono for better monospace */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap");
+
+/* Import Inter for cleaner body text */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 
 /* Now define the theme and root variables after imports */
 @theme {
   --font-display: "Clash Display", "DM Serif Display", Georgia, serif;
 
-  /* Using system monospace since we removed JetBrains Mono */
-  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  --font-mono:
-    "SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono",
-    "Source Code Pro", monospace;
+  /* Clean, readable body font */
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* JetBrains Mono - modern, readable monospace */
+  --font-mono: "JetBrains Mono", "SF Mono", "Monaco", "Inconsolata", monospace;
 
   /* ── SURFACES - Simplified Color Scheme */
   --color-bg: #fdf8f2;
@@ -56,19 +59,20 @@
 
   /* ── BORDERS */
   --color-border: rgba(15, 6, 8, 0.08);
+  --color-border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
   --color-border-strong: rgba(15, 6, 8, 0.16);
 
-  /* ── TYPOGRAPHY SCALES — Apple Precision × Presidential Weight */
-  --text-t-xs: 0.7rem;
-  --text-t-sm: 0.875rem;
-  --text-t-base: 1.0625rem; /* 17px - slightly larger body */
-  --text-t-lg: 1.125rem;
-  --text-t-xl: 1.75rem; /* 28px - larger card titles */
-  --text-t-2xl: clamp(1.5rem, 2.5vw, 2rem);
-  --text-t-3xl: clamp(2.5rem, 4vw, 4rem); /* Larger awards */
-  --text-t-4xl: clamp(3.5rem, 6vw, 6rem); /* Larger section headlines */
-  --text-t-hero: clamp(5rem, 14vw, 11rem); /* Massive name */
-  --text-t-philosophy: clamp(4rem, 7vw, 7rem); /* Philosophy headline */
+  /* ── TYPOGRAPHY SCALES — Increased 20% for better readability */
+  --text-t-xs: 1.05rem; /* Tag pills/mono small */
+  --text-t-sm: 1.125rem; /* Section sub-labels */
+  --text-t-base: 1.35rem; /* Body/paragraph */
+  --text-t-lg: 1.5rem; /* Card body */
+  --text-t-xl: 2.4rem; /* Card titles */
+  --text-t-2xl: clamp(3rem, 5vw, 5rem); /* Recognition titles */
+  --text-t-3xl: 3.3rem; /* Hero card title */
+  --text-t-4xl: clamp(4.8rem, 8vw, 8.5rem); /* Section headlines */
+  --text-t-hero: clamp(5.4rem, 12vw, 10rem); /* Contact hero */
+  --text-t-philosophy: clamp(5.4rem, 10vw, 9.5rem); /* Philosophy cascade */
 }
 
 :root {
@@ -84,6 +88,7 @@
   --crimson-dark: #780000;
   --crimson-dim: rgba(193, 18, 31, 0.08);
   --crimson-border: rgba(193, 18, 31, 0.18);
+  --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
 
   --navy: #003049;
   --navy-light: #669bbc;
@@ -110,19 +115,20 @@
 
   /* ── BORDERS */
   --border: rgba(15, 6, 8, 0.08);
+  --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
   --border-strong: rgba(15, 6, 8, 0.16);
 
-  /* ── TYPOGRAPHY SCALES — Apple Precision × Presidential Weight */
-  --t-xs: 0.7rem;
-  --t-sm: 0.875rem;
-  --t-base: 1.0625rem; /* 17px - slightly larger body */
-  --t-lg: 1.125rem;
-  --t-xl: 1.75rem; /* 28px - larger card titles */
-  --t-2xl: clamp(1.5rem, 2.5vw, 2rem);
-  --t-3xl: clamp(2.5rem, 4vw, 4rem); /* Larger awards */
-  --t-4xl: clamp(3.5rem, 6vw, 6rem); /* Larger section headlines */
-  --t-hero: clamp(5rem, 14vw, 11rem); /* Massive name */
-  --t-philosophy: clamp(4rem, 7vw, 7rem); /* Philosophy headline */
+  /* ── TYPOGRAPHY SCALES — Increased 20% for better readability */
+  --t-xs: 1.05rem; /* Tag pills/mono small */
+  --t-sm: 1.125rem; /* Section sub-labels */
+  --t-base: 1.35rem; /* Body/paragraph */
+  --t-lg: 1.5rem; /* Card body */
+  --t-xl: 2.4rem; /* Card titles */
+  --t-2xl: clamp(3rem, 5vw, 5rem); /* Recognition titles */
+  --t-3xl: 3.3rem; /* Hero card title */
+  --t-4xl: clamp(4.8rem, 8vw, 8.5rem); /* Section headlines */
+  --t-hero: clamp(5.4rem, 12vw, 10rem); /* Contact "READY TO TALK?" */
+  --t-philosophy: clamp(5.4rem, 10vw, 9.5rem); /* Philosophy cascade */
 }
 
 /* Tailwind import should come after theme definition */
@@ -162,7 +168,7 @@ body {
 
 html {
   scroll-behavior: smooth;
-  font-size: 62.5%; /* Sets base font-size to 10px to make rem calculations easier */
+  font-size: 100%; /* Base font-size 16px for proper scaling */
   font-variant-numeric: tabular-nums;
 }
 
@@ -194,13 +200,6 @@ html {
   opacity: 0.04;
   pointer-events: none;
   mix-blend-mode: overlay;
-}
-
-/* ── Clear transitional section between hero and other sections */
-.section-transition {
-  position: relative;
-  height: 80px; /* Cleaner, defined transition spacing */
-  background: linear-gradient(to bottom, var(--bg-hero), var(--bg));
 }
 
 /* ── Consistent card styles across sections */

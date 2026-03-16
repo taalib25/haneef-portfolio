@@ -75,8 +75,11 @@ export default function Work() {
   }, [prefersReducedMotion]);
 
   return (
-    <section id="work" ref={containerRef} className="py-[5rem] md:py-[8rem] px-6 md:px-12 lg:px-20 bg-[var(--bg)]">
-      <div className="max-w-[1200px] mx-auto">
+    <section id="work" ref={containerRef} className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-[var(--bg)]">
+      {/* 2px crimson line at top of section opener */}
+      <div className="h-[2px] w-[60px] bg-[var(--crimson)] mb-12" />
+      
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           className="mb-20"
@@ -86,8 +89,8 @@ export default function Work() {
           viewport={{ once: true, amount: 0.1 }}
         >
           {/* Section Label */}
-          <motion.p 
-            className="font-mono text-[var(--ta)] text-[0.7rem] tracking-[0.20em] uppercase mb-6"
+          <motion.p
+            className="font-mono text-[var(--ta)] text-[0.875rem] tracking-[0.20em] uppercase mb-6"
             initial={!prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }}
             whileInView={!prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 1 }}
             transition={!prefersReducedMotion ? { duration: 0.4, ease: 'easeOut' } : undefined}
@@ -118,7 +121,7 @@ export default function Work() {
             The professional foundation behind the leadership record.
           </motion.p>
         </motion.div>
-
+        
         {/* Work Cards — Cleaner, flat design */}
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
@@ -130,22 +133,22 @@ export default function Work() {
           {/* PR Wire Card */}
           <motion.div
             ref={(el) => cardsRef.current[0] = el}
-            className="bg-[var(--bg-card)] border border-[var(--border)] border-l-[6px] border-l-[var(--crimson)] rounded-none p-[2.5rem] flex flex-col h-full transition-colors duration-300 hover:bg-[var(--bg-card-hover)]"
+            className="bg-[var(--bg-card)] border-t-[3px] border-t-[var(--crimson)] border border-[var(--border)] p-[2.5rem] flex flex-col h-full transition-colors duration-300 hover:bg-[var(--bg-card-hover)] hover:border-t-[var(--crimson)]"
             variants={itemVariant}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Header row: Company and Date */}
-            <div className="flex justify-between items-start mb-4">
-              <p className="font-mono text-[0.7rem] text-[var(--t3)] uppercase tracking-wider">
+            <div className="flex justify-between items-start mb-4 border-b border-[var(--border)] pb-2">
+              <p className="font-mono text-[0.875rem] text-[var(--t3)] uppercase tracking-wider">
                 PR WIRE
               </p>
-              <p className="font-mono text-[0.7rem] text-[var(--t3)] uppercase tracking-wider">
+              <p className="font-mono text-[0.875rem] text-[var(--t3)] uppercase tracking-wider">
                 May 2023 – Present
               </p>
             </div>
             
             {/* Role — Large and confident */}
-            <h3 className="font-display text-[1.75rem] text-[var(--t1)] uppercase mb-6 leading-[1.1]">
+            <h3 className="font-display font-bold text-[1.75rem] text-[var(--t1)] uppercase mb-6 leading-[1.1]">
               Strategic PR & Reputation Executive
             </h3>
             
@@ -167,33 +170,33 @@ export default function Work() {
               {['Reputation Strategy', 'Media Relations', 'Marketing Communications'].map((tag, i) => (
                 <span
                   key={i}
-                  className="font-mono text-[0.75rem] text-[var(--navy-light)] bg-[var(--navy-dim)] border border-[var(--navy-border)] px-3 py-1.5"
+                  className="font-mono text-[0.875rem] text-[var(--crimson)] bg-[var(--crimson-dim)] border border-[var(--crimson-border)] px-3 py-1.5"
                 >
                   {tag}
                 </span>
               ))}
             </div>
           </motion.div>
-
+          
           {/* ChildFund Card */}
           <motion.div
             ref={(el) => cardsRef.current[1] = el}
-            className="bg-[var(--bg-card)] border border-[var(--border)] border-l-[6px] border-l-[var(--crimson)] rounded-none p-[2.5rem] flex flex-col h-full transition-colors duration-300 hover:bg-[var(--bg-card-hover)]"
+            className="bg-[var(--bg-card)] border-t-[3px] border-t-[var(--crimson)] border border-[var(--border)] p-[2.5rem] flex flex-col h-full transition-colors duration-300 hover:bg-[var(--bg-card-hover)] hover:border-t-[var(--crimson)]"
             variants={itemVariant}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
             {/* Header row: Company and Date */}
-            <div className="flex justify-between items-start mb-4">
-              <p className="font-mono text-[0.7rem] text-[var(--t3)] uppercase tracking-wider">
+            <div className="flex justify-between items-start mb-4 border-b border-[var(--border)] pb-2">
+              <p className="font-mono text-[0.875rem] text-[var(--t3)] uppercase tracking-wider">
                 CHILDFUND SRI LANKA
               </p>
-              <p className="font-mono text-[0.7rem] text-[var(--t3)] uppercase tracking-wider">
+              <p className="font-mono text-[0.875rem] text-[var(--t3)] uppercase tracking-wider">
                 July 2022 – March 2023
               </p>
             </div>
             
             {/* Role — Large and confident */}
-            <h3 className="font-display text-[1.75rem] text-[var(--t1)] uppercase mb-6 leading-[1.1]">
+            <h3 className="font-display font-bold text-[1.75rem] text-[var(--t1)] uppercase mb-6 leading-[1.1]">
               Business Development Executive
             </h3>
             
@@ -215,7 +218,7 @@ export default function Work() {
               {['Development Sector', 'Community Impact', '10 Districts'].map((tag, i) => (
                 <span
                   key={i}
-                  className="font-mono text-[0.75rem] text-[var(--navy-light)] bg-[var(--navy-dim)] border border-[var(--navy-border)] px-3 py-1.5"
+                  className="font-mono text-[0.875rem] text-[var(--crimson)] bg-[var(--crimson-dim)] border border-[var(--crimson-border)] px-3 py-1.5"
                 >
                   {tag}
                 </span>
@@ -223,7 +226,7 @@ export default function Work() {
             </div>
           </motion.div>
         </motion.div>
-
+        
         {/* Education Block */}
         <motion.div 
           className="flex flex-col md:flex-row gap-8 md:gap-16 pt-8 border-t border-[var(--border)]"
@@ -232,10 +235,10 @@ export default function Work() {
           transition={!prefersReducedMotion ? { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.3 } : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
-          <p className="font-mono text-[0.7rem] text-[var(--t2)] uppercase tracking-wider">
+          <p className="font-mono text-[0.875rem] text-[var(--t2)] uppercase tracking-wider">
             DIPLOMA IN MARKETING · CIM · Strategy College of Business
           </p>
-          <p className="font-mono text-[0.7rem] text-[var(--t2)] uppercase tracking-wider">
+          <p className="font-mono text-[0.875rem] text-[var(--t2)] uppercase tracking-wider">
             PRIMARY & SECONDARY EDUCATION · Amal International School
           </p>
         </motion.div>

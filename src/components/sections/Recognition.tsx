@@ -71,9 +71,12 @@ export default function Recognition() {
     <section
       id="recognition"
       ref={containerRef}
-      className="py-20 md:py-32 px-6 md:px-12 lg:px-20 bg-(--bg)"
+      className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-(--bg)"
     >
-      <div className="max-w-300 mx-auto">
+      {/* 2px crimson rule at section top (wall of honour) */}
+      <div className="h-[2px] w-full bg-(--crimson) mb-12" />
+      
+      <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
           className="mb-20"
@@ -125,6 +128,9 @@ export default function Recognition() {
           </motion.p>
         </motion.div>
 
+        {/* First award gets 1px --crimson-border rule instead of neutral one */}
+        <div className="h-[1px] bg-(--crimson-border) mb-6" />
+
         {/* Awards List — Wall of Honour */}
         <div className="flex flex-col">
           {awardsData.map((award, index) => (
@@ -133,7 +139,7 @@ export default function Recognition() {
               ref={(el) => {
                 blocksRef.current[index] = el;
               }}
-              className="py-20 border-b border-(--border) first:border-t"
+              className={`py-20 ${index < awardsData.length - 1 ? "border-b border-(--border)" : ""}`}
               variants={itemVariant}
               initial={!prefersReducedMotion ? "hidden" : "visible"}
               whileInView={!prefersReducedMotion ? "visible" : undefined}
@@ -144,19 +150,22 @@ export default function Recognition() {
                 {award.year}
               </p>
 
-              {/* Horizontal rule */}
-              <div className="w-full h-px bg-(--crimson-border) mb-6" />
-
-              {/* Award Title — Monumental */}
-              <motion.h3
-                className="font-display text-t-3xl text-(--t1) uppercase mb-4 leading-[0.95]"
-                initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
-                whileInView={{ clipPath: "inset(0 0% 0 0)", opacity: 1 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                viewport={{ once: true }}
-              >
-                {award.title}
-              </motion.h3>
+              {/* Container for the animated underline */}
+              <div className="relative mb-4">
+                {/* Award Title — Monumental with wipe animation */}
+                <motion.h3
+                  className="font-display text-t-3xl text-(--t1) uppercase mb-0 leading-[0.95]"
+                  initial={{ clipPath: "inset(0 100% 0 0)", opacity: 0 }}
+                  whileInView={{ clipPath: "inset(0 0% 0 0)", opacity: 1 }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true }}
+                >
+                  {award.title}
+                  {/* Animated underline: 2px --crimson, width 0→60px on view */}
+                  <span className="absolute left-0 bottom-[-4px] h-[2px] w-0 bg-(--crimson) transition-all duration-[0.4s] delay-[0.6s] ease-[0.16,1,0.3,1] group-hover:w-[60px]">
+                  </span>
+                </motion.h3>
+              </div>
 
               {/* Event and context */}
               <motion.p
@@ -190,7 +199,7 @@ export default function Recognition() {
           }
           viewport={{ once: true, amount: 0.1 }}
         >
-          <p className="font-mono italic text-[0.85rem] text-(--t3) leading-[1.75]">
+          <p className="font-mono italic text-[0.875rem] text-(--t3) leading-[1.75]">
             10+ years in the Rotary movement. Over 5 years as a standing member
             of the Rotaract Club of Colombo Mid Town — a club carrying a 40-year
             legacy.

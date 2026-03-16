@@ -41,21 +41,21 @@ export default function Navbar() {
       <nav
         className={cn(
           'fixed top-0 left-0 w-full z-50 transition-all duration-400 ease-in-out',
-          'h-[52px] px-6 md:px-12 lg:px-20',
+          'h-[52px] px-4 md:px-6 lg:px-8',
           scrolled 
             ? 'bg-[rgba(253,248,242,0.85)] backdrop-blur-[16px] saturate-[180%] border-b border-[rgba(15,6,8,0.06)]' 
             : 'bg-transparent border-none'
         )}
       >
-        <div className="flex w-full max-w-[1200px] mx-auto justify-between items-center">
+        <div className="flex w-full max-w-6xl mx-auto justify-between items-center">
           {/* Left: Identity */}
           <a
             href="#"
             className={cn(
-              'font-mono text-[0.65rem] uppercase tracking-widest',
-              scrolled 
-                ? 'text-[var(--t3)]' 
-                : 'text-[rgba(253,248,242,0.50)]'
+              'font-display font-semibold text-[1.05rem] uppercase tracking-[0.12em]',
+              scrolled
+                ? 'text-[var(--t1)]'
+                : 'text-[rgba(253,248,242,0.90)]'
             )}
           >
             RTR. HANEEF
@@ -68,12 +68,12 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  'font-mono text-[0.65rem] uppercase tracking-widest transition-colors duration-200',
-                  scrolled 
-                    ? activeSection === link.href.substring(1) 
+                  'font-display font-medium text-[0.95rem] uppercase tracking-[0.10em] transition-colors duration-200',
+                  scrolled
+                    ? activeSection === link.href.substring(1)
                       ? 'text-[var(--ta)]'  // Active = crimson
-                      : 'text-[var(--t3)] hover:text-[var(--ta)]'  // Default muted warm, hover crimson
-                    : 'text-[rgba(253,248,242,0.50)] hover:text-[rgba(253,248,242,0.80)]'  // Over hero: light gray, hover lighter
+                      : 'text-[var(--t2)] hover:text-[var(--ta)]'  // Default muted warm, hover crimson
+                    : 'text-[rgba(253,248,242,0.70)] hover:text-[rgba(253,248,242,0.95)]'  // Over hero: light gray, hover lighter
                 )}
               >
                 {link.name}
@@ -110,7 +110,16 @@ export default function Navbar() {
           }}
         >
           <div className="flex justify-end mb-12">
-            {/* No close button - tap outside to close */}
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-[var(--t1)] hover:text-[var(--ta)] transition-colors"
+              aria-label="Close menu"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
           </div>
           
           <div className="flex flex-col gap-12 mt-8">
@@ -129,7 +138,7 @@ export default function Navbar() {
           <div className="mt-auto pb-8">
             <a
               href="mailto:haneef.rotaract3220@gmail.com"
-              className="font-mono text-[0.75rem] text-[var(--t2)] uppercase tracking-wider"
+              className="font-body text-[0.95rem] text-[var(--t2)]"
             >
               haneef.rotaract3220@gmail.com
             </a>
