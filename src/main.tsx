@@ -18,6 +18,9 @@ function initSmoothScroll() {
     infinite: false,
   });
 
+  // Scroll to top immediately on page load
+  lenis.scrollTo(0, { immediate: true });
+
   // RequestAnimationFrame loop for smooth updates
   function raf(time: number) {
     lenis.raf(time);

@@ -95,14 +95,14 @@ export default function Philosophy() {
       ref={containerRef}
       className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-(--bg)"
     >
-      {/* 2px crimson line at top of section opener */}
-      <div className="h-[2px] w-[60px] bg-(--crimson) mb-12" />
+      {/* 2px crimson line at top of section opener (full width) */}
+      <div className="h-[2px] w-full bg-(--crimson) mb-12" />
       
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Section Header */}
         <div className="w-full mb-20 text-center">
           <motion.p
-            className="font-mono text-(--ta) text-t-xs tracking-[0.20em] uppercase mb-8"
+            className="font-mono text-(--ta) text-t-xs tracking-[0.10em] uppercase mb-8"
             initial={
               !prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }
             }
@@ -148,16 +148,6 @@ export default function Philosophy() {
           </motion.div>
         </div>
 
-        {/* Full-width statement bar below columns: background --crimson, padding 2rem 3rem, text #FDF8F2 italic */}
-        <div className="w-full bg-(--crimson) py-12 px-6 md:py-[3rem] md:px-[3rem] mb-16">
-          <p className="font-body text-[1rem] text-(--bg) max-w-[700px] mx-auto leading-[1.75] text-center italic">
-            As a communications professional, I have learned that effective
-            leadership begins with understanding people before trying to guide
-            them. Leadership is not about authority. It is about designing the
-            conditions in which others can succeed.
-          </p>
-        </div>
-
         {/* Three Principles — More vertical breathing room: gap-16 (4rem) */}
         <motion.div
           variants={fadeInUp}
@@ -173,7 +163,7 @@ export default function Philosophy() {
         >
           {/* Column 1 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 md:border-r border-(--border) md:first:pl-0">
-            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.20em] uppercase mb-6">
+            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.10em] uppercase mb-6">
               VISIONARY YET GROUNDED
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
@@ -183,7 +173,7 @@ export default function Philosophy() {
 
           {/* Column 2 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 md:border-r border-(--border)">
-            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.20em] uppercase mb-6">
+            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.10em] uppercase mb-6">
               FACILITATE, DON'T CONTROL
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
@@ -193,7 +183,7 @@ export default function Philosophy() {
 
           {/* Column 3 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 border-(--border) md:last:pr-0">
-            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.20em] uppercase mb-6">
+            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.10em] uppercase mb-6">
               LEAD WITH PURPOSE
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">

@@ -24,7 +24,7 @@ export default function Hero() {
     <section
       id="hero"
       className={cn(
-        "relative w-full min-h-170 md:min-h-svh bg-(--bg-hero) overflow-hidden",
+        "relative w-full h-screen min-h-[700px] bg-(--bg-hero) overflow-hidden",
       )}
     >
       {/* Ray effect - subtle lighter crimson lines radiating from center */}
