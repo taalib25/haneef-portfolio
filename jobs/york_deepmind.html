@@ -1,0 +1,1051 @@
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="University of York"><title>Google DeepMind Research Ready Programme - Department of Computer Science, University of York</title><meta name="description" content="Work with intelligent robots in a paid summer internship at the University of York."><link rel="preload" href="https://www.york.ac.uk/static/2/fonts/Graphik-Regular-Web.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="https://www.york.ac.uk/static/2/fonts/Graphik-Semibold-Web.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="https://www.york.ac.uk/static/2/fonts/YorkGrot_SemiBoldCondensed_v2.10.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="https://www.york.ac.uk/static/2/js/loader.js" as="script" type="text/javascript"><link rel="preload" href="https://www.york.ac.uk/static/2/js/icons.js" as="script" type="text/javascript"><link rel="stylesheet" href="https://www.york.ac.uk/static/2/fonts/bundle.css"><link rel="stylesheet" href="https://www.york.ac.uk/static/2/css/base.css"><link rel="stylesheet" media="screen" href="https://www.york.ac.uk/static/2/css/themes/uoy.theme.css"><link rel="icon" href="https://www.york.ac.uk/static/2/images/favicons/favicon.ico" sizes="32x32"><link rel="icon" href="https://www.york.ac.uk/static/2/images/favicons/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="https://www.york.ac.uk/static/2/images/favicons/favicon_180.png"><link rel="manifest" href="https://www.york.ac.uk/static/2/manifest.json"><link rel="search" type="application/opensearchdescription+xml" title="University of York" href="https://www.york.ac.uk/static/2/opensearch.xml"><script src="https://script.crazyegg.com/pages/versioned/common-scripts/01bd22f0a99424677ea3bcd8a822fdcb.js" type="text/javascript" async=""></script><script type="text/javascript" async="" src="https://script.crazyegg.com/pages/scripts/0018/9913.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-0E2CPWLEXN&amp;cx=c&amp;gtm=4e63b1"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=DC-11919936&amp;cx=c&amp;gtm=4e63b1"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-16952590477&amp;cx=c&amp;gtm=4e63b1"></script><script type="text/javascript" async="" src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.x.min.js"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-WXLX54"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-WXLX54');</script><script src="https://www.york.ac.uk/static/2/js/components/nav_mobile.js" async=""></script><script src="https://www.york.ac.uk/static/2/js/components/submenu.js" async=""></script><script src="https://www.york.ac.uk/static/2/js/components/nav_branch.js" async=""></script><script src="https://www.york.ac.uk/static/2/js/components/accordion.js" async=""></script></head><body>
+
+		<div class="uoy uoy_page scheme_default">
+
+      <a class="uoy_skip_link" href="#main">Skip to content</a>
+			<a class="uoy_skip_link" href="https://www.york.ac.uk/about/legal-statements/accessibility/">Accessibility statement</a>
+
+			<header class="uoy_page_header" data-uoy-component="nav_mobile"><div class="uoy_masthead scheme_header">
+				<div class="uoy_masthead_wrapper">
+
+					<div class="uoy_masthead_core">
+
+						<div class="uoy_masthead_core_toggle uoy_masthead_core_toggle_menu">
+							<button class="uoy_masthead_core_toggle_button" aria-label="Toggle menu" aria-expanded="false">
+								<div class="uoy_masthead_core_toggle_button_is_closed">
+									<div class="uoy_masthead_core_toggle_icon"><span aria-hidden="true" class="uoy_icon uoy_icon__theme#menu"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg></span></div>
+									<div class="uoy_masthead_core_toggle_label">Menu</div>
+								</div>
+								<div class="uoy_masthead_core_toggle_button_is_open">
+									<div class="uoy_masthead_core_toggle_icon"><span aria-hidden="true" class="uoy_icon uoy_icon__theme#close"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></span></div>
+									<div class="uoy_masthead_core_toggle_label">Close</div>
+								</div>
+							</button>
+						</div>
+
+						<div class="uoy_masthead_core_logo">
+							<a href="https://www.york.ac.uk/">
+								<img src="https://www.york.ac.uk/static/2/images/uoy_logo_white.svg" width="209" height="80" alt="University of York homepage"></a>
+						</div>
+
+						<div class="uoy_masthead_core_toggle uoy_masthead_core_toggle_search">
+							<button class="uoy_masthead_core_toggle_button" aria-label="Toggle search" aria-expanded="false">
+								<div class="uoy_masthead_core_toggle_button_is_closed">
+									<div class="uoy_masthead_core_toggle_icon"><span aria-hidden="true" class="uoy_icon uoy_icon__theme#search"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg></span></div>
+									<div class="uoy_masthead_core_toggle_label">Search</div>
+								</div>
+								<div class="uoy_masthead_core_toggle_button_is_open">
+									<div class="uoy_masthead_core_toggle_icon"><span aria-hidden="true" class="uoy_icon uoy_icon__theme#close"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></span></div>
+									<div class="uoy_masthead_core_toggle_label">Close</div>
+								</div>
+							</button>
+						</div>
+
+					</div>
+
+					<div class="uoy_masthead_nav">
+
+						<nav class="uoy_masthead_nav_row"><ul class="uoy_nav_main"><li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/study/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Study<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content">
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_minor">Study with us</div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/study/undergraduate/">Undergraduate</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-taught/">Postgraduate taught</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-research/">Postgraduate research</a></li>
+														<li><a href="https://www.york.ac.uk/study/international/">International students</a></li>
+														<li><a href="https://www.york.ac.uk/study/online-distance-learning/">Online and distance learning</a></li>
+														<li><a href="https://www.york.ac.uk/study/careers/">Careers and employability</a></li>
+														<li><a href="https://www.york.ac.uk/study/study-abroad/">Study, work or volunteer abroad</a></li>
+														<li><a href="https://www.york.ac.uk/study/" aria-label="More about studying at York"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_minor"><span aria-hidden="true" class="uoy_icon uoy_icon__before uoy_icon__solid#magnifying-glass"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></span>Find a course</div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/study/undergraduate/courses/all/">Undergraduate courses</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-taught/courses/">Taught masters degrees</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-research/courses/">Postgraduate research courses</a></li>
+													</ul></div>
+												<div>
+													<div class="uoy_submenu_heading_minor">Life at York</div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/study/accommodation/">Accommodation</a></li>
+														<li><a href="https://www.york.ac.uk/study/visit/">Open days and visits</a></li>
+														<li><a href="https://www.york.ac.uk/study/student-life/">Student life</a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/research/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Research<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content">
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">Research with impact</div>
+													<p>Changing lives for the better through academic excellence and bold, creative thinking.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/research/">Explore our research</a></p>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/research/performance/">Research excellence</a></li>
+														<li><a href="https://www.york.ac.uk/about/departments/research/">Departments and research groups</a></li>
+														<li><a href="https://www.york.ac.uk/research/events/">Events</a></li>
+														<li><a href="https://www.york.ac.uk/business/">Innovation and industry</a></li>
+														<li><a href="https://features.york.ac.uk/research-strategy-2030/">Research strategy</a></li>
+														<li><a href="https://www.york.ac.uk/research/research-culture-action-plan/">Research culture</a></li>
+														<li><a href="https://www.york.ac.uk/research/" aria-label="More about our research"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/business/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Business<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content">
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">Solved with York</div>
+													<p>From empowering local businesses to driving global collaborations, our partnerships create meaningful impact.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/business/">Work with us</a></p>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/business/expertise/">Access expertise</a></li>
+														<li><a href="https://www.york.ac.uk/business/apprenticeships/">Apprenticeships</a></li>
+														<li><a href="https://www.york.ac.uk/business/cpd/">CPD</a></li>
+														<li><a href="https://www.york.ac.uk/business/students/">Recruit students</a></li>
+														<li><a href="https://www.york.ac.uk/business/york-science-park/">Support for small businesses</a></li>
+														<li><a href="https://www.york.ac.uk/business/facilities-and-services/">Facilities and services</a></li>
+														<li><a href="https://www.york.ac.uk/business/" aria-label="More about business partnerships"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/about/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										About<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content">
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">A university for public good</div>
+													<p>A member of the Russell Group, we're a research-intensive university founded on excellence, equality and opportunity for all.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/about/">Learn about the University</a></p>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/about/departments/">Departments, offices and sections</a></li>
+														<li><a href="https://www.york.ac.uk/about/rankings/">Rankings, awards and achievements</a></li>
+														<li><a href="https://www.york.ac.uk/about/transport-maps-parking/">Getting here, maps and parking</a></li>
+														<li><a href="https://www.york.ac.uk/global/">Global York</a></li>
+														<li><a href="https://www.york.ac.uk/about/equality/">Equality, diversity and inclusion</a></li>
+														<li><a href="https://www.york.ac.uk/york-giving/">Giving to the University</a></li>
+														<li><a href="https://jobs.york.ac.uk/">Jobs</a></li>
+														<li><a href="https://www.york.ac.uk/about/" aria-label="More about the University"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="uoy_submenu uoy_nav_main_search" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/search" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Search<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#search"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#search"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#close"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target uoy_submenu_anchor_right scheme_submenu" aria-role="dialog">
+
+										<div class="uoy_search">
+
+											<div class="uoy_search_form">
+												<form action="https://www.york.ac.uk/search" method="get" class="uoy_form">
+													<fieldset><legend>Search the website</legend>
+														<input type="hidden" name="collection" value="york-uni~sp-web"><input type="hidden" name="profile" value="yorkweb"><div class="uoy_single_field_form">
+															<input type="text" id="q-search" name="query" aria-label="Search" data-uoy-autofocus-on-reveal=""><button type="submit" aria-label="Search"><span aria-hidden="true" class="uoy_icon uoy_icon__lg uoy_icon__solid#magnifying-glass"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></span></button>
+														</div>
+													</fieldset></form>
+											</div>
+
+											<div class="uoy_search_shortcuts">
+												<div class="uoy_search_shortcuts_heading">Most viewed</div>
+												<ul class="uoy_search_shortcuts_list"><li><a href="https://www.york.ac.uk/search?query=Accommodation&amp;collection=york-uni%7Esp-web&amp;profile=yorkweb">Accommodation</a></li>
+													<li><a href="https://www.york.ac.uk/search?query=Open+days&amp;collection=york-uni%7Esp-web&amp;profile=yorkweb">Open days</a></li>
+													<li><a href="https://www.york.ac.uk/map/">Campus map</a></li>
+													<li><a href="https://www.york.ac.uk/search?query=Zoom&amp;collection=york-uni%7Esp-web&amp;profile=yorkweb">Zoom</a></li>
+												</ul></div>
+
+										</div>
+										
+									</div>
+								</li>
+							</ul></nav><nav class="uoy_masthead_nav_row"><ul class="uoy_nav_utility"><li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Staff and students<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content">
+											<div class="uoy_submenu_section">
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://www.york.ac.uk/staff/">
+														<span class="uoy_submenu_headinglink_main">Staff home<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">For University staff</span>
+													</a>
+												</div>
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://www.york.ac.uk/students/">
+														<span class="uoy_submenu_headinglink_main">Student home<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">For current students</span>
+													</a>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://vle.york.ac.uk/">VLE</a></li>
+														<li><a href="https://evision.york.ac.uk/">e:vision</a></li>
+														<li><a href="https://checkin.york.ac.uk/">Student check-in</a></li>
+														<li><a href="https://www.york.ac.uk/viewtimetables/">Timetables</a></li>
+														<li><a href="https://www.york.ac.uk/about/semester-dates/">Semester dates</a></li>
+														<li><a href="https://www.york.ac.uk/library/">Library</a></li>
+														<li><a href="https://directory.york.ac.uk/">People directory</a></li>
+														<li><a href="https://mail.google.com/">Email</a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li><a href="https://www.york.ac.uk/about/departments/">Departments</a></li>
+								<li><a href="https://www.york.ac.uk/news-and-events/news/">News</a></li>
+								<li><a href="https://www.york.ac.uk/news-and-events/events/">Events</a></li>
+								<li><a href="https://www.york.ac.uk/alumni/">Alumni</a></li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/global/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										<span aria-hidden="true" class="uoy_icon uoy_icon__before_snug uoy_icon__globe"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"></path></svg></span>Locations<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content">
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">Global York</div>
+													<p>We collaborate worldwide and build partnerships that tackle global challenges.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/global/">Explore global possibilities</a></p>
+													
+												</div>
+												
+											</div>
+											<div class="uoy_submenu_section">
+
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://mumbai.york.ac.uk/">
+														<span class="uoy_submenu_headinglink_main">University of York Mumbai<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">A new campus in India</span>
+													</a>
+												</div>
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://city.yorkeuropecampus.eu/">
+														<span class="uoy_submenu_headinglink_main">Europe campus<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">Based in Thessaloniki and Athens, Greece</span>
+													</a>
+												</div>
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://www.york.ac.uk/study/online-distance-learning/">
+														<span class="uoy_submenu_headinglink_main">Online<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">Study with York wherever you are</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul></nav></div>
+
+				</div>
+			</div>
+
+
+				<div class="uoy_branch scheme_header_alt">
+					<div class="uoy_branch_wrapper">
+
+						<div class="uoy_branch_heading">
+							<a href="/computer-science/">Department of Computer Science</a>
+						</div>
+
+						<div class="uoy_branch_nav">
+							<div class="uoy_nav_branch" data-uoy-component="nav_branch" style="overflow: visible;">
+								<div class="uoy_nav_branch_viewport"><ul class="uoy_nav_branch_list"><li data-index="0"><span class="currentbranch0"><a href="/computer-science/study/">Study</a></span></li><li data-index="1"><a href="https://www.cs.york.ac.uk/people/">People</a></li><li data-index="2"><a href="/computer-science/research/">Research</a></li><li data-index="3"><a href="/computer-science/professional/">Professional development and training</a></li><li data-index="4"><a href="/computer-science/about/">About us</a></li><li data-index="5"><a href="/computer-science/contact/">Contact us</a></li><li data-index="6"><a href="/computer-science/current-students-staff/">Current staff and students</a></li></ul><ul class="uoy_nav_branch_list uoy_nav_branch_list_clone" aria-hidden="true" inert="true"><li data-index="0"><span class="currentbranch0"><a href="/computer-science/study/">Study</a></span></li><li data-index="1"><a href="https://www.cs.york.ac.uk/people/">People</a></li><li data-index="2"><a href="/computer-science/research/">Research</a></li><li data-index="3"><a href="/computer-science/professional/">Professional development and training</a></li><li data-index="4"><a href="/computer-science/about/">About us</a></li><li data-index="5"><a href="/computer-science/contact/">Contact us</a></li><li data-index="6"><a href="/computer-science/current-students-staff/">Current staff and students</a></li>
+
+								</ul></div>
+							<div class="uoy_nav_branch_overflow uoy_submenu" data-uoy-component="submenu" style="display: none;"><button class="uoy_nav_branch_overflow_toggle uoy_submenu_toggle" aria-expanded="false" href="./" role="button" aria-haspopup="dialog"><span class="uoy_submenu_is_closed"><span class="uoy_nav_branch_overflow_toggle_innards">More <span class="uoy_icon uoy_icon__theme#down" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span></span><span class="uoy_submenu_is_open"><span class="uoy_nav_branch_overflow_toggle_innards">Less <span class="uoy_icon uoy_icon__theme#up" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span></span></button><div class="uoy_nav_branch_overflow_menu scheme_header_alt uoy_submenu_target uoy_submenu_anchor_right" aria-hidden="true" inert="true" aria-role="dialog"><ul class="uoy_nav_branch_overflow_list"></ul></div></div></div>
+						</div>
+
+					</div>
+				</div>
+
+			<nav class="uoy_nav_mobile scheme_header" hidden="true"><div class="uoy_minitabs"><ul class="uoy_minitabs_tabs"><li class="uoy_minitabs_tab"><a class="scheme_header_alt" href="#branch" aria-expanded="true">In this section</a></li><li class="uoy_minitabs_tab"><a class="scheme_submenu" href="#main" aria-expanded="false">Main menu</a></li></ul><div class="uoy_minitabs_content scheme_header_alt is_open"><nav id="uoy_nav_secondary" class="uoy_nav_sidebar"><div class="uoy_nav_sidebar_heading">
+								<a href="/computer-science/study/">Study</a>
+							</div>
+							<ul class="uoy_nav_sidebar_list"><li><a href="/computer-science/study/undergraduate/">Undergraduate degrees in computer science</a>
+<ul class="multilevel-linkul-0"><li><a href="/computer-science/study/undergraduate/funding/">Undergraduate funding</a></li>
+<li><a href="/computer-science/study/undergraduate/year-in-industry/">Year in industry</a></li>
+<li><a href="/computer-science/study/undergraduate/preparing-to-study/">Preparing to study</a></li>
+
+</ul></li><li><a href="/computer-science/study/postgraduate-taught/">Taught Masters degrees in computer science</a></li><li><a href="/computer-science/study/postgraduate-research/">Postgraduate research degrees in computer science</a></li><li><a href="/computer-science/study/funding/">Scholarships and funding</a></li><li><a href="/computer-science/study/accreditation/">Accreditation</a></li>
+							</ul></nav></div><div class="uoy_minitabs_content scheme_submenu" aria-hidden="true" inert="true" hidden="true"><ul class="uoy_nav_main"><li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/study/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Study<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content"><div class="uoy_submenu_content_header"><a href="#" class="uoy_submenu_close"><span class="uoy_icon uoy_icon__theme#left uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></span>Back to main menu</a></div>
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_minor">Study with us</div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/study/undergraduate/">Undergraduate</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-taught/">Postgraduate taught</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-research/">Postgraduate research</a></li>
+														<li><a href="https://www.york.ac.uk/study/international/">International students</a></li>
+														<li><a href="https://www.york.ac.uk/study/online-distance-learning/">Online and distance learning</a></li>
+														<li><a href="https://www.york.ac.uk/study/careers/">Careers and employability</a></li>
+														<li><a href="https://www.york.ac.uk/study/study-abroad/">Study, work or volunteer abroad</a></li>
+														<li><a href="https://www.york.ac.uk/study/" aria-label="More about studying at York"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_minor"><span aria-hidden="true" class="uoy_icon uoy_icon__before uoy_icon__solid#magnifying-glass"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></span>Find a course</div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/study/undergraduate/courses/all/">Undergraduate courses</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-taught/courses/">Taught masters degrees</a></li>
+														<li><a href="https://www.york.ac.uk/study/postgraduate-research/courses/">Postgraduate research courses</a></li>
+													</ul></div>
+												<div>
+													<div class="uoy_submenu_heading_minor">Life at York</div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/study/accommodation/">Accommodation</a></li>
+														<li><a href="https://www.york.ac.uk/study/visit/">Open days and visits</a></li>
+														<li><a href="https://www.york.ac.uk/study/student-life/">Student life</a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/research/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Research<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content"><div class="uoy_submenu_content_header"><a href="#" class="uoy_submenu_close"><span class="uoy_icon uoy_icon__theme#left uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></span>Back to main menu</a></div>
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">Research with impact</div>
+													<p>Changing lives for the better through academic excellence and bold, creative thinking.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/research/">Explore our research</a></p>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/research/performance/">Research excellence</a></li>
+														<li><a href="https://www.york.ac.uk/about/departments/research/">Departments and research groups</a></li>
+														<li><a href="https://www.york.ac.uk/research/events/">Events</a></li>
+														<li><a href="https://www.york.ac.uk/business/">Innovation and industry</a></li>
+														<li><a href="https://features.york.ac.uk/research-strategy-2030/">Research strategy</a></li>
+														<li><a href="https://www.york.ac.uk/research/research-culture-action-plan/">Research culture</a></li>
+														<li><a href="https://www.york.ac.uk/research/" aria-label="More about our research"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/business/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Business<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content"><div class="uoy_submenu_content_header"><a href="#" class="uoy_submenu_close"><span class="uoy_icon uoy_icon__theme#left uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></span>Back to main menu</a></div>
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">Solved with York</div>
+													<p>From empowering local businesses to driving global collaborations, our partnerships create meaningful impact.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/business/">Work with us</a></p>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/business/expertise/">Access expertise</a></li>
+														<li><a href="https://www.york.ac.uk/business/apprenticeships/">Apprenticeships</a></li>
+														<li><a href="https://www.york.ac.uk/business/cpd/">CPD</a></li>
+														<li><a href="https://www.york.ac.uk/business/students/">Recruit students</a></li>
+														<li><a href="https://www.york.ac.uk/business/york-science-park/">Support for small businesses</a></li>
+														<li><a href="https://www.york.ac.uk/business/facilities-and-services/">Facilities and services</a></li>
+														<li><a href="https://www.york.ac.uk/business/" aria-label="More about business partnerships"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/about/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										About<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content"><div class="uoy_submenu_content_header"><a href="#" class="uoy_submenu_close"><span class="uoy_icon uoy_icon__theme#left uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></span>Back to main menu</a></div>
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">A university for public good</div>
+													<p>A member of the Russell Group, we're a research-intensive university founded on excellence, equality and opportunity for all.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/about/">Learn about the University</a></p>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://www.york.ac.uk/about/departments/">Departments, offices and sections</a></li>
+														<li><a href="https://www.york.ac.uk/about/rankings/">Rankings, awards and achievements</a></li>
+														<li><a href="https://www.york.ac.uk/about/transport-maps-parking/">Getting here, maps and parking</a></li>
+														<li><a href="https://www.york.ac.uk/global/">Global York</a></li>
+														<li><a href="https://www.york.ac.uk/about/equality/">Equality, diversity and inclusion</a></li>
+														<li><a href="https://www.york.ac.uk/york-giving/">Giving to the University</a></li>
+														<li><a href="https://jobs.york.ac.uk/">Jobs</a></li>
+														<li><a href="https://www.york.ac.uk/about/" aria-label="More about the University"><strong>More</strong></a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								
+							</ul><ul class="uoy_nav_utility"><li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										Staff and students<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content"><div class="uoy_submenu_content_header"><a href="#" class="uoy_submenu_close"><span class="uoy_icon uoy_icon__theme#left uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></span>Back to main menu</a></div>
+											<div class="uoy_submenu_section">
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://www.york.ac.uk/staff/">
+														<span class="uoy_submenu_headinglink_main">Staff home<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">For University staff</span>
+													</a>
+												</div>
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://www.york.ac.uk/students/">
+														<span class="uoy_submenu_headinglink_main">Student home<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">For current students</span>
+													</a>
+												</div>
+											</div>
+											<div class="uoy_submenu_section">
+												<div>
+													<ul class="uoy_plain_list"><li><a href="https://vle.york.ac.uk/">VLE</a></li>
+														<li><a href="https://evision.york.ac.uk/">e:vision</a></li>
+														<li><a href="https://checkin.york.ac.uk/">Student check-in</a></li>
+														<li><a href="https://www.york.ac.uk/viewtimetables/">Timetables</a></li>
+														<li><a href="https://www.york.ac.uk/about/semester-dates/">Semester dates</a></li>
+														<li><a href="https://www.york.ac.uk/library/">Library</a></li>
+														<li><a href="https://directory.york.ac.uk/">People directory</a></li>
+														<li><a href="https://mail.google.com/">Email</a></li>
+													</ul></div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li><a href="https://www.york.ac.uk/about/departments/">Departments</a></li>
+								<li><a href="https://www.york.ac.uk/news-and-events/news/">News</a></li>
+								<li><a href="https://www.york.ac.uk/news-and-events/events/">Events</a></li>
+								<li><a href="https://www.york.ac.uk/alumni/">Alumni</a></li>
+								<li class="uoy_submenu" data-uoy-component="submenu">
+									<a href="https://www.york.ac.uk/global/" class="uoy_submenu_toggle" aria-expanded="false" role="button" aria-haspopup="dialog">
+										<span aria-hidden="true" class="uoy_icon uoy_icon__before_snug uoy_icon__globe"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"></path></svg></span>Locations<span class="uoy_submenu_is_closed"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#down"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg></span></span><span class="uoy_submenu_is_closed_mobile"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><span class="uoy_submenu_is_open"><span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#up"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M213.66,165.66a8,8,0,0,1-11.32,0L128,91.31,53.66,165.66a8,8,0,0,1-11.32-11.32l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,213.66,165.66Z"></path></svg></span></span>
+									</a>
+									<div inert="true" class="uoy_submenu_target scheme_submenu" aria-role="dialog">
+										<div class="uoy_submenu_content"><div class="uoy_submenu_content_header"><a href="#" class="uoy_submenu_close"><span class="uoy_icon uoy_icon__theme#left uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></span>Back to main menu</a></div>
+											<div class="uoy_submenu_section">
+												<div>
+													<div class="uoy_submenu_heading_major">Global York</div>
+													<p>We collaborate worldwide and build partnerships that tackle global challenges.</p>
+													<p><a class="uoy_cta uoy_cta__primary" href="https://www.york.ac.uk/global/">Explore global possibilities</a></p>
+													
+												</div>
+												
+											</div>
+											<div class="uoy_submenu_section">
+
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://mumbai.york.ac.uk/">
+														<span class="uoy_submenu_headinglink_main">University of York Mumbai<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">A new campus in India</span>
+													</a>
+												</div>
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://city.yorkeuropecampus.eu/">
+														<span class="uoy_submenu_headinglink_main">Europe campus<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">Based in Thessaloniki and Athens, Greece</span>
+													</a>
+												</div>
+												<div>
+													<a class="uoy_submenu_headinglink" href="https://www.york.ac.uk/study/online-distance-learning/">
+														<span class="uoy_submenu_headinglink_main">Online<span aria-hidden="true" class="uoy_icon uoy_icon__after_snug uoy_icon__theme#right_disc"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm29.66,109.66-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32l40,40A8,8,0,0,1,157.66,133.66Z"></path></svg></span></span>
+														<span class="uoy_submenu_headinglink_tagline">Study with York wherever you are</span>
+													</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul></div></div></nav><nav class="uoy_search_mobile scheme_header" hidden="true"><div class="uoy_search">
+
+											<div class="uoy_search_form">
+												<form action="https://www.york.ac.uk/search" method="get" class="uoy_form">
+													<fieldset><legend>Search the website</legend>
+														<input type="hidden" name="collection" value="york-uni~sp-web"><input type="hidden" name="profile" value="yorkweb"><div class="uoy_single_field_form">
+															<input type="text" id="q-search" name="query" aria-label="Search" data-uoy-autofocus-on-reveal=""><button type="submit" aria-label="Search"><span aria-hidden="true" class="uoy_icon uoy_icon__lg uoy_icon__solid#magnifying-glass"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></span></button>
+														</div>
+													</fieldset></form>
+											</div>
+
+											<div class="uoy_search_shortcuts">
+												<div class="uoy_search_shortcuts_heading">Most viewed</div>
+												<ul class="uoy_search_shortcuts_list"><li><a href="https://www.york.ac.uk/search?query=Accommodation&amp;collection=york-uni%7Esp-web&amp;profile=yorkweb">Accommodation</a></li>
+													<li><a href="https://www.york.ac.uk/search?query=Open+days&amp;collection=york-uni%7Esp-web&amp;profile=yorkweb">Open days</a></li>
+													<li><a href="https://www.york.ac.uk/map/">Campus map</a></li>
+													<li><a href="https://www.york.ac.uk/search?query=Zoom&amp;collection=york-uni%7Esp-web&amp;profile=yorkweb">Zoom</a></li>
+												</ul></div>
+
+										</div>
+										
+									</nav></header><div class="uoy_breadcrumbs scheme_default">
+				<div class="uoy_breadcrumbs_wrapper">
+
+					<div class="uoy_breadcrumbs_items">
+
+<a href="/">Home</a><span class="uoy_breadcrumbs_separator"><span class="uoy_icon uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><a href="/computer-science/">Department of Computer Science</a><span class="uoy_breadcrumbs_separator"><span class="uoy_icon uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><a href="/computer-science/study/">Study</a><span class="uoy_breadcrumbs_separator"><span class="uoy_icon uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><a href="/computer-science/study/undergraduate/">Undergraduate degrees in computer science</a><span class="uoy_breadcrumbs_separator"><span class="uoy_icon uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><a href="/computer-science/study/undergraduate/funding/">Undergraduate funding</a><span class="uoy_breadcrumbs_separator"><span class="uoy_icon uoy_icon__theme#right"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewbox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></span></span><a href="/computer-science/study/undergraduate/funding/google-deepmind-programme/">Google DeepMind Research Ready Programme</a>					</div>
+				</div>
+			</div>
+
+			<main id="main" class="uoy_page_main"><div class="uoy_blocks">
+
+					<div class="uoy_blocks_wrapper">
+<div class="uoy_block uoy_block__text scheme_default">
+	<div class="uoy_block_wrapper">
+		<h1>Google DeepMind Research Ready Programme</h1>
+		<p><img src="/media/computer-science/undergraduate/google-deep-mind-logo-new.jpg" width="800" height="400" alt=""></p>
+		<div class="uoy_lead">
+			<p>Work with intelligent robots in a paid summer internship at the University of York.</p>
+		</div>
+
+		<div class="uoy_grid uoy_grid__x2 uoy_grid__tight">
+			<div class="uoy_key_point">
+				<div class="uoy_key_point_wrapper">
+					<div class="uoy_key_point_icon">
+						<span class="uoy_icon uoy_icon__money uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512"><path d="M112 112c0 35.3-28.7 64-64 64V336c35.3 0 64 28.7 64 64H464c0-35.3 28.7-64 64-64V176c-35.3 0-64-28.7-64-64H112zM0 128C0 92.7 28.7 64 64 64H512c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM176 256a112 112 0 1 1 224 0 112 112 0 1 1 -224 0zm80-48c0 8.8 7.2 16 16 16v64h-8c-8.8 0-16 7.2-16 16s7.2 16 16 16h24 24c8.8 0 16-7.2 16-16s-7.2-16-16-16h-8V208c0-8.8-7.2-16-16-16H272c-8.8 0-16 7.2-16 16z"></path></svg></span>
+					</div>
+					<div class="uoy_key_point_content">
+						<div class="uoy_key_point_title">
+							Funding
+						</div>
+						<div class="uoy_key_point_text">
+							£13.45 per hour for a 30-hour week across the duration of the eight-week placement
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="uoy_key_point">
+				<div class="uoy_key_point_wrapper">
+					<div class="uoy_key_point_icon">
+						<span class="uoy_icon uoy_icon__calendar uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"></path></svg></span>
+					</div>
+					<div class="uoy_key_point_content">
+						<div class="uoy_key_point_title">
+							Academic year
+						</div>
+						<div class="uoy_key_point_text">
+							2025/26
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="uoy_key_point">
+				<div class="uoy_key_point_wrapper">
+					<div class="uoy_key_point_icon">
+						<span class="uoy_icon uoy_icon__globe uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path d="M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64H348.7c2.2 20.4 3.3 41.8 3.3 64zm28.8-64H503.9c5.3 20.5 8.1 41.9 8.1 64s-2.8 43.5-8.1 64H380.8c2.1-20.6 3.2-42 3.2-64s-1.1-43.4-3.2-64zm112.6-32H376.7c-10-63.9-29.8-117.4-55.3-151.6c78.3 20.7 142 77.5 171.9 151.6zm-149.1 0H167.7c6.1-36.4 15.5-68.6 27-94.7c10.5-23.6 22.2-40.7 33.5-51.5C239.4 3.2 248.7 0 256 0s16.6 3.2 27.8 13.8c11.3 10.8 23 27.9 33.5 51.5c11.6 26 20.9 58.2 27 94.7zm-209 0H18.6C48.6 85.9 112.2 29.1 190.6 8.4C165.1 42.6 145.3 96.1 135.3 160zM8.1 192H131.2c-2.1 20.6-3.2 42-3.2 64s1.1 43.4 3.2 64H8.1C2.8 299.5 0 278.1 0 256s2.8-43.5 8.1-64zM194.7 446.6c-11.6-26-20.9-58.2-27-94.6H344.3c-6.1 36.4-15.5 68.6-27 94.6c-10.5 23.6-22.2 40.7-33.5 51.5C272.6 508.8 263.3 512 256 512s-16.6-3.2-27.8-13.8c-11.3-10.8-23-27.9-33.5-51.5zM135.3 352c10 63.9 29.8 117.4 55.3 151.6C112.2 482.9 48.6 426.1 18.6 352H135.3zm358.1 0c-30 74.1-93.6 130.9-171.9 151.6c25.5-34.2 45.2-87.7 55.3-151.6H493.4z"></path></svg></span>
+					</div>
+					<div class="uoy_key_point_content">
+						<div class="uoy_key_point_title">
+							Open to
+						</div>
+						<div class="uoy_key_point_text">
+							UK (home) students
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="uoy_key_point">
+				<div class="uoy_key_point_wrapper">
+					<div class="uoy_key_point_icon">
+						<span class="uoy_icon uoy_icon__graduation-cap uoy_icon__lg" aria-hidden="true"></span>
+					</div>
+					<div class="uoy_key_point_content">
+						<div class="uoy_key_point_title">
+							Qualification level
+						</div>
+						<div class="uoy_key_point_text">
+							Undergraduate
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="uoy_key_point">
+				<div class="uoy_key_point_wrapper">
+					<div class="uoy_key_point_icon">
+						<span class="uoy_icon uoy_icon__group uoy_icon__lg" aria-hidden="true"></span>
+					</div>
+					<div class="uoy_key_point_content">
+						<div class="uoy_key_point_title">
+							Number available
+						</div>
+						<div class="uoy_key_point_text">
+							5
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="uoy_box uoy_box__highlight scheme_info">
+			<p>Applications for 2025/26 are open until Friday 27 March 2026, 11.59pm GMT</p>
+		</div>
+
+		<p><a class="uoy_cta uoy_cta__primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeL5GrvyVtN5-KGIbUlI6fzLixptTOnap5FpLJIi9_Eb6_eUQ/viewform?usp=header">Apply now</a></p><h3><strong>About the programme</strong></h3>
+		<p>The Google DeepMind Research Ready Programme offers a unique opportunity to gain hands-on research experience in AI and robotics through a paid summer internship at the University of York.</p>
+		<p>This programme is designed for undergraduate students and recent graduates from socioeconomically disadvantaged backgrounds and groups underrepresented within engineering. It provides an insight into research-focused careers in robotics and AI.</p>
+		<p><span style="font-weight: 400;">The scheme is a partnership between the </span><a href="https://raeng.org.uk/"><span style="font-weight: 400;">Royal Academy of Engineering</span></a><span style="font-weight: 400;">, </span><a href="https://deepmind.google/"><span style="font-weight: 400;">Google DeepMind</span></a><span style="font-weight: 400;"> and</span><a href="https://www.thehgfoundation.com/"><span style="font-weight: 400;"> The HG Foundation</span></a><span style="font-weight: 400;">.</span></p>
+		<h3><strong>Who is this opportunity for?</strong></h3>
+		<p><span style="font-weight: 400;">This internship programme is jointly created by two world-leading research centres here at York:</span></p>
+		<ul><li style="font-weight: 400;" aria-level="1"><a href="https://robostar.cs.york.ac.uk/"><span style="font-weight: 400;">RoboStar</span></a><span style="font-weight: 400;">, a centre of excellence for software engineering for robotics</span><span style="font-weight: 400;"></span></li>
+		<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">UKRI AI Centre for Doctoral Training in Safe Artificial Intelligence (</span><a href="https://www.york.ac.uk/study/postgraduate-research/centres-doctoral-training/safe-ai-training/"><span style="font-weight: 400;">SAINTS</span></a><span style="font-weight: 400;">), the UK’s first multidisciplinary PhD programme focused solely on the safety of artificial intelligence</span><span style="font-weight: 400;"></span></li>
+		</ul><p><span style="font-weight: 400;">We are looking for </span><strong>five motivated students</strong><span style="font-weight: 400;"> from across the UK to work on real-world research alongside our world-class team. Successful applicants will receive:</span></p>
+		<ul><li><span style="font-weight: 400;">A generous paid stipend</span></li>
+		<li><span style="font-weight: 400;">Support with travel costs</span></li>
+		<li>Free on-campus accommodation for the duration of the internship (subject to distance from home address)</li>
+		</ul><p><span style="font-weight: 400;">The programme takes place between Monday 22 June and Friday 14 August 2026.</span></p>
+		<h3><strong>What will you be doing?</strong></h3>
+		<p><span style="font-weight: 400;">Working in a small research group, you will work on the development of an autonomous robot capable of sorting mixed waste materials without a pre-existing map of its environment. Robots of this kind have potential applications in:</span></p>
+		<ul><li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Nuclear decommissioning</span></li>
+		<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Construction sites</span></li>
+		<li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Recycling and waste management facilities</span><span style="font-weight: 400;"></span></li>
+		</ul><p><span style="font-weight: 400;">Working closely with leading academics in intelligent robotics and safe AI, you will be involved in the full lifecycle of the project where you will:</span></p>
+		<ul><li><span style="font-weight: 400;">Develop and document the robot’s design</span></li>
+		<li><span style="font-weight: 400;">Explore and implement the AI-enabled software</span></li>
+		<li><span style="font-weight: 400;">Test the system using simulation and real robotic platforms</span></li>
+		<li><span style="font-weight: 400;">Contribute to a structured safety case for the robot<br></span></li>
+		</ul><h3><span style="font-weight: 400;"><strong>Where will you be based?</strong></span></h3>
+		<p><span style="font-weight: 400;">You’ll be based in the Department of Computer Science on Campus East. During your internship, we’ll provide you with accommodation on either Campus East or Campus West. There is a 15-minute walk or a short bus ride between the two campuses.</span></p>
+		<p><span style="font-weight: 400;"><br></span><span style="font-weight: 400;">Find out more:</span></p>
+		<ul><li style="font-weight: 400;" aria-level="1"><a href="https://www.york.ac.uk/about/campus/"><span style="font-weight: 400;">About the University of York</span></a></li>
+		<li style="font-weight: 400;" aria-level="1"><a href="https://www.york.ac.uk/study/student-life/york-yorkshire/"><span style="font-weight: 400;">About the city of York</span></a></li>
+		</ul><p> </p>
+		<div class="uoy_box">
+			<h3>Google DeepMind Research Ready Programme contact details</h3>
+			<div class="uoy_grid uoy_grid__x1 uoy_grid__smaller_margins">
+				<div><p>
+					<span class="uoy_icon uoy_icon__solid#phone uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"></path></svg></span><a href="tel:01904322039">01904 322 039</a><br><span class="uoy_icon uoy_icon__solid#envelope uoy_icon__before" aria-hidden="true"></span><a href="mailto:yorrobots@york.ac.uk%20">yorrobots@york.ac.uk </a><br></p>
+				</div>
+			</div>
+
+
+		</div>
+
+		<details class="uoy_accordion" data-uoy-component="accordion"><summary class="uoy_accordion_title"><span class="uoy_accordion_handles">
+					<span class="uoy_accordion_handle_closed"><span class="uoy_icon uoy_icon__theme#down_circle uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><circle fill="transparent" class="uoy_icon_highlight_on_hover" cx="127" cy="127" r="100"></circle><path d="m 173.66,106.33829 c 3.12839,3.12491 3.12839,8.19509 0,11.32 l -40,40 c -3.12491,3.12839 -8.19509,3.12839 -11.32,0 l -40,-40 c -3.125934,-3.12593 -3.125929,-8.19407 2e-6,-11.32 3.125932,-3.12593 8.194064,-3.12593 11.319998,0 l 34.34,34.35 34.34,-34.35 c 3.12491,-3.12839 8.19509,-3.12839 11.32,0 z"></path><path class="uoy_icon_highlight_on_hover" d="M 128,24 C 85.935972,24 48.013545,49.338927 31.91725,88.200325 15.820987,127.06164 24.720999,171.79174 54.46463,201.53537 84.208262,231.279 128.93836,240.17901 167.79968,224.08275 206.66107,207.98645 232,170.06403 232,128 231.93937,70.587518 185.41248,24.060629 128,24 Z m 0,192 C 92.407361,216 60.319154,194.55937 46.699211,161.67665 33.079297,128.79399 40.610076,90.945452 65.777764,65.777764 90.945452,40.610076 128.79399,33.079297 161.67665,46.699211 194.55937,60.319154 216,92.407361 216,128 c -0.0551,48.57821 -39.42179,87.94489 -88,88 z"></path></svg></span></span>
+					<span class="uoy_accordion_handle_open"><span class="uoy_icon uoy_icon__theme#up_disc uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><circle class="uoy_icon_show_on_hover" cx="127" cy="127" r="100"></circle><path class="uoy_icon_highlight_on_hover" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,125.66a8,8,0,0,1-11.32,0L128,115.31,93.66,149.66a8,8,0,0,1-11.32-11.32l40-40a8,8,0,0,1,11.32,0l40,40A8,8,0,0,1,173.66,149.66Z"></path></svg></span></span>
+				</span>
+				Eligibility
+			</summary><div class="uoy_accordion_content">
+				<p>Open to UK (home) students only.</p>
+				<p>Open to students in the Department of Computer Science.</p>
+				<p><span style="font-weight: 400;">This programme is open to UK (home) students at the University of York and all universities across the UK.</span></p>
+				<h3><strong>Essential criteria </strong></h3>
+				<p><span style="font-weight: 400;">You must meet all the following criteria:</span></p>
+				<ul><li><span style="font-weight: 400;">Be a resident in the UK</span></li>
+				<li><span style="font-weight: 400;">Be paying, or have paid, UK (home) tuition fees.</span></li>
+				<li><span style="font-weight: 400;">Be able to prove that you have the right to live and work in the UK for the full duration of the programme.</span></li>
+				<li><span style="font-weight: 400;">Be in your penultimate or final year of an undergraduate degree, or have recently graduated</span></li>
+				<li><span style="font-weight: 400;">Be studying (or have studied) computer science or a closely related subject.</span></li>
+				<li><span style="font-weight: 400;">NOT be currently studying, or have completed a Masters or PhD programme.<br></span></li>
+				</ul><h3><strong>Socio-economic criteria </strong></h3>
+				<p><span style="font-weight: 400;">You must meet at least one of the following criteria:</span></p>
+				<ul><li><span style="font-weight: 400;">Have been eligible for free school meals</span></li>
+				<li><span style="font-weight: 400;">Live in an area within the lowest quintile according to a postcode measure such as <a href="https://www.officeforstudents.org.uk/data-and-analysis/young-participation-by-area/search-by-postcode/">POLAR4</a> or <a href="https://imd-by-postcode.opendatacommunities.org/imd/2019">IMD</a></span></li>
+				<li><span style="font-weight: 400;">Have received full non-repayable state support for maintenance during undergraduate study</span></li>
+				<li><span style="font-weight: 400;">Have received the maximum Maintenance Loan during undergraduate study</span></li>
+				<li><span style="font-weight: 400;">Have experience of local authority care</span></li>
+				<li><span style="font-weight: 400;">Have had caring responsibilities for three months or more, which</span>
+				<ul><li><span style="font-weight: 400;">Either have occupied more than 10 hours per week,</span></li>
+				<li><span style="font-weight: 400;">Or have impacted on your education, health or wellbeing</span><span style="font-weight: 400;"><br></span></li>
+				</ul></li>
+				<li><span style="font-weight: 400;">Be a refugee</span></li>
+				</ul><h3><strong> Academic criteria</strong></h3>
+				<p>You must:</p>
+				<ul><li>Be on track to achieve, or have achieved, at least 2:1 undergraduate degree.</li>
+				<li>Be able to demonstrate programming skills<strong><br></strong></li>
+				</ul><p>Desirable skills</p>
+				<ul><li><span style="font-weight: 400;">Be able to demonstrate a knowledge of AI</span></li>
+				</ul><h3><strong>How we'll support you</strong></h3>
+				<p>You’ll receive training in the tools and techniques used throughout the engineering and research lifecycle, supported by tutorials and hands-on practical sessions. This support will help you build skills in:</p>
+				<ul><li>Problem definition and elicitation</li>
+				<li>Research execution</li>
+				<li>Evaluation and documentation</li>
+				</ul><p>You’ll become part of a diverse, international academic community, and will be supported throughout by our team. You’ll work closely with fellow interns, PhD researchers and staff to develop skills that will support both academic progression and future careers. </p>
+				<p>During your second week, you’ll attend the RoboStar Summer School, which brings together researchers and industry leaders in autonomous robotics from across the UK and beyond. </p>
+
+			</div>
+		</details><details class="uoy_accordion" data-uoy-component="accordion"><summary class="uoy_accordion_title"><span class="uoy_accordion_handles">
+					<span class="uoy_accordion_handle_closed"><span class="uoy_icon uoy_icon__theme#down_circle uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><circle fill="transparent" class="uoy_icon_highlight_on_hover" cx="127" cy="127" r="100"></circle><path d="m 173.66,106.33829 c 3.12839,3.12491 3.12839,8.19509 0,11.32 l -40,40 c -3.12491,3.12839 -8.19509,3.12839 -11.32,0 l -40,-40 c -3.125934,-3.12593 -3.125929,-8.19407 2e-6,-11.32 3.125932,-3.12593 8.194064,-3.12593 11.319998,0 l 34.34,34.35 34.34,-34.35 c 3.12491,-3.12839 8.19509,-3.12839 11.32,0 z"></path><path class="uoy_icon_highlight_on_hover" d="M 128,24 C 85.935972,24 48.013545,49.338927 31.91725,88.200325 15.820987,127.06164 24.720999,171.79174 54.46463,201.53537 84.208262,231.279 128.93836,240.17901 167.79968,224.08275 206.66107,207.98645 232,170.06403 232,128 231.93937,70.587518 185.41248,24.060629 128,24 Z m 0,192 C 92.407361,216 60.319154,194.55937 46.699211,161.67665 33.079297,128.79399 40.610076,90.945452 65.777764,65.777764 90.945452,40.610076 128.79399,33.079297 161.67665,46.699211 194.55937,60.319154 216,92.407361 216,128 c -0.0551,48.57821 -39.42179,87.94489 -88,88 z"></path></svg></span></span>
+					<span class="uoy_accordion_handle_open"><span class="uoy_icon uoy_icon__theme#up_disc uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewbox="0 0 256 256"><circle class="uoy_icon_show_on_hover" cx="127" cy="127" r="100"></circle><path class="uoy_icon_highlight_on_hover" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,125.66a8,8,0,0,1-11.32,0L128,115.31,93.66,149.66a8,8,0,0,1-11.32-11.32l40-40a8,8,0,0,1,11.32,0l40,40A8,8,0,0,1,173.66,149.66Z"></path></svg></span></span>
+				</span>
+				How to apply
+			</summary><div class="uoy_accordion_content">
+				<p><strong>Application deadline:</strong> Friday 27 March 2026, 11.59pm GMT</p>
+				<p><span style="font-weight: 400;">Before applying, please ensure you meet all eligibility criteria.</span></p>
+				<p><span style="font-weight: 400;">To apply, complete the application form. It is your responsibility to ensure that all necessary documents are submitted before the deadline. Incomplete, ineligible or late applications will not be considered. </span></p>
+				<ul><li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Notification of offers: Week of 17 April 2026.</span></li>
+				</ul><p class="cta text-highlight"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeL5GrvyVtN5-KGIbUlI6fzLixptTOnap5FpLJIi9_Eb6_eUQ/viewform?usp=header"><span style="font-weight: 400;">Apply now</span></a></p>
+				<h4><a href="/computer-science/study/undergraduate/funding/google-deepmind-programme/privacy-notice/">Privacy notice</a></h4>
+
+			</div>
+		</details></div>
+</div>
+					</div>
+
+					<aside class="uoy_blocks_sidebar"><nav id="uoy_nav_secondary" class="uoy_nav_sidebar"><div class="uoy_nav_sidebar_heading">
+								<a href="/computer-science/study/">Study</a>
+							</div>
+							<ul class="uoy_nav_sidebar_list"><li><a href="/computer-science/study/undergraduate/">Undergraduate degrees in computer science</a>
+<ul class="multilevel-linkul-0"><li><a href="/computer-science/study/undergraduate/funding/">Undergraduate funding</a></li>
+<li><a href="/computer-science/study/undergraduate/year-in-industry/">Year in industry</a></li>
+<li><a href="/computer-science/study/undergraduate/preparing-to-study/">Preparing to study</a></li>
+
+</ul></li><li><a href="/computer-science/study/postgraduate-taught/">Taught Masters degrees in computer science</a></li><li><a href="/computer-science/study/postgraduate-research/">Postgraduate research degrees in computer science</a></li><li><a href="/computer-science/study/funding/">Scholarships and funding</a></li><li><a href="/computer-science/study/accreditation/">Accreditation</a></li>
+							</ul></nav><div class="uoy_box">
+<h2 class="uoy_heading uoy_heading__h6">Contact us</h2>
+<ul class="uoy_plain_list uoy_plain_list__tight"><li>
+<span class="uoy_icon uoy_icon__solid#envelope uoy_icon__before" aria-hidden="true"></span><a href="mailto:cs-ug-admissions@york.ac.uk">cs-ug-admissions<wbr>@york.ac.uk</wbr></a>
+
+</li>
+	<li>
+<span class="uoy_icon uoy_icon__solid#phone uoy_icon__before" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"></path></svg></span><a href="tel:+441904%20328221">+44 (0)1904 328221</a>
+	</li>
+</ul></div>
+
+
+						
+
+					</aside></div>
+
+			</main><footer class="uoy_page_footer scheme_footer"><div class="uoy_pre_footer scheme_footer_alt">
+	<div class="uoy_pre_footer_wrapper">
+		<div class="uoy_pre_footer_intro">
+			<h4 class="uoy_heading">Department of Computer Science</h4>
+
+		</div>
+		<div class="uoy_pre_footer_content">
+			<div class="uoy_grid uoy_grid__tight uoy_grid__x2">
+				<a class="uoy_link_grid_item" href="mailto:cs-reception@york.ac.uk">
+					<span class="uoy_link_grid_item_icon"><span class="uoy_icon uoy_icon__solid#envelope uoy_icon__before uoy_icon__lg" aria-hidden="true"></span></span>cs-reception<wbr>@york.ac.uk
+				</wbr></a>
+				<a class="uoy_link_grid_item" href="tel:+441904%20325501">
+					<span class="uoy_link_grid_item_icon"><span class="uoy_icon uoy_icon__solid#phone uoy_icon__before uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"></path></svg></span></span>+44 (0)1904 325501
+				</a>
+				<a class="uoy_link_grid_item" href="https://www.youtube.com/ComputerScienceUoY" aria-label="Department of Computer Science on YouTube">
+					<span class="uoy_link_grid_item_icon"><span class="uoy_icon uoy_icon__youtube-play uoy_icon__before uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg></span></span>YouTube
+				</a>
+				<a class="uoy_link_grid_item" href="https://www.instagram.com/UoYComputerScience" aria-label="Department of Computer Science on Instagram">
+					<span class="uoy_link_grid_item_icon"><span class="uoy_icon uoy_icon__instagram uoy_icon__before uoy_icon__lg" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></span></span>Instagram
+				</a>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+				<div class="uoy_footer">
+					<div class="uoy_footer_wrapper">
+
+						<div class="uoy_footer_head">
+
+							<div class="uoy_footer_head_section">
+								<p><a class="uoy_footer_head_logo" href="https://www.york.ac.uk/"><img width="209" height="80" src="https://www.york.ac.uk/static/2/images/uoy_logo_white.svg" alt="University of York homepage"></a></p>
+							</div>
+
+							<div class="uoy_footer_head_section">
+								<p>University of York<br>York<br>YO10 5DD<br>United Kingdom</p>
+							</div>
+
+							<div class="uoy_footer_head_section">
+
+								<ul class="uoy_footer_contact"><li><a href="https://www.york.ac.uk/map/"><span aria-hidden="true" class="uoy_icon uoy_icon__before uoy_icon__solid#map"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M512 48c0-11.1-5.7-21.4-15.2-27.2s-21.2-6.4-31.1-1.4L349.5 77.5 170.1 17.6c-8.1-2.7-16.8-2.1-24.4 1.7l-128 64C6.8 88.8 0 99.9 0 112L0 464c0 11.1 5.7 21.4 15.2 27.2s21.2 6.4 31.1 1.4l116.1-58.1 179.4 59.8c8.1 2.7 16.8 2.1 24.4-1.7l128-64c10.8-5.4 17.7-16.5 17.7-28.6l0-352zM192 376.9l0-284.5 128 42.7 0 284.5-128-42.7z"></path></svg></span>Campus map</a></li>
+									<li><a href="https://www.york.ac.uk/about/contact/"><span aria-hidden="true" class="uoy_icon uoy_icon__before uoy_icon__solid#address-book"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M96 0C60.7 0 32 28.7 32 64l0 384c0 35.3 28.7 64 64 64l288 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L96 0zM208 288l64 0c44.2 0 80 35.8 80 80 0 8.8-7.2 16-16 16l-192 0c-8.8 0-16-7.2-16-16 0-44.2 35.8-80 80-80zm-24-96a56 56 0 1 1 112 0 56 56 0 1 1 -112 0zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zm0 128c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64zM496 320c-8.8 0-16 7.2-16 16l0 64c0 8.8 7.2 16 16 16s16-7.2 16-16l0-64c0-8.8-7.2-16-16-16z"></path></svg></span>Contact us</a></li>
+									<li><a href="tel:+441904320000"><span aria-hidden="true" class="uoy_icon uoy_icon__before uoy_icon__solid#phone"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M160.2 25C152.3 6.1 131.7-3.9 112.1 1.4l-5.5 1.5c-64.6 17.6-119.8 80.2-103.7 156.4 37.1 175 174.8 312.7 349.8 349.8 76.3 16.2 138.8-39.1 156.4-103.7l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2C233.9 335.4 177.3 277 144.8 205.3L189 169.3c13.9-11.3 18.6-30.4 11.8-47L160.2 25z"></path></svg></span>+44 (0) 1904 320 000</a></li>
+									<li><a href="https://mumbai.york.ac.uk/"><span aria-hidden="true" class="uoy_icon uoy_icon__before uoy_icon__solid#location-dot"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512"><path fill="currentColor" d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"></path></svg></span>University of York Mumbai</a></li>
+									<li><a href="https://city.yorkeuropecampus.eu/"><span aria-hidden="true" class="uoy_icon uoy_icon__before uoy_icon__solid#location-dot"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 384 512"><path fill="currentColor" d="M0 188.6C0 84.4 86 0 192 0S384 84.4 384 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0-50.2-54.5-170.4-197.5-170.4-316.8zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128z"></path></svg></span>University of York Europe Campus</a></li>
+								</ul></div>
+
+							<div class="uoy_footer_head_section uoy_footer_head_section__wide">
+
+								<div class="uoy_footer_social">
+
+									<a href="https://instagram.com/uniofyork" aria-label="Follow us on Instagram"><span class="uoy_icon uoy_icon__circle uoy_icon__instagram" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path></svg></span></a>
+									<a href="https://www.linkedin.com/school/UniOfYork" aria-label="Follow us on LinkedIn"><span class="uoy_icon uoy_icon__circle uoy_icon__linkedin-square" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg></span></a>
+									<a href="https://www.facebook.com/universityofyork" aria-label="Like us on Facebook"><span class="uoy_icon uoy_icon__circle uoy_icon__facebook" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 320 512"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"></path></svg></span></a>
+									<a href="https://www.tiktok.com/@uniofyork" aria-label="Follow us on TikTok"><span class="uoy_icon uoy_icon__circle uoy_icon__brands#tiktok" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path fill="currentColor" d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2l0 178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16l0 89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8l0-349.4 88 0c-.1 7.4 .6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1l0 87.4z"></path></svg></span></a>
+									<a href="http://www.youtube.com/universityofyorkuk" aria-label="Watch our videos on YouTube"><span class="uoy_icon uoy_icon__circle uoy_icon__youtube-play" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg></span></a>
+
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="uoy_footer_search">
+
+							<form action="https://www.york.ac.uk/search" method="get" class="uoy_form">
+								<fieldset><legend>Search the website</legend>
+									<input type="hidden" name="collection" value="york-uni~sp-web"><input type="hidden" name="profile" value="yorkweb"><div class="uoy_single_field_form">
+										<input type="text" id="q-search" name="query" aria-label="Search"><button type="submit" aria-label="Search"><span aria-hidden="true" class="uoy_icon uoy_icon__lg uoy_icon__solid#magnifying-glass"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg></span></button>
+									</div>
+								</fieldset></form>
+
+						</div>
+
+						<div class="uoy_footer_navigation">
+
+							<div class="uoy_footer_navigation_section">
+								<h2>Information for</h2>
+								<ul><li><a href="https://www.york.ac.uk/study/">Prospective students</a></li>
+									<li><a href="https://www.york.ac.uk/students/">Current students</a></li>
+									<li><a href="https://www.york.ac.uk/study/international/">International students</a></li>
+									<li><a href="https://www.york.ac.uk/schools-and-colleges/">Schools and colleges</a></li>
+									<li><a href="https://www.york.ac.uk/staff/">Staff</a></li>
+									<li><a href="https://www.york.ac.uk/alumni/">Alumni</a></li>
+									<li><a href="https://www.york.ac.uk/business/">Businesses</a></li>
+									<li><a href="https://www.york.ac.uk/news-and-events/for-media/">Press and media</a></li>
+								</ul></div>
+
+							<div class="uoy_footer_navigation_section">
+								<h2>Study with us</h2>
+								<ul><li><a href="https://www.york.ac.uk/study/undergraduate/">Undergraduate</a></li>
+									<li><a href="https://www.york.ac.uk/study/postgraduate-taught/">Postgraduate taught</a></li>
+									<li><a href="https://www.york.ac.uk/study/postgraduate-research/">Postgraduate research</a></li>
+									<li><a href="https://www.york.ac.uk/study/online-distance-learning/">Online and distance learning</a></li>
+									<li><a href="https://www.york.ac.uk/business/apprenticeships/">Apprenticeships</a></li>
+									<li><a href="https://www.york.ac.uk/study/careers/">Careers and employability</a></li>
+									<li><a href="https://www.york.ac.uk/study/accommodation/">Accommodation</a></li>
+									<li><a href="https://www.york.ac.uk/study/visit/">Open days and visits</a></li>
+								</ul></div>
+
+							<div class="uoy_footer_navigation_section">
+								<h2>Popular links</h2>
+								<ul><li><a href="https://www.york.ac.uk/about/">About the University</a></li>
+									<li><a href="https://www.york.ac.uk/about/departments/">Departments, offices and sections</a></li>
+									<li><a href="https://www.york.ac.uk/about/transport-maps-parking/">Getting here, maps and parking</a></li>
+									<li><a href="https://jobs.york.ac.uk/">Job vacancies</a></li>
+									<li><a href="https://status.york.ac.uk/">IT service status</a></li>
+									<li><a href="https://www.york.ac.uk/about/semester-dates/">Semester dates</a></li>
+								</ul></div>
+
+						</div>
+
+						<div class="uoy_footer_foot">
+							<div class="uoy_footer_copyright">© University of York</div>
+							<ul><li><a href="https://www.york.ac.uk/about/legal-statements/">Legal statements</a></li>
+								<li><a href="https://www.york.ac.uk/about/legal-statements/#privacy">Privacy</a></li>
+								<li><a href="https://www.york.ac.uk/about/legal-statements/cookies/">Cookies</a></li>
+								<li><a href="https://www.york.ac.uk/about/legal-statements/slavery-human-trafficking/">Modern slavery statement</a></li>
+								<li><a href="https://www.york.ac.uk/about/legal-statements/accessibility/">Accessibility</a></li>
+							</ul><ul class="uoy_footer_tools"><li><a class="t4Edit-page" href="https://cms.york.ac.uk/terminalfour/page/section#edit/316466/contents">Modify</a></li></ul></div>
+
+					</div>
+				</div>
+
+
+			</footer><script>document.querySelector( '.uoy_footer_foot' ).innerHTML += '<ul class="uoy_footer_tools"><li><a class="t4Edit-page" href="https://cms.york.ac.uk/terminalfour/page/section#edit/316466/contents">Modify</a></li></ul>';</script><script src="https://www.york.ac.uk/static/2/js/icons.js"></script><script>
+	icons = new ICONS( 'https://www.york.ac.uk/static/2' );
+</script><script src="https://www.york.ac.uk/static/2/js/loader.js"></script><script>
+	loader = new LOADER(
+	{
+		script_url: component_slug => `https://www.york.ac.uk/static/2/js/components/${ component_slug }.js`,
+		mimics:
+		{
+			'.youtube-video-embed': 'youtube_embed',
+			'.soundcloud-audio-embed': 'soundcloud_embed',
+			'table': 'table',
+		},
+	});
+</script><script src="https://www.york.ac.uk/static/globalalert/globalalert.js" async="" defer></script></div>
+
+	
+
+
+<style>
+
+/* -------------------------------------------------- */
+
+#ccc-content
+{
+	box-shadow: var( --box-shadow-raised );
+
+	--focus-colour: var( --white , white );
+}
+
+#ccc .ccc-panel
+{
+	inset: var( --padding , clamp( 1.5rem , calc( 1.59vw + 0.73rem ) , 2.25rem ) );
+	
+	font-size: var( --body-200-size , clamp( 1rem , calc( 0.35vw + 0.78rem ) , 1.125rem ) );
+	line-height: var( --body-200-line-height , 1.50 );
+}
+
+#ccc .ccc-panel h1
+{
+	font-size: var( --display-600-size , clamp( 2.1875rem , calc( 1.25vw + 1.43rem ) , 2.625rem ) );
+	line-height: var( --display-600-line-height , 1.00 );
+}
+
+#ccc .ccc-panel h2,
+#ccc .ccc-panel h3
+{
+	font-size: var( --display-400-size , clamp( 1.63rem , calc( 1.05vw + 0.99rem ) , 2rem ) );
+	line-height: var( --display-400-line-height , 1.10 );
+}
+
+/* -------------------------------------------------- */
+
+#ccc a
+{
+	color: var( --white , white );
+
+	text-decoration: underline;
+	text-decoration-color: currentColor;
+	text-underline-offset: 4px;
+	text-decoration-thickness: 1px;
+
+	word-break: break-word;
+
+	transition-property: var( --transition-properties );
+	transition-duration: var( --transition-chill );
+	transition-timing-function: ease-out;
+}
+
+#ccc a:hover,
+#ccc a:hover *
+{
+	color: var( --yellow , #FFD200 ) !important;
+
+	text-decoration-color: currentColor;
+	text-decoration-thickness: 3px;
+
+	transition-duration: var( --transition-snappy );
+}
+
+/* -------------------------------------------------- */
+
+#ccc #ccc-recommended-settings,
+#ccc #ccc-reject-settings
+{
+	padding: clamp( 0.75rem , calc( 0.73vw + 0.48rem ) , 1rem ) clamp( 1.25rem , calc( 0.73vw + 0.98rem ) , 1.5rem ) !important; /* 0.75@36/1@70 1.25@36/1.5@70 */
+
+	font-weight: bold;
+	text-align: center;
+
+	background: var( --yellow , #FFD200 );
+
+	border: 2px solid transparent;
+	border-radius: 3rem;
+
+	cursor: pointer;
+
+	/* In case this is a link */
+	display: inline-block;
+	text-decoration: none;
+	word-break: none;
+
+	transition-property: var( --transition-properties );
+	transition-duration: var( --transition-chill );
+	transition-timing-function: ease-out;
+}
+
+#ccc #ccc-recommended-settings:hover,
+#ccc #ccc-reject-settings:hover
+{
+	background: var( --yellow-tint , #FFE259 );
+
+	transition-duration: var( --transition-snappy );
+}
+
+#ccc #ccc-recommended-settings span,
+#ccc #ccc-reject-settings span
+{
+	color: var( --black , #0B0C0C ) !important;
+}
+
+/* -------------------------------------------------- */
+
+#ccc #ccc-close
+{
+	background: var( --yellow , #FFD200 );
+	border-radius: 50%;
+	width: 2.4em;
+	height: 2.4em;
+	border: 0.25em solid var( --yellow , #FFD200 );
+	
+	right: calc( var( --padding , clamp( 1.5rem , calc( 1.59vw + 0.73rem ) , 2.25rem ) ) / 2 );
+	top: calc( var( --padding , clamp( 1.5rem , calc( 1.59vw + 0.73rem ) , 2.25rem ) ) / 2 );
+}
+
+#ccc #ccc-close:hover
+{
+	background: var( --yellow-tint , #FFE259 );
+	border-color: var( --yellow-tint , #FFE259 );
+}
+
+#ccc #ccc-close svg
+{
+	width: 2em;
+	height: 2em;
+}
+
+#ccc #ccc-close svg
+{
+	fill: black;
+}
+
+#ccc #ccc-title
+{
+	padding-right: calc( var( --padding , clamp( 1.5rem , calc( 1.59vw + 0.73rem ) , 2.25rem ) ) / 2 + 0.5em );
+}
+
+/* -------------------------------------------------- */
+
+#ccc .checkbox-toggle--slider input:checked ~ .checkbox-toggle-toggle
+{
+	background-color: var( --bright-blue , #00C2DE );
+}
+
+/* -------------------------------------------------- */
+
+</style></body><iframe id="ce_proto_iframe" title="CrazyEgg Tracking iframe" aria-hidden="true" style="display: none;"></iframe></html>
