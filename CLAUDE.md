@@ -5,10 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev      # Start Vite development server
-npm run build    # Build for production
-npm run lint     # Run ESLint
-npm run preview  # Preview production build
+bun run dev      # Start Vite development server
+bun run build    # Build for production
+bun run lint     # Run ESLint
+bun run preview  # Preview production build
 ```
 
 ## Architecture
