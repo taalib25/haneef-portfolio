@@ -8,9 +8,6 @@
 /* Import Switzer for clean, modern body text */
 @import url("https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap");
 
-/* Import JetBrains Mono for better monospace */
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap");
-
 /* Now define the theme and root variables after imports */
 @theme {
   --font-display: "Clash Display", "DM Serif Display", Georgia, serif;
@@ -18,8 +15,8 @@
   /* Clean, readable body font */
   --font-body: "Switzer", system-ui, -apple-system, sans-serif;
 
-  /* JetBrains Mono - modern, readable monospace */
-  --font-mono: "JetBrains Mono", "SF Mono", "Monaco", "Inconsolata", monospace;
+  /* Clash Display for labels and structured content */
+  --font-mono: "Clash Display", "DM Serif Display", Georgia, serif;
 
   /* ── SURFACES - Simplified Color Scheme */
   --color-bg: #fdf8f2;
@@ -258,15 +255,15 @@ html {
   letter-spacing: -0.01em;
 }
 
-/* JetBrains Mono - reduced tracking (was 0.20em, now 0.10em max) */
+/* Clash Display for monospace elements - reduced tracking for cleaner look */
 .font-mono {
-  letter-spacing: 0.10em;
+  letter-spacing: 0.06em;
 }
 
-/* Mobile: further reduce mono tracking for narrow screens */
+/* Mobile: further reduce tracking for narrow screens */
 @media (max-width: 767px) {
   .font-mono {
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
   }
 }
 
@@ -395,4 +392,546 @@ p {
 
 .award-item:hover {
   border-bottom-color: rgba(193, 18, 31, 0.28);
+}
+
+/* ============================================
+   MOBILE OPTIMIZATION — Complete Audit & Fix
+   Mobile-first. Follow every instruction precisely.
+   ============================================ */
+
+/* Base mobile overflow fix */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  /* Typography Scale - Mobile */
+
+  /* Hero section */
+  #hero h1 {
+    font-size: clamp(2.5rem, 11vw, 4rem) !important;
+    letter-spacing: -0.03em !important;
+    line-height: 0.88 !important;
+  }
+
+  #hero [class*="text-[rgba(253,248,242,0.65]"] {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Section headlines (ONE CAREER. TWO ARENAS. etc.) */
+  h2.font-display {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    letter-spacing: -0.025em !important;
+    line-height: 0.92 !important;
+  }
+
+  /* Card / entry role titles */
+  .font-body.font-semibold,
+  .font-body[class*="text-[1."] {
+    font-size: 1.05rem !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* Year labels in timeline */
+  .timeline-year {
+    font-size: 1.3rem !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  /* Body text - minimum 15px */
+  p.font-body {
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Section labels [ 01 — THE STORY ] */
+  .font-mono.text-\[var\(--ta\)\] {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* Pillar/value names */
+  .val-name {
+    font-size: 1rem !important;
+  }
+
+  /* Pills / stat badges */
+  .tag-pill {
+    font-size: 0.7rem !important;
+    padding: 2px 6px !important;
+  }
+
+  /* Philosophy cascade */
+  .font-display.text-t-philosophy,
+  [class*="text-t-philosophy"] {
+    font-size: clamp(2rem, 9vw, 3.5rem) !important;
+    line-height: 0.92 !important;
+  }
+
+  /* Spacing - Scale everything down */
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Between section headline and first content */
+  .mb-16.md\:mb-20 {
+    margin-bottom: 1.75rem !important;
+  }
+
+  /* Between section label and headline */
+  .mb-4.md\:mb-6 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Between timeline entries */
+  .timeline-entry {
+    padding-bottom: 1.75rem !important;
+  }
+
+  /* Between paragraphs */
+  p + p {
+    margin-top: 0.85rem !important;
+  }
+
+  /* Hero bottom anchor strip - hide on mobile */
+  .hero-anchor-strip {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   CAMPAIGN SECTION — Mobile
+   ============================================ */
+
+@media (max-width: 767px) {
+  /* DRR promise block */
+  .campaign-promise-statement {
+    font-size: clamp(1.25rem, 4.5vw, 2rem) !important;
+    padding: 2rem 1.25rem !important;
+  }
+
+  .campaign-promise-attribution {
+    font-size: 0.75rem !important;
+    padding: 0 1.25rem !important;
+  }
+
+  /* CIGR grid - single column */
+  .cigr-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cigr-cell {
+    padding: 1.25rem !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: 1px solid var(--cb) !important;
+  }
+
+  /* Core values - single column */
+  .value-item {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* ============================================
+   WORK SECTION — Mobile
+   ============================================ */
+
+@media (max-width: 767px) {
+  .work-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .work-col-divider {
+    width: 100% !important;
+    height: 1px !important;
+    margin: 0 !important;
+    background: rgba(15, 6, 8, 0.08) !important;
+  }
+
+  .work-role-title {
+    font-size: 1.1rem !important;
+  }
+
+  .work-body {
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+  }
+
+  .tag-pill {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* ============================================
+   TIMELINE SECTION — Mobile
+   ============================================ */
+
+@media (max-width: 767px) {
+  /* Remove two-column layout */
+  .timeline-body {
+    display: block !important;
+  }
+
+  /* Path column - hide on mobile */
+  .timeline-path-column {
+    display: none !important;
+  }
+
+  /* Entries container with left accent border */
+  .timeline-entries-container {
+    border-left: 2px solid rgba(193, 18, 31, 0.15) !important;
+    padding-left: 1.25rem !important;
+  }
+
+  /* Each entry */
+  .timeline-entry {
+    padding: 1.25rem 0 1.75rem 1.25rem !important;
+    border-left: none !important;
+    position: relative !important;
+  }
+
+  /* Dot on each entry */
+  .timeline-dot {
+    position: absolute !important;
+    left: -1.15rem !important;
+    top: 8px !important;
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+  }
+
+  /* Hero card (President) - crimson left border */
+  .timeline-entry-hero {
+    border-left: 3px solid var(--crimson) !important;
+  }
+}
+
+/* ============================================
+   COLOUR — Lighter text on mobile
+   ============================================ */
+
+@media (max-width: 767px) {
+  /* Timeline entry body text */
+  .timeline-body,
+  .timeline-entry p {
+    color: #5A4840 !important;
+  }
+
+  /* Work card body text */
+  .work-body,
+  .work-entry p {
+    color: #5A4840 !important;
+  }
+
+  /* More vertical whitespace between text blocks */
+  .timeline-entry p + p,
+  .work-entry p + p {
+    margin-top: 0.9rem !important;
+  }
+
+  /* Space after organisation label */
+  .org-label + .divider {
+    margin-top: 0.75rem !important;
+  }
+
+  /* Hide pills beyond 3 on mobile (if more than 3 exist) */
+  .tag-pill:nth-child(n+4) {
+    display: none !important;
+  }
+
+  /* Hero section overflow fix */
+  #hero {
+    overflow: hidden !important;
+    max-width: 100% !important;
+  }
+
+  /* Portrait image on mobile */
+  #hero img[alt="Haneef Mohamed"] {
+    width: 100% !important;
+    height: 55vw !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+  }
+
+  /* Hero name spacing */
+  #hero h1 {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Hero CTAs - full width stacked */
+  #hero a[href^="#"] {
+    width: 100% !important;
+    min-height: 48px !important;
+  }
+
+  /* Section scroll margins */
+  section {
+    scroll-margin-top: 80px !important;
+  }
+}
+
+/* ============================================
+   NAVIGATION — Mobile Hamburger
+   ============================================ */
+
+@media (max-width: 767px) {
+  /* Hide full nav links */
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Show hamburger */
+  .hamburger-menu {
+    display: block !important;
+  }
+
+  /* Hamburger button */
+  .hamburger-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 5px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+  }
+
+  .hamburger-btn span {
+    width: 22px !important;
+    height: 1.5px !important;
+    background: #FDF8F2 !important;
+    transition: background 0.2s ease !important;
+  }
+
+  /* Hamburger on light sections */
+  section:not(#hero) .hamburger-btn span {
+    background: #0F0608 !important;
+  }
+
+  /* Drawer */
+  .nav-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: min(280px, 85vw) !important;
+    height: 100vh !important;
+    background: #FDF8F2 !important;
+    padding: 2rem 1.5rem !important;
+    z-index: 1000 !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  .nav-drawer.open {
+    transform: translateX(0) !important;
+  }
+
+  /* Links in drawer */
+  .nav-drawer a {
+    font-family: var(--font-display) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: #0F0608 !important;
+    display: block !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Overlay behind drawer */
+  .nav-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(15, 6, 8, 0.35) !important;
+    z-index: 999 !important;
+  }
+}
+
+/* ============================================
+   HERO SECTION — Mobile Layout Fix
+   ============================================ */
+
+@media (max-width: 767px) {
+  /* Ensure hero section doesn't overflow */
+  #hero {
+    overflow: hidden !important;
+    max-width: 100% !important;
+  }
+
+  /* Portrait image container */
+  #hero .mobile-portrait {
+    width: 100% !important;
+    height: 55vw !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    border-radius: 0 !important;
+  }
+
+  /* Identity label */
+  #hero .identity-label {
+    font-size: 0.6rem !important;
+    letter-spacing: 0.08em !important;
+    color: rgba(253, 248, 242, 0.55) !important;
+    padding: 1rem 1.25rem 0 !important;
+  }
+
+  /* Name */
+  #hero h1 {
+    padding: 0.5rem 1.25rem 0 !important;
+  }
+
+  /* Sub-headline */
+  #hero .sub-headline {
+    font-size: 0.875rem !important;
+    color: rgba(253, 248, 242, 0.65) !important;
+    padding: 0.75rem 1.25rem 0 !important;
+  }
+
+  /* CTAs container */
+  #hero .cta-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    padding: 1rem 1.25rem 2rem !important;
+  }
+
+  /* CTA buttons - full width */
+  #hero .cta-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+  }
+
+  /* Crimson to page transition */
+  #hero .hero-gradient-transition {
+    height: 80px !important;
+    background: linear-gradient(to bottom, #780000, #FDF8F2) !important;
+  }
+}
+
+/* ============================================
+   RECOGNITION SECTION — Mobile
+   ============================================ */
+
+@media (max-width: 767px) {
+  .award-item {
+    padding: 1rem 0 !important;
+  }
+
+  .award-year {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .award-title {
+    font-size: 1.1rem !important;
+  }
+
+  .award-event {
+    font-size: 0.9375rem !important;
+  }
+
+  .award-context {
+    font-size: 0.875rem !important;
+  }
+
+  /* Section top rules - adjust spacing on mobile */
+  .h-\[2px\].w-full.bg-\[var\(--crimson\)\] {
+    margin-bottom: 2rem !important;
+  }
+
+  /* Campaign section promise statement */
+  .campaign-promise {
+    padding: 1.5rem 0 !important;
+  }
+
+  /* Philosophy cascade headline - smaller on mobile */
+  #philosophy .font-display.text-t-hero {
+    font-size: clamp(2rem, 9vw, 3.5rem) !important;
+    line-height: 0.92 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Philosophy intro text below headline */
+  #philosophy .font-body.text-t-base {
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Philosophy three principles - stack on mobile */
+  #philosophy .flex.flex-col.md\:flex-row {
+    gap: 2rem !important;
+  }
+
+  #philosophy .flex-1 {
+    border: none !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 1.5rem 0 !important;
+  }
+
+  #philosophy .flex-1:last-child {
+    border-bottom: none !important;
+  }
+
+  /* Philosophy principle titles and text */
+  #philosophy h3.font-display {
+    font-size: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  #philosophy p.font-body {
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Campaign "Why I Am Running" section - italic statement text */
+  #campaign .font-body.text-\[1\.0625rem\] {
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+    padding: 0 1rem !important;
+  }
+
+  /* Contact section mobile */
+  #contact {
+    padding: 3rem 1.25rem !important;
+  }
+
+  /* Ensure all section headers have proper mobile spacing */
+  section .mb-16,
+  section .mb-20 {
+    margin-bottom: 2rem !important;
+  }
+
+  section .mb-12 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  section .mb-8 {
+    margin-bottom: 1rem !important;
+  }
+
+  section .mb-6 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  section .mb-4 {
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* ============================================
+   NAVIGATION - Text Effects
+   ============================================ */
+
+/* Subtle text shadow for identity on hero section */
+.text-shadow-subtle {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }

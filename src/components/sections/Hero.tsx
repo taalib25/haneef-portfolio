@@ -93,7 +93,7 @@ export default function Hero() {
 
       {/* Mobile Portrait - Above content */}
       {isMobile && (
-        <div className="w-full relative h-[60vw] max-h-[320px] overflow-hidden md:hidden" style={{ zIndex: 1 }}>
+        <div className="w-full relative h-[55vw] max-h-[300px] overflow-hidden md:hidden" style={{ zIndex: 1 }}>
           <img
             src="https://placehold.co/480x600/141414/C1121F?text=Portrait"
             alt="Haneef Mohamed"
@@ -189,13 +189,23 @@ export default function Hero() {
         </>
       ) : (
         // Mobile Layout - Simpler, stacked
-        <div className="relative z-20 px-5 pt-8 pb-10 flex flex-col">
+        <div className="relative z-20 px-5 pt-0 pb-0 flex flex-col">
+          {/* Identity label */}
+          <motion.p
+            className="font-mono text-[0.6rem] tracking-[0.08em] uppercase text-[rgba(253,248,242,0.55)] pt-4 pb-2"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.4, ease: EASE_SMOOTH }}
+          >
+            [ IDENTITY / LEADERSHIP ]
+          </motion.p>
+
           {/* Name */}
           <motion.h1
-            className="font-display font-bold text-[clamp(2.8rem,11vw,4rem)] text-[var(--ht1)] leading-[0.9] tracking-[-0.03em] uppercase mb-3"
+            className="font-display font-bold text-[clamp(2.5rem,11vw,4rem)] text-[var(--ht1)] leading-[0.88] tracking-[-0.03em] uppercase mt-2 mb-3 px-2"
             initial={!prefersReducedMotion ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
             animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.6, ease: EASE_SMOOTH }}
+            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.1 }}
           >
             HANEEF
             <br />
@@ -204,43 +214,51 @@ export default function Hero() {
 
           {/* Horizontal Rule */}
           <motion.div
-            className="w-full h-px mb-3"
+            className="w-full h-px mb-4"
             style={{ background: "rgba(253,248,242,0.20)" }}
             initial={!prefersReducedMotion ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
             animate={!prefersReducedMotion ? { opacity: 1, scaleX: 1 } : { opacity: 1 }}
-            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.1 }}
+            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.15 }}
           />
 
           {/* Role Line - smaller, cleaner */}
           <motion.p
-            className="font-body font-light text-[0.95rem] text-[rgba(253,248,242,0.65)] tracking-wide mb-5"
+            className="font-body font-light text-[0.875rem] text-[rgba(253,248,242,0.65)] tracking-wide mb-6 px-2"
             initial={!prefersReducedMotion ? { opacity: 0, y: 15 } : { opacity: 1, y: 0 }}
             animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.15 }}
+            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.2 }}
           >
             PR Strategist · Rotaract President · DRR Candidate
           </motion.p>
 
           {/* CTAs - Clean buttons with display font */}
           <motion.div
-            className="flex flex-col gap-2.5"
+            className="flex flex-col gap-3 px-2 pb-8"
             initial={!prefersReducedMotion ? { opacity: 0, y: 15 } : { opacity: 1, y: 0 }}
             animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.25 }}
+            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.3 }}
           >
             <a
               href="#story"
-              className="inline-flex justify-center items-center bg-[var(--hta)] text-[var(--crimson-dark)] font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 border-0 no-underline"
+              className="inline-flex justify-center items-center bg-[var(--hta)] text-[var(--crimson-dark)] font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-[48px] py-3 border-0 no-underline w-full"
             >
               The Story
             </a>
             <a
               href="#campaign"
-              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.35)] text-[var(--ht1)] font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
+              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.35)] text-[var(--ht1)] font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-[48px] py-3 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors w-full"
             >
               Campaign
             </a>
           </motion.div>
+
+          {/* Gradient transition to page - only on mobile */}
+          <div
+            className="h-[80px] w-full md:hidden"
+            style={{
+              background: "linear-gradient(to bottom, #780000, #FDF8F2)"
+            }}
+          />
         </div>
       )}
     </section>

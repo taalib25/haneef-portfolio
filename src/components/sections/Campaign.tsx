@@ -9,9 +9,31 @@ export default function Campaign() {
   const containerRef = useRef<HTMLElement>(null);
   const phaseStepsRef = useRef<(HTMLDivElement | null)[]>([]);
   const valueItemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const runningForRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // "Running for" highlight animation
+      if (runningForRef.current) {
+        const highlight = runningForRef.current.querySelector('.highlight-overlay');
+        if (highlight) {
+          gsap.fromTo(
+            highlight,
+            { width: '0%' },
+            {
+              width: '100%',
+              duration: 1.2,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: runningForRef.current,
+                start: 'top 75%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
+      }
+
       // Three-Phase Action Plan animations
       phaseStepsRef.current.forEach((el, i) => {
         if (!el) return;
@@ -86,7 +108,10 @@ export default function Campaign() {
               [ 04 — THE CAMPAIGN ]
             </p>
             <h2 className="font-display text-t-4xl text-(--ct1) leading-[0.92] tracking-[-0.025em] uppercase mb-6">
-              RUNNING FOR
+              <div ref={runningForRef} className="inline-block relative">
+                <span className="relative z-10">RUNNING FOR</span>
+                <span className="highlight-overlay absolute inset-0 bg-[rgba(255,220,0,0.35)] z-0" style={{ width: '0%', left: 0, top: 0, bottom: 0 }} />
+              </div>
               <br />
               DISTRICT ROTARACT
               <br />
@@ -128,7 +153,7 @@ export default function Campaign() {
           <h3 className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-8 text-center">
             WHY I AM RUNNING
           </h3>
-          <div className="font-body text-t-lg text-(--ct2) leading-[1.75] space-y-6">
+          <div className="font-body text-[1.0625rem] text-(--ct2) leading-[1.75] space-y-6 italic">
             <p>
               I am running for District Rotaract Representative because I
               believe our district is at a crossroads. Over time, the
@@ -184,12 +209,9 @@ export default function Campaign() {
             <p className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-3">
               THE REALITY
             </p>
-            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--ct1) leading-[0.95] tracking-[-0.02em] uppercase">
+            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-[#780000] leading-[0.95] tracking-[-0.02em] uppercase">
               Three Challenges We Must Face
             </h3>
-            <p className="font-body text-[1rem] text-(--ct2) italic mt-4">
-              Honest. Direct. No political softening.
-            </p>
           </div>
 
           {/* Challenges container - full-width row layout */}
@@ -278,8 +300,8 @@ export default function Campaign() {
             <h3 className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-4">
               CIGR Strategic Analysis
             </h3>
-            <p className="font-body text-[0.9rem] text-(--ct2) italic">
-              My framework for understanding where the district stands — and
+            <p className="font-body text-[0.9rem] text-(--ct2) italic justify-center">
+              My framework for understanding where the district stands and
               where it needs to go.
             </p>
           </div>
@@ -293,28 +315,35 @@ export default function Campaign() {
 
         {/* Strategic Pillars — Framework Layout */}
         <div className="mb-32">
-          <h3 className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-4 text-center">
-            FOUR STRATEGIC PILLARS
-          </h3>
-          <p className="font-body text-t-base text-(--ct2) text-center max-w-2xl mx-auto mb-12">
-            Built on member value, mentorship, partnerships, and transparency.
-          </p>
+          <div className="text-left mb-12">
+            <p className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-4">
+              FOUR STRATEGIC PILLARS
+            </p>
+            <h3 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-(--ct1) leading-[0.95] tracking-[-0.025em] uppercase mb-4">
+              The Framework
+            </h3>
+            <p className="font-body text-t-base text-(--ct2) max-w-2xl">
+              Built on member value, mentorship, partnerships, and transparency.
+            </p>
+          </div>
 
-          {/* Pillars container - full-width horizontal bands */}
+          {/* Pillars container - full-width horizontal bands with new grid */}
           <div className="space-y-0 bg-[#FDF0D5]">
             {/* Pillar 1 — Value Chain */}
-            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
+            <div className="relative flex border-t border-[rgba(120,0,0,0.10)]">
               {/* Left crimson accent bar - 3px, full height */}
-              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
 
-              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
-                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+              {/* Number column - 60px width */}
+              <div className="w-[60px] flex-shrink-0 flex items-center justify-center border-r border-[rgba(193,18,31,0.15)]">
+                <span className="font-display text-[3rem] font-bold text-[rgba(193,18,31,0.25)] leading-none">
                   01
                 </span>
               </div>
 
-              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
-                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
+              {/* Content column */}
+              <div className="flex-1 py-[2.5rem] pl-6 pr-4">
+                <h4 className="font-display text-[1.35rem] text-[#003049] mb-[0.6rem] font-semibold uppercase leading-[1.1]">
                   Rotaractor Value Chain
                 </h4>
                 <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
@@ -328,17 +357,17 @@ export default function Campaign() {
             </div>
 
             {/* Pillar 2 — Bridge Programme */}
-            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
-              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+            <div className="relative flex border-t border-[rgba(120,0,0,0.10)]">
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
 
-              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
-                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+              <div className="w-[60px] flex-shrink-0 flex items-center justify-center border-r border-[rgba(193,18,31,0.15)]">
+                <span className="font-display text-[3rem] font-bold text-[rgba(193,18,31,0.25)] leading-none">
                   02
                 </span>
               </div>
 
-              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
-                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
+              <div className="flex-1 py-[2.5rem] pl-6 pr-4">
+                <h4 className="font-display text-[1.35rem] text-[#003049] mb-[0.6rem] font-semibold uppercase leading-[1.1]">
                   The Bridge Programme
                 </h4>
                 <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
@@ -351,17 +380,17 @@ export default function Campaign() {
             </div>
 
             {/* Pillar 3 — Strategic Alliances */}
-            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
-              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+            <div className="relative flex border-t border-[rgba(120,0,0,0.10)]">
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
 
-              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
-                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+              <div className="w-[60px] flex-shrink-0 flex items-center justify-center border-r border-[rgba(193,18,31,0.15)]">
+                <span className="font-display text-[3rem] font-bold text-[rgba(193,18,31,0.25)] leading-none">
                   03
                 </span>
               </div>
 
-              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
-                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
+              <div className="flex-1 py-[2.5rem] pl-6 pr-4">
+                <h4 className="font-display text-[1.35rem] text-[#003049] mb-[0.6rem] font-semibold uppercase leading-[1.1]">
                   Strategic Alliances
                 </h4>
                 <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
@@ -374,17 +403,17 @@ export default function Campaign() {
             </div>
 
             {/* Pillar 4 — Governance & Accountability */}
-            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
-              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+            <div className="relative flex border-t border-[rgba(120,0,0,0.10)]">
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
 
-              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
-                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+              <div className="w-[60px] flex-shrink-0 flex items-center justify-center border-r border-[rgba(193,18,31,0.15)]">
+                <span className="font-display text-[3rem] font-bold text-[rgba(193,18,31,0.25)] leading-none">
                   04
                 </span>
               </div>
 
-              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
-                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
+              <div className="flex-1 py-[2.5rem] pl-6 pr-4">
+                <h4 className="font-display text-[1.35rem] text-[#003049] mb-[0.6rem] font-semibold uppercase leading-[1.1]">
                   Governance & Accountability
                 </h4>
                 <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
@@ -405,7 +434,7 @@ export default function Campaign() {
             <p className="font-mono text-[9.5px] text-(--cta) tracking-[0.10em] uppercase mb-3">
               THE COMMITMENT
             </p>
-            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--ct1) leading-[0.95] tracking-[-0.025em] uppercase">
+            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-[#780000] leading-[0.95] tracking-[-0.025em] uppercase">
               Three-Phase Action Plan
             </h3>
             <p className="font-body text-[1rem] text-(--ct2) italic mt-4">
@@ -544,72 +573,6 @@ export default function Campaign() {
                 </p>
               </div>
             </div>
-
-            {/* Desktop grid structure */}
-            <div className="phase-grid-desktop hidden">
-              {/* Phase 1 */}
-              <div className="phase-step-0 phase-step flex flex-col p-6">
-                <span className="font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">01</span>
-                <div className="w-[34px] h-[34px] rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center mb-4">
-                  <span className="font-display text-[0.875rem] font-bold text-(--crimson)">01</span>
-                </div>
-                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">Phase 01 — First Quarter</p>
-                <h4 className="font-display text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">Purpose-Led Leadership</h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
-                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
-                  Workshops that help club leaders clearly define their purpose
-                  and align their activities with meaningful outcomes.
-                </p>
-                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
-                  Member wellbeing assessments to identify and prevent burnout
-                  before it shows up as attrition.
-                </p>
-              </div>
-
-              {/* Divider 1 */}
-              <div className="phase-col-div bg-[rgba(193,18,31,0.18)] w-px self-stretch" />
-
-              {/* Phase 2 */}
-              <div className="phase-step-1 phase-step flex flex-col p-6">
-                <span className="font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">02</span>
-                <div className="w-[34px] h-[34px] rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center mb-4">
-                  <span className="font-display text-[0.875rem] font-bold text-(--crimson)">02</span>
-                </div>
-                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">Phase 02 — Second Quarter</p>
-                <h4 className="font-display text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">Change Management</h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
-                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
-                  Digital systems that simplify reporting, attendance tracking,
-                  and financial management.
-                </p>
-                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
-                  Clubs receive governance support to strengthen administrative
-                  and financial structures from the ground up — not top-down mandates.
-                </p>
-              </div>
-
-              {/* Divider 2 */}
-              <div className="phase-col-div bg-[rgba(193,18,31,0.18)] w-px self-stretch" />
-
-              {/* Phase 3 */}
-              <div className="phase-step-2 phase-step flex flex-col p-6">
-                <span className="font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">03</span>
-                <div className="w-[34px] h-[34px] rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center mb-4">
-                  <span className="font-display text-[0.875rem] font-bold text-(--crimson)">03</span>
-                </div>
-                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">Phase 03 — Second Half</p>
-                <h4 className="font-display text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">Impact Realisation</h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
-                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
-                  A public digital dashboard showcasing the district's collective
-                  contribution to global development goals.
-                </p>
-                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
-                  Culminating in the Perspective Summit — a district-wide platform
-                  focused on professional development, networking, and leadership growth.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -620,7 +583,7 @@ export default function Campaign() {
             <p className="font-mono text-[9.5px] text-(--cta) tracking-[0.10em] uppercase mb-3">
               THE PRINCIPLES
             </p>
-            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--ct1) leading-[0.95] tracking-[-0.025em] uppercase">
+            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-[#780000] leading-[0.95] tracking-[-0.025em] uppercase">
               Core Values
             </h3>
             <p className="font-body text-[1rem] text-(--ct2) italic mt-4">

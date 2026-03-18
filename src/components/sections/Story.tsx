@@ -29,6 +29,11 @@ export default function Story() {
   const prefersReducedMotion = getReducedMotion();
 
   useEffect(() => {
+    // Skip path animation on mobile
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
       const lineEl = lineRef.current;
       const sectionEl = timelineSectionRef.current;

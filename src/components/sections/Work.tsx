@@ -116,7 +116,7 @@ export default function Work() {
               </div>
 
               {/* Role Title */}
-              <h3 className="font-display font-bold text-[1.75rem] md:text-[1.75rem] text-[var(--t1)] uppercase mb-6 leading-[1.1]">
+              <h3 className="font-display font-bold text-[1.75rem] md:text-[1.75rem] text-[var(--tb)] uppercase mb-6 leading-[1.1]">
                 Strategic PR & Reputation Executive
               </h3>
 
@@ -162,7 +162,7 @@ export default function Work() {
               </div>
 
               {/* Role Title */}
-              <h3 className="font-display font-bold text-[1.75rem] md:text-[1.75rem] text-[var(--t1)] uppercase mb-6 leading-[1.1]">
+              <h3 className="font-display font-bold text-[1.75rem] md:text-[1.75rem] text-[var(--tb)] uppercase mb-6 leading-[1.1]">
                 Business Development Executive
               </h3>
 

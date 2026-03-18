@@ -160,8 +160,8 @@ export default function Philosophy() {
         >
           {/* Column 1 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 md:border-r border-(--border) md:first:pl-0">
-            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.10em] uppercase mb-6">
-              VISIONARY YET GROUNDED
+            <h3 className="font-display text-t-xs text-(--ta) font-semibold mb-6" style={{ letterSpacing: '-0.01em', textTransform: 'none' }}>
+              Visionary yet grounded
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
               Long-term vision matters, but so does staying grounded in present realities. I try to hold both at once: where we are going and where we actually are.
@@ -170,8 +170,8 @@ export default function Philosophy() {
 
           {/* Column 2 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 md:border-r border-(--border)">
-            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.10em] uppercase mb-6">
-              FACILITATE, DON'T CONTROL
+            <h3 className="font-display text-t-xs text-(--ta) font-semibold mb-6" style={{ letterSpacing: '-0.01em', textTransform: 'none' }}>
+              Facilitate, don't control
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
               Remove obstacles. Provide tools. Enable others to succeed. Not directing from above, but supporting from within.
@@ -180,8 +180,8 @@ export default function Philosophy() {
 
           {/* Column 3 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 border-(--border) md:last:pr-0">
-            <h3 className="font-mono text-t-xs text-(--ta) tracking-[0.10em] uppercase mb-6">
-              LEAD WITH PURPOSE
+            <h3 className="font-display text-t-xs text-(--ta) font-semibold mb-6" style={{ letterSpacing: '-0.01em', textTransform: 'none' }}>
+              Lead with purpose
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
               Start with why. When people understand the purpose behind their work, they become far more motivated to create real impact.
