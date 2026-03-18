@@ -1,46 +1,13 @@
-import { StrictMode, useEffect } from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import Lenis from 'lenis';
+import './lib/scroll'; // Lenis + GSAP initialization
 
-// Initialize Lenis smooth scrolling - Fixed for smooth, non-glitchy experience
-function initSmoothScroll() {
-  const lenis = new Lenis({
-    lerp: 0.1, // Lower = smoother but slower, higher = faster but can feel glitchy
-    duration: 1.2, // Longer duration = smoother scroll
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -8 * t)), // Natural easing curve
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    smoothWheel: true,
-    wheelMultiplier: 1, // Don't amplify wheel input
-    touchMultiplier: 1, // Don't amplify touch input
-    infinite: false,
-  });
-
-  // Scroll to top immediately on page load
-  lenis.scrollTo(0, { immediate: true });
-
-  // RequestAnimationFrame loop for smooth updates
-  function raf(time: number) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-
-  // Clean up on unmount
-  return () => {
-    lenis.destroy();
-  };
-}
+// Lenis + GSAP integration is handled in scroll.ts
 
 // Create a wrapper component to handle Lenis initialization
 function AppWithSmoothScroll() {
-  useEffect(() => {
-    const cleanup = initSmoothScroll();
-    return cleanup;
-  }, []);
-
   return <App />;
 }
 

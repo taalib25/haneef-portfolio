@@ -7,10 +7,52 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Campaign() {
   const containerRef = useRef<HTMLElement>(null);
+  const phaseStepsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const valueItemsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Any scroll animations for campaign section
+      // Three-Phase Action Plan animations
+      phaseStepsRef.current.forEach((el, i) => {
+        if (!el) return;
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.65,
+            ease: "power2.out",
+            delay: i * 0.12,
+            scrollTrigger: {
+              trigger: ".phase-track",
+              start: "top 78%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+
+      // Core Values animations
+      valueItemsRef.current.forEach((el, i) => {
+        if (!el) return;
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 14 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.55,
+            ease: "power2.out",
+            delay: i * 0.07,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 86%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
     }, containerRef);
 
     return () => ctx.revert();
@@ -65,7 +107,7 @@ export default function Campaign() {
             <p className="font-mono text-[0.8rem] text-[#780000] tracking-[0.12em] uppercase mb-6">
               THE PROMISE
             </p>
-            
+
             <p className="font-display text-[clamp(2rem,3.5vw,3rem)] text-(--ct1) leading-[1.15] tracking-[-0.02em]">
               To transform our district into a high-value ecosystem
               <br />
@@ -73,7 +115,7 @@ export default function Campaign() {
               <br />
               standard.
             </p>
-            
+
             <p className="font-body text-[0.85rem] italic text-[#9A7F7A] mt-8">
               — Haneef Mohamed, DRR Candidate, District 3220
             </p>
@@ -170,7 +212,7 @@ export default function Campaign() {
                   Retention
                 </span>
               </div>
-              
+
               <div>
                 <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 leading-[1.1] uppercase">
                   Membership Retention
@@ -194,7 +236,7 @@ export default function Campaign() {
                   Stewardship
                 </span>
               </div>
-              
+
               <div>
                 <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 leading-[1.1] uppercase">
                   Financial Stewardship
@@ -219,7 +261,7 @@ export default function Campaign() {
                   Partnership
                 </span>
               </div>
-              
+
               <div>
                 <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 leading-[1.1] uppercase">
                   Meaningful Partnerships
@@ -270,13 +312,13 @@ export default function Campaign() {
             <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
               {/* Left crimson accent bar - 3px, full height */}
               <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
-              
+
               <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
                 <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
                   01
                 </span>
               </div>
-              
+
               <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
                 <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   Rotaractor Value Chain
@@ -294,13 +336,13 @@ export default function Campaign() {
             {/* Pillar 2 — Bridge Programme */}
             <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
               <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
-              
+
               <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
                 <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
                   02
                 </span>
               </div>
-              
+
               <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
                 <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   The Bridge Programme
@@ -317,13 +359,13 @@ export default function Campaign() {
             {/* Pillar 3 — Strategic Alliances */}
             <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
               <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
-              
+
               <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
                 <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
                   03
                 </span>
               </div>
-              
+
               <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
                 <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   Strategic Alliances
@@ -340,13 +382,13 @@ export default function Campaign() {
             {/* Pillar 4 — Governance & Accountability */}
             <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
               <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
-              
+
               <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
                 <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
                   04
                 </span>
               </div>
-              
+
               <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
                 <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   Governance & Accountability
@@ -366,10 +408,10 @@ export default function Campaign() {
         <div className="mb-32">
           {/* Section header */}
           <div className="text-center mb-16">
-            <p className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-3">
+            <p className="font-mono text-[9.5px] text-(--cta) tracking-[0.10em] uppercase mb-3">
               THE COMMITMENT
             </p>
-            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--ct1) leading-[0.95] tracking-[-0.02em] uppercase">
+            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--ct1) leading-[0.95] tracking-[-0.025em] uppercase">
               Three-Phase Action Plan
             </h3>
             <p className="font-body text-[1rem] text-(--ct2) italic mt-4">
@@ -377,91 +419,201 @@ export default function Campaign() {
             </p>
           </div>
 
-          {/* Timeline container */}
-          <div className="relative">
-            {/* Vertical timeline line - desktop only */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--crimson)] via-[var(--crimson)] to-[var(--cb)]" />
+          {/* Mobile: vertical step track (below 768px) */}
+          {/* Desktop: three columns (768px and above) */}
+          <div className="phase-track md:phase-track-hidden relative md:static">
+            {/* Mobile connecting line */}
+            <div className="md:hidden absolute left-[calc(1.25rem+19px)] top-2 bottom-12 w-px bg-[rgba(193,18,31,0.16)]" />
 
-            <div className="flex flex-col gap-12 md:gap-16">
-              {/* Phase 1 */}
-              <div className="relative md:flex items-center gap-8 group">
-                {/* Timeline node */}
-                <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[var(--crimson)] rounded-full border-4 border-[var(--bg)] z-10 group-hover:scale-125 transition-transform duration-300" />
-
-                {/* Content card - mobile: full width with left margin, desktop: left side */}
-                <div className="ml-20 md:ml-0 md:w-[calc(50%-2rem)] md:mr-auto bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-lg">
-                  {/* Phase badge */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="font-display text-[3rem] font-bold text-[var(--crimson)] opacity-20">01</span>
-                    <div className="flex-1 h-px bg-gradient-to-r from-[var(--crimson)] to-transparent" />
-                  </div>
-
-                  <h4 className="font-display text-[1.5rem] text-(--ct1) mb-2 uppercase leading-[1.1]">
-                    Purpose-Led Leadership
-                  </h4>
-                  <p className="font-mono text-[0.75rem] text-(--cta) tracking-[0.15em] uppercase mb-4">
-                    First Quarter
-                  </p>
-
-                  <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                    Workshops that help club leaders clearly define purpose and
-                    align activities with meaningful outcomes. Member wellbeing
-                    assessments to identify and prevent burnout before it shows up
-                    as attrition.
-                  </p>
-                </div>
+            {/* Phase Step 1 */}
+            <div
+              ref={(el) => { phaseStepsRef.current[0] = el; }}
+              className="phase-step-0 phase-step flex md:block gap-5 md:gap-0 pb-8 md:pb-0 md:p-6 last:pb-0"
+            >
+              {/* Mobile circle (left column, 40px) */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center relative z-10 md:hidden">
+                <span className="font-display text-[1rem] font-bold text-(--crimson)">01</span>
               </div>
+
+              {/* Content (right column on mobile, full on desktop) */}
+              <div className="flex-1 pt-[0.4rem] md:pt-0">
+                {/* Desktop: large background number */}
+                <span className="hidden md:block font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">
+                  01
+                </span>
+
+                {/* Phase kicker */}
+                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">
+                  Phase 01 — First Quarter
+                </p>
+
+                {/* Phase title */}
+                <h4 className="font-display text-[1.1rem] md:text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">
+                  Purpose-Led Leadership
+                </h4>
+
+                {/* Divider */}
+                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
+
+                {/* Body paragraphs */}
+                <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
+                  Workshops that help club leaders clearly define their purpose
+                  and align their activities with meaningful outcomes.
+                </p>
+                <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
+                  Member wellbeing assessments to identify and prevent burnout
+                  before it shows up as attrition.
+                </p>
+              </div>
+            </div>
+
+            {/* Phase Step 2 - Mobile */}
+            <div
+              ref={(el) => { phaseStepsRef.current[1] = el; }}
+              className="phase-step-1 phase-step flex md:block gap-5 md:gap-0 pb-8 md:pb-0 md:p-6 last:pb-0"
+            >
+              {/* Mobile circle (left column, 40px) */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center relative z-10 md:hidden">
+                <span className="font-display text-[1rem] font-bold text-(--crimson)">02</span>
+              </div>
+
+              {/* Content (right column on mobile, full on desktop) */}
+              <div className="flex-1 pt-[0.4rem] md:pt-0">
+                {/* Desktop: large background number */}
+                <span className="hidden md:block font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">
+                  02
+                </span>
+
+                {/* Phase kicker */}
+                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">
+                  Phase 02 — Second Quarter
+                </p>
+
+                {/* Phase title */}
+                <h4 className="font-display text-[1.1rem] md:text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">
+                  Change Management
+                </h4>
+
+                {/* Divider */}
+                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
+
+                {/* Body paragraphs */}
+                <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
+                  Digital systems that simplify reporting, attendance tracking,
+                  and financial management.
+                </p>
+                <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
+                  Clubs receive governance support to strengthen administrative
+                  and financial structures from the ground up — not top-down mandates.
+                </p>
+              </div>
+            </div>
+
+            {/* Phase Step 3 - Mobile */}
+            <div
+              ref={(el) => { phaseStepsRef.current[2] = el; }}
+              className="phase-step-2 phase-step flex md:block gap-5 md:gap-0 pb-8 md:pb-0 md:p-6 last:pb-0"
+            >
+              {/* Mobile circle (left column, 40px) */}
+              <div className="flex-shrink-0 w-10 h-10 rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center relative z-10 md:hidden">
+                <span className="font-display text-[1rem] font-bold text-(--crimson)">03</span>
+              </div>
+
+              {/* Content (right column on mobile, full on desktop) */}
+              <div className="flex-1 pt-[0.4rem] md:pt-0">
+                {/* Desktop: large background number */}
+                <span className="hidden md:block font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">
+                  03
+                </span>
+
+                {/* Phase kicker */}
+                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">
+                  Phase 03 — Second Half
+                </p>
+
+                {/* Phase title */}
+                <h4 className="font-display text-[1.1rem] md:text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">
+                  Impact Realisation
+                </h4>
+
+                {/* Divider */}
+                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
+
+                {/* Body paragraphs */}
+                <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
+                  A public digital dashboard showcasing the district's collective
+                  contribution to global development goals.
+                </p>
+                <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
+                  Culminating in the Perspective Summit — a district-wide platform
+                  focused on professional development, networking, and leadership growth.
+                </p>
+              </div>
+            </div>
+
+            {/* Desktop grid structure */}
+            <div className="phase-grid-desktop hidden">
+              {/* Phase 1 */}
+              <div className="phase-step-0 phase-step flex flex-col p-6">
+                <span className="font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">01</span>
+                <div className="w-[34px] h-[34px] rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center mb-4">
+                  <span className="font-display text-[0.875rem] font-bold text-(--crimson)">01</span>
+                </div>
+                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">Phase 01 — First Quarter</p>
+                <h4 className="font-display text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">Purpose-Led Leadership</h4>
+                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
+                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
+                  Workshops that help club leaders clearly define their purpose
+                  and align their activities with meaningful outcomes.
+                </p>
+                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
+                  Member wellbeing assessments to identify and prevent burnout
+                  before it shows up as attrition.
+                </p>
+              </div>
+
+              {/* Divider 1 */}
+              <div className="phase-col-div bg-[rgba(193,18,31,0.18)] w-px self-stretch" />
 
               {/* Phase 2 */}
-              <div className="relative md:flex items-center gap-8 group">
-                <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[var(--navy)] rounded-full border-4 border-[var(--bg)] z-10 group-hover:scale-125 transition-transform duration-300" />
-
-                <div className="ml-20 md:ml-0 md:w-[calc(50%-2rem)] md:ml-auto bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--navy)] hover:shadow-lg">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="font-display text-[3rem] font-bold text-[var(--navy)] opacity-20">02</span>
-                    <div className="flex-1 h-px bg-gradient-to-r from-[var(--navy)] to-transparent" />
-                  </div>
-
-                  <h4 className="font-display text-[1.5rem] text-(--ct1) mb-2 uppercase leading-[1.1]">
-                    Change Management
-                  </h4>
-                  <p className="font-mono text-[0.75rem] text-(--cta) tracking-[0.15em] uppercase mb-4">
-                    Second Quarter
-                  </p>
-
-                  <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                    Digital systems for reporting, attendance tracking, and
-                    financial management. Governance support for clubs to strengthen
-                    administrative and financial structures from the ground up — not
-                    top-down mandates.
-                  </p>
+              <div className="phase-step-1 phase-step flex flex-col p-6">
+                <span className="font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">02</span>
+                <div className="w-[34px] h-[34px] rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center mb-4">
+                  <span className="font-display text-[0.875rem] font-bold text-(--crimson)">02</span>
                 </div>
+                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">Phase 02 — Second Quarter</p>
+                <h4 className="font-display text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">Change Management</h4>
+                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
+                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
+                  Digital systems that simplify reporting, attendance tracking,
+                  and financial management.
+                </p>
+                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
+                  Clubs receive governance support to strengthen administrative
+                  and financial structures from the ground up — not top-down mandates.
+                </p>
               </div>
 
+              {/* Divider 2 */}
+              <div className="phase-col-div bg-[rgba(193,18,31,0.18)] w-px self-stretch" />
+
               {/* Phase 3 */}
-              <div className="relative md:flex items-center gap-8 group">
-                <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-4 h-4 bg-[var(--crimson-dark)] rounded-full border-4 border-[var(--bg)] z-10 group-hover:scale-125 transition-transform duration-300" />
-
-                <div className="ml-20 md:ml-0 md:w-[calc(50%-2rem)] md:mr-auto bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-lg">
-                  <div className="flex items-center gap-3 mb-4">
-                    <span className="font-display text-[3rem] font-bold text-[var(--crimson-dark)] opacity-20">03</span>
-                    <div className="flex-1 h-px bg-gradient-to-r from-[var(--crimson-dark)] to-transparent" />
-                  </div>
-
-                  <h4 className="font-display text-[1.5rem] text-(--ct1) mb-2 uppercase leading-[1.1]">
-                    Impact Realisation
-                  </h4>
-                  <p className="font-mono text-[0.75rem] text-(--cta) tracking-[0.15em] uppercase mb-4">
-                    Second Half
-                  </p>
-
-                  <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                    A public digital dashboard showcasing the district's collective
-                    contribution to global development goals. Culminating in the
-                    Perspective Summit — a district-wide platform for professional
-                    development, networking, and leadership growth.
-                  </p>
+              <div className="phase-step-2 phase-step flex flex-col p-6">
+                <span className="font-display text-[5rem] font-bold tracking-[-0.04em] text-[rgba(193,18,31,0.07)] mb-[-1rem]">03</span>
+                <div className="w-[34px] h-[34px] rounded-full border-[1.5px] border-(--crimson) bg-(--bg-campaign) flex items-center justify-center mb-4">
+                  <span className="font-display text-[0.875rem] font-bold text-(--crimson)">03</span>
                 </div>
+                <p className="font-mono text-[9px] tracking-[0.08em] text-(--crimson) uppercase mb-[0.35rem]">Phase 03 — Second Half</p>
+                <h4 className="font-display text-[1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.15] mb-[0.6rem]">Impact Realisation</h4>
+                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-[0.6rem]" />
+                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
+                  A public digital dashboard showcasing the district's collective
+                  contribution to global development goals.
+                </p>
+                <p className="font-body text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
+                  Culminating in the Perspective Summit — a district-wide platform
+                  focused on professional development, networking, and leadership growth.
+                </p>
               </div>
             </div>
           </div>
@@ -471,10 +623,10 @@ export default function Campaign() {
         <div className="mb-16">
           {/* Section header */}
           <div className="text-center mb-16">
-            <p className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-3">
+            <p className="font-mono text-[9.5px] text-(--cta) tracking-[0.10em] uppercase mb-3">
               THE PRINCIPLES
             </p>
-            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--ct1) leading-[0.95] tracking-[-0.02em] uppercase">
+            <h3 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--ct1) leading-[0.95] tracking-[-0.025em] uppercase">
               Core Values
             </h3>
             <p className="font-body text-[1rem] text-(--ct2) italic mt-4">
@@ -482,72 +634,172 @@ export default function Campaign() {
             </p>
           </div>
 
-          {/* Values - Full-width rows with name left and description right */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0 bg-[#FDF0D5]">
-            {[
-              {
-                name: "Service Above Self",
-                desc: "Projects must create genuine and sustainable impact.",
-              },
-              {
-                name: "Leadership Development",
-                desc: "Every Rotaractor deserves the opportunity to grow.",
-              },
-              {
-                name: "Integrity & Accountability",
-                desc: "Transparency is not a policy. It is a culture.",
-              },
-              {
-                name: "Collaboration",
-                desc: "Rotaract's greatest work happens at the intersections.",
-              },
-              {
-                name: "Innovation & Adaptability",
-                desc: "A youth movement that stops evolving stops mattering.",
-              },
-            ].map((val, i) => (
-              <div
-                key={i}
-                className="flex flex-col md:flex-row items-start md:items-center justify-between py-[1.5rem] md:py-0 md:px-8 border-b border-[rgba(120,0,0,0.10)]"
-              >
-                <h4 className="font-display text-[1.75rem] text-(--ct1) mb-2 md:mb-0 uppercase leading-[1.2]">
-                  {val.name}
-                </h4>
-                <p className="font-body text-[0.95rem] text-[#5A3D3A] italic max-w-[500px] md:ml-8">
-                  {val.desc}
+          {/* Values container */}
+          <div className="px-5 md:px-0 pb-8">
+            {/* Value Item 1 */}
+            <div
+              ref={(el) => { valueItemsRef.current[0] = el; }}
+              className="value-item py-[1.15rem] md:py-[1.4rem] border-b border-[rgba(120,0,0,0.12)] first:border-t first:border-[rgba(120,0,0,0.12)] transition-colors duration-200 ease group"
+            >
+              {/* Desktop grid layout */}
+              <div className="hidden md:grid md:grid-cols-[220px_1fr] md:gap-10 md:items-center">
+                {/* Left column: number + name */}
+                <div className="flex items-baseline gap-[0.7rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">01</span>
+                  <h4 className="font-display text-[1.2rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Service Above Self
+                  </h4>
+                </div>
+                {/* Right column: description */}
+                <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
+                  Our projects should create genuine and sustainable impact within the communities we serve.
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* CTA — Campaign Style */}
-        <div className="relative mt-24 mb-8">
-          {/* Background treatment */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--crimson-dim)] to-[var(--navy-dim)] rounded-2xl" />
-          <div className="relative bg-[var(--bg-card)] border border-[var(--cb)] rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="font-display text-[clamp(1.75rem,3vw,2.25rem)] text-(--ct1) mb-3 uppercase leading-[1.1]">
-              Ready to Transform Our District
-            </h3>
-            <p className="font-body text-[1rem] text-(--ct2) mb-8 max-w-xl mx-auto">
-              Join the movement. Together, we can build a Rotaract district that sets the standard for youth leadership.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact"
-                className="inline-flex justify-center items-center bg-(--crimson) text-[var(--bg)] font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-10 py-4 hover:bg-(--crimson-dark) transition-colors"
-              >
-                Endorse This Vision
-              </a>
-              <a
-                href="#campaign"
-                className="inline-flex justify-center items-center border border-[var(--crimson)] text-(--crimson) font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-10 py-4 hover:bg-[var(--crimson-dim)] transition-colors"
-              >
-                Share The Plan
-              </a>
+              {/* Mobile layout */}
+              <div className="md:hidden">
+                {/* Top row: number + name */}
+                <div className="flex items-baseline gap-[0.7rem] mb-[0.45rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">01</span>
+                  <h4 className="font-display text-[1.1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Service Above Self
+                  </h4>
+                </div>
+                {/* Description below, indented to align under name */}
+                <p className="font-body text-[0.9375rem] text-(--ct2) leading-[1.72] pl-[calc(9px+0.7rem+2px)]">
+                  Our projects should create genuine and sustainable impact within the communities we serve.
+                </p>
+              </div>
+            </div>
+
+            {/* Value Item 2 */}
+            <div
+              ref={(el) => { valueItemsRef.current[1] = el; }}
+              className="value-item py-[1.15rem] md:py-[1.4rem] border-b border-[rgba(120,0,0,0.12)] transition-colors duration-200 ease group"
+            >
+              <div className="hidden md:grid md:grid-cols-[220px_1fr] md:gap-10 md:items-center">
+                <div className="flex items-baseline gap-[0.7rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">02</span>
+                  <h4 className="font-display text-[1.2rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Leadership Development
+                  </h4>
+                </div>
+                <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
+                  Every Rotaractor should have the opportunity to strengthen their skills, build
+                  confidence, and grow as a leader.
+                </p>
+              </div>
+
+              <div className="md:hidden">
+                <div className="flex items-baseline gap-[0.7rem] mb-[0.45rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">02</span>
+                  <h4 className="font-display text-[1.1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Leadership Development
+                  </h4>
+                </div>
+                <p className="font-body text-[0.9375rem] text-(--ct2) leading-[1.72] pl-[calc(9px+0.7rem+2px)]">
+                  Every Rotaractor should have the opportunity to strengthen their skills, build
+                  confidence, and grow as a leader.
+                </p>
+              </div>
+            </div>
+
+            {/* Value Item 3 */}
+            <div
+              ref={(el) => { valueItemsRef.current[2] = el; }}
+              className="value-item py-[1.15rem] md:py-[1.4rem] border-b border-[rgba(120,0,0,0.12)] transition-colors duration-200 ease group"
+            >
+              <div className="hidden md:grid md:grid-cols-[220px_1fr] md:gap-10 md:items-center">
+                <div className="flex items-baseline gap-[0.7rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">03</span>
+                  <h4 className="font-display text-[1.2rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Integrity & Accountability
+                  </h4>
+                </div>
+                <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
+                  Transparency builds trust and ensures that our organisation remains strong and credible.
+                </p>
+              </div>
+
+              <div className="md:hidden">
+                <div className="flex items-baseline gap-[0.7rem] mb-[0.45rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">03</span>
+                  <h4 className="font-display text-[1.1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Integrity & Accountability
+                  </h4>
+                </div>
+                <p className="font-body text-[0.9375rem] text-(--ct2) leading-[1.72] pl-[calc(9px+0.7rem+2px)]">
+                  Transparency builds trust and ensures that our organisation remains strong and credible.
+                </p>
+              </div>
+            </div>
+
+            {/* Value Item 4 */}
+            <div
+              ref={(el) => { valueItemsRef.current[3] = el; }}
+              className="value-item py-[1.15rem] md:py-[1.4rem] border-b border-[rgba(120,0,0,0.12)] transition-colors duration-200 ease group"
+            >
+              <div className="hidden md:grid md:grid-cols-[220px_1fr] md:gap-10 md:items-center">
+                <div className="flex items-baseline gap-[0.7rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">04</span>
+                  <h4 className="font-display text-[1.2rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Collaboration & Partnership
+                  </h4>
+                </div>
+                <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
+                  Rotaract achieves its greatest impact when clubs, Rotarians, institutions, and
+                  corporate partners work together toward a common purpose.
+                </p>
+              </div>
+
+              <div className="md:hidden">
+                <div className="flex items-baseline gap-[0.7rem] mb-[0.45rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">04</span>
+                  <h4 className="font-display text-[1.1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Collaboration & Partnership
+                  </h4>
+                </div>
+                <p className="font-body text-[0.9375rem] text-(--ct2) leading-[1.72] pl-[calc(9px+0.7rem+2px)]">
+                  Rotaract achieves its greatest impact when clubs, Rotarians, institutions, and
+                  corporate partners work together toward a common purpose.
+                </p>
+              </div>
+            </div>
+
+            {/* Value Item 5 */}
+            <div
+              ref={(el) => { valueItemsRef.current[4] = el; }}
+              className="value-item py-[1.15rem] md:py-[1.4rem] border-b border-[rgba(120,0,0,0.12)] transition-colors duration-200 ease group"
+            >
+              <div className="hidden md:grid md:grid-cols-[220px_1fr] md:gap-10 md:items-center">
+                <div className="flex items-baseline gap-[0.7rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">05</span>
+                  <h4 className="font-display text-[1.2rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Innovation & Adaptability
+                  </h4>
+                </div>
+                <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
+                  As a youth-driven movement, we must continuously evolve to meet the needs of our
+                  members and communities.
+                </p>
+              </div>
+
+              <div className="md:hidden">
+                <div className="flex items-baseline gap-[0.7rem] mb-[0.45rem]">
+                  <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">05</span>
+                  <h4 className="font-display text-[1.1rem] font-bold text-(--ct1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                    Innovation & Adaptability
+                  </h4>
+                </div>
+                <p className="font-body text-[0.9375rem] text-(--ct2) leading-[1.72] pl-[calc(9px+0.7rem+2px)]">
+                  As a youth-driven movement, we must continuously evolve to meet the needs of our
+                  members and communities.
+                </p>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

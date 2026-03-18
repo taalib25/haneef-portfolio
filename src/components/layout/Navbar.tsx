@@ -41,13 +41,13 @@ export default function Navbar() {
       <nav
         className={cn(
           'fixed top-0 left-0 w-full z-50 transition-all duration-400 ease-in-out',
-          'h-[52px] px-4 md:px-6 lg:px-8',
-          scrolled 
-            ? 'bg-[rgba(253,248,242,0.85)] backdrop-blur-[16px] saturate-[180%] border-b border-[rgba(15,6,8,0.06)]' 
+          'h-[64px] md:h-[64px] px-4 md:px-6 lg:px-8',
+          scrolled
+            ? 'bg-[rgba(253,248,242,0.85)] backdrop-blur-[16px] saturate-[180%] border-b border-[rgba(15,6,8,0.06)]'
             : 'bg-transparent border-none'
         )}
       >
-        <div className="flex w-full max-w-6xl mx-auto justify-between items-center">
+        <div className="flex w-full max-w-6xl mx-auto justify-between items-center h-full">
           {/* Left: Identity */}
           <a
             href="#"

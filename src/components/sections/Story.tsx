@@ -1,321 +1,329 @@
 import { useEffect, useRef } from "react";
-import { motion, type Variants } from "framer-motion";
+import { getReducedMotion } from "../../lib/scroll";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { timelineData } from "../../data/timeline";
-import { cn } from "../../lib/cn";
-import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
-
-// Animation variants for scrolling effects
-const staggerContainer = {
-  visible: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
+const COLOR_MAP: Record<string, string> = {
+  LEADERSHIP: "var(--crimson)",
+  PROFESSIONAL: "var(--navy)",
+  DISTRICT: "var(--navy-light)",
+  AWARD: "var(--crimson)",
 };
 
-const itemVariant: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: EASE_SMOOTH,
-    },
-  },
+const SOLID_COLOR_MAP: Record<string, string> = {
+  LEADERSHIP: "#C1121F",
+  PROFESSIONAL: "#003049",
+  DISTRICT: "#669BBC",
+  AWARD: "#C1121F",
 };
 
 export default function Story() {
-  const containerRef = useRef<HTMLElement>(null);
+  const timelineSectionRef = useRef<HTMLElement>(null);
+  const pathRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+  const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = getReducedMotion();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entry entrance animations
-      ScrollTrigger.batch(entriesRef.current, {
-        onEnter: (elements) => {
-          elements.forEach((element, i) => {
-            if (!prefersReducedMotion) {
-              gsap.fromTo(
-                element,
-                {
-                  opacity: 0,
-                  y: 30,
-                },
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.65,
-                  ease: "power2.out",
-                  delay: i * 0.05,
-                },
-              );
-            } else {
-              gsap.set(element, { opacity: 1, y: 0 });
-            }
-          });
+      const lineEl = lineRef.current;
+      const sectionEl = timelineSectionRef.current;
+
+      if (!lineEl || !sectionEl) return;
+
+      if (prefersReducedMotion) {
+        gsap.set(".timeline-entry", { opacity: 1, y: 0 });
+        gsap.set(".timeline-dot", { scale: 1, opacity: 1 });
+        gsap.set(lineEl, { height: "100%" });
+        return;
+      }
+
+      // Path line draws as user scrolls through the section
+      gsap.to(lineEl, {
+        height: "100%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionEl,
+          start: "top 60%",
+          end: "bottom 80%",
+          scrub: 1.2,
         },
-        once: true,
       });
-    }, containerRef);
 
-    return () => ctx.revert();
+      // Entry reveal animations
+      const entryElements = entriesRef.current.filter((el) => el !== null) as HTMLDivElement[];
+      const dotElements = dotsRef.current.filter((el) => el !== null) as HTMLDivElement[];
+
+      entryElements.forEach((entry) => {
+        gsap.fromTo(
+          entry,
+          {
+            opacity: 0,
+            y: 28,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: entry,
+              start: "top 82%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+
+      // Dot pop animations
+      dotElements.forEach((dot) => {
+        gsap.fromTo(
+          dot,
+          {
+            scale: 0,
+            opacity: 0,
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: "back.out(2)",
+            scrollTrigger: {
+              trigger: dot,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      });
+    }, timelineSectionRef);
+
+    return () => {
+      ctx.revert();
+    };
   }, [prefersReducedMotion]);
-
-  const getTypeBadgeStyle = (type: string) => {
-    switch (type) {
-      case "LEADERSHIP":
-        return "bg-(--crimson-dim) text-(--crimson) border-(--crimson-border)";
-      case "DISTRICT":
-        return "bg-[var(--navy-dim)] text-[var(--navy)] border-[var(--navy-border)]";
-      case "PROFESSIONAL":
-        return "bg-[var(--navy-dim)] text-[var(--navy-light)] border-[var(--navy-border)]";
-      case "AWARD":
-        return "bg-(--crimson-dim) text-[var(--crimson-dark)] border-(--crimson-border)";
-      default:
-        return "bg-(--crimson-dim) text-(--crimson) border-(--crimson-border)";
-    }
-  };
 
   return (
     <section
       id="story"
-      ref={containerRef}
-      className="py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-(--bg)"
+      ref={timelineSectionRef}
+      className="relative py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[var(--bg)]"
+      style={{ scrollMarginTop: "80px" }}
     >
-      {/* 2px crimson line at top of section opener (full width) */}
-      <div className="h-[2px] w-full bg-(--crimson) mb-12" />
+      {/* 2px crimson line at top of section opener */}
+      <div className="h-[2px] w-full bg-[var(--crimson)] mb-12 md:mb-16" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          className="mb-16 md:mb-20"
-          initial={
-            !prefersReducedMotion ? { opacity: 0, y: 24 } : { opacity: 1 }
-          }
-          whileInView={
-            !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-          }
-          transition={
-            !prefersReducedMotion
-              ? { duration: 0.9, ease: [0.16, 1, 0.3, 1] }
-              : undefined
-          }
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {/* Section Label — Chapter-book style */}
-          <motion.p
-            className="font-mono text-(--ta) text-t-xs tracking-[0.10em] uppercase mb-4 md:mb-6"
-            initial={
-              !prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 1 }
-            }
-            transition={
-              !prefersReducedMotion
-                ? { duration: 0.4, ease: "easeOut" }
-                : undefined
-            }
-            viewport={{ once: true }}
-          >
+        {/* Header */}
+        <div className="mb-16 md:mb-20">
+          <p className="font-mono text-[var(--ta)] text-xs md:text-sm tracking-[0.10em] uppercase mb-4 md:mb-6">
             [ 01 — THE STORY ]
-          </motion.p>
+          </p>
 
-          {/* Section Headline — Scaled down */}
-          <motion.h2
-            className="font-display text-t-4xl text-(--t1) leading-[0.92] tracking-[-0.025em] uppercase mb-6 md:mb-8"
-            initial={
-              !prefersReducedMotion ? { opacity: 0, y: 24 } : { opacity: 1 }
-            }
-            whileInView={
-              !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }
-            }
-            transition={
-              !prefersReducedMotion
-                ? { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.05 }
-                : undefined
-            }
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <h2 className="font-display text-t-4xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase">
             ONE CAREER.
             <br />
             TWO ARENAS.
             <br />
             ONE DIRECTION.
-          </motion.h2>
+          </h2>
 
-          {/* Opening paragraph */}
-          <motion.div
-            variants={staggerContainer}
-            initial={!prefersReducedMotion ? "hidden" : "visible"}
-            whileInView={!prefersReducedMotion ? "visible" : undefined}
-            viewport={{ once: true, amount: 0.1 }}
-            className="space-y-4 md:space-y-6 max-w-6xl"
-          >
-            <motion.p
-              className="font-body text-t-base text-(--t2) leading-[1.75]"
-              variants={itemVariant}
-            >
+          <div className="space-y-4 md:space-y-6 mt-8 md:mt-12">
+            <p className="font-body text-t-base text-[var(--t2)] leading-[1.75] max-w-none">
               My professional journey has been shaped by the power of
               perspective. As a Public Relations professional, I build
               narratives, strengthen reputations, and create meaningful
               connections between people, organisations, and ideas. That same
               instinct — to understand before leading, to communicate before
               directing — is what drives everything I do in Rotaract.
-            </motion.p>
-          </motion.div>
-        </motion.div>
+            </p>
+          </div>
+        </div>
 
-        {/* Timeline — Vertical Magazine Stack with Year Anchors */}
-        <motion.div
-          className="relative"
-          initial={!prefersReducedMotion ? { opacity: 0 } : { opacity: 1 }}
-          whileInView={!prefersReducedMotion ? { opacity: 1 } : { opacity: 1 }}
-          transition={
-            !prefersReducedMotion
-              ? { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }
-              : undefined
-          }
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <div className="flex flex-col">
+        {/* Timeline Body */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-0">
+          {/* LEFT: the path column */}
+          <div
+            ref={pathRef}
+            className="relative flex-shrink-0 hidden md:block"
+            style={{ width: "40px" }}
+          >
+            {/* Background guide line */}
+            <div
+              className="absolute top-0 bottom-0 left-1/2"
+              style={{
+                width: "1px",
+                background: "rgba(193,18,31,0.15)",
+                transform: "translateX(-50%)",
+              }}
+            />
+            {/* The fill line that GSAP animates */}
+            <div
+              ref={lineRef}
+              className="absolute top-0 left-1/2"
+              style={{
+                width: "2px",
+                height: "0",
+                background: "var(--crimson)",
+                transform: "translateX(-50%)",
+                transformOrigin: "top",
+              }}
+            />
+          </div>
+
+          {/* RIGHT: entries */}
+          <div className="flex-1 space-y-8">
             {timelineData.map((item, index) => {
               const isHero = item.isHero;
+              const typeColor = COLOR_MAP[item.type] || COLOR_MAP.LEADERSHIP;
+              const solidTypeColor = SOLID_COLOR_MAP[item.type] || SOLID_COLOR_MAP.LEADERSHIP;
+              const yearFontSize = isHero ? "2.25rem" : "1.75rem";
+              const roleFontSize = isHero ? "1.4rem" : "1.25rem";
+              const borderSize = isHero ? "3px" : "2px";
 
               return (
-                <motion.div
+                <div
                   key={index}
                   ref={(el) => {
                     entriesRef.current[index] = el;
                   }}
-                  className={cn(
-                    "relative w-full py-6 md:py-8",
-                    // Hero entry gets 4px crimson left border
-                    isHero && "border-l-4 border-l-(--crimson) pl-4 md:pl-6",
-                    // Non-hero entries get bottom separator
-                    !isHero && "border-b border-(--border)"
-                  )}
+                  className="timeline-entry relative md:pl-8"
+                  style={{
+                    paddingTop: "0.5rem",
+                    paddingBottom: isHero ? "3rem" : "2rem",
+                    opacity: 1,
+                  }}
                 >
-                   {/* Desktop: Two column layout */}
-                  <div className="flex flex-col md:flex-row gap-3 md:gap-4">
-                    {/* Left column: Year and Type */}
-                    <div className="md:w-28 shrink-0 flex flex-row md:flex-col gap-2 md:gap-2 items-start md:items-start pt-1">
-                      {/* Year — Refined typography, less prominent */}
-                      <span
-                        className={cn(
-                          "font-display text-[1.5rem] md:text-[1.75rem] text-(--t1) leading-[1] tracking-[-0.02em] relative whitespace-nowrap",
-                          isHero ? "text-(--crimson)" : "", // Hero entry has crimson year
-                        )}
+                  {/* Dot positioned on the path - hidden on mobile */}
+                  <div
+                    ref={(el) => {
+                      dotsRef.current[index] = el;
+                    }}
+                    className="timeline-dot absolute rounded-full border-2 border-white hidden md:block"
+                    style={{
+                      left: "-2.25rem",
+                      top: "12px",
+                      width: "12px",
+                      height: "12px",
+                      background: typeColor,
+                      boxShadow: `0 0 0 3px ${solidTypeColor}26`,
+                      zIndex: 10,
+                    }}
+                  />
+
+                  {/* Entry content card */}
+                  <div
+                    className="w-full"
+                    style={{
+                      borderTop: `${borderSize} solid ${typeColor}`,
+                      ...(isHero && {
+                        backgroundColor: "rgba(193,18,31,0.04)",
+                        padding: "1.25rem",
+                        borderRadius: "0 0 8px 8px",
+                      }),
+                    }}
+                  >
+                    {/* Year and Role row */}
+                    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-3 mb-3">
+                      <div
+                        className="font-display text-[var(--t1)] leading-[1] tracking-[-0.02em] block"
+                        style={{
+                          fontSize: yearFontSize,
+                          color: typeColor,
+                          fontWeight: 600,
+                          fontFeatureSettings: "'liga' 0",
+                        }}
                       >
                         {item.year}
-                        {/* Subtle crimson underline on year labels */}
-                        <span className="absolute left-0 bottom-[-3px] h-[1.5px] w-[30px] bg-(--crimson) transition-all duration-300 ease-[0.16,1,0.3,1] group-hover:w-[60px]">
-                        </span>
-                      </span>
-
-                      {/* Type tag — small pill below year */}
-                      <span
-                        className={cn(
-                          "font-mono text-[0.75rem] tracking-[0.15em] uppercase px-2 py-0.5 border rounded-sm",
-                          isHero
-                            ? "bg-(--crimson-dim) text-(--crimson) border-(--crimson-border)"
-                            : getTypeBadgeStyle(item.type),
-                        )}
-                      >
-                        {item.type}
-                      </span>
-                    </div>
-
-                    {/* Right column: Content */}
-                      <div className="flex-1 max-w-6xl group">
-                       {/* Vertical separator line on left edge of right column */}
+                      </div>
                       <div
-                        className={cn(
-                          "absolute left-28 top-0 bottom-0 w-px pointer-events-none",
-                          isHero
-                            ? "bg-(--crimson) h-[calc(100%-3rem)]"
-                            : "bg-(--border)",
-                        )}
-                      />
-
-                      {/* Title — Hero gets larger size */}
-                      <h3
-                        className={cn(
-                          "font-display text-(--t1) mb-3 uppercase leading-[1.1] transition-colors duration-300 ease-[0.16,1,0.3,1]",
-                          isHero ? "text-[1.75rem]" : "text-[1.5rem]",
-                          // Title colour shift to --ta on hover
-                          "hover:text-(--ta)"
-                        )}
+                        className="font-display text-[var(--t1)] leading-[1] tracking-[-0.015em]"
+                        style={{
+                          fontSize: roleFontSize,
+                          fontWeight: 700,
+                        }}
                       >
                         {item.title}
-                      </h3>
+                      </div>
+                    </div>
 
-                      {/* Organisation — Jakarta Sans sentence case, quiet */}
-                      <p className="font-body text-[0.85rem] text-(--t3) font-normal mb-3">
-                        {item.organisation}
-                      </p>
+                    {/* Organisation */}
+                    <p
+                      className="font-body text-sm mb-3"
+                      style={{
+                        color: "var(--t3)",
+                        fontWeight: 400,
+                      }}
+                    >
+                      {item.organisation}
+                    </p>
 
-                      {/* Body text — Left-aligned for readability */}
-                       <div className="font-body text-t-base text-(--t2) leading-[1.75] max-w-6xl">
-                        {item.body.split("\n\n").map((paragraph, i) => (
-                          <p key={i} className="mb-4 last:mb-0">
-                            {paragraph}
-                          </p>
+                    {/* Body */}
+                    <div
+                      className="font-body leading-[1.75] text-left text-[var(--t2)]"
+                      style={{
+                        fontSize: "1.0625rem",
+                        lineHeight: "1.75",
+                      }}
+                    >
+                      {item.body.split("\n\n").map((paragraph, i) => (
+                        <p key={i} className="mb-3 last:mb-0">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+
+                    {/* Stat pills */}
+                    {item.statPills && item.statPills.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        {item.statPills.map((pill, i) => (
+                          <span
+                            key={i}
+                            className="font-body font-medium px-3 py-1.5 rounded text-sm border"
+                            style={{
+                              color: typeColor,
+                              borderColor: `${solidTypeColor}40`,
+                              backgroundColor: `${solidTypeColor}0D`,
+                            }}
+                          >
+                            {pill}
+                          </span>
                         ))}
                       </div>
+                    )}
 
-                      {/* Stat Pills — Match Work section style */}
-                      {item.statPills && item.statPills.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-3">
-                          {item.statPills.map((pill, i) => (
-                            <span
+                    {/* Awards */}
+                    {item.awards && item.awards.length > 0 && (
+                      <div
+                        className="mt-4 pt-3 border-t"
+                        style={{ borderColor: "var(--border)" }}
+                      >
+                        <p className="font-mono text-[var(--ta)] tracking-widest uppercase mb-2 text-xs">
+                          AWARDS
+                        </p>
+                        <ul className="flex flex-col gap-1.5">
+                          {item.awards.map((award, i) => (
+                            <li
                               key={i}
-                              className={cn(
-                                "font-body text-[0.8rem] font-medium px-3 py-1 rounded-[2px]",
-                                isHero
-                                  ? "text-(--crimson) bg-(--crimson-dim) border border-(--crimson-border)"
-                                  : "text-(--crimson) bg-(--crimson-dim) border border-(--crimson-border)",
-                              )}
+                              className="font-body text-sm italic"
+                              style={{ color: "var(--t2)" }}
                             >
-                              {pill}
-                            </span>
+                              {award}
+                            </li>
                           ))}
-                        </div>
-                      )}
-
-                      {/* Awards */}
-                      {item.awards && item.awards.length > 0 && (
-                        <div className="mt-3 pt-2.5 border-t border-(--border)">
-                          <p className="font-mono text-[0.8rem] text-(--ta) tracking-widest uppercase mb-1.5">
-                            AWARDS
-                          </p>
-                          <ul className="flex flex-col gap-1.5">
-                            {item.awards.map((award, i) => (
-                              <li
-                                key={i}
-                                className="font-body text-[0.9rem] text-(--t2) italic"
-                              >
-                                {award}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

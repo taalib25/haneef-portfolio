@@ -24,7 +24,7 @@ export default function Hero() {
     <section
       id="hero"
       className={cn(
-        "relative w-full h-screen min-h-[700px] bg-(--bg-hero) overflow-hidden",
+        "relative w-full h-screen min-h-[700px] bg-[var(--bg-hero)] overflow-hidden",
       )}
     >
       {/* Ray effect - subtle lighter crimson lines radiating from center */}
@@ -72,11 +72,13 @@ export default function Hero() {
       {!isMobile && (
         <div
           className="absolute right-0 top-0 bottom-0 w-[42%] hidden md:block overflow-hidden"
+          style={{ zIndex: 1 }}
         >
           <img
-            src="/portrait.png"
+            src="https://placehold.co/480x600/141414/C1121F?text=Portrait"
             alt="Haneef Mohamed"
             className="w-full h-full object-cover object-top"
+            style={{ display: "block" }}
           />
           {/* Left edge solid color overlay to blend portrait with crimson background */}
           <div
@@ -91,11 +93,12 @@ export default function Hero() {
 
       {/* Mobile Portrait - Above content */}
       {isMobile && (
-        <div className="w-full relative h-[60vw] max-h-[320px] overflow-hidden md:hidden">
+        <div className="w-full relative h-[60vw] max-h-[320px] overflow-hidden md:hidden" style={{ zIndex: 1 }}>
           <img
-            src="/portrait.png"
+            src="https://placehold.co/480x600/141414/C1121F?text=Portrait"
             alt="Haneef Mohamed"
             className="w-full h-full object-cover object-top"
+            style={{ display: "block" }}
           />
           {/* Bottom solid color overlay for mobile portrait */}
           <div
@@ -111,29 +114,46 @@ export default function Hero() {
       {/* Desktop Layout - Name anchored bottom-left */}
       {!isMobile ? (
         <>
-          {/* Main Name - Massive, anchored bottom-left */}
+          {/* CTAs - positioned highest */}
           <motion.div
-            className="absolute bottom-[8%] left-[4%] z-10"
-            initial={!prefersReducedMotion ? { opacity: 0, y: 60 } : { opacity: 1, y: 0 }}
+            className="absolute left-[4%] z-20 flex gap-4"
+            style={{
+              bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 6rem)",
+            }}
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
             animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.9, ease: EASE_SMOOTH }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.4 }}
           >
-            <h1
-              className="font-display font-bold text-[clamp(4rem,10vw,7rem)] text-(--ht1) leading-[0.85] tracking-[-0.04em] uppercase"
-              style={{
-                lineHeight: "0.85",
-                letterSpacing: "-0.04em",
-              }}
+            <a
+              href="#story"
+              className="inline-flex justify-center items-center bg-[var(--hta)] text-[var(--crimson-dark)] font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-8 py-4 border-0 no-underline hover:opacity-90 transition-opacity"
             >
-              HANEEF
-              <br />
-              MOHAMED
-            </h1>
+              The Story
+            </a>
+            <a
+              href="#campaign"
+              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-[var(--ht1)] font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-8 py-4 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
+            >
+              Campaign
+            </a>
           </motion.div>
+
+          {/* Role Line - smaller, cleaner */}
+          <motion.p
+            className="absolute left-[4%] z-20 font-body font-light text-[1.05rem] text-[rgba(253,248,242,0.65)] tracking-wide"
+            style={{
+              bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 3.5rem)",
+            }}
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
+          >
+            PR Strategist · Rotaract President · DRR Candidate
+          </motion.p>
 
           {/* Horizontal Rule - Below name */}
           <motion.div
-            className="absolute left-[4%] z-10"
+            className="absolute left-[4%] z-20"
             style={{
               bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 2rem)",
             }}
@@ -147,49 +167,32 @@ export default function Hero() {
             />
           </motion.div>
 
-          {/* Role Line - Smaller, cleaner, no monospace */}
-          <motion.p
-            className="absolute left-[4%] z-10 font-body font-light text-[1.05rem] text-[rgba(253,248,242,0.65)] tracking-wide"
-            style={{
-              bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 3rem)",
-            }}
-            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
-          >
-            PR Strategist · Rotaract President · DRR Candidate
-          </motion.p>
-
-          {/* CTAs - Clean buttons with display font, not monospace */}
+          {/* Main Name - Massive, anchored bottom-left */}
           <motion.div
-            className="absolute left-[4%] z-10 flex gap-4"
-            style={{
-              bottom: "calc(8% + clamp(4rem,10vw,7rem) * 0.85 + 5.5rem)",
-            }}
-            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            className="absolute bottom-[8%] left-[4%] z-20"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 60 } : { opacity: 1, y: 0 }}
             animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.4 }}
+            transition={{ duration: 0.9, ease: EASE_SMOOTH }}
           >
-            <a
-              href="#story"
-              className="inline-flex justify-center items-center bg-(--hta) text-(--crimson-dark) font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-8 py-4 border-0 no-underline hover:opacity-90 transition-opacity"
+            <h1
+              className="font-display font-bold text-[clamp(4rem,10vw,7rem)] text-[var(--ht1)] leading-[0.85] tracking-[-0.04em] uppercase"
+              style={{
+                lineHeight: "0.85",
+                letterSpacing: "-0.04em",
+              }}
             >
-              The Story
-            </a>
-            <a
-              href="#campaign"
-              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-(--ht1) font-display font-semibold text-[0.95rem] uppercase tracking-[0.08em] min-h-12 px-8 py-4 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
-            >
-              Campaign
-            </a>
+              HANEEF
+              <br />
+              MOHAMED
+            </h1>
           </motion.div>
         </>
       ) : (
         // Mobile Layout - Simpler, stacked
-        <div className="relative z-10 px-5 pt-8 pb-10 flex flex-col">
+        <div className="relative z-20 px-5 pt-8 pb-10 flex flex-col">
           {/* Name */}
           <motion.h1
-            className="font-display font-bold text-[clamp(2.8rem,11vw,4rem)] text-(--ht1) leading-[0.9] tracking-[-0.03em] uppercase mb-3"
+            className="font-display font-bold text-[clamp(2.8rem,11vw,4rem)] text-[var(--ht1)] leading-[0.9] tracking-[-0.03em] uppercase mb-3"
             initial={!prefersReducedMotion ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
             animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
             transition={{ duration: 0.6, ease: EASE_SMOOTH }}
@@ -208,7 +211,7 @@ export default function Hero() {
             transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.1 }}
           />
 
-          {/* Role Line - Smaller, cleaner */}
+          {/* Role Line - smaller, cleaner */}
           <motion.p
             className="font-body font-light text-[0.95rem] text-[rgba(253,248,242,0.65)] tracking-wide mb-5"
             initial={!prefersReducedMotion ? { opacity: 0, y: 15 } : { opacity: 1, y: 0 }}
@@ -227,13 +230,13 @@ export default function Hero() {
           >
             <a
               href="#story"
-              className="inline-flex justify-center items-center bg-(--hta) text-(--crimson-dark) font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 border-0 no-underline"
+              className="inline-flex justify-center items-center bg-[var(--hta)] text-[var(--crimson-dark)] font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 border-0 no-underline"
             >
               The Story
             </a>
             <a
               href="#campaign"
-              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.35)] text-(--ht1) font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
+              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.35)] text-[var(--ht1)] font-display font-semibold text-[0.85rem] uppercase tracking-[0.06em] min-h-11 py-3.5 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
             >
               Campaign
             </a>

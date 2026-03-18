@@ -280,3 +280,119 @@ p {
 .font-body:not(.font-mono) {
   text-transform: none;
 }
+
+/* ============================================
+   CAMPAIGN SECTION — Three-Phase Action Plan
+   ============================================ */
+
+/* Mobile: vertical step track (default, below 768px) */
+.phase-track {
+  position: relative;
+  padding: 0 1.25rem 2rem;
+}
+
+.phase-step {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+.phase-step:last-child {
+  padding-bottom: 0;
+}
+
+/* Hide mobile track content on desktop */
+.md\\:phase-track-hidden {
+  display: block;
+}
+
+/* Show desktop grid on desktop only */
+.phase-grid-desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  /* Hide mobile track on desktop */
+  .md\\:phase-track-hidden {
+    display: none !important;
+  }
+
+  /* Show desktop grid on desktop */
+  .phase-grid-desktop {
+    display: grid !important;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  }
+
+  .phase-step {
+    display: flex !important;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .phase-col-div {
+    background: rgba(193, 18, 31, 0.18);
+    width: 1px;
+    align-self: stretch;
+  }
+
+  /* Add top border to phase-grid-desktop */
+  .phase-grid-desktop::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--crimson);
+  }
+}
+
+/* ============================================
+   CORE VALUES — Typographic Stack
+   ============================================ */
+
+.value-item {
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(120, 0, 0, 0.12);
+  transition: border-color 0.2s ease;
+}
+
+.value-item:first-child {
+  border-top: 1px solid rgba(120, 0, 0, 0.12);
+}
+
+.value-item:hover {
+  border-bottom-color: rgba(193, 18, 31, 0.28);
+}
+
+.value-item:hover .val-name {
+  color: var(--crimson);
+}
+
+@media (min-width: 768px) {
+  .value-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    padding: 1.4rem 0;
+  }
+}
+
+/* ============================================
+   RECOGNITION — Hall of Honors
+   ============================================ */
+
+.award-item {
+  padding: 1.15rem 0;
+  border-bottom: 1px solid rgba(120, 0, 0, 0.12);
+  transition: border-color 0.2s ease;
+}
+
+.award-item:first-child {
+  border-top: 1px solid rgba(120, 0, 0, 0.12);
+}
+
+.award-item:hover {
+  border-bottom-color: rgba(193, 18, 31, 0.28);
+}
