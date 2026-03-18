@@ -109,11 +109,9 @@ export default function Campaign() {
             </p>
 
             <p className="font-display text-[clamp(2rem,3.5vw,3rem)] text-(--ct1) leading-[1.15] tracking-[-0.02em]">
-              To transform our district into a high-value ecosystem
+              To transform our district into a place where youth
               <br />
-              where youth leadership is recognised as a professional
-              <br />
-              standard.
+              leadership is recognised as a professional standard.
             </p>
 
             <p className="font-body text-[0.85rem] italic text-[#9A7F7A] mt-8">
@@ -133,26 +131,23 @@ export default function Campaign() {
           <div className="font-body text-t-lg text-(--ct2) leading-[1.75] space-y-6">
             <p>
               I am running for District Rotaract Representative because I
-              believe our district is at an important crossroads. Over time, the
-              Rotaract experience has gradually shifted toward activity rather
-              than impact. Clubs are active and engaged, but we must ask
-              ourselves whether our efforts are creating the long-term value
-              that Rotaract was originally meant to deliver.
+              believe our district is at a crossroads. Over time, the
+              Rotaract experience has shifted toward activity rather than
+              impact. Clubs are active, but we need to ask whether our efforts
+              create the long-term value Rotaract was meant to deliver.
             </p>
             <p>
-              My decision to run comes from a simple belief: Rotaract should be
-              a transformative journey for every member who joins. When someone
-              becomes a Rotaractor, they should gain access to leadership
-              opportunities, mentorship, professional development, and
-              meaningful service experiences — not just a roster of events to
-              attend.
+              My decision to run comes from a simple belief: Rotaract should
+              be a transformative experience for every member. When someone
+              joins, they should gain access to leadership opportunities,
+              mentorship, professional development, and meaningful service —
+              not just a roster of events to attend.
             </p>
             <p>
-              My purpose is to bridge the gap between the immense potential of
-              our youth and the global strength of the Rotary movement. I want
-              Rotaract to move beyond being seen as just volunteering and
-              instead become a platform for value creation and genuine
-              leadership development.
+              I want to bridge the gap between the potential of our youth and
+              the global strength of the Rotary movement. Rotaract should move
+              beyond being seen as just volunteering and instead become a
+              platform for real leadership development.
             </p>
           </div>
         </div>
@@ -164,10 +159,9 @@ export default function Campaign() {
               VISION:
             </h3>
             <p className="font-body text-t-lg text-(--ct2) leading-[1.75]">
-              To transform our district into a high-value ecosystem where youth
-              leadership is recognised as a professional standard and Rotaract
-              clubs serve as incubators for innovation, leadership, and
-              meaningful community impact.
+              To transform our district into a place where youth leadership is
+              recognised as a professional standard and Rotaract clubs serve as
+              centers for innovation, leadership, and meaningful community impact.
             </p>
           </div>
           <div className="flex-1 py-12 md:pl-12">
@@ -176,9 +170,9 @@ export default function Campaign() {
             </h3>
             <p className="font-body text-t-lg text-(--ct2) leading-[1.75]">
               To empower Rotaract clubs and members through stronger digital
-              systems, transparent financial governance, and a vocational value
-              chain that connects every member to mentorship, professional
-              development, and global opportunities.
+              systems, transparent financial governance, and a clear path that
+              connects every member to mentorship, professional development,
+              and global opportunities.
             </p>
           </div>
         </div>
@@ -218,10 +212,10 @@ export default function Campaign() {
                   Membership Retention
                 </h4>
                 <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85]">
-                  Many individuals join Rotaract with enthusiasm but lose interest
-                  because they do not see the long-term value of their
-                  involvement. The answer is not more recruitment campaigns. It is
-                  a stronger experience for the members we already have.
+                  Many people join Rotaract with enthusiasm but lose interest
+                  because they do not see long-term value in their involvement.
+                  The answer is not more recruitment campaigns. It is creating a
+                  stronger experience for the members we already have.
                 </p>
               </div>
             </div>
@@ -243,7 +237,7 @@ export default function Campaign() {
                 </h4>
                 <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85]">
                   Transparency and financial literacy are essential for any
-                  organisation that wishes to build trust. Clubs must operate with
+                  organisation that wants to build trust. Clubs must operate with
                   clear systems that ensure accountability and responsible
                   financial management — not as a compliance exercise, but as a
                   cultural standard.
@@ -303,7 +297,7 @@ export default function Campaign() {
             FOUR STRATEGIC PILLARS
           </h3>
           <p className="font-body text-t-base text-(--ct2) text-center max-w-2xl mx-auto mb-12">
-            The foundation of transformation — built on member value, mentorship, partnerships, and transparency.
+            Built on member value, mentorship, partnerships, and transparency.
           </p>
 
           {/* Pillars container - full-width horizontal bands */}
@@ -325,10 +319,10 @@ export default function Campaign() {
                 </h4>
                 <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
                   Map the entire member journey from recruitment to alumni
-                  engagement. Each year in Rotaract should provide clear,
-                  accumulating opportunities for skill development — project
-                  management, public speaking, governance — that compound into a
-                  genuine professional asset over time.
+                  engagement. Each year in Rotaract should provide clear
+                  opportunities for skill development — project management,
+                  public speaking, governance — that compound into a genuine
+                  professional asset over time.
                 </p>
               </div>
             </div>
@@ -457,7 +451,7 @@ export default function Campaign() {
 
                 {/* Body paragraphs */}
                 <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-[0.45rem]">
-                  Workshops that help club leaders clearly define their purpose
+                  Workshops that help club leaders define their purpose
                   and align their activities with meaningful outcomes.
                 </p>
                 <p className="font-body text-[0.9375rem] md:text-[0.875rem] text-(--ct2) leading-[1.75] mb-0">
@@ -652,7 +646,7 @@ export default function Campaign() {
                 </div>
                 {/* Right column: description */}
                 <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
-                  Our projects should create genuine and sustainable impact within the communities we serve.
+                  Projects should create real and sustainable impact in the communities we serve.
                 </p>
               </div>
 
@@ -685,7 +679,7 @@ export default function Campaign() {
                   </h4>
                 </div>
                 <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
-                  Every Rotaractor should have the opportunity to strengthen their skills, build
+                  Every Rotaractor should have the opportunity to build their skills, develop
                   confidence, and grow as a leader.
                 </p>
               </div>
@@ -717,7 +711,7 @@ export default function Campaign() {
                   </h4>
                 </div>
                 <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
-                  Transparency builds trust and ensures that our organisation remains strong and credible.
+                  Transparency builds trust and keeps our organisation strong and credible.
                 </p>
               </div>
 
@@ -779,7 +773,7 @@ export default function Campaign() {
                   </h4>
                 </div>
                 <p className="font-body text-[1rem] text-(--ct2) leading-[1.75]">
-                  As a youth-driven movement, we must continuously evolve to meet the needs of our
+                  As a youth-driven movement, we must adapt to meet the needs of our
                   members and communities.
                 </p>
               </div>

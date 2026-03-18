@@ -60,14 +60,14 @@ export default function Recognition() {
 
           {/* Section Headline */}
           <h2 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--t1) leading-[0.95] tracking-[-0.025em] uppercase mb-6">
-            A Legacy of
+            Five Honors.
             <br />
-            <span className="text-(--crimson)">Excellence</span>
+            <span className="text-(--crimson)">Seven Years.</span>
           </h2>
 
           <p className="font-body text-[1rem] text-(--t2) italic max-w-2xl">
-            Five distinguished honors across seven years — each representing
-            mastery in a different arena of leadership.
+            Each award represents a different arena of leadership — from club
+            service to district-level initiatives to regional recognition.
           </p>
         </div>
 

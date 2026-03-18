@@ -134,12 +134,7 @@ export default function Story() {
 
           <div className="space-y-4 md:space-y-6 mt-8 md:mt-12">
             <p className="font-body text-t-base text-[var(--t2)] leading-[1.75] max-w-none">
-              My professional journey has been shaped by the power of
-              perspective. As a Public Relations professional, I build
-              narratives, strengthen reputations, and create meaningful
-              connections between people, organisations, and ideas. That same
-              instinct — to understand before leading, to communicate before
-              directing — is what drives everything I do in Rotaract.
+              My work in Public Relations is built on one skill: understanding people before trying to lead them. I build narratives, protect reputations, and connect organisations with the audiences that matter. That same instinct drives how I approach Rotaract. Listen first. Communicate clearly. Then lead.
             </p>
           </div>
         </div>

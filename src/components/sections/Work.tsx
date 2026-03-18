@@ -123,10 +123,10 @@ export default function Work() {
               {/* Body Paragraphs */}
               <div className="font-body text-[1.0625rem] text-[var(--t2)] leading-[1.85] mb-8">
                 <p className="mb-[1.25rem]">
-                  Develop and execute strategies to create and uphold a positive public image for clients. Seasonal review of all PR activities, with ad-hoc adjustments aligned to current trends and business needs.
+                  Develop and execute strategies that build and maintain a positive public image for clients. Review all PR activities seasonally, making ad-hoc adjustments based on current trends and business needs.
                 </p>
                 <p>
-                  Work closely with the marketing team to develop communication strategies that cultivate and strengthen relationships with target audiences, external partners, and key media outlets — translating commercial objectives into credible, sustained narratives.
+                  Work with the marketing team to develop communication strategies that build relationships with target audiences, external partners, and key media outlets. Translate commercial objectives into narratives that hold up over time.
                 </p>
               </div>
 
@@ -169,10 +169,10 @@ export default function Work() {
               {/* Body Paragraphs */}
               <div className="font-body text-[1.0625rem] text-[var(--t2)] leading-[1.85] mb-8">
                 <p className="mb-[1.25rem]">
-                  International development sector organisation working in Sri Lanka for over four decades. Operations across 10 districts — central and provincial — reaching 200,000+ children, youth, families, and communities.
+                  International development organisation working in Sri Lanka for over four decades. Operations across 10 districts, reaching 200,000+ children, youth, families, and communities.
                 </p>
                 <p>
-                  Supported business development functions in an organisation where the stakes of every decision are measured in lives, not revenue. Developed a sharper instinct for sustainable impact versus performative activity — a distinction that now defines how Haneef approaches every Rotaract project.
+                  Supported business development in an organisation where decisions affect lives, not revenue. Learned to distinguish between work that creates real impact and work that just looks good in a report. That distinction shapes how I approach every Rotaract project.
                 </p>
               </div>
 

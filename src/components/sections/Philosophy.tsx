@@ -141,10 +141,7 @@ export default function Philosophy() {
             viewport={{ once: true, amount: 0.1 }}
             className="font-body text-t-base text-(--t2) max-w-[700px] mx-auto leading-[1.85] text-center italic"
           >
-            As a communications professional, I have learned that effective
-            leadership begins with understanding people before trying to guide
-            them. Leadership is not about authority. It is about designing the
-            conditions in which others can succeed.
+            My approach to leadership comes from years in communications: understand people before trying to guide them. Leadership is not about authority. It is about creating the conditions where others can succeed.
           </motion.div>
         </div>
 
@@ -167,7 +164,7 @@ export default function Philosophy() {
               VISIONARY YET GROUNDED
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
-              True visionaries inspire not through grand gestures, but through consistent actions rooted in genuine care. I lead with a clear long-term vision while staying grounded in the present realities and needs of my team.
+              Long-term vision matters, but so does staying grounded in present realities. I try to hold both at once: where we are going and where we actually are.
             </p>
           </div>
 
@@ -177,7 +174,7 @@ export default function Philosophy() {
               FACILITATE, DON'T CONTROL
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
-              The responsibility of leadership is to enable others to succeed by removing obstacles and providing tools. Not to direct from above, but to support from within.
+              Remove obstacles. Provide tools. Enable others to succeed. Not directing from above, but supporting from within.
             </p>
           </div>
 
@@ -187,9 +184,7 @@ export default function Philosophy() {
               LEAD WITH PURPOSE
             </h3>
             <p className="font-body text-t-base text-(--t2) leading-[1.85]">
-              Every initiative must begin with a clear understanding of why it
-              matters. When people understand the purpose behind their work,
-              they become far more motivated to create meaningful impact.
+              Start with why. When people understand the purpose behind their work, they become far more motivated to create real impact.
             </p>
           </div>
         </motion.div>
