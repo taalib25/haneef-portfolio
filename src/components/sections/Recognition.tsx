@@ -127,8 +127,8 @@ export default function Recognition() {
           <div className="h-px w-16 bg-gradient-to-l from-transparent to-(--crimson-border)" />
         </div>
 
-        {/* Awards Grid — Hall of Fame Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Awards Grid — Hall of Fame Layout - No white boxes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {awardsData.map((award, index) => {
             const TierIcon = tierIcons[index % tierIcons.length];
             const isTopTier = index < 3;
@@ -139,7 +139,7 @@ export default function Recognition() {
                 ref={(el) => {
                   blocksRef.current[index] = el;
                 }}
-                className={`group relative bg-[var(--bg-card)] border ${isTopTier ? 'border-[var(--crimson-border)]' : 'border-(--border)'} p-8 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-xl hover:shadow-[var(--crimson-dim)]`}
+                className={`group relative py-8 border-b border-[rgba(120,0,0,0.12)] md:border-b-0 md:border-r md:border-[rgba(120,0,0,0.12)] last:border-b-0 last:md:border-r-0 transition-all duration-300`}
                 variants={fadeInUp}
                 initial={!prefersReducedMotion ? "hidden" : "visible"}
                 whileInView={!prefersReducedMotion ? "visible" : undefined}
@@ -158,7 +158,7 @@ export default function Recognition() {
 
                 {/* Year badge */}
                 <div className="mb-4">
-                  <span className="font-mono text-[0.75rem] text-(--ta) tracking-[0.10em] uppercase bg-[var(--bg-hero)] px-3 py-1 border border-(--border)">
+                  <span className="font-mono text-[0.75rem] text-(--ta) tracking-[0.10em] uppercase px-3 py-1 border border-[rgba(120,0,0,0.12)]">
                     {award.year}
                   </span>
                 </div>

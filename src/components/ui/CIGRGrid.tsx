@@ -7,28 +7,28 @@ export default function CIGRGrid() {
       title: 'CORE COMPETENCIES',
       body: 'Our greatest strength lies in our people. Thousands of talented young professionals across our district, immense intellectual capital, and a legacy as one of the most accomplished Rotaract districts in the world. That foundation is real — and it is the platform for everything else.',
       color: 'var(--navy)',
-      bgColor: 'rgba(193,18,31,0.04)'
+      bgColor: 'rgba(193,18,31,0.07)'
     },
     {
       letter: 'I',
       title: 'IMPROVEMENTS',
       body: 'Administrative efficiency and financial literacy must be strengthened. Digital tools and standardised governance systems will simplify operations and improve transparency across clubs — reducing friction so that energy goes toward impact, not administration.',
       color: 'var(--navy-light)',
-      bgColor: 'rgba(0,48,73,0.04)'
+      bgColor: 'rgba(0,48,73,0.07)'
     },
     {
       letter: 'G',
       title: 'GROWTH AVENUES',
       body: 'Significant opportunities exist through digital innovation, stronger Rotary mentorship programmes via the Bridge Programme, and deeper collaboration with external partners who can open professional doors for our members.',
       color: 'var(--crimson)',
-      bgColor: 'rgba(193,18,31,0.04)'
+      bgColor: 'rgba(193,18,31,0.07)'
     },
     {
       letter: 'R',
       title: 'RISKS',
       body: 'Volunteer fatigue and economic uncertainty are real challenges for a youth-driven organisation. We must build systems that support member wellbeing and ensure our projects remain sustainable — not just ambitious.',
       color: 'var(--crimson-dark)',
-      bgColor: 'rgba(0,48,73,0.04)'
+      bgColor: 'rgba(0,48,73,0.07)'
     }
   ];
 

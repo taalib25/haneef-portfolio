@@ -53,18 +53,38 @@ export default function Campaign() {
             <p className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-16">
               District 3220 · Sri Lanka & Maldives · 2025–2026
             </p>
-            <p className="font-body text-[1.15rem] italic text-(--ct2) max-w-170 mx-auto text-center">
-              "To transform our district into a high-value ecosystem where youth
-              leadership is recognised as a professional standard."
+          </div>
+        </div>
+
+        {/* THE DRR STATEMENT: A Promise, Not a Paragraph */}
+        <div className="max-w-4xl mx-auto">
+          {/* 2px crimson rule above DRR statement block */}
+          <div className="h-[2px] w-full bg-(--crimson) mb-16" />
+
+          <div className="text-center px-4">
+            <p className="font-mono text-[0.8rem] text-[#780000] tracking-[0.12em] uppercase mb-6">
+              THE PROMISE
+            </p>
+            
+            <p className="font-display text-[clamp(2rem,3.5vw,3rem)] text-(--ct1) leading-[1.15] tracking-[-0.02em]">
+              To transform our district into a high-value ecosystem
+              <br />
+              where youth leadership is recognised as a professional
+              <br />
+              standard.
+            </p>
+            
+            <p className="font-body text-[0.85rem] italic text-[#9A7F7A] mt-8">
+              — Haneef Mohamed, DRR Candidate, District 3220
             </p>
           </div>
+
+          {/* 2px crimson rule below DRR statement block */}
+          <div className="h-[2px] w-full bg-(--crimson) mt-16" />
         </div>
 
         {/* Why I Am Running */}
         <div className="max-w-200 mx-auto mb-32">
-          {/* 2px crimson line above section header (full width) */}
-          <div className="h-[2px] w-full bg-(--crimson) mb-8" />
-
           <h3 className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-8 text-center">
             WHY I AM RUNNING
           </h3>
@@ -96,7 +116,7 @@ export default function Campaign() {
         </div>
 
         {/* Vision & Mission */}
-        <div className="flex flex-col md:flex-row border-t border-b border-(--cb) mb-32">
+        <div className="flex flex-col md:flex-row mb-32 border-t border-b border-(--cb)">
           <div className="flex-1 py-12 md:pr-12 border-b md:border-b-0 md:border-r border-(--cb)">
             <h3 className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-6">
               VISION:
@@ -136,67 +156,82 @@ export default function Campaign() {
             </p>
           </div>
 
-          {/* Challenge cards with strong visual hierarchy */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {/* Challenges container - full-width row layout */}
+          <div className="space-y-0">
             {/* Challenge 1 */}
-            <div className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-xl">
-              {/* Crimson accent bar on hover */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-[var(--crimson)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-
-              {/* Number badge */}
-              <div className="w-14 h-14 bg-[var(--crimson-dim)] flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[var(--crimson)]">
-                <span className="font-display text-[2rem] font-bold text-[var(--crimson)] group-hover:text-[var(--bg)]">01</span>
+            <div className="group relative py-12 md:py-[3rem] flex flex-col md:flex-row md:grid-cols-[140px_1fr] gap-6 md:gap-12 items-start border-t border-[rgba(120,0,0,0.12)] hover:border-[2px] hover:border-[#C1121F] transition-all duration-250 ease hover:border-t-0 hover:border-b-0 hover:border-l-0">
+              {/* Number badge - faint crimson, large */}
+              <div className="flex flex-col items-start md:items-center mb-4 md:mb-0">
+                <span className="font-display text-[clamp(3rem,5vw,5rem)] text-[rgba(193,18,31,0.15)] group-hover:text-[rgba(193,18,31,0.35)] transition-colors duration-250 ease leading-none">
+                  01
+                </span>
+                {/* Keyword label */}
+                <span className="font-mono text-[0.7rem] text-[#C1121F] tracking-[0.10em] uppercase mt-2 md:mt-1">
+                  Retention
+                </span>
               </div>
-
-              <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 uppercase leading-[1.1]">
-                Membership Retention
-              </h4>
-              <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                Many individuals join Rotaract with enthusiasm but lose interest
-                because they do not see the long-term value of their
-                involvement. The answer is not more recruitment campaigns. It is
-                a stronger experience for the members we already have.
-              </p>
+              
+              <div>
+                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 leading-[1.1] uppercase">
+                  Membership Retention
+                </h4>
+                <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85]">
+                  Many individuals join Rotaract with enthusiasm but lose interest
+                  because they do not see the long-term value of their
+                  involvement. The answer is not more recruitment campaigns. It is
+                  a stronger experience for the members we already have.
+                </p>
+              </div>
             </div>
 
             {/* Challenge 2 */}
-            <div className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--navy)] hover:shadow-xl">
-              <div className="absolute top-0 left-0 w-full h-1 bg-[var(--navy)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-
-              <div className="w-14 h-14 bg-[var(--navy-dim)] flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[var(--navy)]">
-                <span className="font-display text-[2rem] font-bold text-[var(--navy)] group-hover:text-[var(--bg)]">02</span>
+            <div className="group relative py-12 md:py-[3rem] flex flex-col md:flex-row md:grid-cols-[140px_1fr] gap-6 md:gap-12 items-start border-t border-[rgba(120,0,0,0.12)] hover:border-[2px] hover:border-[#C1121F] transition-all duration-250 ease hover:border-t-0 hover:border-b-0 hover:border-l-0">
+              <div className="flex flex-col items-start md:items-center mb-4 md:mb-0">
+                <span className="font-display text-[clamp(3rem,5vw,5rem)] text-[rgba(193,18,31,0.15)] group-hover:text-[rgba(193,18,31,0.35)] transition-colors duration-250 ease leading-none">
+                  02
+                </span>
+                <span className="font-mono text-[0.7rem] text-[#C1121F] tracking-[0.10em] uppercase mt-2 md:mt-1">
+                  Stewardship
+                </span>
               </div>
-
-              <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 uppercase leading-[1.1]">
-                Financial Stewardship
-              </h4>
-              <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                Transparency and financial literacy are essential for any
-                organisation that wishes to build trust. Clubs must operate with
-                clear systems that ensure accountability and responsible
-                financial management — not as a compliance exercise, but as a
-                cultural standard.
-              </p>
+              
+              <div>
+                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 leading-[1.1] uppercase">
+                  Financial Stewardship
+                </h4>
+                <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85]">
+                  Transparency and financial literacy are essential for any
+                  organisation that wishes to build trust. Clubs must operate with
+                  clear systems that ensure accountability and responsible
+                  financial management — not as a compliance exercise, but as a
+                  cultural standard.
+                </p>
+              </div>
             </div>
 
             {/* Challenge 3 */}
-            <div className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-xl">
-              <div className="absolute top-0 left-0 w-full h-1 bg-[var(--crimson)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-
-              <div className="w-14 h-14 bg-[var(--crimson-dim)] flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[var(--crimson)]">
-                <span className="font-display text-[2rem] font-bold text-[var(--crimson)] group-hover:text-[var(--bg)]">03</span>
+            <div className="group relative py-12 md:py-[3rem] flex flex-col md:flex-row md:grid-cols-[140px_1fr] gap-6 md:gap-12 items-start border-t border-[rgba(120,0,0,0.12)] hover:border-[2px] hover:border-[#C1121F] transition-all duration-250 ease hover:border-t-0 hover:border-b-0 hover:border-l-0">
+              <div className="flex flex-col items-start md:items-center mb-4 md:mb-0">
+                <span className="font-display text-[clamp(3rem,5vw,5rem)] text-[rgba(193,18,31,0.15)] group-hover:text-[rgba(193,18,31,0.35)] transition-colors duration-250 ease leading-none">
+                  03
+                </span>
+                <span className="font-mono text-[0.7rem] text-[#C1121F] tracking-[0.10em] uppercase mt-2 md:mt-1">
+                  Partnership
+                </span>
               </div>
-
-              <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 uppercase leading-[1.1]">
-                Meaningful Partnerships
-              </h4>
-              <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                Too often, our collaborations are limited to short-term
-                sponsorships. Rotaract should build long-term alliances with
-                organisations, institutions, and Rotary networks that support
-                sustainable projects and professional opportunities — not
-                one-off logo placements.
-              </p>
+              
+              <div>
+                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-4 leading-[1.1] uppercase">
+                  Meaningful Partnerships
+                </h4>
+                <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85]">
+                  Too often, our collaborations are limited to short-term
+                  sponsorships. Rotaract should build long-term alliances with
+                  organisations, institutions, and Rotary networks that support
+                  sustainable projects and professional opportunities — not
+                  one-off logo placements.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -220,7 +255,7 @@ export default function Campaign() {
           <CIGRGrid />
         </div>
 
-        {/* Strategic Pillars — Creative Card Display */}
+        {/* Strategic Pillars — Framework Layout */}
         <div className="mb-32">
           <h3 className="font-mono text-t-xs text-(--cta) tracking-[0.10em] uppercase mb-4 text-center">
             FOUR STRATEGIC PILLARS
@@ -229,90 +264,100 @@ export default function Campaign() {
             The foundation of transformation — built on member value, mentorship, partnerships, and transparency.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Pillars container - full-width horizontal bands */}
+          <div className="space-y-0 bg-[#FDF0D5]">
             {/* Pillar 1 — Value Chain */}
-            <div className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-lg">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-[var(--crimson-dim)] flex items-center justify-center rounded-bl-lg">
-                <span className="font-display text-[2.5rem] font-bold text-[var(--crimson)]">01</span>
+            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
+              {/* Left crimson accent bar - 3px, full height */}
+              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+              
+              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
+                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+                  01
+                </span>
               </div>
-              <div className="mb-6">
-                <svg className="w-10 h-10 text-[var(--crimson)] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                <h4 className="font-display text-[1.75rem] text-(--ct1) mb-3 uppercase leading-[1.1]">
+              
+              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
+                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   Rotaractor Value Chain
                 </h4>
+                <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
+                  Map the entire member journey from recruitment to alumni
+                  engagement. Each year in Rotaract should provide clear,
+                  accumulating opportunities for skill development — project
+                  management, public speaking, governance — that compound into a
+                  genuine professional asset over time.
+                </p>
               </div>
-              <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                Map the entire member journey from recruitment to alumni
-                engagement. Each year in Rotaract should provide clear,
-                accumulating opportunities for skill development — project
-                management, public speaking, governance — that compound into a
-                genuine professional asset over time.
-              </p>
             </div>
 
             {/* Pillar 2 — Bridge Programme */}
-            <div className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--navy)] hover:shadow-lg">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-[var(--navy-dim)] flex items-center justify-center rounded-bl-lg">
-                <span className="font-display text-[2.5rem] font-bold text-[var(--navy)]">02</span>
+            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
+              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+              
+              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
+                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+                  02
+                </span>
               </div>
-              <div className="mb-6">
-                <svg className="w-10 h-10 text-[var(--navy)] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                </svg>
-                <h4 className="font-display text-[1.75rem] text-(--ct1) mb-3 uppercase leading-[1.1]">
+              
+              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
+                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   The Bridge Programme
                 </h4>
+                <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
+                  A structured mentorship initiative that connects Rotaractors
+                  with Rotarians in their professional fields. Career guidance
+                  through the Rotary network — not as a perk, but as a deliberate
+                  system integrated into the district's annual architecture.
+                </p>
               </div>
-              <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                A structured mentorship initiative that connects Rotaractors
-                with Rotarians in their professional fields. Career guidance
-                through the Rotary network — not as a perk, but as a deliberate
-                system integrated into the district's annual architecture.
-              </p>
             </div>
 
             {/* Pillar 3 — Strategic Alliances */}
-            <div className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-lg">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-[var(--crimson-dim)] flex items-center justify-center rounded-bl-lg">
-                <span className="font-display text-[2.5rem] font-bold text-[var(--crimson)]">03</span>
+            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
+              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+              
+              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
+                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+                  03
+                </span>
               </div>
-              <div className="mb-6">
-                <svg className="w-10 h-10 text-[var(--crimson)] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <h4 className="font-display text-[1.75rem] text-(--ct1) mb-3 uppercase leading-[1.1]">
+              
+              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
+                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   Strategic Alliances
                 </h4>
+                <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
+                  Partnerships must evolve from transactional sponsorships into
+                  meaningful long-term collaborations that support both community
+                  impact and professional growth. Fewer partnerships. Deeper
+                  commitments. Measurable outcomes for members.
+                </p>
               </div>
-              <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                Partnerships must evolve from transactional sponsorships into
-                meaningful long-term collaborations that support both community
-                impact and professional growth. Fewer partnerships. Deeper
-                commitments. Measurable outcomes for members.
-              </p>
             </div>
 
             {/* Pillar 4 — Governance & Accountability */}
-            <div className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-8 transition-all duration-300 hover:border-[var(--navy)] hover:shadow-lg">
-              <div className="absolute top-0 right-0 w-16 h-16 bg-[var(--navy-dim)] flex items-center justify-center rounded-bl-lg">
-                <span className="font-display text-[2.5rem] font-bold text-[var(--navy)]">04</span>
+            <div className="relative flex flex-col md:flex-row py-[2.5rem] md:py-0 border-t border-[rgba(120,0,0,0.10)]">
+              <div className="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#C1121F]" />
+              
+              <div className="w-full md:w-[24px] flex items-start justify-start md:justify-center pr-4 md:pr-0">
+                <span className="font-display text-[4.5rem] md:text-[5rem] text-[rgba(193,18,31,0.12)] leading-none">
+                  04
+                </span>
               </div>
-              <div className="mb-6">
-                <svg className="w-10 h-10 text-[var(--navy)] mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <h4 className="font-display text-[1.75rem] text-(--ct1) mb-3 uppercase leading-[1.1]">
+              
+              <div className="flex-1 pl-[4rem] md:pl-4 md:pr-8">
+                <h4 className="font-display text-[1.5rem] text-(--ct1) mb-[0.75rem] uppercase leading-[1.1]">
                   Governance & Accountability
                 </h4>
+                <p className="font-body text-[1.0625rem] text-[#3A2A22] leading-[1.85] max-w-[640px]">
+                  Digital reporting systems will improve transparency across the
+                  district and allow us to measure success by real impact — not
+                  event count. Clubs will be equipped with professional project
+                  management tools, not improvised spreadsheets.
+                </p>
               </div>
-              <p className="font-body text-t-base text-(--ct2) leading-[1.75]">
-                Digital reporting systems will improve transparency across the
-                district and allow us to measure success by real impact — not
-                event count. Clubs will be equipped with professional project
-                management tools, not improvised spreadsheets.
-              </p>
             </div>
           </div>
         </div>
@@ -422,7 +467,7 @@ export default function Campaign() {
           </div>
         </div>
 
-        {/* Core Values — Campaign Principles Style */}
+        {/* Core Values — Typographic Stack */}
         <div className="mb-16">
           {/* Section header */}
           <div className="text-center mb-16">
@@ -437,66 +482,38 @@ export default function Campaign() {
             </p>
           </div>
 
-          {/* Values grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Values - Full-width rows with name left and description right */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-0 bg-[#FDF0D5]">
             {[
               {
                 name: "Service Above Self",
                 desc: "Projects must create genuine and sustainable impact.",
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                )
               },
               {
                 name: "Leadership Development",
                 desc: "Every Rotaractor deserves the opportunity to grow.",
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                )
               },
               {
                 name: "Integrity & Accountability",
                 desc: "Transparency is not a policy. It is a culture.",
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                )
               },
               {
                 name: "Collaboration",
                 desc: "Rotaract's greatest work happens at the intersections.",
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                )
               },
               {
                 name: "Innovation & Adaptability",
                 desc: "A youth movement that stops evolving stops mattering.",
-                icon: (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                )
               },
             ].map((val, i) => (
               <div
                 key={i}
-                className="group relative bg-[var(--bg-card)] border border-[var(--cb)] p-6 transition-all duration-300 hover:border-[var(--crimson)] hover:shadow-md"
+                className="flex flex-col md:flex-row items-start md:items-center justify-between py-[1.5rem] md:py-0 md:px-8 border-b border-[rgba(120,0,0,0.10)]"
               >
-                {/* Crimson accent on hover */}
-                <div className="absolute top-0 left-0 w-full h-0.5 bg-[var(--crimson)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-
-                {/* Icon */}
-                <div className="w-10 h-10 bg-[var(--crimson-dim)] flex items-center justify-center mb-4 rounded-sm group-hover:bg-[var(--crimson)] transition-colors duration-300">
-                  <svg className="w-5 h-5 text-[var(--crimson)] group-hover:text-[var(--bg)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    {val.icon}
-                  </svg>
-                </div>
-
-                {/* Value name */}
-                <h4 className="font-display text-[1.15rem] text-(--ct1) mb-2 uppercase leading-[1.2]">
+                <h4 className="font-display text-[1.75rem] text-(--ct1) mb-2 md:mb-0 uppercase leading-[1.2]">
                   {val.name}
                 </h4>
-
-                {/* Description */}
-                <p className="font-body text-[0.95rem] text-(--ct2) leading-[1.65]">
+                <p className="font-body text-[0.95rem] text-[#5A3D3A] italic max-w-[500px] md:ml-8">
                   {val.desc}
                 </p>
               </div>
