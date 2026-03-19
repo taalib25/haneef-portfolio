@@ -1,13 +1,12 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../../lib/cn';
-import { useReducedMotion } from '../../hooks/useReducedMotion';
+import potrait from '../../assets/potrait.png';
 
 const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -24,161 +23,158 @@ export default function Hero() {
     <section
       id="hero"
       className={cn(
-        'relative w-full h-screen min-h-[700px] overflow-hidden',
+        'relative w-full h-screen overflow-hidden',
       )}
       style={{
-        background: `
-          radial-gradient(circle at 30% 60%, rgba(255,255,255,0.04) 0%, transparent 60%),
-          radial-gradient(circle at 80% 20%, rgba(255,255,255,0.03) 0%, transparent 50%),
-          #780000
-        `
+        background: '#780000'
       }}
     >
-      {/* Desktop Portrait Image - Full height right panel */}
-      {!isMobile && (
-        <div
-          className="absolute right-0 top-0 bottom-0 w-[45%] hidden md:block overflow-hidden"
-          style={{ zIndex: 1 }}
-        >
-          <img
-            src="https://placehold.co/480x600/780000/FDF8F2?text=Haneef"
-            alt="Haneef Mohamed"
-            className="w-full h-full object-cover object-top"
-            style={{ display: 'block' }}
-          />
-        </div>
-      )}
-
-      {/* Mobile Portrait - Above content */}
-      {isMobile && (
-        <div
-          className="w-full relative h-[60vw] max-h-[280px] overflow-hidden md:hidden"
-          style={{ zIndex: 1 }}
-        >
-          <img
-            src="https://placehold.co/480x600/780000/FDF8F2?text=Haneef"
-            alt="Haneef Mohamed"
-            className="w-full h-full object-cover object-top"
-            style={{ display: 'block' }}
-          />
-        </div>
-      )}
-
-      {/* Desktop Layout - Content anchored bottom-left */}
+      {/* Desktop Layout */}
       {!isMobile ? (
         <>
-          {/* Small label */}
-          <motion.p
-            className="absolute left-[5%] z-20 font-display font-semibold text-[0.7rem] uppercase tracking-[0.06em]"
-            style={{
-              bottom: 'calc(12% + clamp(3rem, 6vw, 5.5rem) * 0.85 + 5.5rem)',
-              color: 'rgba(253,248,242,0.55)'
-            }}
-            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.4 }}
+          {/* Portrait Image - Full height right panel */}
+          <div
+            className="absolute right-0 top-0 bottom-0 w-[35%] overflow-hidden"
+            style={{ zIndex: 1 }}
           >
-            RTR. HANEEF MOHAMED
-          </motion.p>
+            <img
+              src={potrait}
+              alt="Haneef Mohamed"
+              className="w-full h-full object-cover object-center"
+              style={{
+                display: 'block',
+                filter: 'grayscale(100%) contrast(1.1) brightness(0.9)'
+              }}
+            />
+          </div>
 
-          {/* Main Name */}
-          <motion.h1
-            className="absolute bottom-[12%] left-[5%] z-20 font-display font-bold text-[clamp(3rem,6vw,5.5rem)] text-[#FDF8F2] leading-[0.88] tracking-[-0.025em] uppercase"
-            initial={!prefersReducedMotion ? { opacity: 0, y: 60 } : { opacity: 1, y: 0 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.9, ease: EASE_SMOOTH }}
-          >
-            HANEEF
-            <br />
-            MOHAMED
-          </motion.h1>
+          {/* Text Content - Left aligned, not centered */}
+          <div className="absolute inset-0 flex flex-col justify-center z-20">
+            <div className="w-[65%] pl-8 md:pl-12 lg:pl-16">
+              {/* VOTE FOR - smaller text above */}
+              <motion.p
+                className="font-display font-semibold text-[clamp(0.9rem,1.5vw,1.2rem)] uppercase tracking-[0.2em] text-[rgba(253,248,242,0.7)] mb-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: EASE_SMOOTH }}
+              >
+                Vote For
+              </motion.p>
 
-          {/* Sub-headline */}
-          <motion.p
-            className="absolute left-[5%] z-20 font-body font-light text-[0.9rem] tracking-wide"
-            style={{
-              bottom: 'calc(12% + clamp(3rem, 6vw, 5.5rem) * 0.85 + 2.5rem)',
-              color: 'rgba(253,248,242,0.6)'
-            }}
-            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.3 }}
-          >
-            PR Strategist · Rotaract President · DRR Candidate 2025
-          </motion.p>
+              {/* HANEEF MOHAMED - Really big bold text */}
+              <motion.h1
+                className="font-display font-bold text-[clamp(3.5rem,10vw,8rem)] leading-[0.75] tracking-[-0.03em] text-[#FDF8F2] uppercase"
+                initial={{ opacity: 0, scale: 0.92, y: 30 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 1.1, ease: EASE_SMOOTH, delay: 0.1 }}
+              >
+                HANEEF
+                <br />
+                MOHAMED
+              </motion.h1>
 
-          {/* CTAs */}
+              {/* Sub-headline */}
+              <motion.p
+                className="font-body font-light text-[clamp(0.9rem,1.2vw,1.1rem)] tracking-wide mt-6"
+                style={{ color: 'rgba(253,248,242,0.65)' }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.2 }}
+              >
+                PR Strategist · Rotaract President · DRR Candidate 2025
+              </motion.p>
+            </div>
+          </div>
+
+          {/* Scroll Indicator - Bottom Left aligned with text */}
           <motion.div
-            className="absolute left-[5%] z-20 flex gap-4"
-            style={{
-              bottom: 'calc(12% + clamp(3rem, 6vw, 5.5rem) * 0.85 + 6.5rem)',
-            }}
-            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.5 }}
+            className="absolute bottom-8 left-8 md:left-12 lg:left-16 z-20 flex flex-col items-center gap-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.4 }}
           >
-            <a
-              href="#campaign"
-              className="inline-flex justify-center items-center bg-[#FDF8F2] text-[#780000] font-display font-semibold text-[0.75rem] uppercase tracking-[0.06em] h-[48px] px-7 border-0 no-underline hover:opacity-90 transition-opacity"
-            >
-              VOTE HANEEF
-            </a>
-            <a
-              href="#story"
-              className="inline-flex justify-center items-center border border-[rgba(253,248,242,0.40)] text-[#FDF8F2] font-display font-semibold text-[0.75rem] uppercase tracking-[0.06em] h-[48px] px-7 bg-transparent hover:bg-[rgba(253,248,242,0.05)] transition-colors"
-            >
-              THE CAMPAIGN
-            </a>
+            <span className="font-display text-[0.65rem] uppercase tracking-[0.2em] text-[rgba(253,248,242,0.5)]">
+              Scroll
+            </span>
+            <div className="w-6 h-10 border-2 border-[rgba(253,248,242,0.4)] rounded-full flex justify-center pt-2">
+              <motion.div
+                className="w-1.5 h-1.5 bg-[rgba(253,248,242,0.8)] rounded-full"
+                animate={{ y: [0, 10, 0], opacity: [1, 0, 1] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </div>
           </motion.div>
         </>
       ) : (
-        // Mobile Layout
-        <div className="relative z-20 flex flex-col pt-0">
-          {/* Name - centered on mobile */}
-          <motion.h1
-            className="font-display font-bold text-[clamp(2.25rem,10vw,3.5rem)] text-[#FDF8F2] leading-[0.88] tracking-[-0.025em] uppercase text-center px-5 pt-6 pb-3"
-            initial={!prefersReducedMotion ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.1 }}
-          >
-            HANEEF
-            <br />
-            MOHAMED
-          </motion.h1>
+        // Mobile Layout - Clean portrait with bold name overlay
+        <div className="relative h-full flex flex-col">
+          {/* Portrait Image - Full viewport width */}
+          <div className="relative z-20 w-full h-[50vh] overflow-hidden">
+            <img
+              src={potrait}
+              alt="Haneef Mohamed"
+              className="w-full h-full object-cover object-center"
+              style={{
+                display: 'block',
+                filter: 'grayscale(100%) contrast(1.15) brightness(0.95)'
+              }}
+            />
+            {/* Dark overlay gradient for text contrast */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(120,0,0,0.4) 60%, #780000 100%)'
+              }}
+            />
+          </div>
 
-          {/* Sub-headline - centered */}
-          <motion.p
-            className="font-body font-light text-[0.85rem] tracking-wide text-center px-5 pb-6"
-            style={{ color: 'rgba(253,248,242,0.6)' }}
-            initial={!prefersReducedMotion ? { opacity: 0, y: 15 } : { opacity: 1, y: 0 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.2 }}
-          >
-            PR Strategist · Rotaract President · DRR Candidate 2025
-          </motion.p>
-
-          {/* Single CTA button - full width */}
-          <motion.div
-            className="px-5 pb-8"
-            initial={!prefersReducedMotion ? { opacity: 0, y: 15 } : { opacity: 1, y: 0 }}
-            animate={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.3 }}
-          >
-            <a
-              href="#campaign"
-              className="inline-flex justify-center items-center bg-[#FDF8F2] text-[#780000] font-display font-semibold text-[0.75rem] uppercase tracking-[0.06em] h-[48px] w-full border-0 no-underline hover:opacity-90 transition-opacity"
+          {/* Name overlay - positioned over bottom of image */}
+          <div className="absolute bottom-[35%] left-0 right-0 z-30 px-6">
+            <motion.h1
+              className="font-display font-bold text-[clamp(3.5rem,18vw,7rem)] leading-[0.7] tracking-[-0.02em] text-[#FDF8F2] uppercase text-center drop-shadow-lg"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, ease: EASE_SMOOTH, delay: 0.2 }}
             >
-              VOTE HANEEF
-            </a>
-          </motion.div>
+              HANEEF
+              <br />
+              MOHAMED
+            </motion.h1>
+          </div>
 
-          {/* Gradient transition to page */}
-          <div
-            className="h-[80px] w-full"
-            style={{
-              background: 'linear-gradient(to bottom, #780000, #FDF8F2)'
-            }}
-          />
+          {/* Bottom section with tagline and scroll indicator */}
+          <div className="relative z-20 flex-1 flex flex-col justify-center px-6 pb-8">
+            {/* Tagline */}
+            <motion.p
+              className="font-body font-light text-[0.8rem] tracking-wide text-center"
+              style={{ color: 'rgba(253,248,242,0.75)' }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.4 }}
+            >
+              PR Strategist · Rotaract President · DRR Candidate 2025
+            </motion.p>
+
+            {/* Clear Scroll Indicator - Arrow style */}
+            <motion.div
+              className="flex flex-col items-center gap-3 mt-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              <motion.div
+                className="flex flex-col items-center gap-1"
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <div className="w-4 h-4 border-r-2 border-b-2 border-[rgba(253,248,242,0.8)] rotate-45" />
+                <div className="w-4 h-4 border-r-2 border-b-2 border-[rgba(253,248,242,0.8)] rotate-45 -mt-2" />
+              </motion.div>
+              <span className="font-display text-[0.6rem] uppercase tracking-[0.25em] text-[rgba(253,248,242,0.6)]">
+                Scroll
+              </span>
+            </motion.div>
+          </div>
         </div>
       )}
     </section>

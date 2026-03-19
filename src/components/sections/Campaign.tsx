@@ -65,16 +65,16 @@ export default function Campaign() {
       className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-(--bg-campaign) text-(--ct1)"
     >
       <div className="max-w-6xl mx-auto">
-        {/* Section Header - DRR Banner */}
-        <div className="relative mb-20 text-center py-12 md:py-16 px-6 border border-(--cb)">
+        {/* Section Header - DRR Banner - CIGR Style */}
+        <div className="relative mb-10 md:mb-16 text-center py-12 md:py-16 px-6 border border-(--cb)">
           <div className="relative z-10">
-            <p className="font-mono text-(--cta) text-t-xs tracking-[0.10em] uppercase mb-8">
-              Running for District Rotaract Representative
+            <p className="font-mono text-(--ta) text-[9.5px] tracking-[0.10em] uppercase mb-4 md:mb-6">
+              [ 04 — DISTRICT REPRESENTATIVE ]
             </p>
-            <h2 className="font-display text-t-4xl text-[#780000] leading-[0.95] tracking-[-0.025em] uppercase mb-6">
-              District 3220 · Sri Lanka & Maldives
+            <h2 className="font-display text-t-4xl text-[#780000] leading-[0.95] tracking-[-0.025em] uppercase mb-4 md:mb-6">
+              District 3220 · <span className="text-[#C1121F]">Sri Lanka</span> & <span className="text-[#C1121F]">Maldives</span>
             </h2>
-            <p className="font-mono text-t-xs text-(--crimson) tracking-[0.10em] uppercase mb-8">
+            <p className="font-mono text-t-xs text-(--crimson) tracking-[0.10em] uppercase">
               2025–2026
             </p>
           </div>

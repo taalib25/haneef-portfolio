@@ -10,14 +10,12 @@ const COLOR_MAP: Record<string, string> = {
   LEADERSHIP: "var(--crimson)",
   PROFESSIONAL: "var(--navy)",
   DISTRICT: "var(--navy-light)",
-  AWARD: "var(--crimson)",
 };
 
 const SOLID_COLOR_MAP: Record<string, string> = {
   LEADERSHIP: "#C1121F",
   PROFESSIONAL: "#003049",
   DISTRICT: "#669BBC",
-  AWARD: "#C1121F",
 };
 
 export default function Story() {
@@ -116,27 +114,31 @@ export default function Story() {
     <section
       id="story"
       ref={timelineSectionRef}
-      className="relative py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg)]"
+      className="relative py-10 md:py-16 px-4 md:px-6 lg:px-8 bg-[var(--bg)]"
       style={{ scrollMarginTop: "80px" }}
     >
       {/* 2px crimson line at top of section opener */}
-      <div className="h-[2px] w-full bg-[var(--crimson)] mb-12 md:mb-16" />
+      <div className="h-[2px] w-full bg-[var(--crimson)] mb-8 md:mb-12" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Section Label */}
-        <p className="font-mono text-[var(--ta)] text-[0.8rem] tracking-[0.10em] uppercase mb-6">
-          The Story
-        </p>
+        {/* Section Header - CIGR Style */}
+        <div className="mb-10 md:mb-16">
+          {/* Section Label with number */}
+          <p className="font-mono text-[9.5px] text-[var(--ta)] tracking-[0.10em] uppercase mb-4 md:mb-6">
+            [ 01 — THE STORY ]
+          </p>
 
-        <h2 className="font-display text-t-4xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase mb-8">
-          ONE CAREER.
-          <br />
-          TWO ARENAS.
-          <br />
-          ONE DIRECTION.
-        </h2>
+          {/* Main Headline */}
+          <h2 className="font-display text-t-3xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase">
+            ONE CAREER.
+            <br />
+            <span className="text-[var(--crimson)]">TWO ARENAS.</span>
+            <br />
+            ONE DIRECTION.
+          </h2>
+        </div>
 
-        <div className="space-y-4 md:space-y-6 mt-8 md:mt-12">
+        <div className="space-y-3 md:space-y-4 mt-6 md:mt-8">
           <p className="font-body text-t-base text-[var(--t2)] leading-[1.75] max-w-none">
             My work in Public Relations is built on one skill: understanding people before trying to lead them. I build narratives, protect reputations, and connect organisations with the audiences that matter. That same instinct drives how I approach Rotaract. Listen first. Communicate clearly. Then lead.
           </p>
@@ -174,7 +176,7 @@ export default function Story() {
           </div>
 
           {/* RIGHT: entries */}
-          <div className="flex-1 space-y-8">
+          <div className="flex-1 space-y-6 md:space-y-8">
             {timelineData.map((item, index) => {
               const isHero = item.isHero;
               const typeColor = COLOR_MAP[item.type] || COLOR_MAP.LEADERSHIP;
@@ -192,7 +194,7 @@ export default function Story() {
                   className="timeline-entry relative md:pl-8"
                   style={{
                     paddingTop: "0.5rem",
-                    paddingBottom: isHero ? "3rem" : "2rem",
+                    paddingBottom: isHero ? "2.5rem" : "1.5rem",
                     opacity: 1,
                   }}
                 >
@@ -226,7 +228,7 @@ export default function Story() {
                     }}
                   >
                     {/* Year and Role row */}
-                    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-3 mb-3">
+                    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-3 mb-2 md:mb-3">
                       <div
                         className="font-display text-[var(--t1)] leading-[1] tracking-[-0.02em] block"
                         style={{
@@ -251,7 +253,7 @@ export default function Story() {
 
                     {/* Organisation */}
                     <p
-                      className="font-body text-sm mb-3"
+                      className="font-body text-xs md:text-sm mb-2 md:mb-3"
                       style={{
                         color: "var(--t3)",
                         fontWeight: 400,
@@ -264,7 +266,7 @@ export default function Story() {
                     <div
                       className="font-body leading-[1.75] text-left text-[var(--t2)]"
                       style={{
-                        fontSize: "1.0625rem",
+                        fontSize: "0.95rem",
                         lineHeight: "1.75",
                       }}
                     >
@@ -277,11 +279,11 @@ export default function Story() {
 
                     {/* Stat pills */}
                     {item.statPills && item.statPills.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mt-4">
+                      <div className="flex flex-wrap gap-2 mt-3 md:mt-4">
                         {item.statPills.map((pill, i) => (
                           <span
                             key={i}
-                            className="font-body font-medium px-3 py-1.5 rounded text-sm border"
+                            className="font-body font-medium px-3 py-1.5 rounded text-xs md:text-sm border"
                             style={{
                               color: typeColor,
                               borderColor: `${solidTypeColor}40`,
@@ -291,29 +293,6 @@ export default function Story() {
                             {pill}
                           </span>
                         ))}
-                      </div>
-                    )}
-
-                    {/* Awards */}
-                    {item.awards && item.awards.length > 0 && (
-                      <div
-                        className="mt-4 pt-3 border-t"
-                        style={{ borderColor: "var(--border)" }}
-                      >
-                        <p className="font-mono text-[var(--ta)] tracking-widest uppercase mb-2 text-xs">
-                          AWARDS
-                        </p>
-                        <ul className="flex flex-col gap-1.5">
-                          {item.awards.map((award, i) => (
-                            <li
-                              key={i}
-                              className="font-body text-sm italic"
-                              style={{ color: "var(--t2)" }}
-                            >
-                              {award}
-                            </li>
-                          ))}
-                        </ul>
                       </div>
                     )}
                   </div>

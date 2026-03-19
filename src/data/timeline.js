@@ -1,13 +1,5 @@
 export const timelineData = [
   {
-    year: "2025",
-    type: "AWARD",
-    title: "Most Popular Rotaractor",
-    organisation: "Rotaract District Conference 2025 · District 3220",
-    body: "Voted on by fellow Rotaractors across District 3220 at the annual District Conference. No judges, no submission packets, no campaigning. Just your peers deciding who showed up most consistently.",
-    statPills: []
-  },
-  {
     year: "2024–2025",
     type: "LEADERSHIP",
     isHero: true,
@@ -15,14 +7,6 @@ export const timelineData = [
     organisation: "Rotaract Club of Colombo Mid Town",
     body: "The club's highest elected position. Led 50 members through a full year, overseeing 10+ community service projects while improving member satisfaction by 20% and project outcomes by 15%.\n\nThe job was less about coordination and more about culture. I needed people to feel ownership over what we were building, not just show up for events. That meant understanding what motivated each person, giving them work that matched their strengths, and building systems that would keep running after I handed over the gavel. Same skills I use for client reputation work at PR Wire.",
     statPills: ["50 Members", "10+ Projects", "20% ↑ Satisfaction", "15% ↑ Outcomes"]
-  },
-  {
-    year: "2024",
-    type: "AWARD",
-    title: "Volunteer of the Year",
-    organisation: "New Generations Asia Awards 2024",
-    body: "Regional award for sustained community service work. Presented at the New Generations Asia Awards, one of the larger youth leadership gatherings in the region.",
-    statPills: []
   },
   {
     year: "2023–2024",
@@ -38,14 +22,6 @@ export const timelineData = [
     title: "Sergeant At Arms",
     organisation: "Rotaract Club of Colombo Mid Town",
     body: "Internal operations and club discipline. The unglamorous work that keeps a 50-member club functional. Built the governance habits I would need as President.",
-    statPills: []
-  },
-  {
-    year: "2023",
-    type: "AWARD",
-    title: "Best Team Leader — RYLA 2023",
-    organisation: "Rotary Youth Leadership Awards",
-    body: "RYLA tests leadership under pressure, not in a controlled club environment. Recognised for leading a high-performing team at Rotary's flagship youth leadership programme.",
     statPills: []
   },
   {
@@ -86,7 +62,6 @@ export const timelineData = [
     title: "Director of Public Relations",
     organisation: "Rotaract Club of Colombo Mid Town",
     body: "The role that started everything. Ran all communications and digital presence for the club. Two district awards. A 40% increase in club visibility. This is where the career and the service first became the same thing.",
-    awards: ["Most Outstanding Social Media Campaign — Silver Award (Women Force)", "Most Outstanding Digital Communications Efforts — Bronze Award"],
     statPills: ["40% ↑ Visibility", "2 District Awards"]
   }
 ];

@@ -17,13 +17,20 @@ export default function Contact() {
   return (
     <section id="contact" className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg-hero)]">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Campaign Vote Headline */}
+        {/* Section Header - CIGR Style */}
         <motion.div
-          className="mb-12"
+          className="mb-10 md:mb-16"
           initial={!prefersReducedMotion ? "hidden" : "visible"}
           whileInView={!prefersReducedMotion ? "visible" : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
+          <motion.p
+            className="font-mono text-[9.5px] text-[var(--hta)] tracking-[0.10em] uppercase mb-4 md:mb-6"
+            variants={fadeInUp}
+          >
+            [ 06 — GET IN TOUCH ]
+          </motion.p>
+
           <motion.h2
             className="font-display text-[clamp(2rem,4vw,3.25rem)] text-[var(--ht1)] leading-[0.92] tracking-[-0.025em] uppercase mb-6"
             variants={{

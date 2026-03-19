@@ -97,12 +97,12 @@ export default function Philosophy() {
     >
       {/* 2px crimson line at top of section opener (full width) */}
       <div className="h-[2px] w-full bg-(--crimson) mb-12" />
-      
+
       <div className="max-w-6xl mx-auto flex flex-col items-center">
-        {/* Section Header */}
-        <div className="w-full mb-20 text-center">
+        {/* Section Header - CIGR Style */}
+        <div className="w-full mb-10 md:mb-16 text-center">
           <motion.p
-            className="font-mono text-(--ta) text-t-xs tracking-[0.10em] uppercase mb-8"
+            className="font-mono text-(--ta) text-[9.5px] tracking-[0.10em] uppercase mb-4 md:mb-6"
             initial={
               !prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }
             }
@@ -116,7 +116,7 @@ export default function Philosophy() {
             }
             viewport={{ once: true }}
           >
-            Philosophy
+            [ 03 — LEADERSHIP PHILOSOPHY ]
           </motion.p>
 
           {/* Opacity Cascade Headline — Larger: clamp(4.5rem, 8vw, 8rem) per ADDENDUM */}

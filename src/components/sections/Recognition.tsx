@@ -51,10 +51,10 @@ export default function Recognition() {
       <div className="h-[2px] w-full bg-[var(--crimson)] mb-12 md:mb-16" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="mb-16">
+        {/* Section Header - CIGR Style */}
+        <div className="mb-10 md:mb-16">
           {/* Section Label */}
-          <p className="font-mono text-[9.5px] text-(--ta) tracking-[0.10em] uppercase mb-4">
+          <p className="font-mono text-[9.5px] text-(--ta) tracking-[0.10em] uppercase mb-4 md:mb-6">
             [ 05 — HALL OF HONORS ]
           </p>
 

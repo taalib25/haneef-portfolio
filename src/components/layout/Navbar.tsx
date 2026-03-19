@@ -48,12 +48,12 @@ export default function Navbar() {
             : 'bg-transparent border-none'
         )}
       >
-        <div className="flex w-full max-w-6xl mx-auto justify-center items-center h-full gap-8">
-          {/* Identity - Centered with text effect */}
+        <div className="flex w-full max-w-6xl mx-auto justify-between md:justify-center items-center h-full gap-8">
+          {/* Identity - Hidden on mobile, centered on desktop */}
           <a
             href="#"
             className={cn(
-              'font-display font-semibold text-[0.85rem] uppercase tracking-[0.14em] transition-all duration-500',
+              'hidden md:block font-display font-semibold text-[0.85rem] uppercase tracking-[0.14em] transition-all duration-500',
               'relative group',
               scrolled
                 ? 'text-[var(--t1)]'
@@ -99,19 +99,43 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className={cn(
-              'md:hidden transition-colors',
-              scrolled
-                ? 'text-[var(--t2)]'
-                : 'text-[var(--ht1)]' // White on crimson
-            )}
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open Menu"
-          >
-            <Menu size={18} />
-          </button>
+          {/* Mobile Header - Name on left, hamburger on right */}
+          <div className="md:hidden flex items-center justify-between w-full">
+            {/* Identity - Mobile (left side) */}
+            <a
+              href="#"
+              className={cn(
+                'font-display font-semibold text-[0.75rem] uppercase tracking-[0.12em] transition-all duration-500',
+                scrolled
+                  ? 'text-[var(--t1)]'
+                  : 'text-[rgba(253,248,242,0.95)]'
+              )}
+            >
+              <span className={cn(
+                'transition-all duration-500',
+                !scrolled && 'text-shadow-subtle'
+              )}>
+                RTR. HANEEF
+              </span>
+            </a>
+
+            {/* Mobile Menu Toggle - Right side */}
+            <button
+              className={cn(
+                'transition-colors',
+                scrolled
+                  ? 'text-[var(--t2)]'
+                  : 'text-[var(--ht1)]' // White on crimson
+              )}
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open Menu"
+            >
+              <Menu size={18} />
+            </button>
+          </div>
+
+          {/* Desktop Identity (center) - shown only on md+ */}
+          <div className="hidden md:block" />
         </div>
       </nav>
 

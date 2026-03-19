@@ -49,23 +49,23 @@ export default function Work() {
       <div className="h-[2px] w-full bg-[var(--crimson)] mb-12" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+        {/* Section Header - CIGR Style */}
         <motion.div
-          className="mb-20"
+          className="mb-10 md:mb-16"
           initial={!prefersReducedMotion ? { opacity: 0, y: 24 } : { opacity: 1 }}
           whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
           transition={!prefersReducedMotion ? { duration: 0.9, ease: [0.16, 1, 0.3, 1] } : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
-          {/* Section Label */}
+          {/* Section Label with number */}
           <motion.p
-            className="font-mono text-[var(--ta)] text-[0.8rem] tracking-[0.10em] uppercase mb-6"
+            className="font-mono text-[9.5px] text-[var(--ta)] tracking-[0.10em] uppercase mb-4 md:mb-6"
             initial={!prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }}
             whileInView={!prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 1 }}
             transition={!prefersReducedMotion ? { duration: 0.4, ease: 'easeOut' } : undefined}
             viewport={{ once: true }}
           >
-            Work
+            [ 02 — PROFESSIONAL WORK ]
           </motion.p>
 
           {/* Section Headline */}
@@ -77,7 +77,9 @@ export default function Work() {
             viewport={{ once: true, amount: 0.1 }}
           >
             WHERE THE<br />
-            CRAFT LIVES.
+            <span className="text-[var(--crimson)]">CAREER</span><br />
+            SERVES THE<br />
+            <span className="text-[var(--crimson)]">MISSION</span>
           </motion.h2>
 
           <motion.p
