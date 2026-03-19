@@ -123,10 +123,7 @@ export default function Story() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header - CIGR Style */}
         <div className="mb-10 md:mb-16">
-          {/* Section Label with number */}
-          <p className="font-mono text-[9.5px] text-[var(--ta)] tracking-[0.10em] uppercase mb-4 md:mb-6">
-            [ 01 — THE STORY ]
-          </p>
+      
 
           {/* Main Headline */}
           <h2 className="font-display text-t-3xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase">

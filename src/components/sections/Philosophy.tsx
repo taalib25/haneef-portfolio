@@ -116,7 +116,7 @@ export default function Philosophy() {
             }
             viewport={{ once: true }}
           >
-            [ 03 — LEADERSHIP PHILOSOPHY ]
+          
           </motion.p>
 
           {/* Opacity Cascade Headline — Larger: clamp(4.5rem, 8vw, 8rem) per ADDENDUM */}

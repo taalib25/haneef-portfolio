@@ -148,7 +148,6 @@ body {
   color: var(--t1);
   font-family: var(--font-body);
   font-weight: 400;
-  cursor: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
@@ -915,6 +914,54 @@ html, body {
   section .mb-4 {
     margin-bottom: 0.5rem !important;
   }
+}
+
+/* ============================================
+   ALTERNATE THEME — Cosmos Navy
+   Activated via: <html data-theme="navy">
+   ============================================ */
+
+[data-theme="navy"] {
+  /* ── SURFACES — same warm light base */
+  --bg:              #F5F8FA;
+  --bg-card:         #FFFFFF;
+  --bg-card-hover:   #F0F5F8;
+  --bg-hero:         #042B44;
+  --bg-campaign:     #EBF4F8;
+
+  /* ── PRIMARY ACCENT — Ocean Teal replaces Crimson */
+  --crimson:         #096B90;
+  --crimson-dark:    #042B44;
+  --crimson-dim:     rgba(9, 107, 144, 0.08);
+  --crimson-border:  rgba(9, 107, 144, 0.18);
+
+  /* ── SECONDARY ACCENT */
+  --navy:            #042B44;
+  --navy-light:      #71B7D5;
+  --navy-dim:        rgba(4, 43, 68, 0.08);
+  --navy-border:     rgba(4, 43, 68, 0.15);
+
+  /* ── TEXT — use near-black from palette */
+  --t1:  #08171E;
+  --t2:  #2A4A5A;
+  --t3:  #7A9BAA;
+  --ta:  #096B90;
+
+  /* ── HERO TEXT — on deep navy surface */
+  --ht1: #F5F8FA;
+  --ht2: rgba(245, 248, 250, 0.80);
+  --hta: #A1CCDC;
+
+  /* ── CAMPAIGN TEXT — on blue-tinted cream */
+  --ct1: #08171E;
+  --ct2: #2A4A5A;
+  --cta: #042B44;
+  --cb:  rgba(4, 43, 68, 0.14);
+
+  /* ── BORDERS */
+  --border:        rgba(8, 23, 30, 0.08);
+  --border-medium: rgba(8, 23, 30, 0.10);
+  --border-strong: rgba(8, 23, 30, 0.16);
 }
 
 /* ============================================

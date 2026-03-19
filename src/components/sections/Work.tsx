@@ -57,16 +57,6 @@ export default function Work() {
           transition={!prefersReducedMotion ? { duration: 0.9, ease: [0.16, 1, 0.3, 1] } : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
-          {/* Section Label with number */}
-          <motion.p
-            className="font-mono text-[9.5px] text-[var(--ta)] tracking-[0.10em] uppercase mb-4 md:mb-6"
-            initial={!prefersReducedMotion ? { opacity: 0, x: -12 } : { opacity: 1 }}
-            whileInView={!prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 1 }}
-            transition={!prefersReducedMotion ? { duration: 0.4, ease: 'easeOut' } : undefined}
-            viewport={{ once: true }}
-          >
-            [ 02 — PROFESSIONAL WORK ]
-          </motion.p>
 
           {/* Section Headline */}
           <motion.h2

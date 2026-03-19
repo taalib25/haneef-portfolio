@@ -7,7 +7,6 @@ import { Suspense, lazy } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
-import CustomCursor from './components/ui/CustomCursor';
 
 const Story = lazy(() => import('./components/sections/Story'));
 const Work = lazy(() => import('./components/sections/Work'));
@@ -19,7 +18,6 @@ const Contact = lazy(() => import('./components/sections/Contact'));
 export default function App() {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--t1)] font-body selection:bg-[var(--crimson)] selection:text-[var(--t1)]">
-      <CustomCursor />
       <Navbar />
       
       <main className="relative">
