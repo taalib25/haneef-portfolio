@@ -37,9 +37,9 @@
   --color-navy-border: rgba(0, 48, 73, 0.15);
 
   /* ── TEXT COLORS — Simplified to warm brown palette */
-  --color-t1: #0f0608; /* Primary headings */
-  --color-t2: #4a3830; /* Body text - warm dark brown (NOT black) */
-  --color-t3: #9a7f7a; /* Tertiary text */
+  --color-t1: #0A0408; /* Primary headings */
+  --color-t2: #2D1F1B; /* Body text - darker for readability */
+  --color-t3: #7A6560; /* Tertiary text */
   --color-ta: #c1121f; /* Accent text */
 
   /* ── HERO TEXT */
@@ -48,8 +48,8 @@
   --color-hta: #fdf0d5; /* Hero accent */
 
   /* ── CAMPAIGN TEXT — warm brown for body */
-  --color-ct1: #0f0608;
-  --color-ct2: #4a3830; /* Changed from #3a2a22 - warm brown */
+  --color-ct1: #0A0408;
+  --color-ct2: #2D1F1B; /* Darker for readability on cream */
   --color-cta: #780000;
   --color-cb: rgba(120, 0, 0, 0.15);
 
@@ -58,17 +58,17 @@
   --color-border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
   --color-border-strong: rgba(15, 6, 8, 0.16);
 
-  /* ── TYPOGRAPHY SCALES — Reduced for better proportions */
-  --text-t-xs: 0.7rem; /* Section labels */
-  --text-t-sm: 0.85rem; /* Small metadata */
-  --text-t-base: 1rem; /* Body/paragraph */
-  --text-t-lg: 1.0625rem; /* Card body */
-  --text-t-xl: 1.2rem; /* Card titles, role names */
+  /* ── TYPOGRAPHY SCALES — Increased for better readability */
+  --text-t-xs: 0.8rem; /* Section labels */
+  --text-t-sm: 0.9rem; /* Small metadata */
+  --text-t-base: 1.0625rem; /* Body/paragraph - 17px */
+  --text-t-lg: 1.125rem; /* Card body */
+  --text-t-xl: 1.3rem; /* Card titles, role names */
   --text-t-2xl: clamp(1.75rem, 3vw, 2.25rem); /* Recognition titles */
   --text-t-3xl: 2rem; /* Hero card title */
-  --text-t-4xl: clamp(2rem, 4vw, 3.25rem); /* Section headlines - REDUCED from 8rem */
-  --text-t-hero: clamp(2.5rem, 5vw, 4rem); /* Contact hero - REDUCED */
-  --text-t-philosophy: clamp(2rem, 4vw, 3.5rem); /* Philosophy cascade - REDUCED */
+  --text-t-4xl: clamp(2rem, 4vw, 3.25rem); /* Section headlines */
+  --text-t-hero: clamp(2.5rem, 5vw, 4rem); /* Contact hero */
+  --text-t-philosophy: clamp(2rem, 4vw, 3.5rem); /* Philosophy cascade */
 }
 
 :root {
@@ -86,9 +86,9 @@
   --crimson-border: rgba(193, 18, 31, 0.18);
 
   /* ── TEXT COLORS — Simplified warm brown palette */
-  --t1: #0f0608; /* Primary headings */
-  --t2: #4a3830; /* Body text - warm dark brown (NOT black) */
-  --t3: #9a7f7a; /* Tertiary text */
+  --t1: #0A0408; /* Primary headings */
+  --t2: #2D1F1B; /* Body text - darker for readability */
+  --t3: #7A6560; /* Tertiary text */
   --ta: #c1121f; /* Accent */
 
   /* ── TEXT ON HERO */
@@ -97,8 +97,8 @@
   --hta: #fdf0d5;
 
   /* ── TEXT ON CAMPAIGN — warm brown */
-  --ct1: #0f0608;
-  --ct2: #4a3830; /* Changed from #3a2a22 */
+  --ct1: #0A0408;
+  --ct2: #2D1F1B; /* Darker for readability */
   --cta: #780000;
   --cb: rgba(120, 0, 0, 0.15);
 
@@ -107,17 +107,17 @@
   --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
   --border-strong: rgba(15, 6, 8, 0.16);
 
-  /* ── TYPOGRAPHY SCALES — Reduced for better proportions */
-  --t-xs: 0.7rem; /* Section labels */
-  --t-sm: 0.85rem; /* Small metadata */
-  --t-base: 1rem; /* Body/paragraph */
-  --t-lg: 1.0625rem; /* Card body */
-  --t-xl: 1.2rem; /* Card titles, role names */
+  /* ── TYPOGRAPHY SCALES — Increased for better readability */
+  --t-xs: 0.8rem; /* Section labels */
+  --t-sm: 0.9rem; /* Small metadata */
+  --t-base: 1.0625rem; /* Body/paragraph - 17px */
+  --t-lg: 1.125rem; /* Card body */
+  --t-xl: 1.3rem; /* Card titles, role names */
   --t-2xl: clamp(1.75rem, 3vw, 2.25rem);
   --t-3xl: 2rem;
-  --t-4xl: clamp(2rem, 4vw, 3.25rem); /* Section headlines - REDUCED */
-  --t-hero: clamp(2.5rem, 5vw, 4rem); /* Contact hero - REDUCED */
-  --t-philosophy: clamp(2rem, 4vw, 3.5rem); /* Philosophy - REDUCED */
+  --t-4xl: clamp(2rem, 4vw, 3.25rem); /* Section headlines */
+  --t-hero: clamp(2.5rem, 5vw, 4rem); /* Contact hero */
+  --t-philosophy: clamp(2rem, 4vw, 3.5rem); /* Philosophy */
 }
 
 /* Tailwind import should come after theme definition */
@@ -147,7 +147,8 @@ body {
   background-color: var(--bg);
   color: var(--t1);
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: 450; /* Increased from 400 for better readability */
+  line-height: 1.85; /* Increased for better readability */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
@@ -221,7 +222,7 @@ html {
 
 /* Clash Display headlines - tight letter spacing for authority */
 .font-display {
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em; /* Tightened from -0.015em */
 }
 
 .font-display.text-\[clamp\(2\.5rem\,5vw\,4rem\)\],
@@ -246,13 +247,13 @@ html {
 
 /* Clash Display for monospace elements - reduced tracking for cleaner look */
 .font-mono {
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em; /* Reduced from 0.06em for cleaner look */
 }
 
 /* Mobile: further reduce tracking for narrow screens */
 @media (max-width: 767px) {
   .font-mono {
-    letter-spacing: 0.04em;
+    letter-spacing: 0.01em; /* Reduced from 0.04em */
   }
 }
 
@@ -260,6 +261,12 @@ html {
 p {
   text-align: left;
   max-width: 68ch;
+  line-height: 1.85; /* Increased for better readability */
+}
+
+/* Small text (labels, metadata) needs generous leading */
+.text-t-xs, .text-t-sm, .org-label, .date-label, .meta-text {
+  line-height: 1.6;
 }
 
 /* Remove text-transform uppercase from body elements - preserve only for section labels */
@@ -942,9 +949,9 @@ html, body {
   --navy-border:     rgba(4, 43, 68, 0.15);
 
   /* ── TEXT — use near-black from palette */
-  --t1:  #08171E;
-  --t2:  #2A4A5A;
-  --t3:  #7A9BAA;
+  --t1:  #051014;
+  --t2:  #1A3A4A; /* Darker for better readability */
+  --t3:  #5A7A8A;
   --ta:  #096B90;
 
   /* ── HERO TEXT — on deep navy surface */
@@ -953,8 +960,8 @@ html, body {
   --hta: #A1CCDC;
 
   /* ── CAMPAIGN TEXT — on blue-tinted cream */
-  --ct1: #08171E;
-  --ct2: #2A4A5A;
+  --ct1: #051014;
+  --ct2: #1A3A4A; /* Darker for better readability */
   --cta: #042B44;
   --cb:  rgba(4, 43, 68, 0.14);
 

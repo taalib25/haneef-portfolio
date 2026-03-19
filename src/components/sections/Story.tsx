@@ -27,82 +27,86 @@ export default function Story() {
   const prefersReducedMotion = getReducedMotion();
 
   useEffect(() => {
-    // Skip path animation on mobile
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return;
-    }
-
     const ctx = gsap.context(() => {
       const lineEl = lineRef.current;
       const sectionEl = timelineSectionRef.current;
 
-      if (!lineEl || !sectionEl) return;
+      if (!sectionEl) return;
 
       if (prefersReducedMotion) {
         gsap.set(".timeline-entry", { opacity: 1, y: 0 });
         gsap.set(".timeline-dot", { scale: 1, opacity: 1 });
-        gsap.set(lineEl, { height: "100%" });
+        if (lineEl) gsap.set(lineEl, { height: "100%" });
         return;
       }
 
-      // Path line draws as user scrolls through the section
-      gsap.to(lineEl, {
-        height: "100%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionEl,
-          start: "top 60%",
-          end: "bottom 80%",
-          scrub: 1.2,
-        },
-      });
+      // ── PATH LINE (desktop only)
+      if (lineEl && sectionEl && window.innerWidth >= 768) {
+        gsap.to(lineEl, {
+          height: "100%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionEl,
+            start: "top 60%",
+            end: "bottom 80%",
+            scrub: 1.2,
+          },
+        });
+      }
 
-      // Entry reveal animations
+      // ── ENTRY REVEALS (all screen sizes)
       const entryElements = entriesRef.current.filter((el) => el !== null) as HTMLDivElement[];
       const dotElements = dotsRef.current.filter((el) => el !== null) as HTMLDivElement[];
 
+      // Check which entries are already in viewport on load
       entryElements.forEach((entry) => {
+        const rect = entry.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight * 0.9;
+
+        if (isInView) {
+          gsap.set(entry, { opacity: 1, y: 0 });
+          return;
+        }
+
         gsap.fromTo(
           entry,
-          {
-            opacity: 0,
-            y: 28,
-          },
+          { opacity: 0, y: 20 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.7,
+            duration: 0.55,
             ease: "power2.out",
             scrollTrigger: {
               trigger: entry,
-              start: "top 82%",
+              start: "top 80%",
               toggleActions: "play none none none",
+              once: true,
             },
           }
         );
       });
 
-      // Dot pop animations
-      dotElements.forEach((dot) => {
-        gsap.fromTo(
-          dot,
-          {
-            scale: 0,
-            opacity: 0,
-          },
-          {
-            scale: 1,
-            opacity: 1,
-            duration: 0.4,
-            ease: "back.out(2)",
-            scrollTrigger: {
-              trigger: dot,
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          }
-        );
-      });
+      // ── DOT ANIMATIONS (desktop only)
+      if (window.innerWidth >= 768) {
+        dotElements.forEach((dot) => {
+          gsap.fromTo(
+            dot,
+            { scale: 0, opacity: 0 },
+            {
+              scale: 1,
+              opacity: 1,
+              duration: 0.4,
+              ease: "back.out(2)",
+              scrollTrigger: {
+                trigger: dot,
+                start: "top 82%",
+                toggleActions: "play none none none",
+                once: true,
+              },
+            }
+          );
+        });
+      }
     }, timelineSectionRef);
 
     return () => {
@@ -121,10 +125,8 @@ export default function Story() {
       <div className="h-[2px] w-full bg-[var(--crimson)] mb-8 md:mb-12" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Section Header - CIGR Style */}
+        {/* Section Header */}
         <div className="mb-10 md:mb-16">
-      
-
           {/* Main Headline */}
           <h2 className="font-display text-t-3xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase">
             ONE CAREER.
@@ -143,7 +145,7 @@ export default function Story() {
 
         {/* Timeline Body */}
         <div className="flex flex-col md:flex-row gap-4 md:gap-0">
-          {/* LEFT: the path column */}
+          {/* LEFT: the path column (desktop only) */}
           <div
             ref={pathRef}
             className="relative flex-shrink-0 hidden md:block"
@@ -178,9 +180,14 @@ export default function Story() {
               const isHero = item.isHero;
               const typeColor = COLOR_MAP[item.type] || COLOR_MAP.LEADERSHIP;
               const solidTypeColor = SOLID_COLOR_MAP[item.type] || SOLID_COLOR_MAP.LEADERSHIP;
-              const yearFontSize = isHero ? "2.25rem" : "1.75rem";
-              const roleFontSize = isHero ? "1.4rem" : "1.25rem";
-              const borderSize = isHero ? "3px" : "2px";
+
+              // Responsive font sizes using clamp()
+              const yearFontSize = isHero
+                ? "clamp(1.3rem, 4vw, 1.9rem)"
+                : "clamp(1.1rem, 3.5vw, 1.5rem)";
+              const roleFontSize = isHero
+                ? "clamp(1rem, 2.5vw, 1.2rem)"
+                : "clamp(0.95rem, 2vw, 1.1rem)";
 
               return (
                 <div
@@ -188,11 +195,13 @@ export default function Story() {
                   ref={(el) => {
                     entriesRef.current[index] = el;
                   }}
-                  className="timeline-entry relative md:pl-8"
+                  className="timeline-entry relative pl-4 md:pl-8"
                   style={{
                     paddingTop: "0.5rem",
-                    paddingBottom: isHero ? "2.5rem" : "1.5rem",
-                    opacity: 1,
+                    paddingBottom: isHero ? "2rem" : "1.5rem",
+                    // Mobile: border-left instead of dot
+                    borderLeft: window.innerWidth < 768 ? `2px solid ${typeColor}` : "none",
+                    opacity: 1, // Will be overridden by GSAP
                   }}
                 >
                   {/* Dot positioned on the path - hidden on mobile */}
@@ -212,59 +221,60 @@ export default function Story() {
                     }}
                   />
 
-                  {/* Entry content card */}
+                  {/* Entry content */}
                   <div
-                    className="w-full"
-                    style={{
-                      borderTop: `${borderSize} solid ${typeColor}`,
-                      ...(isHero && {
-                        backgroundColor: "rgba(193,18,31,0.04)",
-                        padding: "1.25rem",
-                        borderRadius: "0 0 8px 8px",
-                      }),
-                    }}
+                    className="w-full pt-4"
                   >
-                    {/* Year and Role row */}
-                    <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-3 mb-2 md:mb-3">
-                      <div
-                        className="font-display text-[var(--t1)] leading-[1] tracking-[-0.02em] block"
-                        style={{
-                          fontSize: yearFontSize,
-                          color: typeColor,
-                          fontWeight: 600,
-                          fontFeatureSettings: "'liga' 0",
-                        }}
-                      >
-                        {item.year}
-                      </div>
-                      <div
-                        className="font-display text-[var(--t1)] leading-[1] tracking-[-0.015em]"
-                        style={{
-                          fontSize: roleFontSize,
-                          fontWeight: 700,
-                        }}
-                      >
-                        {item.title}
-                      </div>
+                    {/* Year - always on its own line, above role */}
+                    <div
+                      className="font-display leading-[1] tracking-[-0.02em] block mb-[0.15rem]"
+                      style={{
+                        fontSize: yearFontSize,
+                        color: typeColor,
+                        fontWeight: 700,
+                        fontFeatureSettings: "'liga' 0",
+                      }}
+                    >
+                      {item.year}
                     </div>
 
-                    {/* Organisation */}
+                    {/* Short bar under year */}
+                    <div
+                      className="w-[24px] h-[2px] mb-[0.75rem]"
+                      style={{ background: typeColor }}
+                    />
+
+                    {/* Role title - separate line below year */}
+                    <div
+                      className="font-display text-[var(--t1)] leading-[1] tracking-[-0.015em] block mb-[0.2rem]"
+                      style={{
+                        fontSize: roleFontSize,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {item.title}
+                    </div>
+
+                    {/* Organisation - quiet, supporting */}
                     <p
-                      className="font-body text-xs md:text-sm mb-2 md:mb-3"
+                      className="font-body text-[0.85rem] md:text-[0.9rem] mb-[0.75rem]"
                       style={{
                         color: "var(--t3)",
-                        fontWeight: 400,
+                        fontWeight: 500,
                       }}
                     >
                       {item.organisation}
                     </p>
 
+                    {/* Divider */}
+                    <div className="h-px w-full mb-[0.75rem]" style={{ background: "rgba(15,6,8,0.07)" }} />
+
                     {/* Body */}
                     <div
-                      className="font-body leading-[1.75] text-left text-[var(--t2)]"
+                      className="font-body leading-[1.8] text-left text-[var(--t2)]"
                       style={{
-                        fontSize: "0.95rem",
-                        lineHeight: "1.75",
+                        fontSize: "1rem",
+                        fontWeight: 450,
                       }}
                     >
                       {item.body.split("\n\n").map((paragraph, i) => (
@@ -274,10 +284,10 @@ export default function Story() {
                       ))}
                     </div>
 
-                    {/* Stat pills */}
+                    {/* Stat pills - limit to 3 on mobile */}
                     {item.statPills && item.statPills.length > 0 && (
                       <div className="flex flex-wrap gap-2 mt-3 md:mt-4">
-                        {item.statPills.map((pill, i) => (
+                        {item.statPills.slice(0, window.innerWidth < 768 ? 3 : undefined).map((pill, i) => (
                           <span
                             key={i}
                             className="font-body font-medium px-3 py-1.5 rounded text-xs md:text-sm border"

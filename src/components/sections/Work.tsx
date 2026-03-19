@@ -99,10 +99,10 @@ export default function Work() {
             >
               {/* Company and Date - quiet row */}
               <div className="flex justify-between items-baseline mb-4 pb-3 border-b border-[var(--border)]">
-                <p className="font-body text-[0.85rem] text-[var(--t3)] font-normal">
+                <p className="font-body text-[0.9rem] text-[var(--t2)] font-medium">
                   PR Wire
                 </p>
-                <p className="font-body text-[0.85rem] text-[var(--t3)] font-normal">
+                <p className="font-body text-[0.9rem] text-[var(--t2)] font-medium">
                   May 2023 – Present
                 </p>
               </div>
@@ -145,10 +145,10 @@ export default function Work() {
             >
               {/* Company and Date - quiet row */}
               <div className="flex justify-between items-baseline mb-4 pb-3 border-b border-[var(--border)]">
-                <p className="font-body text-[0.85rem] text-[var(--t3)] font-normal">
+                <p className="font-body text-[0.9rem] text-[var(--t2)] font-medium">
                   ChildFund Sri Lanka
                 </p>
-                <p className="font-body text-[0.85rem] text-[var(--t3)] font-normal">
+                <p className="font-body text-[0.9rem] text-[var(--t2)] font-medium">
                   July 2022 – March 2023
                 </p>
               </div>
@@ -191,11 +191,11 @@ export default function Work() {
           transition={!prefersReducedMotion ? { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 } : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
-          <p className="font-body text-[0.9rem] text-[var(--t3)] font-normal">
+          <p className="font-body text-[0.95rem] text-[var(--t2)] font-medium">
             Diploma in Marketing · CIM · Strategy College of Business
           </p>
-          <span className="hidden md:inline text-[var(--t3)]">·</span>
-          <p className="font-body text-[0.9rem] text-[var(--t3)] font-normal">
+          <span className="hidden md:inline text-[var(--t2)]">·</span>
+          <p className="font-body text-[0.95rem] text-[var(--t2)] font-medium">
             Primary & Secondary Education · Amal International School
           </p>
         </motion.div>
