@@ -77,12 +77,12 @@ export default function Recognition() {
             <div
               key={index}
               ref={(el) => { awardItemsRef.current[index] = el; }}
-              className="award-item py-[1.15rem] md:py-[1.4rem] border-b border-[rgba(120,0,0,0.12)] first:border-t first:border-[rgba(120,0,0,0.12)] transition-colors duration-200 ease group"
+              className="award-item py-[1.15rem] md:py-[1.4rem] border-b border-[var(--campaign-border-light)] first:border-t first:border-[var(--campaign-border-light)] transition-colors duration-200 ease group"
             >
               {/* Desktop grid layout */}
               <div className="hidden md:grid md:grid-cols-[120px_1fr_1.5fr] md:gap-10 md:items-baseline">
                 {/* Year */}
-                <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] flex-shrink-0">
+                <span className="font-mono text-[9px] tracking-[0.06em] text-[var(--campaign-text-muted)] flex-shrink-0">
                   {award.year}
                 </span>
 
@@ -107,7 +107,7 @@ export default function Recognition() {
               {/* Mobile layout */}
               <div className="md:hidden">
                 {/* Year badge */}
-                <span className="font-mono text-[9px] tracking-[0.06em] text-[rgba(193,18,31,0.35)] inline-block mb-2">
+                <span className="font-mono text-[9px] tracking-[0.06em] text-[var(--campaign-text-muted)] inline-block mb-2">
                   {award.year}
                 </span>
 
@@ -137,7 +137,7 @@ export default function Recognition() {
 
         {/* Closing Note — Legacy Statement */}
         <div className="mt-16">
-          <div className="border-t border-b border-[rgba(120,0,0,0.12)] py-8">
+          <div className="border-t border-b border-[var(--campaign-border-light)] py-8">
             <p className="font-mono text-[9px] tracking-[0.12em] text-(--t3) uppercase mb-3">
               The Foundation
             </p>

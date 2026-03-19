@@ -969,6 +969,32 @@ html, body {
   --border:        rgba(8, 23, 30, 0.08);
   --border-medium: rgba(8, 23, 30, 0.10);
   --border-strong: rgba(8, 23, 30, 0.16);
+
+  /* ── CAMPAIGN SECTION - Crimson accent colors */
+  --campaign-border: rgba(193, 18, 31, 0.15);
+  --campaign-border-light: rgba(193, 18, 31, 0.12);
+  --campaign-border-medium: rgba(193, 18, 31, 0.18);
+  --campaign-bg-subtle: rgba(193, 18, 31, 0.07);
+  --campaign-bg-subtle-2: rgba(193, 18, 31, 0.06);
+  --campaign-text-muted: rgba(193, 18, 31, 0.45);
+  --campaign-number-faint: rgba(193, 18, 31, 0.12);
+  --campaign-number-hover: rgba(193, 18, 31, 0.28);
+  --campaign-ghost-number: rgba(193, 18, 31, 0.07);
+  --campaign-line: rgba(193, 18, 31, 0.18);
+}
+
+/* Navy theme overrides for campaign section */
+[data-theme="navy"] {
+  --campaign-border: rgba(9, 107, 144, 0.15);
+  --campaign-border-light: rgba(9, 107, 144, 0.12);
+  --campaign-border-medium: rgba(9, 107, 144, 0.18);
+  --campaign-bg-subtle: rgba(9, 107, 144, 0.07);
+  --campaign-bg-subtle-2: rgba(9, 107, 144, 0.06);
+  --campaign-text-muted: rgba(9, 107, 144, 0.45);
+  --campaign-number-faint: rgba(9, 107, 144, 0.12);
+  --campaign-number-hover: rgba(9, 107, 144, 0.28);
+  --campaign-ghost-number: rgba(9, 107, 144, 0.07);
+  --campaign-line: rgba(9, 107, 144, 0.18);
 }
 
 /* ============================================
@@ -978,4 +1004,48 @@ html, body {
 /* Subtle text shadow for identity on hero section */
 .text-shadow-subtle {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   TIMELINE - Type-based Color Classes
+   ============================================ */
+
+/* LEADERSHIP - uses crimson/accent color */
+.timeline-leadership {
+  --timeline-color: var(--crimson);
+  --timeline-color-dim: rgba(193, 18, 31, 0.08);
+  --timeline-color-border: rgba(193, 18, 31, 0.20);
+}
+
+/* PROFESSIONAL - uses navy color */
+.timeline-professional {
+  --timeline-color: var(--navy);
+  --timeline-color-dim: rgba(0, 48, 73, 0.08);
+  --timeline-color-border: rgba(0, 48, 73, 0.20);
+}
+
+/* DISTRICT - uses navy-light color */
+.timeline-district {
+  --timeline-color: var(--navy-light);
+  --timeline-color-dim: rgba(102, 155, 188, 0.08);
+  --timeline-color-border: rgba(102, 155, 188, 0.20);
+}
+
+/* Navy theme overrides */
+[data-theme="navy"] .timeline-leadership {
+  --timeline-color: var(--crimson);
+  --timeline-color-dim: rgba(9, 107, 144, 0.08);
+  --timeline-color-border: rgba(9, 107, 144, 0.20);
+}
+
+[data-theme="navy"] .timeline-professional {
+  --timeline-color: var(--navy);
+  --timeline-color-dim: rgba(4, 43, 68, 0.08);
+  --timeline-color-border: rgba(4, 43, 68, 0.20);
+}
+
+[data-theme="navy"] .timeline-district {
+  --timeline-color: var(--navy-light);
+  --timeline-color-dim: rgba(113, 183, 213, 0.08);
+  --timeline-color-border: rgba(113, 183, 213, 0.20);
 }

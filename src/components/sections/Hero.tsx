@@ -109,11 +109,11 @@ export default function Hero() {
         // Mobile Layout - Clean portrait with bold name overlay
         <div className="relative h-full flex flex-col">
           {/* Portrait Image - Full viewport width, behind text */}
-          <div className="absolute inset-0 z-10 h-[55vh] overflow-hidden">
+          <div className="absolute inset-0 z-10 h-[65vh] overflow-hidden">
             <img
               src={potrait}
               alt="Haneef Mohamed"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-[center_35%]"
               style={{
                 display: 'block',
                 filter: 'grayscale(100%) contrast(1.15) brightness(0.85)',
@@ -135,7 +135,7 @@ export default function Hero() {
           <div
             className="absolute inset-0 z-10"
             style={{
-              background: 'linear-gradient(to bottom, rgba(120,0,0,0.3) 0%, rgba(120,0,0,0.6) 50%, var(--bg-hero) 100%)'
+              background: 'linear-gradient(to bottom, rgba(4,43,68,0.3) 0%, rgba(4,43,68,0.6) 50%, var(--bg-hero) 100%)'
             }}
           />
 

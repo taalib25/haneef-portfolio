@@ -6,16 +6,10 @@ import { timelineData } from "../../data/timeline";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const COLOR_MAP: Record<string, string> = {
-  LEADERSHIP: "var(--crimson)",
-  PROFESSIONAL: "var(--navy)",
-  DISTRICT: "var(--navy-light)",
-};
-
-const SOLID_COLOR_MAP: Record<string, string> = {
-  LEADERSHIP: "#C1121F",
-  PROFESSIONAL: "#003049",
-  DISTRICT: "#669BBC",
+const TYPE_CLASS_MAP: Record<string, string> = {
+  LEADERSHIP: "timeline-leadership",
+  PROFESSIONAL: "timeline-professional",
+  DISTRICT: "timeline-district",
 };
 
 export default function Story() {
@@ -156,7 +150,7 @@ export default function Story() {
               className="absolute top-0 bottom-0 left-1/2"
               style={{
                 width: "1px",
-                background: "rgba(193,18,31,0.15)",
+                background: "var(--crimson-border)",
                 transform: "translateX(-50%)",
               }}
             />
@@ -178,8 +172,7 @@ export default function Story() {
           <div className="flex-1 space-y-6 md:space-y-8">
             {timelineData.map((item, index) => {
               const isHero = item.isHero;
-              const typeColor = COLOR_MAP[item.type] || COLOR_MAP.LEADERSHIP;
-              const solidTypeColor = SOLID_COLOR_MAP[item.type] || SOLID_COLOR_MAP.LEADERSHIP;
+              const typeClass = TYPE_CLASS_MAP[item.type] || TYPE_CLASS_MAP.LEADERSHIP;
 
               // Responsive font sizes using clamp()
               const yearFontSize = isHero
@@ -195,12 +188,12 @@ export default function Story() {
                   ref={(el) => {
                     entriesRef.current[index] = el;
                   }}
-                  className="timeline-entry relative pl-4 md:pl-8"
+                  className={`timeline-entry relative pl-4 md:pl-8 ${typeClass}`}
                   style={{
                     paddingTop: "0.5rem",
                     paddingBottom: isHero ? "2rem" : "1.5rem",
-                    // Mobile: border-left instead of dot
-                    borderLeft: window.innerWidth < 768 ? `2px solid ${typeColor}` : "none",
+                    // Mobile: border-left instead of dot - use CSS variable
+                    borderLeft: window.innerWidth < 768 ? "2px solid var(--timeline-color)" : "none",
                     opacity: 1, // Will be overridden by GSAP
                   }}
                 >
@@ -215,8 +208,8 @@ export default function Story() {
                       top: "12px",
                       width: "12px",
                       height: "12px",
-                      background: typeColor,
-                      boxShadow: `0 0 0 3px ${solidTypeColor}26`,
+                      background: "var(--timeline-color)",
+                      boxShadow: "0 0 0 3px var(--timeline-color-border)",
                       zIndex: 10,
                     }}
                   />
@@ -230,7 +223,7 @@ export default function Story() {
                       className="font-display leading-[1] tracking-[-0.02em] block mb-[0.15rem]"
                       style={{
                         fontSize: yearFontSize,
-                        color: typeColor,
+                        color: "var(--timeline-color)",
                         fontWeight: 700,
                         fontFeatureSettings: "'liga' 0",
                       }}
@@ -241,7 +234,7 @@ export default function Story() {
                     {/* Short bar under year */}
                     <div
                       className="w-[24px] h-[2px] mb-[0.75rem]"
-                      style={{ background: typeColor }}
+                      style={{ background: "var(--timeline-color)" }}
                     />
 
                     {/* Role title - separate line below year */}
@@ -292,9 +285,9 @@ export default function Story() {
                             key={i}
                             className="font-body font-medium px-3 py-1.5 rounded text-xs md:text-sm border"
                             style={{
-                              color: typeColor,
-                              borderColor: `${solidTypeColor}40`,
-                              backgroundColor: `${solidTypeColor}0D`,
+                              color: "var(--timeline-color)",
+                              borderColor: "var(--timeline-color-border)",
+                              backgroundColor: "var(--timeline-color-dim)",
                             }}
                           >
                             {pill}
