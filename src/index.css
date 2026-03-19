@@ -36,21 +36,20 @@
   --color-navy-dim: rgba(0, 48, 73, 0.08);
   --color-navy-border: rgba(0, 48, 73, 0.15);
 
-  /* ── TEXT COLORS */
-  --color-t1: #0f0608; /* Primary text */
-  --color-t2: #5a3d3a; /* Secondary text */
+  /* ── TEXT COLORS — Simplified to warm brown palette */
+  --color-t1: #0f0608; /* Primary headings */
+  --color-t2: #4a3830; /* Body text - warm dark brown (NOT black) */
   --color-t3: #9a7f7a; /* Tertiary text */
   --color-ta: #c1121f; /* Accent text */
-  --color-tb: #003049; /* Secondary accent text */
 
   /* ── HERO TEXT */
   --color-ht1: #fdf8f2; /* Hero primary */
   --color-ht2: rgba(253, 248, 242, 0.85); /* Hero secondary */
   --color-hta: #fdf0d5; /* Hero accent */
 
-  /* ── CAMPAIGN TEXT */
+  /* ── CAMPAIGN TEXT — warm brown for body */
   --color-ct1: #0f0608;
-  --color-ct2: #3a2a22;
+  --color-ct2: #4a3830; /* Changed from #3a2a22 - warm brown */
   --color-cta: #780000;
   --color-cb: rgba(120, 0, 0, 0.15);
 
@@ -59,17 +58,17 @@
   --color-border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
   --color-border-strong: rgba(15, 6, 8, 0.16);
 
-  /* ── TYPOGRAPHY SCALES — Increased 20% for better readability */
-  --text-t-xs: 1.05rem; /* Tag pills/mono small */
-  --text-t-sm: 1.125rem; /* Section sub-labels */
-  --text-t-base: 1.35rem; /* Body/paragraph */
-  --text-t-lg: 1.5rem; /* Card body */
-  --text-t-xl: 2.4rem; /* Card titles */
-  --text-t-2xl: clamp(3rem, 5vw, 5rem); /* Recognition titles */
-  --text-t-3xl: 3.3rem; /* Hero card title */
-  --text-t-4xl: clamp(4.8rem, 8vw, 8.5rem); /* Section headlines */
-  --text-t-hero: clamp(5.4rem, 12vw, 10rem); /* Contact hero */
-  --text-t-philosophy: clamp(5.4rem, 10vw, 9.5rem); /* Philosophy cascade */
+  /* ── TYPOGRAPHY SCALES — Reduced for better proportions */
+  --text-t-xs: 0.7rem; /* Section labels */
+  --text-t-sm: 0.85rem; /* Small metadata */
+  --text-t-base: 1rem; /* Body/paragraph */
+  --text-t-lg: 1.0625rem; /* Card body */
+  --text-t-xl: 1.2rem; /* Card titles, role names */
+  --text-t-2xl: clamp(1.75rem, 3vw, 2.25rem); /* Recognition titles */
+  --text-t-3xl: 2rem; /* Hero card title */
+  --text-t-4xl: clamp(2rem, 4vw, 3.25rem); /* Section headlines - REDUCED from 8rem */
+  --text-t-hero: clamp(2.5rem, 5vw, 4rem); /* Contact hero - REDUCED */
+  --text-t-philosophy: clamp(2rem, 4vw, 3.5rem); /* Philosophy cascade - REDUCED */
 }
 
 :root {
@@ -80,33 +79,26 @@
   --bg-hero: #780000;
   --bg-campaign: #fdf0d5;
 
-  /* ── COLOR PALETTE */
+  /* ── COLOR PALETTE — Crimson only, no navy */
   --crimson: #c1121f;
   --crimson-dark: #780000;
   --crimson-dim: rgba(193, 18, 31, 0.08);
   --crimson-border: rgba(193, 18, 31, 0.18);
-  --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
 
-  --navy: #003049;
-  --navy-light: #669bbc;
-  --navy-dim: rgba(0, 48, 73, 0.08);
-  --navy-border: rgba(0, 48, 73, 0.15);
-
-  /* ── TEXT COLORS */
-  --t1: #0f0608; /* Primary */
-  --t2: #5a3d3a; /* Secondary */
-  --t3: #9a7f7a; /* Tertiary */
+  /* ── TEXT COLORS — Simplified warm brown palette */
+  --t1: #0f0608; /* Primary headings */
+  --t2: #4a3830; /* Body text - warm dark brown (NOT black) */
+  --t3: #9a7f7a; /* Tertiary text */
   --ta: #c1121f; /* Accent */
-  --tb: #003049; /* Navy accent */
 
   /* ── TEXT ON HERO */
   --ht1: #fdf8f2;
   --ht2: rgba(253, 248, 242, 0.85);
   --hta: #fdf0d5;
 
-  /* ── TEXT ON CAMPAIGN */
+  /* ── TEXT ON CAMPAIGN — warm brown */
   --ct1: #0f0608;
-  --ct2: #3a2a22;
+  --ct2: #4a3830; /* Changed from #3a2a22 */
   --cta: #780000;
   --cb: rgba(120, 0, 0, 0.15);
 
@@ -115,17 +107,17 @@
   --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
   --border-strong: rgba(15, 6, 8, 0.16);
 
-  /* ── TYPOGRAPHY SCALES — Increased 20% for better readability */
-  --t-xs: 1.05rem; /* Tag pills/mono small */
-  --t-sm: 1.125rem; /* Section sub-labels */
-  --t-base: 1.35rem; /* Body/paragraph */
-  --t-lg: 1.5rem; /* Card body */
-  --t-xl: 2.4rem; /* Card titles */
-  --t-2xl: clamp(3rem, 5vw, 5rem); /* Recognition titles */
-  --t-3xl: 3.3rem; /* Hero card title */
-  --t-4xl: clamp(4.8rem, 8vw, 8.5rem); /* Section headlines */
-  --t-hero: clamp(5.4rem, 12vw, 10rem); /* Contact "READY TO TALK?" */
-  --t-philosophy: clamp(5.4rem, 10vw, 9.5rem); /* Philosophy cascade */
+  /* ── TYPOGRAPHY SCALES — Reduced for better proportions */
+  --t-xs: 0.7rem; /* Section labels */
+  --t-sm: 0.85rem; /* Small metadata */
+  --t-base: 1rem; /* Body/paragraph */
+  --t-lg: 1.0625rem; /* Card body */
+  --t-xl: 1.2rem; /* Card titles, role names */
+  --t-2xl: clamp(1.75rem, 3vw, 2.25rem);
+  --t-3xl: 2rem;
+  --t-4xl: clamp(2rem, 4vw, 3.25rem); /* Section headlines - REDUCED */
+  --t-hero: clamp(2.5rem, 5vw, 4rem); /* Contact hero - REDUCED */
+  --t-philosophy: clamp(2rem, 4vw, 3.5rem); /* Philosophy - REDUCED */
 }
 
 /* Tailwind import should come after theme definition */
@@ -234,9 +226,7 @@ html {
 }
 
 .font-display.text-\[clamp\(2\.5rem\,5vw\,4rem\)\],
-.font-display.text-\[clamp\(4rem\,10vw\,7rem\)\],
-.font-display.text-\[clamp\(2rem\,4vw\,3rem\)\],
-.font-display.text-\[clamp\(2rem\,5vw\,4rem\)\],
+.font-display.text-\[clamp\([23]rem\,.*\)\],
 [class*="text-t-3xl"],
 [class*="text-t-4xl"],
 [class*="text-t-hero"],

@@ -1,4 +1,4 @@
-import { Linkedin, Github, Twitter, Instagram } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -13,33 +13,6 @@ export default function Footer() {
             aria-label="LinkedIn"
           >
             <Linkedin size={20} strokeWidth={1.5} />
-          </a>
-          <a
-            href="https://github.com/haneefmohamed"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-(--ht2) hover:text-(--hta) transition-colors"
-            aria-label="GitHub"
-          >
-            <Github size={20} strokeWidth={1.5} />
-          </a>
-          <a
-            href="https://twitter.com/haneefmohamed"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-(--ht2) hover:text-(--hta) transition-colors"
-            aria-label="Twitter"
-          >
-            <Twitter size={20} strokeWidth={1.5} />
-          </a>
-          <a
-            href="https://instagram.com/haneefmohamed"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-(--ht2) hover:text-(--hta) transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram size={20} strokeWidth={1.5} />
           </a>
         </div>
         <p className="font-mono text-[0.875rem] text-[rgba(253,248,242,0.35)] text-center">

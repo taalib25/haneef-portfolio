@@ -93,7 +93,7 @@ export default function Philosophy() {
     <section
       id="philosophy"
       ref={containerRef}
-      className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-(--bg)"
+      className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-(--bg)"
     >
       {/* 2px crimson line at top of section opener (full width) */}
       <div className="h-[2px] w-full bg-(--crimson) mb-12" />
@@ -116,7 +116,7 @@ export default function Philosophy() {
             }
             viewport={{ once: true }}
           >
-            [ 03 — PHILOSOPHY ]
+            Philosophy
           </motion.p>
 
           {/* Opacity Cascade Headline — Larger: clamp(4.5rem, 8vw, 8rem) per ADDENDUM */}

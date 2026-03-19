@@ -4,7 +4,9 @@
       "Bash(node:*)",
       "Bash(npx playwright:*)",
       "Bash(ls:*)",
-      "Bash(bun run:*)"
+      "Bash(bun run:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(bunx eslint:*)"
     ]
   }
 }

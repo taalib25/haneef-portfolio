@@ -44,7 +44,7 @@ export default function Work() {
   }, [prefersReducedMotion]);
 
   return (
-    <section id="work" ref={containerRef} className="py-16 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg)]">
+    <section id="work" ref={containerRef} className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg)]">
       {/* 2px crimson line at top of section opener */}
       <div className="h-[2px] w-full bg-[var(--crimson)] mb-12" />
 
@@ -65,7 +65,7 @@ export default function Work() {
             transition={!prefersReducedMotion ? { duration: 0.4, ease: 'easeOut' } : undefined}
             viewport={{ once: true }}
           >
-            [ 02 — WORK ]
+            Work
           </motion.p>
 
           {/* Section Headline */}

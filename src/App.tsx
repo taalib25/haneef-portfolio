@@ -22,7 +22,7 @@ export default function App() {
       <CustomCursor />
       <Navbar />
       
-      <main>
+      <main className="pt-[52px]">
         <Hero />
         
         <Suspense fallback={<div className="h-screen bg-[var(--bg)]" />}>

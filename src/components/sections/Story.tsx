@@ -116,32 +116,30 @@ export default function Story() {
     <section
       id="story"
       ref={timelineSectionRef}
-      className="relative py-12 md:py-16 px-4 md:px-6 lg:px-8 bg-[var(--bg)]"
+      className="relative py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg)]"
       style={{ scrollMarginTop: "80px" }}
     >
       {/* 2px crimson line at top of section opener */}
       <div className="h-[2px] w-full bg-[var(--crimson)] mb-12 md:mb-16" />
 
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-16 md:mb-20">
-          <p className="font-mono text-[var(--ta)] text-xs md:text-sm tracking-[0.10em] uppercase mb-4 md:mb-6">
-            [ 01 — THE STORY ]
+        {/* Section Label */}
+        <p className="font-mono text-[var(--ta)] text-[0.8rem] tracking-[0.10em] uppercase mb-6">
+          The Story
+        </p>
+
+        <h2 className="font-display text-t-4xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase mb-8">
+          ONE CAREER.
+          <br />
+          TWO ARENAS.
+          <br />
+          ONE DIRECTION.
+        </h2>
+
+        <div className="space-y-4 md:space-y-6 mt-8 md:mt-12">
+          <p className="font-body text-t-base text-[var(--t2)] leading-[1.75] max-w-none">
+            My work in Public Relations is built on one skill: understanding people before trying to lead them. I build narratives, protect reputations, and connect organisations with the audiences that matter. That same instinct drives how I approach Rotaract. Listen first. Communicate clearly. Then lead.
           </p>
-
-          <h2 className="font-display text-t-4xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase">
-            ONE CAREER.
-            <br />
-            TWO ARENAS.
-            <br />
-            ONE DIRECTION.
-          </h2>
-
-          <div className="space-y-4 md:space-y-6 mt-8 md:mt-12">
-            <p className="font-body text-t-base text-[var(--t2)] leading-[1.75] max-w-none">
-              My work in Public Relations is built on one skill: understanding people before trying to lead them. I build narratives, protect reputations, and connect organisations with the audiences that matter. That same instinct drives how I approach Rotaract. Listen first. Communicate clearly. Then lead.
-            </p>
-          </div>
         </div>
 
         {/* Timeline Body */}

@@ -15,17 +15,17 @@ export default function Contact() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="contact" className="py-16 md:py-24 px-4 md:px-6 lg:px-8 bg-[var(--bg-hero)]">
+    <section id="contact" className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg-hero)]">
       <div className="max-w-6xl mx-auto text-center">
-        {/* Dramatic Question */}
+        {/* Campaign Vote Headline */}
         <motion.div
           className="mb-12"
           initial={!prefersReducedMotion ? "hidden" : "visible"}
           whileInView={!prefersReducedMotion ? "visible" : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
-          <motion.h2 
-            className="font-display text-[clamp(4.5rem,9vw,8rem)] text-[var(--ht1)] leading-[0.92] tracking-[-0.025em] uppercase mb-8"
+          <motion.h2
+            className="font-display text-[clamp(2rem,4vw,3.25rem)] text-[var(--ht1)] leading-[0.92] tracking-[-0.025em] uppercase mb-6"
             variants={{
               visible: {
                 transition: {
@@ -34,25 +34,22 @@ export default function Contact() {
               }
             }}
           >
-            {[...Array(3)].map((_, i) => (
-              <motion.span key={i} variants={fadeInUp}>
-                {['READY', 'TO', 'TALK?'][i]}{" "}
-              </motion.span>
-            ))}
+            <motion.span variants={fadeInUp}>VOTE HANEEF.</motion.span>{" "}
+            <motion.span variants={fadeInUp}>DISTRICT 3220.</motion.span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="font-body text-t-base text-[var(--ht2)] max-w-[800px] mx-auto leading-[1.85]"
             variants={fadeInUp}
             initial={!prefersReducedMotion ? "hidden" : "visible"}
             whileInView={!prefersReducedMotion ? "visible" : undefined}
             viewport={{ once: true, amount: 0.1 }}
           >
-            Campaign conversations, Rotaract enquiries, or professional collaborations.
+            Running for District Rotaract Representative · Sri Lanka & Maldives · 2025–2026
           </motion.p>
         </motion.div>
 
-        {/* Two Doors */}
+        {/* Campaign CTAs */}
         <motion.div
           className="flex flex-col md:flex-row gap-6 md:gap-8 mb-16"
           variants={fadeInUp}
@@ -60,20 +57,20 @@ export default function Contact() {
           whileInView={!prefersReducedMotion ? "visible" : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
-          {/* Campaign Button */}
+          {/* Support Campaign - Primary */}
           <a
-            href="mailto:haneef.rotaract3220@gmail.com?subject=Campaign%20Conversation"
-            className="flex-1 min-h-[60px] px-12 py-4 border-[1px] border-[var(--ht1)] text-[var(--ht1)] font-mono text-[0.875rem] uppercase tracking-widest rounded-none hover:bg-[var(--ht2)/0.1] hover:border-[var(--ht1)] transition-all duration-300 flex items-center justify-center"
+            href="mailto:haneef.rotaract3220@gmail.com?subject=Support%20the%20Campaign"
+            className="flex-1 min-h-[60px] px-12 py-4 bg-[var(--ht1)] text-[var(--crimson)] font-mono text-[0.875rem] uppercase tracking-widest rounded-none hover:opacity-90 transition-opacity duration-300 flex items-center justify-center"
           >
-            FOR DISTRICT 3220 →
+            SUPPORT THE CAMPAIGN →
           </a>
 
-          {/* Professional Button */}
+          {/* Get in Touch - Secondary */}
           <a
-            href="mailto:haneefmohamed.pr@gmail.com?subject=Professional%20Collaboration"
-            className="flex-1 min-h-[60px] px-12 py-4 bg-[var(--hta)] text-[var(--crimson-dark)] font-mono text-[0.875rem] uppercase tracking-widest rounded-none hover:bg-[var(--hta)/0.2] transition-colors duration-300 flex items-center justify-center"
+            href="mailto:haneef.rotaract3220@gmail.com?subject=Get%20in%20Touch"
+            className="flex-1 min-h-[60px] px-12 py-4 border-[1px] border-[var(--ht1)] text-[var(--ht1)] font-mono text-[0.875rem] uppercase tracking-widest rounded-none hover:bg-[var(--ht1)/0.1] transition-colors duration-300 flex items-center justify-center"
           >
-            FOR PROFESSIONAL WORK →
+            GET IN TOUCH →
           </a>
         </motion.div>
 
