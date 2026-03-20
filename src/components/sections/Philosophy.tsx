@@ -122,7 +122,7 @@ export default function Philosophy() {
           {/* Opacity Cascade Headline — Larger: clamp(4.5rem, 8vw, 8rem) per ADDENDUM */}
           <div
             ref={headlineRef}
-            className="font-display text-t-hero leading-[0.92] tracking-[-0.025em] uppercase mb-12 flex flex-col items-center"
+            className="font-display text-t-hero leading-[0.92] tracking-[0.025em] uppercase mb-12 flex flex-col items-center"
           >
             <div className="text-(--t1) opacity-0">LEAD WITH</div>
             <div className="text-(--t1) opacity-0">STRATEGIC</div>
@@ -160,30 +160,30 @@ export default function Philosophy() {
         >
           {/* Column 1 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 md:border-r border-(--border) md:first:pl-0">
-            <h3 className="font-display text-t-xs text-(--ta) font-semibold mb-6" style={{ letterSpacing: '-0.01em', textTransform: 'none' }}>
+            <h3 className="font-sans text-t-lg text-(--t2) font-semibold mb-6" style={{ letterSpacing: '0.01em' }}>
               Visionary yet grounded
             </h3>
-            <p className="font-body text-t-base text-(--t2) leading-[1.85]">
+            <p className="font-body text-t-base text-(--t2) leading-[1.7]">
               Long-term vision matters, but so does staying grounded in present realities. I try to hold both at once: where we are going and where we actually are.
             </p>
           </div>
 
           {/* Column 2 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 md:border-r border-(--border)">
-            <h3 className="font-display text-t-xs text-(--ta) font-semibold mb-6" style={{ letterSpacing: '-0.01em', textTransform: 'none' }}>
+            <h3 className="font-sans text-t-lg text-(--t2) font-semibold mb-6" style={{ letterSpacing: '0.01em' }}>
               Facilitate, don't control
             </h3>
-            <p className="font-body text-t-base text-(--t2) leading-[1.85]">
+            <p className="font-body text-t-base text-(--t2) leading-[1.7]">
               Remove obstacles. Provide tools. Enable others to succeed. Not directing from above, but supporting from within.
             </p>
           </div>
 
           {/* Column 3 */}
           <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 border-(--border) md:last:pr-0">
-            <h3 className="font-display text-t-xs text-(--ta) font-semibold mb-6" style={{ letterSpacing: '-0.01em', textTransform: 'none' }}>
+            <h3 className="font-sans text-t-lg text-(--t2) font-semibold mb-6" style={{ letterSpacing: '0.01em' }}>
               Lead with purpose
             </h3>
-            <p className="font-body text-t-base text-(--t2) leading-[1.85]">
+            <p className="font-body text-t-base text-(--t2) leading-[1.7]">
               Start with why. When people understand the purpose behind their work, they become far more motivated to create real impact.
             </p>
           </div>

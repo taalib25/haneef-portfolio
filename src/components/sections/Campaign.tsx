@@ -117,13 +117,13 @@ export default function Campaign() {
         </p>
 
         {/* "Running for" with highlight */}
-        <div className="font-display text-[clamp(2rem,7vw,4rem)] font-bold text-[#FDF8F2] leading-[0.92] tracking-[-0.025em] mb-4">
+        <div className="font-sans text-[clamp(2rem,7vw,4rem)] font-bold text-[#FDF8F2] leading-[0.92] tracking-[0.025em] mb-4">
           <span ref={runningRef} className="running-word relative inline">
             Running for
           </span>
         </div>
 
-        <div className="font-display text-[clamp(1.3rem,4vw,2.2rem)] font-bold leading-[1.1] tracking-[-0.02em] mb-5">
+        <div className="font-sans text-[clamp(1.3rem,4vw,2.2rem)] font-bold leading-[1.1] tracking-[0.02em] mb-5">
           <span className="text-[#FDF8F2]">District Rotaract Representative</span>
           <br />
           <span className="text-[rgba(255,180,180,0.95)]">
@@ -141,7 +141,7 @@ export default function Campaign() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {/* Vision Box */}
           <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
-            <p className="font-display text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[-0.02em]">
+            <p className="font-sans text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[0.02em]">
               Vision
             </p>
             <p className="font-body text-[0.95rem] text-[rgba(253,248,242,0.9)] leading-[1.8] font-[450]">
@@ -153,7 +153,7 @@ export default function Campaign() {
 
           {/* Mission Box */}
           <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
-            <p className="font-display text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[-0.02em]">
+            <p className="font-sans text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[0.02em]">
               Mission
             </p>
             <p className="font-body text-[0.95rem] text-[rgba(253,248,242,0.9)] leading-[1.8] font-[450]">
@@ -173,7 +173,7 @@ export default function Campaign() {
           <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-6">
             The Promise
           </p>
-          <blockquote className="font-display text-[clamp(1.3rem,3.5vw,2rem)] text-[var(--ct1)] leading-[1.5] font-medium italic">
+          <blockquote className="font-sans text-[clamp(1.3rem,3.5vw,2rem)] text-[var(--ct1)] leading-[1.5] font-medium italic">
             "To transform our district into a place where youth leadership is
             recognised as a professional standard."
           </blockquote>
@@ -224,7 +224,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Reality
             </p>
-            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[-0.025em] leading-[0.92] uppercase">
+            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[0.025em] leading-[0.92] uppercase">
               Three Challenges We Must Face
             </h3>
           </div>
@@ -236,7 +236,7 @@ export default function Campaign() {
               className="group flex gap-6 md:gap-10 items-start py-8 border-t border-[var(--campaign-border-light)] hover:border-t-[var(--crimson)] transition-colors duration-200"
             >
               <div className="flex-shrink-0 w-[60px]">
-                <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
+                <span className="font-sans text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
                   01
                 </span>
                 <span className="font-display text-[8.5px] tracking-[0.10em] text-[var(--crimson)] uppercase">
@@ -244,7 +244,7 @@ export default function Campaign() {
                 </span>
               </div>
               <div className="flex-1 pt-1">
-                <h4 className="font-display text-[1.2rem] md:text-[1.35rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.1] uppercase mb-3">
+                <h4 className="font-sans text-[1.2rem] md:text-[1.35rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-3">
                   Membership Retention
                 </h4>
                 <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.8] font-[450]">
@@ -262,7 +262,7 @@ export default function Campaign() {
               className="group flex gap-6 md:gap-10 items-start py-8 border-t border-[var(--campaign-border-light)] hover:border-t-[var(--crimson)] transition-colors duration-200"
             >
               <div className="flex-shrink-0 w-[60px]">
-                <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
+                <span className="font-sans text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
                   02
                 </span>
                 <span className="font-display text-[8.5px] tracking-[0.10em] text-[var(--crimson)] uppercase">
@@ -270,7 +270,7 @@ export default function Campaign() {
                 </span>
               </div>
               <div className="flex-1 pt-1">
-                <h4 className="font-display text-[1.2rem] md:text-[1.35rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.1] uppercase mb-3">
+                <h4 className="font-sans text-[1.2rem] md:text-[1.35rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-3">
                   Financial Stewardship
                 </h4>
                 <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.8] font-[450]">
@@ -289,7 +289,7 @@ export default function Campaign() {
               className="group flex gap-6 md:gap-10 items-start py-8 border-t border-b border-[var(--campaign-border-light)] hover:border-t-[var(--crimson)] transition-colors duration-200"
             >
               <div className="flex-shrink-0 w-[60px]">
-                <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
+                <span className="font-sans text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
                   03
                 </span>
                 <span className="font-display text-[8.5px] tracking-[0.10em] text-[var(--crimson)] uppercase">
@@ -297,7 +297,7 @@ export default function Campaign() {
                 </span>
               </div>
               <div className="flex-1 pt-1">
-                <h4 className="font-display text-[1.2rem] md:text-[1.35rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.1] uppercase mb-3">
+                <h4 className="font-sans text-[1.2rem] md:text-[1.35rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-3">
                   Meaningful Partnerships
                 </h4>
                 <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.8] font-[450]">
@@ -321,7 +321,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-4">
               Strategic Framework
             </p>
-            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[-0.025em] leading-[0.92] uppercase mb-2">
+            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[0.025em] leading-[0.92] uppercase mb-2">
               CIGR Analysis
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450]">
@@ -342,7 +342,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               Four Strategic Pillars
             </p>
-            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[-0.025em] leading-[0.92] uppercase mb-4">
+            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase mb-4">
               The Framework
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450]">
@@ -354,12 +354,12 @@ export default function Campaign() {
             {/* Pillar 1 */}
             <div className="relative flex border-t border-[var(--campaign-border)]">
               <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-display text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
                   01
                 </span>
               </div>
               <div className="flex-1 py-[1.5rem] pl-4 pr-4 md:pl-6 md:pr-6">
-                <h4 className="font-display text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.1] uppercase mb-2">
+                <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   Rotaractor Value Chain
                 </h4>
                 <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
@@ -376,12 +376,12 @@ export default function Campaign() {
             {/* Pillar 2 */}
             <div className="relative flex border-t border-[var(--campaign-border)]">
               <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-display text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
                   02
                 </span>
               </div>
               <div className="flex-1 py-[1.5rem] pl-4 pr-4 md:pl-6 md:pr-6">
-                <h4 className="font-display text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.1] uppercase mb-2">
+                <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   The Bridge Programme
                 </h4>
                 <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
@@ -397,12 +397,12 @@ export default function Campaign() {
             {/* Pillar 3 */}
             <div className="relative flex border-t border-[var(--campaign-border)]">
               <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-display text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
                   03
                 </span>
               </div>
               <div className="flex-1 py-[1.5rem] pl-4 pr-4 md:pl-6 md:pr-6">
-                <h4 className="font-display text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.1] uppercase mb-2">
+                <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   Strategic Alliances
                 </h4>
                 <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
@@ -418,12 +418,12 @@ export default function Campaign() {
             {/* Pillar 4 */}
             <div className="relative flex border-t border-b border-[var(--campaign-border)]">
               <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-display text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
                   04
                 </span>
               </div>
               <div className="flex-1 py-[1.5rem] pl-4 pr-4 md:pl-6 md:pr-6">
-                <h4 className="font-display text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.1] uppercase mb-2">
+                <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   Governance & Accountability
                 </h4>
                 <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
@@ -447,7 +447,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Commitment
             </p>
-            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[-0.025em] leading-[0.92] uppercase">
+            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase">
               Three-Phase Action Plan
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450] mt-2">
@@ -466,7 +466,7 @@ export default function Campaign() {
               className="phase-step flex gap-4 pb-8"
             >
               <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson)] bg-[var(--bg)] flex items-center justify-center relative z-10">
-                <span className="font-display text-[0.875rem] font-bold text-[var(--crimson)]">
+                <span className="font-sans text-[0.875rem] font-bold text-[var(--crimson)]">
                   01
                 </span>
               </div>
@@ -474,7 +474,7 @@ export default function Campaign() {
                 <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-1">
                   Phase 01 — First Quarter
                 </p>
-                <h4 className="font-display text-[1.05rem] font-bold text-[var(--ct1)] tracking-[-0.015em] leading-[1.15] mb-2">
+                <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Purpose-Led Leadership
                 </h4>
                 <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-2" />
@@ -493,7 +493,7 @@ export default function Campaign() {
               className="phase-step flex gap-4 pb-8"
             >
               <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson)] bg-[var(--bg)] flex items-center justify-center relative z-10">
-                <span className="font-display text-[0.875rem] font-bold text-[var(--crimson)]">
+                <span className="font-sans text-[0.875rem] font-bold text-[var(--crimson)]">
                   02
                 </span>
               </div>
@@ -501,7 +501,7 @@ export default function Campaign() {
                 <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-1">
                   Phase 02 — Second Quarter
                 </p>
-                <h4 className="font-display text-[1.05rem] font-bold text-[var(--ct1)] tracking-[-0.015em] leading-[1.15] mb-2">
+                <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Change Management
                 </h4>
                 <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-2" />
@@ -520,7 +520,7 @@ export default function Campaign() {
               className="phase-step flex gap-4 pb-8"
             >
               <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson)] bg-[var(--bg)] flex items-center justify-center relative z-10">
-                <span className="font-display text-[0.875rem] font-bold text-[var(--crimson)]">
+                <span className="font-sans text-[0.875rem] font-bold text-[var(--crimson)]">
                   03
                 </span>
               </div>
@@ -528,7 +528,7 @@ export default function Campaign() {
                 <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-1">
                   Phase 03 — Second Half
                 </p>
-                <h4 className="font-display text-[1.05rem] font-bold text-[var(--ct1)] tracking-[-0.015em] leading-[1.15] mb-2">
+                <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Impact Realisation
                 </h4>
                 <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-2" />
@@ -549,13 +549,13 @@ export default function Campaign() {
 
             {/* Phase 1 */}
             <div className="p-6 pt-10">
-              <span className="font-display text-[4.5rem] font-bold tracking-[-0.04em] text-[var(--campaign-ghost-number)] leading-[1] block mb-[-0.75rem]">
+              <span className="font-sans text-[4.5rem] font-bold tracking-[0.04em] text-[var(--campaign-ghost-number)] leading-[1] block mb-[-0.75rem]">
                 01
               </span>
               <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-2">
                 Phase 01 — First Quarter
               </p>
-              <h4 className="font-display text-[1.1rem] font-bold text-[var(--ct1)] tracking-[-0.015em] leading-[1.15] mb-3">
+              <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Purpose-Led Leadership
               </h4>
               <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
@@ -572,13 +572,13 @@ export default function Campaign() {
 
             {/* Phase 2 */}
             <div className="p-6 pt-10">
-              <span className="font-display text-[4.5rem] font-bold tracking-[-0.04em] text-[var(--campaign-ghost-number)] leading-[1] block mb-[-0.75rem]">
+              <span className="font-sans text-[4.5rem] font-bold tracking-[0.04em] text-[var(--campaign-ghost-number)] leading-[1] block mb-[-0.75rem]">
                 02
               </span>
               <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-2">
                 Phase 02 — Second Quarter
               </p>
-              <h4 className="font-display text-[1.1rem] font-bold text-[var(--ct1)] tracking-[-0.015em] leading-[1.15] mb-3">
+              <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Change Management
               </h4>
               <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
@@ -595,13 +595,13 @@ export default function Campaign() {
 
             {/* Phase 3 */}
             <div className="p-6 pt-10">
-              <span className="font-display text-[4.5rem] font-bold tracking-[-0.04em] text-[var(--campaign-ghost-number)] leading-[1] block mb-[-0.75rem]">
+              <span className="font-sans text-[4.5rem] font-bold tracking-[0.04em] text-[var(--campaign-ghost-number)] leading-[1] block mb-[-0.75rem]">
                 03
               </span>
               <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-2">
                 Phase 03 — Second Half
               </p>
-              <h4 className="font-display text-[1.1rem] font-bold text-[var(--ct1)] tracking-[-0.015em] leading-[1.15] mb-3">
+              <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Impact Realisation
               </h4>
               <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
@@ -623,7 +623,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Principles
             </p>
-            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[-0.025em] leading-[0.92] uppercase">
+            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase">
               Core Values
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450] mt-2">
@@ -641,7 +641,7 @@ export default function Campaign() {
                 <span className="font-display text-[9px] tracking-[0.08em] text-[var(--campaign-text-muted)] uppercase">
                   0{i + 1}
                 </span>
-                <h4 className="font-display text-[1rem] md:text-[1.05rem] font-bold text-[var(--ct1)] tracking-[-0.012em] leading-[1.15] group-hover:text-[var(--crimson)] transition-colors duration-200">
+                <h4 className="font-sans text-[1rem] md:text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.15] group-hover:text-[var(--crimson)] transition-colors duration-200">
                   {v.name}
                 </h4>
                 <p className="font-body text-[0.8125rem] text-[var(--ct2)] leading-[1.65] font-[450]">

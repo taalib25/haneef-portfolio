@@ -122,7 +122,7 @@ export default function Story() {
         {/* Section Header */}
         <div className="mb-10 md:mb-16">
           {/* Main Headline */}
-          <h2 className="font-display text-t-3xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[-0.025em] uppercase">
+          <h2 className="font-display text-t-3xl md:text-t-hero text-[var(--t1)] leading-[0.92] tracking-[0.025em] uppercase">
             ONE CAREER.
             <br />
             <span className="text-[var(--crimson)]">TWO ARENAS.</span>
@@ -202,14 +202,13 @@ export default function Story() {
                     ref={(el) => {
                       dotsRef.current[index] = el;
                     }}
-                    className="timeline-dot absolute rounded-full border-2 border-white hidden md:block"
+                    className="timeline-dot absolute rounded-full hidden md:block"
                     style={{
-                      left: "-2.25rem",
-                      top: "12px",
-                      width: "12px",
-                      height: "12px",
+                      left: "-1.5rem",
+                      top: "16px",
+                      width: "10px",
+                      height: "10px",
                       background: "var(--timeline-color)",
-                      boxShadow: "0 0 0 3px var(--timeline-color-border)",
                       zIndex: 10,
                     }}
                   />
@@ -220,7 +219,7 @@ export default function Story() {
                   >
                     {/* Year - always on its own line, above role */}
                     <div
-                      className="font-display leading-[1] tracking-[-0.02em] block mb-[0.15rem]"
+                      className="font-display leading-[1] tracking-[0.02em] block mb-[0.15rem]"
                       style={{
                         fontSize: yearFontSize,
                         color: "var(--timeline-color)",
@@ -239,10 +238,10 @@ export default function Story() {
 
                     {/* Role title - separate line below year */}
                     <div
-                      className="font-display text-[var(--t1)] leading-[1] tracking-[-0.015em] block mb-[0.2rem]"
+                      className="font-sans text-[var(--t1)] leading-[1.1] tracking-[0.005em] block mb-[0.2rem]"
                       style={{
                         fontSize: roleFontSize,
-                        fontWeight: 700,
+                        fontWeight: 600,
                       }}
                     >
                       {item.title}

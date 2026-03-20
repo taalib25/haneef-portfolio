@@ -230,9 +230,10 @@ html {
 
 /* ── GLOBAL TYPOGRAPHIC REFINEMENTS */
 
-/* Clash Display headlines - tight letter spacing for authority */
+/* Clash Display headlines - increased letter spacing and boldness for better readability */
 .font-display {
-  letter-spacing: -0.02em; /* Tightened from -0.015em */
+  letter-spacing: 0.02em; /* Increased from -0.02em for better readability */
+  font-weight: 600; /* Increased boldness */
 }
 
 .font-display.text-\[clamp\(2\.5rem\,5vw\,4rem\)\],
@@ -241,7 +242,8 @@ html {
 [class*="text-t-4xl"],
 [class*="text-t-hero"],
 [class*="text-t-philosophy"] {
-  letter-spacing: -0.025em;
+  letter-spacing: 0.03em; /* Increased from -0.025em for larger sizes */
+  font-weight: 700; /* Extra bold for large headlines */
 }
 
 /* General Sans for titles and subheadings - clean, neutral spacing */
@@ -428,7 +430,7 @@ html, body {
   /* Hero section */
   #hero h1 {
     font-size: clamp(2.5rem, 11vw, 4rem) !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: 0.02em !important; /* Increased from -0.03em */
     line-height: 0.88 !important;
   }
 
@@ -440,7 +442,7 @@ html, body {
   /* Section headlines (ONE CAREER. TWO ARENAS. etc.) */
   h2.font-display {
     font-size: clamp(2rem, 8vw, 3rem) !important;
-    letter-spacing: -0.025em !important;
+    letter-spacing: 0.02em !important; /* Increased from -0.025em */
     line-height: 0.92 !important;
   }
 
@@ -454,7 +456,7 @@ html, body {
   /* Year labels in timeline */
   .timeline-year {
     font-size: 1.3rem !important;
-    letter-spacing: -0.015em !important;
+    letter-spacing: 0.02em !important; /* Increased from -0.015em */
   }
 
   /* Body text - minimum 15px */
@@ -872,7 +874,7 @@ html, body {
   #philosophy .font-display.text-t-hero {
     font-size: clamp(2rem, 9vw, 3.5rem) !important;
     line-height: 0.92 !important;
-    letter-spacing: -0.025em !important;
+    letter-spacing: 0.02em !important; /* Increased from -0.025em */
     margin-bottom: 1.5rem !important;
   }
 

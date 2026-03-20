@@ -59,7 +59,7 @@ export default function Recognition() {
           </p>
 
           {/* Section Headline */}
-          <h2 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--t1) leading-[0.95] tracking-[-0.025em] uppercase mb-6">
+          <h2 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--t1) leading-[0.95] tracking-[0.025em] uppercase mb-6">
             Five Honors.
             <br />
             <span className="text-(--crimson)">Seven Years.</span>
@@ -87,7 +87,7 @@ export default function Recognition() {
                 </span>
 
                 {/* Award Title */}
-                <h3 className="font-display text-[1.2rem] font-bold text-(--t1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
+                <h3 className="font-sans text-[1.2rem] font-bold text-(--t1) tracking-[0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
                   {award.title}
                 </h3>
 
@@ -112,7 +112,7 @@ export default function Recognition() {
                 </span>
 
                 {/* Award Title */}
-                <h3 className="font-display text-[1.1rem] font-bold text-(--t1) tracking-[-0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson) mb-2">
+                <h3 className="font-sans text-[1.1rem] font-bold text-(--t1) tracking-[0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson) mb-2">
                   {award.title}
                 </h3>
 

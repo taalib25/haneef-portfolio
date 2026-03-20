@@ -32,7 +32,7 @@ export default function Contact() {
           </motion.p>
 
           <motion.h2
-            className="font-display text-[clamp(2rem,4vw,3.25rem)] text-[var(--ht1)] leading-[0.92] tracking-[-0.025em] uppercase mb-6"
+            className="font-display text-[clamp(2rem,4vw,3.25rem)] text-[var(--ht1)] leading-[0.92] tracking-[0.025em] uppercase mb-6"
             variants={{
               visible: {
                 transition: {
