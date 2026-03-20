@@ -1,97 +1,89 @@
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
-
-// Animation variants
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] }
-  }
-};
 
 export default function Contact() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="contact" className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg-hero)]">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Section Header - CIGR Style */}
-        <motion.div
-          className="mb-10 md:mb-16"
-          initial={!prefersReducedMotion ? "hidden" : "visible"}
-          whileInView={!prefersReducedMotion ? "visible" : undefined}
-          viewport={{ once: true, amount: 0.1 }}
+    <footer id="contact" className="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-[#0a1628] overflow-hidden">
+      {/* Subtle background text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <span
+          className="font-display font-black uppercase whitespace-nowrap select-none"
+          style={{
+            fontSize: 'clamp(10rem, 30vw, 20rem)',
+            color: 'transparent',
+            WebkitTextStroke: '1px rgba(253,248,242,0.04)',
+            letterSpacing: '0.05em',
+          }}
         >
-          <motion.p
-            className="font-mono text-[9.5px] text-[var(--hta)] tracking-[0.10em] uppercase mb-4 md:mb-6"
-            variants={fadeInUp}
-          >
-            [ 06 — GET IN TOUCH ]
-          </motion.p>
-
-          <motion.h2
-            className="font-display text-[clamp(2rem,4vw,3.25rem)] text-[var(--ht1)] leading-[0.92] tracking-[0.025em] uppercase mb-6"
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.15
-                }
-              }
-            }}
-          >
-            <motion.span variants={fadeInUp}>VOTE HANEEF.</motion.span>{" "}
-            <motion.span variants={fadeInUp}>DISTRICT 3220.</motion.span>
-          </motion.h2>
-
-          <motion.p
-            className="font-body text-t-base text-[var(--ht2)] max-w-[800px] mx-auto leading-[1.85]"
-            variants={fadeInUp}
-            initial={!prefersReducedMotion ? "hidden" : "visible"}
-            whileInView={!prefersReducedMotion ? "visible" : undefined}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            Running for District Rotaract Representative · Sri Lanka & Maldives · 2025–2026
-          </motion.p>
-        </motion.div>
-
-        {/* Campaign CTAs */}
-        <motion.div
-          className="flex flex-col md:flex-row gap-6 md:gap-8 mb-16"
-          variants={fadeInUp}
-          initial={!prefersReducedMotion ? "hidden" : "visible"}
-          whileInView={!prefersReducedMotion ? "visible" : undefined}
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {/* Support Campaign - Primary */}
-          <a
-            href="mailto:haneef.rotaract3220@gmail.com?subject=Support%20the%20Campaign"
-            className="flex-1 min-h-[60px] px-12 py-4 bg-[var(--ht1)] text-[var(--crimson)] font-mono text-[0.875rem] uppercase tracking-widest rounded-none hover:opacity-90 transition-opacity duration-300 flex items-center justify-center"
-          >
-            SUPPORT THE CAMPAIGN →
-          </a>
-
-          {/* Get in Touch - Secondary */}
-          <a
-            href="mailto:haneef.rotaract3220@gmail.com?subject=Get%20in%20Touch"
-            className="flex-1 min-h-[60px] px-12 py-4 border-[1px] border-[var(--ht1)] text-[var(--ht1)] font-mono text-[0.875rem] uppercase tracking-widest rounded-none hover:bg-[var(--ht1)/0.1] transition-colors duration-300 flex items-center justify-center"
-          >
-            GET IN TOUCH →
-          </a>
-        </motion.div>
-
-        {/* Contact Info */}
-        <motion.div
-          className="font-mono text-[0.875rem] text-[var(--ht2)]"
-          variants={fadeInUp}
-          initial={!prefersReducedMotion ? "hidden" : "visible"}
-          whileInView={!prefersReducedMotion ? "visible" : undefined}
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <p>haneef.rotaract3220@gmail.com · +94 77 044 7021</p>
-        </motion.div>
+          VOTE
+        </span>
       </div>
-    </section>
+
+      <div className="relative max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-end pb-8 md:pb-12">
+          {/* Left - Big Statement */}
+          <motion.div
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-[clamp(3.5rem,10vw,7rem)] text-[#FDF8F2] leading-[0.85] tracking-[0.01em] uppercase mb-6">
+              VOTE
+              <br />
+              HANEEF.
+            </h2>
+            <p className="font-body text-[0.85rem] text-[rgba(253,248,242,0.4)] tracking-wide">
+              District 3220 — Sri Lanka & Maldives · 2025–2026
+            </p>
+          </motion.div>
+
+          {/* Right - Contact & Links */}
+          <motion.div
+            className="flex flex-col gap-8 md:pb-2"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+          >
+            {/* Contact */}
+            <div className="space-y-3">
+              <a href="mailto:haneef.rotaract3220@gmail.com" className="block font-body text-[0.95rem] text-[rgba(253,248,242,0.7)] hover:text-[#FDF8F2] transition-colors">
+                haneef.rotaract3220@gmail.com
+              </a>
+              <a href="tel:+94770447021" className="block font-body text-[0.95rem] text-[rgba(253,248,242,0.7)] hover:text-[#FDF8F2] transition-colors">
+                +94 77 044 7021
+              </a>
+            </div>
+
+            {/* Social */}
+            <a 
+              href="https://linkedin.com/in/haneefmohamed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-body text-[0.85rem] text-[rgba(253,248,242,0.4)] hover:text-[rgba(253,248,242,0.8)] transition-colors tracking-wide"
+            >
+              LinkedIn ↗
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Bottom - Minimal Footer */}
+        <div className="mt-16 pt-8 border-t border-[rgba(253,248,242,0.08)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <p className="font-body text-[0.75rem] text-[rgba(253,248,242,0.35)]">
+              © 2025 Haneef Mohamed · RTR. Colombo Mid Town · District 3220
+            </p>
+            <div className="flex gap-6">
+              <span className="font-body text-[0.75rem] text-[rgba(253,248,242,0.35)]">
+                10+ years Rotary · 5+ years Rotaract · 40-year legacy
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 }

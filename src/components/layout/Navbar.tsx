@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/cn';
-import ThemeSwitcher from '../ui/ThemeSwitcher';
 
 const navLinks = [
   { name: 'The Story', href: '#story' },
@@ -98,8 +97,6 @@ export default function Navbar() {
                 )}
               </a>
             ))}
-            {/* Theme Switcher */}
-            <ThemeSwitcher />
           </div>
 
           {/* Mobile Header - Name on left, hamburger on right */}
@@ -220,10 +217,6 @@ export default function Navbar() {
                 >
                   haneef.rotaract3220@gmail.com
                 </a>
-                {/* Theme Switcher - Mobile */}
-                <div className="mt-6">
-                  <ThemeSwitcher />
-                </div>
               </motion.div>
             </motion.div>
           </>

@@ -5,7 +5,6 @@
 
 import { Suspense, lazy } from 'react';
 import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
 
 const Story = lazy(() => import('./components/sections/Story'));
@@ -32,8 +31,6 @@ export default function App() {
           <Contact />
         </Suspense>
       </main>
-
-      <Footer />
     </div>
   );
 }
