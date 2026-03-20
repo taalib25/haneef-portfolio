@@ -218,6 +218,7 @@ export default function Campaign() {
 
       {/* ── THREE CHALLENGES */}
       <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
           {/* Section header - left aligned */}
           <div className="mb-12">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
@@ -310,9 +311,11 @@ export default function Campaign() {
             </div>
           </div>
         </div>
+        </div>
 
         {/* ── CIGR FRAMEWORK */}
         <div className="mb-32 px-4 md:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
           {/* Section header - left aligned, large */}
           <div className="mb-6">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-4">
@@ -329,10 +332,12 @@ export default function Campaign() {
           <div className="h-[2px] w-full bg-[var(--cta)] mb-5" />
 
           <CIGRGrid />
+          </div>
         </div>
 
         {/* ── STRATEGIC PILLARS */}
         <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
           <div className="mb-10">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               Four Strategic Pillars
@@ -431,10 +436,12 @@ export default function Campaign() {
               </div>
             </div>
           </div>
+          </div>
         </div>
 
         {/* ── THREE-PHASE ACTION PLAN */}
         <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
           {/* Section header */}
           <div className="mb-12">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
@@ -606,10 +613,12 @@ export default function Campaign() {
               </p>
             </div>
           </div>
+          </div>
         </div>
 
         {/* ── CORE VALUES — Token Grid */}
         <div className="mb-16 px-4 md:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
           <div className="mb-12">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Principles
@@ -640,6 +649,7 @@ export default function Campaign() {
                 </p>
               </div>
             ))}
+          </div>
           </div>
         </div>
     </section>
