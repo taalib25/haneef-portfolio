@@ -466,6 +466,11 @@ html, body {
     line-height: 1.5 !important;
   }
 
+  /* Hero VOTE outline text - constrain size for mobile */
+  #hero section > div > span:first-child > span:first-child {
+    font-size: clamp(4rem, 38vw, 8rem) !important;
+  }
+
   /* Section headlines (ONE CAREER. TWO ARENAS. etc.) */
   h2.font-display {
     font-size: clamp(2rem, 8vw, 3rem) !important;
@@ -555,6 +560,17 @@ html, body {
    ============================================ */
 
 @media (max-width: 767px) {
+  /* DRR banner text - constrain sizes */
+  #campaign .font-display .text-\[clamp\(2rem\,10vw\,6rem\)\],
+  #campaign .font-display .text-\[clamp\(2\.5rem\,12vw\,7rem\)\] {
+    font-size: clamp(1.8rem, 9vw, 4rem) !important;
+  }
+  
+  #campaign .font-display .text-\[clamp\(2\.5rem\,10vw\,5rem\)\] {
+    font-size: clamp(1.5rem, 7vw, 3rem) !important;
+    line-height: 1.1 !important;
+  }
+
   /* DRR promise block */
   .campaign-promise-statement {
     font-size: clamp(1.25rem, 4.5vw, 2rem) !important;
@@ -648,18 +664,6 @@ html, body {
   @keyframes statsFadeIn {
     0% { opacity: 0; transform: translateY(8px); }
     100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes skeletonPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
-  }
-  .stats-skeleton {
-    animation: skeletonPulse 1.2s ease-in-out infinite;
-  }
-  .stats-skeleton.done {
-    opacity: 0 !important;
-    pointer-events: none;
-    animation: none;
   }
 }
 

@@ -129,9 +129,9 @@ export default function Campaign() {
         </div>
 
         <div className="font-display font-bold leading-[0.95] tracking-[0.02em] uppercase mb-4">
-          <span className="text-[clamp(3rem,12vw,6rem)] text-[#FDF8F2]">DISTRICT ROTARACT</span>
+          <span className="text-[clamp(2rem,10vw,6rem)] text-[#FDF8F2]">DISTRICT ROTARACT</span>
           <br />
-          <span className="text-[clamp(3.5rem,14vw,7rem)] text-[#FDF8F2]">REPRESENTATIVE</span>
+          <span className="text-[clamp(2.5rem,12vw,7rem)] text-[#FDF8F2]">REPRESENTATIVE</span>
         </div>
 
         <div className="font-display text-[clamp(0.9rem,2.5vw,1.2rem)] font-medium leading-[1.4] tracking-[0.03em] uppercase">
@@ -185,16 +185,16 @@ export default function Campaign() {
             </p>
           </div>
           
-          {/* Quote with attribution below, right-aligned */}
+          {/* Quote with attribution below, centered */}
           <div className="max-w-3xl mx-auto">
-            {/* Quote - original style */}
-            <blockquote className="font-sans text-[clamp(1.3rem,3.5vw,2rem)] text-[var(--ct1)] leading-[1.5] font-medium italic text-left mb-4">
+            {/* Quote - centered, General Sans font, reduced opacity */}
+            <blockquote className="font-sans text-[clamp(1.3rem,3.5vw,2rem)] text-[var(--ct1)] leading-[1.5] font-medium italic text-center mb-4 self-center opacity-70">
               "To transform our district into a place where youth leadership is
               recognised as a professional standard."
             </blockquote>
-            
-            {/* Attribution - below quote, right-aligned, super subtle */}
-            <div className="flex flex-col items-end">
+
+            {/* Attribution - below quote, centered, super subtle */}
+            <div className="flex flex-col items-center">
               <p className="font-sans text-[0.7rem] text-[var(--ct3)] tracking-[0.08em] uppercase opacity-60">
                 Haneef Mohamed
               </p>

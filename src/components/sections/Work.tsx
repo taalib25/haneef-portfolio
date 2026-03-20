@@ -41,7 +41,6 @@ const educationData = [
 export default function Work() {
   const containerRef = useRef<HTMLElement>(null);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
-  const statsRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -74,27 +73,6 @@ export default function Work() {
 
     return () => ctx.revert();
   }, [prefersReducedMotion]);
-
-  // Fade out skeleton when stats section comes into view
-  useEffect(() => {
-    if (!statsRef.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            const skeleton = statsRef.current?.querySelector('.stats-skeleton');
-            if (skeleton) skeleton.classList.add('done');
-          }, 400);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(statsRef.current);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <section id="work" ref={containerRef} className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg)]">
@@ -311,7 +289,6 @@ export default function Work() {
 
         {/* Unified Statistics Bar — Full Width Edge-to-Edge */}
         <motion.div
-          ref={statsRef}
           className="mt-14 md:mt-16"
           style={{ margin: '3.5rem calc(-1.25rem) 0', padding: '0 1.25rem' }}
           initial={!prefersReducedMotion ? { opacity: 0, y: 30 } : { opacity: 1 }}
@@ -329,79 +306,38 @@ export default function Work() {
               padding: 'clamp(1rem, 2.5vw, 1.5rem)',
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              position: 'relative',
-              overflow: 'hidden',
             }}
             className="max-md:grid-cols-2 max-md:gap-px"
           >
-            {/* Skeleton loader — shows first, fades out */}
-            <div
-              className="stats-skeleton"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                background: '#042B44',
-                zIndex: 2,
-                transition: 'opacity 0.4s ease',
-              }}
-            >
-              {[0, 1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: '0.75rem 1rem',
-                    borderRight: i < 3 ? '1px solid rgba(245,248,250,0.05)' : 'none',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                  }}
-                >
-                  <div style={{ width: '50px', height: '28px', background: 'rgba(245,248,250,0.08)', borderRadius: '4px' }} />
-                  <div style={{ width: '60px', height: '10px', background: 'rgba(245,248,250,0.05)', borderRadius: '2px' }} />
-                </div>
-              ))}
-            </div>
-
-            {/* Actual content */}
-            <div
-              className="stats-content"
-              style={{ position: 'relative', zIndex: 1 }}
-            >
-              {[
-                { label: '20+', sublabel: 'District Trainings', detail: 'Conferences, Assemblies, PETS & RYLA' },
-                { label: '10+', sublabel: 'Years in', detail: 'the Rotary Movement · Since 2016' },
-                { label: '5+', sublabel: 'Years with', detail: 'Rotaract Club of Colombo Mid Town' },
-                { label: '40', sublabel: 'Year Legacy', detail: "Carrying the Founders' Vision Forward" },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: '0.75rem 1rem',
-                    borderRight: i < 3 ? '1px solid rgba(245,248,250,0.1)' : 'none',
-                    textAlign: 'center',
-                    opacity: 0,
-                    animation: `statsFadeIn 0.5s ease ${0.3 + i * 0.12}s forwards`,
-                  }}
-                  className="max-md:border-right-none max-md:border-b max-md:border-b-[rgba(245,248,250,0.1)] max-md:last:border-b-0 max-md:py-3"
-                >
-                  <p className="font-display text-[clamp(2rem,6vw,2.75rem)] leading-[1] tracking-[-0.02em] font-bold"
-                     style={{ color: '#F5F8FA', marginBottom: '0' }}>
-                    {stat.label}
-                  </p>
-                  <p className="font-sans text-[0.7rem] tracking-[0.02em]"
-                     style={{ color: 'rgba(245,248,250,0.6)', fontWeight: 500, marginBottom: '0.1rem' }}>
-                    {stat.sublabel}
-                  </p>
-                  <p className="font-body text-[0.6rem] tracking-[0.01em]"
-                     style={{ color: 'rgba(245,248,250,0.35)', fontWeight: 400 }}>
-                    {stat.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
+            {[
+              { label: '20+', sublabel: 'District Trainings', detail: 'Conferences, Assemblies, PETS & RYLA' },
+              { label: '10+', sublabel: 'Years in', detail: 'the Rotary Movement · Since 2016' },
+              { label: '5+', sublabel: 'Years with', detail: 'Rotaract Club of Colombo Mid Town' },
+              { label: '40', sublabel: 'Year Legacy', detail: "Carrying the Founders' Vision Forward" },
+            ].map((stat, i) => (
+              <div
+                key={i}
+                style={{
+                  padding: '0.75rem 1rem',
+                  borderRight: i < 3 ? '1px solid rgba(245,248,250,0.1)' : 'none',
+                  textAlign: 'center',
+                }}
+                className="max-md:border-right-none max-md:border-b max-md:border-b-[rgba(245,248,250,0.1)] max-md:last:border-b-0 max-md:py-3"
+              >
+                <p className="font-display text-[clamp(2rem,6vw,2.75rem)] leading-[1] tracking-[-0.02em] font-bold"
+                   style={{ color: '#F5F8FA', marginBottom: '0' }}>
+                  {stat.label}
+                </p>
+                <p className="font-sans text-[0.7rem] tracking-[0.02em]"
+                   style={{ color: 'rgba(245,248,250,0.6)', fontWeight: 500, marginBottom: '0.1rem' }}>
+                  {stat.sublabel}
+                </p>
+                <p className="font-body text-[0.6rem] tracking-[0.01em]"
+                   style={{ color: 'rgba(245,248,250,0.35)', fontWeight: 400 }}>
+                  {stat.detail}
+                </p>
+              </div>
+            ))}
           </div>
         </motion.div>
 

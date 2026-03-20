@@ -118,9 +118,9 @@ export default function Hero() {
             <motion.span
               className="font-display font-black uppercase whitespace-nowrap"
               style={{
-                fontSize: 'clamp(12rem, 55vw, 18rem)',
+                fontSize: 'clamp(6rem, 45vw, 12rem)',
                 color: 'transparent',
-                WebkitTextStroke: '1.5px rgba(253,248,242,0.06)',
+                WebkitTextStroke: '1px rgba(253,248,242,0.06)',
                 letterSpacing: '0.05em',
                 userSelect: 'none',
               }}
