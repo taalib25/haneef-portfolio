@@ -51,20 +51,18 @@ export default function Hero() {
 
           {/* Portrait Image - Full height right panel with 20% padding */}
           <div
-            className="absolute right-0 top-0 bottom-0 overflow-hidden"
-            style={{ zIndex: 1, width: '30%', paddingRight: '20%' }}
+            className="absolute right-0 bottom-0 overflow-hidden"
+            style={{ zIndex: 1, width: '32%', height: '92%',right: '4%' }}
           >
-            <img
-              src={potrait}
-              alt="Haneef Mohamed"
-              loading="eager"
-              fetchPriority="high"
-              className="w-full h-full object-cover"
+            <div
               style={{
-                display: 'block',
-                maxWidth: '100%',
-                maxHeight: '100%',
-                objectPosition: '40% 8%',
+                width: '100%',
+                height: '100%',
+                backgroundImage: `url(${potrait})`,
+                backgroundSize: 'cover',
+                backgroundPosition: '40% 8%',
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)',
               }}
             />
           </div>
@@ -76,7 +74,7 @@ export default function Hero() {
 
               {/* HANEEF MOHAMED - Really big bold text */}
               <motion.h1
-                className="font-display font-bold text-[clamp(4rem,12vw,10rem)] leading-[0.75] tracking-[0.02em] text-[#FDF8F2] uppercase"
+                className="font-display font-bold text-[clamp(3.5rem,10vw,9rem)] leading-[0.75] tracking-[0.02em] text-[#FDF8F2] uppercase"
                 initial={{ opacity: 0, scale: 0.92, y: 30 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 1.1, ease: EASE_SMOOTH, delay: 0.1 }}
