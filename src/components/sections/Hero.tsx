@@ -51,8 +51,8 @@ export default function Hero() {
 
           {/* Portrait Image - Full height right panel with 20% padding */}
           <div
-            className="absolute right-0 bottom-0 overflow-hidden"
-            style={{ zIndex: 1, width: '32%', height: '92%',right: '4%' }}
+            className="absolute right-0 top-0 overflow-hidden"
+            style={{ zIndex: 1, width: '32%', height: '100%', right: '4%' }}
           >
             <div
               style={{
@@ -209,7 +209,7 @@ export default function Hero() {
 
             {/* Sub-headline — centered on mobile */}
             <motion.p
-              className="font-display"
+              className="font-display font-light "
               style={{
                 fontSize: '0.68rem',
                 fontWeight: 400,

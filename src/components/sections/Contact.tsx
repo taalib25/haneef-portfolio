@@ -5,7 +5,16 @@ export default function Contact() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <footer id="contact" className="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-[#0a1628] overflow-hidden">
+    <footer id="contact" className="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 overflow-hidden"
+      style={{
+        background: `linear-gradient(
+          to bottom,
+          color-mix(in srgb, var(--color-crimson) 90%, #000) 0%,
+          color-mix(in srgb, var(--color-crimson) 75%, #000) 50%,
+          color-mix(in srgb, var(--color-crimson) 95%, #000) 100%
+        )`,
+      }}
+    >
       {/* Mobile-only massive VOTE HANEEF text — left aligned */}
       <div 
         className="block md:hidden"
