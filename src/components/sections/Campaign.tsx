@@ -99,126 +99,125 @@ export default function Campaign() {
     <section
       id="campaign"
       ref={containerRef}
-      className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg-campaign)] text-[var(--ct1)]"
+      className="py-14 md:py-20 bg-[var(--bg-campaign)] text-[var(--ct1)]"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* ── DRR BANNER + VISION/MISSION (shared crimson dark background) */}
-        <div className="bg-[var(--crimson-dark)] relative overflow-hidden px-6 py-12 md:py-16 text-center">
-          {/* Noise texture overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            }}
-          />
+      {/* ── DRR BANNER - Full width crimson rectangle */}
+      <div className="bg-[var(--crimson-dark)] relative overflow-hidden -mx-4 md:-mx-6 lg:-mx-8 px-4 md:px-6 lg:px-8 py-14 md:py-20 text-center">
+        {/* Noise texture overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          }}
+        />
 
-          {/* Badge */}
-          <p className="font-display text-[9px] tracking-[0.14em] text-[rgba(253,240,213,0.55)] uppercase mb-5">
-            [ 04 — District Representative ]
+        {/* Badge */}
+        <p className="font-display text-[9px] tracking-[0.14em] text-[rgba(253,240,213,0.55)] uppercase mb-6">
+          [ 04 — District Representative ]
+        </p>
+
+        {/* "Running for" with highlight */}
+        <div className="font-display text-[clamp(2rem,7vw,4rem)] font-bold text-[#FDF8F2] leading-[0.92] tracking-[-0.025em] mb-4">
+          <span ref={runningRef} className="running-word relative inline">
+            Running for
+          </span>
+        </div>
+
+        <div className="font-display text-[clamp(1.3rem,4vw,2.2rem)] font-bold leading-[1.1] tracking-[-0.02em] mb-5">
+          <span className="text-[#FDF8F2]">District Rotaract Representative</span>
+          <br />
+          <span className="text-[rgba(255,180,180,0.95)]">
+            District 3220 — Sri Lanka & Maldives
+          </span>
+        </div>
+
+        <p className="font-display text-[9px] tracking-[0.12em] text-[rgba(253,240,213,0.45)] uppercase">
+          Term 2025–2026
+        </p>
+      </div>
+
+      {/* Vision & Mission - Highlighted rounded boxes */}
+      <div className="px-4 md:px-6 lg:px-8 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {/* Vision Box */}
+          <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
+            <p className="font-display text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[-0.02em]">
+              Vision
+            </p>
+            <p className="font-body text-[0.95rem] text-[rgba(253,248,242,0.9)] leading-[1.8] font-[450]">
+              To transform our district into a place where youth leadership is
+              recognised as a professional standard and Rotaract clubs serve as
+              centers for innovation, leadership, and meaningful community impact.
+            </p>
+          </div>
+
+          {/* Mission Box */}
+          <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
+            <p className="font-display text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[-0.02em]">
+              Mission
+            </p>
+            <p className="font-body text-[0.95rem] text-[rgba(253,248,242,0.9)] leading-[1.8] font-[450]">
+              To empower Rotaract clubs and members through stronger digital
+              systems, transparent financial governance, and a clear path that
+              connects every member to mentorship, professional development,
+              and global opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── THE PROMISE BLOCK - Elegant italic centered */}
+      <div className="py-14 md:py-16 px-4 md:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="h-[1px] w-24 bg-[var(--crimson)] mx-auto mb-8" />
+          <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-6">
+            The Promise
           </p>
+          <blockquote className="font-display text-[clamp(1.3rem,3.5vw,2rem)] text-[var(--ct1)] leading-[1.5] font-medium italic">
+            "To transform our district into a place where youth leadership is
+            recognised as a professional standard."
+          </blockquote>
+          <p className="font-body text-[0.85rem] text-[var(--crimson)] mt-6 font-[500]">
+            — Haneef Mohamed, DRR Candidate, District 3220
+          </p>
+          <div className="h-[1px] w-24 bg-[var(--crimson)] mx-auto mt-8" />
+        </div>
+      </div>
 
-          {/* "Running for" with highlight */}
-          <div className="font-display text-[clamp(1.8rem,6vw,3rem)] font-bold text-[#FDF8F2] leading-[0.92] tracking-[-0.025em] mb-3">
-            <span ref={runningRef} className="running-word relative inline">
-              Running for
-            </span>
-          </div>
-
-          <div className="font-display text-[clamp(1.1rem,3.5vw,1.8rem)] font-bold leading-[1.1] tracking-[-0.02em] mb-4">
-            <span className="text-[#FDF8F2]">District Rotaract Representative</span>
-            <br />
-            <span className="text-[rgba(255,150,150,0.9)]">
-              District 3220 · Sri Lanka & Maldives
-            </span>
-          </div>
-
-          <p className="font-display text-[9px] tracking-[0.12em] text-[rgba(253,240,213,0.45)] uppercase">
-            2025–2026
+      {/* ── WHY I AM RUNNING */}
+      <div className="max-w-3xl mx-auto mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-[32px] h-[2px] bg-[var(--crimson)]" />
+          <p className="font-display text-[0.7rem] text-[var(--crimson)] tracking-[0.10em] uppercase">
+            Why I Am Running
           </p>
         </div>
-
-        {/* Vision & Mission (still on crimson dark) */}
-        <div className="bg-[var(--crimson-dark)] px-6 py-8 md:py-10">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-0">
-            <div className="md:pr-8 pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-[rgba(253,248,242,0.15)]">
-              <p className="font-display text-[9px] tracking-[0.14em] text-[rgba(253,240,213,0.5)] uppercase mb-3">
-                Vision
-              </p>
-              <p className="font-body text-[0.9rem] text-[rgba(253,248,242,0.82)] leading-[1.75] font-[450]">
-                To transform our district into a place where youth leadership is
-                recognised as a professional standard and Rotaract clubs serve as
-                centers for innovation, leadership, and meaningful community impact.
-              </p>
-            </div>
-            <div className="hidden md:block bg-[rgba(253,248,242,0.15)]" />
-            <div className="md:pl-8 pt-6 md:pt-0">
-              <p className="font-display text-[9px] tracking-[0.14em] text-[rgba(253,240,213,0.5)] uppercase mb-3">
-                Mission
-              </p>
-              <p className="font-body text-[0.9rem] text-[rgba(253,248,242,0.82)] leading-[1.75] font-[450]">
-                To empower Rotaract clubs and members through stronger digital
-                systems, transparent financial governance, and a clear path that
-                connects every member to mentorship, professional development,
-                and global opportunities.
-              </p>
-            </div>
-          </div>
+        <div className="font-body text-[1.0625rem] text-[var(--ct2)] leading-[1.75] space-y-6 italic">
+          <p>
+            I am running for District Rotaract Representative because I believe
+            our district is at a crossroads. Over time, the Rotaract experience
+            has shifted toward activity rather than impact. Clubs are active, but
+            we need to ask whether our efforts create the long-term value Rotaract
+            was meant to deliver.
+          </p>
+          <p>
+            My decision to run comes from a simple belief: Rotaract should be a
+            transformative experience for every member. When someone joins, they
+            should gain access to leadership opportunities, mentorship,
+            professional development, and meaningful service — not just a roster
+            of events to attend.
+          </p>
+          <p>
+            I want to bridge the gap between the potential of our youth and the
+            global strength of the Rotary movement. Rotaract should move beyond
+            being seen as just volunteering and instead become a platform for
+            real leadership development.
+          </p>
         </div>
+      </div>
 
-        {/* ── THE PROMISE BLOCK */}
-        <div className="bg-[var(--bg-campaign)] py-10 md:py-12 px-6">
-          <div className="max-w-3xl mx-auto">
-            <div className="h-[2px] w-full bg-[var(--crimson)] mb-8 md:mb-10" />
-            <div className="text-center">
-              <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-5">
-                The Promise
-              </p>
-              <p className="font-display text-[clamp(1.1rem,2.8vw,1.6rem)] text-[var(--ct1)] leading-[1.35] tracking-[-0.015em] font-bold">
-                "To transform our district into a place where youth leadership is
-                recognised as a professional standard."
-              </p>
-              <p className="font-body text-[0.8rem] italic text-[var(--cta)] mt-5 font-[450]">
-                — Haneef Mohamed, DRR Candidate, District 3220
-              </p>
-            </div>
-            <div className="h-[2px] w-full bg-[var(--crimson)] mt-8 md:mt-10" />
-          </div>
-        </div>
-
-        {/* ── WHY I AM RUNNING */}
-        <div className="max-w-3xl mx-auto mb-20 md:mb-24 px-6">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-[32px] h-[2px] bg-[var(--crimson)]" />
-            <p className="font-display text-[0.7rem] text-[var(--crimson)] tracking-[0.10em] uppercase">
-              Why I Am Running
-            </p>
-          </div>
-          <div className="font-body text-[1.0625rem] text-[var(--ct2)] leading-[1.75] space-y-6 italic">
-            <p>
-              I am running for District Rotaract Representative because I believe
-              our district is at a crossroads. Over time, the Rotaract experience
-              has shifted toward activity rather than impact. Clubs are active, but
-              we need to ask whether our efforts create the long-term value Rotaract
-              was meant to deliver.
-            </p>
-            <p>
-              My decision to run comes from a simple belief: Rotaract should be a
-              transformative experience for every member. When someone joins, they
-              should gain access to leadership opportunities, mentorship,
-              professional development, and meaningful service — not just a roster
-              of events to attend.
-            </p>
-            <p>
-              I want to bridge the gap between the potential of our youth and the
-              global strength of the Rotary movement. Rotaract should move beyond
-              being seen as just volunteering and instead become a platform for
-              real leadership development.
-            </p>
-          </div>
-        </div>
-
-        {/* ── THREE CHALLENGES */}
-        <div className="mb-20 md:mb-24 px-6">
+      {/* ── THREE CHALLENGES */}
+      <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
           {/* Section header - left aligned */}
           <div className="mb-12">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
@@ -313,7 +312,7 @@ export default function Campaign() {
         </div>
 
         {/* ── CIGR FRAMEWORK */}
-        <div className="mb-32 px-6">
+        <div className="mb-32 px-4 md:px-6 lg:px-8">
           {/* Section header - left aligned, large */}
           <div className="mb-6">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-4">
@@ -333,7 +332,7 @@ export default function Campaign() {
         </div>
 
         {/* ── STRATEGIC PILLARS */}
-        <div className="mb-20 md:mb-24 px-6">
+        <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
           <div className="mb-10">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               Four Strategic Pillars
@@ -435,7 +434,7 @@ export default function Campaign() {
         </div>
 
         {/* ── THREE-PHASE ACTION PLAN */}
-        <div className="mb-20 md:mb-24 px-6">
+        <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
           {/* Section header */}
           <div className="mb-12">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
@@ -610,7 +609,7 @@ export default function Campaign() {
         </div>
 
         {/* ── CORE VALUES — Token Grid */}
-        <div className="mb-16 px-6">
+        <div className="mb-16 px-4 md:px-6 lg:px-8">
           <div className="mb-12">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Principles
@@ -643,7 +642,6 @@ export default function Campaign() {
             ))}
           </div>
         </div>
-      </div>
     </section>
   );
 }

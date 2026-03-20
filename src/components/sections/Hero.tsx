@@ -34,31 +34,33 @@ export default function Hero() {
         <>
           {/* Portrait Image - Full height right panel */}
           <div
-            className="absolute right-0 top-0 bottom-0 w-[35%] overflow-hidden"
+            className="absolute right-0 top-0 bottom-0 w-[38%] overflow-hidden"
             style={{ zIndex: 1 }}
           >
             <img
               src={potrait}
               alt="Haneef Mohamed"
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover"
               style={{
                 display: 'block',
-                filter: 'grayscale(100%) contrast(1.1) brightness(0.9)'
+                filter: 'grayscale(100%) contrast(1.1) brightness(0.9)',
+                objectPosition: '40% 8%'
               }}
             />
           </div>
 
           {/* Text Content - Left aligned, not centered */}
-          <div className="absolute inset-0 flex flex-col justify-center z-20">
+          <div className="absolute inset-0 flex flex-col justify-end pb-[10%] z-20">
             <div className="w-[65%] pl-8 md:pl-12 lg:pl-16">
-              {/* VOTE FOR - smaller text above */}
+              {/* Identity label */}
               <motion.p
-                className="font-display font-semibold text-[clamp(0.9rem,1.5vw,1.2rem)] uppercase tracking-[0.2em] text-[rgba(253,248,242,0.7)] mb-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: EASE_SMOOTH }}
+                className="font-display text-[0.65rem] tracking-[0.10em] uppercase mb-4"
+                style={{ color: 'rgba(253,248,242,0.50)' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, ease: EASE_SMOOTH }}
               >
-                Vote For
+                RTR. HANEEF MOHAMED · DISTRICT 3220
               </motion.p>
 
               {/* HANEEF MOHAMED - Really big bold text */}
@@ -106,81 +108,91 @@ export default function Hero() {
           </motion.div>
         </>
       ) : (
-        // Mobile Layout - Portrait on top, text overlapping with negative margin
-        <div className="relative h-full flex flex-col">
-          {/* Portrait Image - Top section, shows full height of person */}
-          <div className="relative w-full h-[65vh] overflow-hidden shrink-0">
+        // Mobile Layout — single absolute-positioned container, no negative margins
+        <div className="relative h-full w-full">
+
+          {/* Portrait — fills top 68% of viewport */}
+          <div
+            className="absolute top-0 left-0 right-0 overflow-hidden"
+            style={{ height: '68%' }}
+          >
             <img
               src={potrait}
               alt="Haneef Mohamed"
-              className="w-full h-full object-contain object-center"
+              className="w-full h-full object-cover"
               style={{
                 display: 'block',
-                filter: 'grayscale(100%) contrast(1.15) brightness(0.85)',
-                backgroundColor: 'var(--bg-hero)'
+                filter: 'grayscale(15%) contrast(1.05) brightness(0.88)',
+                objectPosition: 'center 20%',
               }}
             />
-            {/* Dark gradient overlay for text contrast */}
+            {/* Gradient fades portrait into crimson hero bg — NO blue tint */}
             <div
               className="absolute inset-0"
               style={{
-                background: 'linear-gradient(to bottom, rgba(4,43,68,0.3) 40%, rgba(4,43,68,0.8) 100%)',
-                pointerEvents: 'none'
+                background:
+                  'linear-gradient(to bottom, transparent 0%, rgba(120,0,0,0.55) 55%, #780000 100%)',
+                pointerEvents: 'none',
               }}
             />
           </div>
 
-          {/* Content - Overlaps portrait with negative margin */}
-          <div className="relative z-20 -mt-40 px-6 pt-8 pb-6">
-            {/* Name - overlapping the portrait */}
+          {/* Text block — pinned to the bottom */}
+          <div
+            className="absolute bottom-0 left-0 right-0 px-5 pb-6 flex flex-col justify-end"
+            style={{ height: '40%' }}
+          >
+            {/* Name */}
             <motion.h1
-              className="font-display font-bold text-[clamp(3.5rem,16vw,7rem)] leading-[0.75] tracking-[-0.02em] text-[#FDF8F2] uppercase text-center mb-4"
-              style={{
-                textShadow: '0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3)'
-              }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.9, ease: EASE_SMOOTH, delay: 0.2 }}
+              className="font-display font-bold uppercase text-[#FDF8F2] leading-[0.88] tracking-[-0.025em] mb-3"
+              style={{ fontSize: 'clamp(2.8rem, 13vw, 3.8rem)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.15 }}
             >
-              HANEEF
-              <br />
-              MOHAMED
+              Haneef<br />Mohamed
             </motion.h1>
 
-            {/* Tagline */}
+            {/* Sub-headline */}
             <motion.p
-              className="font-body font-light text-[0.8rem] tracking-wide text-center"
+              className="font-body mb-5"
               style={{
-                color: 'rgba(253,248,242,0.85)',
-                textShadow: '0 2px 8px rgba(0,0,0,0.4)'
+                fontSize: '0.8125rem',
+                fontWeight: 400,
+                color: 'rgba(253,248,242,0.65)',
+                letterSpacing: '0.01em',
+                lineHeight: 1.45,
               }}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.35 }}
             >
               PR Strategist · Rotaract President · DRR Candidate 2025
             </motion.p>
 
-            {/* Clear Scroll Indicator - Arrow style */}
+            {/* Scroll hint — simple line + label, no bouncing arrows */}
             <motion.div
-              className="flex flex-col items-center gap-3 mt-8"
+              className="flex flex-col items-start gap-1"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.55 }}
             >
-              <motion.div
-                className="flex flex-col items-center gap-1"
-                animate={{ y: [0, 6, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+              <div
+                style={{ width: '24px', height: '1px', background: 'rgba(253,248,242,0.30)' }}
+              />
+              <span
+                className="font-display uppercase"
+                style={{
+                  fontSize: '9px',
+                  letterSpacing: '0.18em',
+                  color: 'rgba(253,248,242,0.38)',
+                }}
               >
-                <div className="w-4 h-4 border-r-2 border-b-2 border-[rgba(253,248,242,0.8)] rotate-45" />
-                <div className="w-4 h-4 border-r-2 border-b-2 border-[rgba(253,248,242,0.8)] rotate-45 -mt-2" />
-              </motion.div>
-              <span className="font-display text-[0.6rem] uppercase tracking-[0.25em] text-[rgba(253,248,242,0.6)]">
                 Scroll
               </span>
             </motion.div>
           </div>
+
         </div>
       )}
     </section>
