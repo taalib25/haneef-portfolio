@@ -20,12 +20,16 @@ export default function Campaign() {
         const highlight = word.querySelector('.running-highlight');
         
         if (highlight) {
+          // No delay on mobile
+          const isMobile = window.innerWidth < 768;
+          
           gsap.to(highlight, {
             width: "calc(100% + 16px)",
             ease: "none",
+            delay: isMobile ? 0 : 0.3,  // 0 on mobile, 300ms on desktop
             scrollTrigger: {
               trigger: word,
-              start: "top 80%",
+              start: "top 65%",    // Changed from 80%
               end: "top 30%",
               scrub: 2,
               toggleActions: "play none none none",
@@ -110,8 +114,8 @@ export default function Campaign() {
       ref={containerRef}
       className="py-14 md:py-20 bg-[var(--bg-campaign)] text-[var(--ct1)]"
     >
-      {/* ── DRR BANNER - Full width crimson rectangle */}
-      <div className="bg-[var(--crimson-dark)] relative overflow-hidden -mx-4 md:-mx-6 lg:-mx-8 px-4 md:px-6 lg:px-8 py-14 md:py-20 text-center">
+      {/* ── DRR BANNER - Full width edge-to-edge */}
+      <div className="bg-[var(--crimson-dark)] relative overflow-hidden w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] px-4 md:px-6 lg:px-8 py-14 md:py-20 text-center">
         {/* Noise texture overlay */}
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -175,8 +179,8 @@ export default function Campaign() {
       {/* ── THE PROMISE BLOCK - Quote section */}
       <div className="py-16 md:py-24 px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Accent line */}
-          <div className="h-[1px] w-20 bg-[var(--crimson)] mx-auto mb-8" />
+          {/* Accent line - blue */}
+          <div className="h-[2px] w-16 bg-[var(--navy)] mx-auto mb-8" />
           
           {/* Section title */}
           <div className="inline-block mb-10">
@@ -204,7 +208,7 @@ export default function Campaign() {
             </div>
           </div>
           
-          <div className="h-[1px] w-20 bg-[var(--crimson)] mx-auto mt-12" />
+          <div className="h-[2px] w-16 bg-[var(--navy)] mx-auto mt-12" />
         </div>
       </div>
 
@@ -339,7 +343,7 @@ export default function Campaign() {
         </div>
 
         {/* ── CIGR FRAMEWORK */}
-        <div className="mb-32 px-4 md:px-6 lg:px-8 bg-white">
+        <div className="mb-32 px-4 md:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
           {/* Section header - left aligned, large */}
           <div className="mb-6">
@@ -360,11 +364,11 @@ export default function Campaign() {
           </div>
         </div>
 
-        {/* ── STRATEGIC PILLARS */}
+        {/* ── STRATEGIC PILLARS — Blue dividers */}
         <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8" style={{ background: 'var(--bg-campaign)' }}>
           <div className="max-w-6xl mx-auto">
           <div className="mb-10">
-            <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
+            <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--navy)] uppercase mb-4">
               Four Strategic Pillars
             </p>
             <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase mb-4">
@@ -376,10 +380,10 @@ export default function Campaign() {
           </div>
 
           <div className="space-y-0">
-            {/* Pillar 1 */}
-            <div className="relative flex border-t border-[var(--campaign-border)]">
-              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+            {/* Pillar 1 — thicker blue border */}
+            <div className="relative flex border-t-[2px] border-[var(--navy)]">
+              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r-[2px] border-[var(--navy)]">
+                <span className="font-sans text-[1.2rem] md:text-[1.3rem] font-bold text-[var(--navy)]">
                   01
                 </span>
               </div>
@@ -398,10 +402,10 @@ export default function Campaign() {
               </div>
             </div>
 
-            {/* Pillar 2 */}
-            <div className="relative flex border-t border-[var(--campaign-border)]">
-              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+            {/* Pillar 2 — thicker blue border */}
+            <div className="relative flex border-t-[2px] border-[var(--navy)]">
+              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r-[2px] border-[var(--navy)]">
+                <span className="font-sans text-[1.2rem] md:text-[1.3rem] font-bold text-[var(--navy)]">
                   02
                 </span>
               </div>
@@ -419,10 +423,10 @@ export default function Campaign() {
               </div>
             </div>
 
-            {/* Pillar 3 */}
-            <div className="relative flex border-t border-[var(--campaign-border)]">
-              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+            {/* Pillar 3 — thicker blue border */}
+            <div className="relative flex border-t-[2px] border-[var(--navy)]">
+              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r-[2px] border-[var(--navy)]">
+                <span className="font-sans text-[1.2rem] md:text-[1.3rem] font-bold text-[var(--navy)]">
                   03
                 </span>
               </div>
@@ -440,10 +444,10 @@ export default function Campaign() {
               </div>
             </div>
 
-            {/* Pillar 4 */}
-            <div className="relative flex border-t border-b border-[var(--campaign-border)]">
-              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r border-[var(--campaign-border)]">
-                <span className="font-sans text-[1rem] md:text-[1.1rem] font-bold text-[var(--crimson)]">
+            {/* Pillar 4 — thicker blue border */}
+            <div className="relative flex border-t-[2px] border-b-[2px] border-[var(--navy)]">
+              <div className="w-12 md:w-14 flex-shrink-0 flex items-center justify-center border-r-[2px] border-[var(--navy)]">
+                <span className="font-sans text-[1.2rem] md:text-[1.3rem] font-bold text-[var(--navy)]">
                   04
                 </span>
               </div>

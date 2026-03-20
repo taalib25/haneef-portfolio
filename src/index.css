@@ -318,6 +318,13 @@ p {
   transition: none;
 }
 
+/* Faster mobile transition */
+@media (max-width: 767px) {
+  .running-highlight {
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+}
+
 /* ============================================
    CAMPAIGN SECTION — Three-Phase Action Plan
    ============================================ */
@@ -390,16 +397,16 @@ p {
 
 .value-item {
   padding: 1.15rem 0;
-  border-bottom: 1px solid rgba(120, 0, 0, 0.12);
+  border-bottom: 1px solid color-mix(in srgb, var(--crimson-dark) 12%, transparent);
   transition: border-color 0.2s ease;
 }
 
 .value-item:first-child {
-  border-top: 1px solid rgba(120, 0, 0, 0.12);
+  border-top: 1px solid color-mix(in srgb, var(--crimson-dark) 12%, transparent);
 }
 
 .value-item:hover {
-  border-bottom-color: rgba(193, 18, 31, 0.28);
+  border-bottom-color: color-mix(in srgb, var(--crimson) 28%, transparent);
 }
 
 .value-item:hover .val-name {
@@ -422,16 +429,16 @@ p {
 
 .award-item {
   padding: 1.15rem 0;
-  border-bottom: 1px solid rgba(120, 0, 0, 0.12);
+  border-bottom: 1px solid color-mix(in srgb, var(--crimson-dark) 12%, transparent);
   transition: border-color 0.2s ease;
 }
 
 .award-item:first-child {
-  border-top: 1px solid rgba(120, 0, 0, 0.12);
+  border-top: 1px solid color-mix(in srgb, var(--crimson-dark) 12%, transparent);
 }
 
 .award-item:hover {
-  border-bottom-color: rgba(193, 18, 31, 0.28);
+  border-bottom-color: color-mix(in srgb, var(--crimson) 28%, transparent);
 }
 
 /* ============================================
@@ -639,12 +646,12 @@ html, body {
 
   /* TASK 2: Three Challenges stronger dividers on mobile */
   #campaign .group {
-    border-top: 1.5px solid rgba(193, 18, 31, 0.22) !important;
+    border-top: 1.5px solid color-mix(in srgb, var(--crimson) 22%, transparent) !important;
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
   }
   #campaign .group:last-child {
-    border-bottom: 1.5px solid rgba(193, 18, 31, 0.22) !important;
+    border-bottom: 1.5px solid color-mix(in srgb, var(--crimson) 22%, transparent) !important;
   }
 }
 
@@ -750,7 +757,7 @@ html, body {
 
   /* Entries container with left accent border */
   .timeline-entries-container {
-    border-left: 2px solid rgba(193, 18, 31, 0.15) !important;
+    border-left: 2px solid color-mix(in srgb, var(--crimson) 15%, transparent) !important;
     padding-left: 1.25rem !important;
   }
 
@@ -1113,14 +1120,14 @@ html, body {
 
 /* TASK 5: Pillars darker grid lines + bigger numbers (all screens) */
 #campaign .relative.flex {
-  border-top: 1.5px solid rgba(193, 18, 31, 0.30) !important;
+  border-top: 1.5px solid color-mix(in srgb, var(--crimson) 30%, transparent) !important;
 }
 #campaign .relative.flex:last-child {
-  border-bottom: 1.5px solid rgba(193, 18, 31, 0.30) !important;
+  border-bottom: 1.5px solid color-mix(in srgb, var(--crimson) 30%, transparent) !important;
 }
 #campaign .w-12,
 #campaign .md\:w-14 {
-  border-right: 1.5px solid rgba(193, 18, 31, 0.30) !important;
+  border-right: 1.5px solid color-mix(in srgb, var(--crimson) 30%, transparent) !important;
 }
 
 /* ============================================

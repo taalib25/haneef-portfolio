@@ -6,18 +6,19 @@ export default function Contact() {
 
   return (
     <footer id="contact" className="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-[#0a1628] overflow-hidden">
-      {/* Mobile-only massive VOTE HANEEF text */}
+      {/* Mobile-only massive VOTE HANEEF text — left aligned */}
       <div 
-        className="block md:hidden text-center"
+        className="block md:hidden"
         style={{
           fontSize: '17vw',
           lineHeight: 0.88,
           letterSpacing: '-0.02em',
           color: '#F5F8FA',
-          marginBottom: '1.5rem',
+          marginBottom: '2rem',
         }}
       >
-        <span className="font-display font-black uppercase">VOTE HANEEF</span>
+        <span className="font-display font-black uppercase block">VOTE</span>
+        <span className="font-display font-black uppercase block">HANEEF.</span>
       </div>
 
       {/* Subtle background text - desktop only */}
@@ -85,17 +86,15 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* Bottom - Minimal Footer - desktop only */}
-        <div className="hidden md:block mt-16 pt-8 border-t border-[rgba(253,248,242,0.08)]">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <p className="font-body text-[0.75rem] text-[rgba(253,248,242,0.35)]">
+        {/* Bottom - Copyright — visible on all screens */}
+        <div className="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-[rgba(253,248,242,0.08)]">
+          <div className="flex flex-col gap-3">
+            <p className="font-body text-[0.65rem] md:text-[0.75rem] text-[rgba(253,248,242,0.3)]">
               © 2025 Haneef Mohamed · RTR. Colombo Mid Town · District 3220
             </p>
-            <div className="flex gap-6">
-              <span className="font-body text-[0.75rem] text-[rgba(253,248,242,0.35)]">
-                10+ years Rotary · 5+ years Rotaract · 40-year legacy
-              </span>
-            </div>
+            <p className="font-body text-[0.6rem] md:text-[0.7rem] text-[rgba(253,248,242,0.2)] hidden md:block">
+              10+ years Rotary · 5+ years Rotaract · 40-year legacy
+            </p>
           </div>
         </div>
       </div>

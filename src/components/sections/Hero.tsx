@@ -24,6 +24,9 @@ export default function Hero() {
         'relative w-full h-screen overflow-hidden',
       )}
       style={{
+        marginTop: '-64px',
+        paddingTop: '64px',
+        minHeight: '100svh',
         background: 'var(--bg-hero)'
       }}
     >
@@ -43,7 +46,7 @@ export default function Hero() {
               className="w-full h-full object-cover"
               style={{
                 display: 'block',
-                filter: 'grayscale(100%) contrast(1.1) brightness(0.9)',
+              filter: 'grayscale(100%) contrast(1.1) brightness(0.80)',
                 objectPosition: '40% 8%'
               }}
             />
@@ -77,7 +80,7 @@ export default function Hero() {
 
               {/* Sub-headline */}
               <motion.p
-                className="font-sans font-light text-[clamp(0.9rem,1.2vw,1.1rem)] tracking-wide mt-6"
+                className="font-display font-light text-[clamp(0.9rem,1.2vw,1rem)] tracking-wide mt-6"
                 style={{ color: 'rgba(253,248,242,0.65)' }}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -140,7 +143,7 @@ export default function Hero() {
               backgroundSize: 'contain',
               backgroundPosition: 'center 5%',
               backgroundRepeat: 'no-repeat',
-              filter: 'grayscale(100%) contrast(1.1) brightness(0.9)',
+              filter: 'grayscale(100%) contrast(1.1) brightness(0.80)',
               zIndex: 1,
             }}
           />
@@ -154,37 +157,34 @@ export default function Hero() {
             }}
           />
 
-          {/* Bottom gradient — css token fade */}
-          <div
-            className="absolute bottom-0 left-0 right-0 h-[55%]"
-            style={{
-              background: 'linear-gradient(to top, var(--bg-hero) 0%, rgba(var(--bg-hero-rgb), 0.90) 28%, rgba(var(--bg-hero-rgb), 0.50) 58%, transparent 100%)',
-            }}
-          />
+          {/* Text block — centered, no margin */}
+          <div className="absolute bottom-0 left-0 right-0 px-4 pb-8 flex flex-col items-center justify-end" style={{ zIndex: 2, textAlign: 'center' }}>
+            {/* Identity label - mobile */}
+            <motion.p
+              className="font-display uppercase mb-2"
+              style={{
+                fontSize: '0.6rem',
+                letterSpacing: '0.08em',
+                color: 'rgba(253,248,242,0.5)',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              RTR. HANEEF MOHAMED · DISTRICT 3220
+            </motion.p>
 
-          {/* Soft glow behind text */}
-          <div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[100%] h-[35%]"
-            style={{
-              background: 'radial-gradient(ellipse at center bottom, rgba(253,248,242,0.04) 0%, transparent 70%)',
-              pointerEvents: 'none',
-            }}
-          />
-
-          {/* Text block — centered, lower 15% */}
-          <div className="absolute bottom-0 left-0 right-0 px-6 pb-10 flex flex-col" style={{ marginBottom: '12%', zIndex: 2, textAlign: 'center', alignItems: 'center' }}>
             <motion.h1
               className="font-display uppercase"
               style={{
-                fontSize: '18vw',
-                lineHeight: 0.85,
-                letterSpacing: '-0.025em',
+                fontSize: '23vw',
+                lineHeight: 0.82,
+                letterSpacing: '-0.03em',
                 textAlign: 'center',
                 textTransform: 'uppercase',
                 color: '#F5F8FA',
                 fontWeight: 900,
-                marginBottom: '0.75rem',
-                textShadow: '0 2px 24px rgba(0,0,0,0.4)',
+                marginBottom: '0.5rem',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -195,14 +195,13 @@ export default function Hero() {
             </motion.h1>
 
             <motion.p
-              className="font-sans"
+              className="font-display text-[0.9rem] tracking-wide"
               style={{
-                fontSize: '0.8125rem',
+                fontSize: '0.75rem',
                 fontWeight: 400,
                 color: 'rgba(253,248,242,0.6)',
-                letterSpacing: '0.02em',
-                lineHeight: 1.5,
-                textShadow: '0 2px 20px rgba(0,0,0,0.6)',
+                letterSpacing: '0.03em',
+                lineHeight: 1.4,
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -212,19 +211,19 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              className="flex flex-col items-center gap-2 mt-6"
+              className="flex flex-col items-center gap-2 mt-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.55 }}
             >
               <div
-                style={{ width: '24px', height: '1px', background: 'rgba(253,248,242,0.25)' }}
+                style={{ width: '20px', height: '1px', background: 'rgba(253,248,242,0.25)' }}
               />
               <span
                 className="font-display uppercase"
                 style={{
-                  fontSize: '9px',
-                  letterSpacing: '0.18em',
+                  fontSize: '8px',
+                  letterSpacing: '0.15em',
                   color: 'rgba(253,248,242,0.35)',
                 }}
               >

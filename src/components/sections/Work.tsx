@@ -222,8 +222,8 @@ export default function Work() {
           viewport={{ once: true, amount: 0.1 }}
         >
           {/* Section Header */}
-          <div className="mt-14 md:mt-16 mb-10 md:mb-12">
-            <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase mb-6">
+          <div className="mt-14 md:mt-16 mb-6 md:mb-8">
+            <h2 className="font-display text-[clamp(1.5rem,6vw,2.5rem)] md:text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase mb-4 md:mb-6">
               Education
             </h2>
           </div>
@@ -237,7 +237,7 @@ export default function Work() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'baseline',
-                padding: '1.25rem 0',
+                padding: '0.85rem 0',
                 borderBottom: '1px solid rgba(15,6,8,0.07)',
               }}
             >
@@ -268,8 +268,8 @@ export default function Work() {
                           marginTop: '3px',
                           display: 'inline-block',
                           padding: '3px 10px',
-                          background: 'rgba(193,18,31,0.08)',
-                          border: '1px solid rgba(193,18,31,0.20)',
+                          background: 'color-mix(in srgb, var(--crimson) 8%, transparent)',
+                          border: '1px solid color-mix(in srgb, var(--crimson) 20%, transparent)',
                           color: 'var(--crimson)',
                           borderRadius: '2px',
                         }}
@@ -288,58 +288,103 @@ export default function Work() {
           ))}
         </motion.div>
 
-        {/* Unified Statistics Bar — Full Width Edge-to-Edge */}
+        {/* Stats — dual layout: mobile stacked, desktop horizontal */}
         <motion.div
           className="mt-14 md:mt-16"
-          style={{ margin: '3.5rem calc(-1.25rem) 0', padding: '0 1.25rem' }}
           initial={!prefersReducedMotion ? { opacity: 0, y: 30 } : { opacity: 1 }}
           whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
           transition={!prefersReducedMotion ? { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 } : undefined}
           viewport={{ once: true, amount: 0.2 }}
         >
-          <p className="font-mono text-[9.5px] tracking-[0.10em] uppercase mb-3"
-             style={{ color: 'rgba(245,248,250,0.35)' }}>
-            THE FOUNDATION
-          </p>
-          <div
-            style={{
-              background: '#042B44',
-              padding: 'clamp(1rem, 2.5vw, 1.5rem)',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-            }}
-            className="stats-row max-md:grid-cols-2 max-md:gap-px"
-          >
-            {[
-              { label: '20+', sublabel: 'District Trainings', detail: 'Conferences, Assemblies, PETS & RYLA' },
-              { label: '10+', sublabel: 'Years in', detail: 'the Rotary Movement · Since 2016' },
-              { label: '5+', sublabel: 'Years with', detail: 'Rotaract Club of Colombo Mid Town' },
-              { label: '40', sublabel: 'Year Legacy', detail: "Carrying the Founders' Vision Forward" },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className="stat-item"
-                style={{
-                  padding: '0.75rem 1rem',
-                  borderRight: i < 3 ? '1px solid rgba(245,248,250,0.1)' : 'none',
-                  textAlign: 'center',
-                }}
-              >
-                <p className="font-display text-[clamp(2rem,6vw,2.75rem)] leading-[1] tracking-[-0.02em] font-bold"
-                   style={{ color: '#F5F8FA', marginBottom: '0' }}>
-                  {stat.label}
-                </p>
-                <p className="font-sans text-[0.7rem] tracking-[0.02em]"
-                   style={{ color: 'rgba(245,248,250,0.6)', fontWeight: 500, marginBottom: '0.1rem' }}>
-                  {stat.sublabel}
-                </p>
-                <p className="font-body text-[0.6rem] tracking-[0.01em]"
-                   style={{ color: 'rgba(245,248,250,0.35)', fontWeight: 400 }}>
-                  {stat.detail}
-                </p>
-              </div>
-            ))}
-          </div>
+          {(() => {
+            const stats = [
+              { label: 'Years in Rotaract', value: '7+' },
+              { label: 'Projects as President', value: '18' },
+              { label: 'Members Led', value: '50' },
+              { label: 'Volunteers Coordinated', value: '100+' },
+              { label: 'District Awards', value: '5' },
+            ];
+            return (
+              <>
+                {/* MOBILE: stacked rows */}
+                <div className="md:hidden" style={{ width: '100%' }}>
+                  {stats.map((stat, i, arr) => (
+                    <div key={i} style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '0.85rem 0',
+                      borderBottom: i < arr.length - 1 ? '1px solid rgba(15,6,8,0.08)' : 'none',
+                    }}>
+                      {/* Label — left, small */}
+                      <span style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '0.65rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.10em',
+                        textTransform: 'uppercase',
+                        color: 'var(--t3)',
+                      }}>
+                        {stat.label}
+                      </span>
+                      {/* Number — right, BIG */}
+                      <span style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 'clamp(2rem, 8vw, 2.75rem)',
+                        fontWeight: 900,
+                        lineHeight: 1,
+                        letterSpacing: '-0.03em',
+                        color: 'var(--crimson)',
+                      }}>
+                        {stat.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* DESKTOP: horizontal row */}
+                <div className="hidden md:flex" style={{
+                  width: '100%',
+                  borderTop: '1px solid rgba(15,6,8,0.08)',
+                  borderBottom: '1px solid rgba(15,6,8,0.08)',
+                }}>
+                  {stats.map((stat, i, arr) => (
+                    <div key={i} style={{
+                      flex: 1,
+                      padding: '1.25rem 0',
+                      textAlign: 'center',
+                      borderRight: i < arr.length - 1 ? '1px solid rgba(15,6,8,0.08)' : 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                    }}>
+                      <span style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 'clamp(2rem, 3.5vw, 3.5rem)',
+                        fontWeight: 900,
+                        lineHeight: 1,
+                        letterSpacing: '-0.03em',
+                        color: 'var(--crimson)',
+                      }}>
+                        {stat.value}
+                      </span>
+                      <span style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: '0.65rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.10em',
+                        textTransform: 'uppercase',
+                        color: 'var(--t3)',
+                      }}>
+                        {stat.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
         </motion.div>
 
         {/* District Trainings & Forums List */}
