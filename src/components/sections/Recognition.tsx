@@ -130,19 +130,6 @@ export default function Recognition() {
             </div>
           ))}
         </div>
-
-        {/* Closing Note — Legacy Statement */}
-        <div className="mt-16">
-          <div className="border-t border-b border-[var(--campaign-border-light)] py-8">
-            <p className="font-mono text-[9px] tracking-[0.12em] text-(--t3) uppercase mb-3">
-              The Foundation
-            </p>
-            <p className="font-body text-[1rem] text-(--t2) leading-[1.75]">
-              10+ years in the Rotary movement · 5+ years with Rotaract Club of Colombo Mid Town ·
-              <span className="text-(--crimson)"> Carrying a 40-year legacy forward</span>
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
