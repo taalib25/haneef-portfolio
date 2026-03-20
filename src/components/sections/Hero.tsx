@@ -172,11 +172,11 @@ export default function Hero() {
 
           {/*
            * Bottom text block — poster typography.
-           * Font is sized to ~32vw so that "HANEEF" and "MOHAMED" fill the screen width
+           * Font is sized to ~42vw so that "HANEEF" and "MOHAMED" fill the screen width
            * and bleed slightly past the edges — clipped by overflow-hidden for poster effect.
            */}
           <div
-            className="absolute bottom-0 left-0 right-0 pb-8 flex flex-col items-center justify-end"
+            className="absolute bottom-0 left-0 right-0 px-2 pb-8 flex flex-col items-center justify-end"
             style={{ zIndex: 10 }}
           >
             {/* Identity label — centered on mobile */}
@@ -196,21 +196,19 @@ export default function Hero() {
             </motion.p>
 
             <motion.h1
-              className="font-display uppercase w-full overflow-hidden"
+              className="font-display uppercase"
               style={{
-                fontSize: '32vw',
-                lineHeight: 0.78,
+                fontSize: '16vw',
+                lineHeight: 0.75,
                 letterSpacing: '-0.025em',
                 textAlign: 'center',
                 color: '#FDF8F2',
                 fontWeight: 900,
-                marginBottom: '0.5rem',
-                // Allow the wide characters to bleed; section clips them
-                whiteSpace: 'nowrap',
+                marginBottom: '0.4rem',
               }}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.1 }}
+              transition={{ duration: 0.9, ease: EASE_SMOOTH, delay: 0.1 }}
             >
               <span style={{ display: 'block' }}>HANEEF</span>
               <span style={{ display: 'block' }}>MOHAMED</span>
@@ -236,22 +234,25 @@ export default function Hero() {
               PR Strategist · Rotaract President · DRR Candidate 2025
             </motion.p>
 
-            {/* Scroll indicator — centered */}
+            {/* Scroll indicator — centered with animated bounce dot */}
             <motion.div
-              className="flex flex-col items-center gap-2 mt-5"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.55 }}
+              className="flex flex-col items-center gap-2 mt-4"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div
-                style={{ width: '20px', height: '1px', background: 'rgba(253,248,242,0.25)' }}
+              <motion.div
+                className="w-1 h-3 rounded-full"
+                style={{ background: 'rgba(253,248,242,0.6)' }}
+                animate={{ y: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
               />
               <span
                 className="font-display uppercase"
                 style={{
-                  fontSize: '8px',
-                  letterSpacing: '0.15em',
-                  color: 'rgba(253,248,242,0.4)',
+                  fontSize: '7px',
+                  letterSpacing: '0.20em',
+                  color: 'rgba(253,248,242,0.5)',
                 }}
               >
                 Scroll

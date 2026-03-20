@@ -461,11 +461,11 @@ html, body {
     line-height: 1.7;
   }
 
-  /* Hero section */
+  /* Hero section - poster typography, maximum size that fits within screen */
   #hero h1 {
-    font-size: clamp(2.5rem, 11vw, 4rem) !important;
-    letter-spacing: 0.02em !important; /* Increased from -0.03em */
-    line-height: 0.88 !important;
+    font-size: clamp(3rem, 16vw, 8rem) !important;
+    letter-spacing: -0.025em !important;
+    line-height: 0.75 !important;
   }
 
   #hero [class*="text-[rgba(253,248,242,0.65]"] {
