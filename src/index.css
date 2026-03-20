@@ -928,6 +928,25 @@ html, body {
    HERO SECTION — Mobile Layout Fix
    ============================================ */
 
+/* Hero visual effects - subtle brightness only, NO grayscale */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: brightness(0.9) contrast(1.05);
+  -webkit-backdrop-filter: brightness(0.9) contrast(1.05);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Mobile: NO grayscale - keep natural colors, just subtle brightness */
+@media (max-width: 767px) {
+  #hero::before {
+    backdrop-filter: brightness(0.85) contrast(1.1);
+    -webkit-backdrop-filter: brightness(0.85) contrast(1.1);
+  }
+}
+
 @media (max-width: 767px) {
   /* Ensure hero section doesn't overflow */
   #hero {
