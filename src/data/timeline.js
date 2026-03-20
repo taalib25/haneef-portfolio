@@ -4,7 +4,7 @@ export const timelineData = [
     type: "DISTRICT",
     title: "Committee Member CSR",
     organisation: "Rotaract South Asia Multi-District Information Organization (RSAMDIO)",
-    body: "A supranational role above district level — the most senior Rotaract position on the CV. Serving on the CSR committee of RSAMDIO, which coordinates Rotaract activity across multiple districts in South Asia.",
+    body: "A supranational role above district level - the most senior Rotaract position on the CV. Serving on the CSR committee of RSAMDIO, which coordinates Rotaract activity across multiple districts in South Asia.",
     statPills: ["Supranational Role", "Multi-District"]
   },
   {

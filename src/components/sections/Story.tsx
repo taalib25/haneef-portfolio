@@ -131,7 +131,7 @@ export default function Story() {
           </h2>
         </div>
 
-        <div className="space-y-3 md:space-y-4 mt-6 md:mt-8">
+        <div className="space-y-3 md:space-y-4 mt-6 md:mt-8 mb-5 md:mb-8">
           <p className="font-body text-t-base text-[var(--t2)] leading-[1.75] max-w-none">
             My work in Public Relations is built on one skill: understanding people before trying to lead them. I build narratives, protect reputations, and connect organisations with the audiences that matter. That same instinct drives how I approach Rotaract. Listen first. Communicate clearly. Then lead.
           </p>

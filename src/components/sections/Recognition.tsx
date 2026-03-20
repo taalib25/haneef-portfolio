@@ -53,14 +53,10 @@ export default function Recognition() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header - CIGR Style */}
         <div className="mb-10 md:mb-16">
-          {/* Section Label */}
-          <p className="font-mono text-[9.5px] text-(--ta) tracking-[0.10em] uppercase mb-4 md:mb-6">
-            [ 05 — HALL OF HONORS ]
-          </p>
 
           {/* Section Headline */}
           <h2 className="font-display text-[clamp(2rem,4vw,3rem)] text-(--t1) leading-[0.95] tracking-[0.025em] uppercase mb-6">
-            Five Honors.
+            Nine Honors
             <br />
             <span className="text-(--crimson)">Seven Years.</span>
           </h2>
