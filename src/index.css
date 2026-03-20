@@ -2,14 +2,7 @@
     FONT LOADING - Fontshare + Google Fonts
     ============================================ */
 
-/* Import display font */
-@import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap");
-
-/* Import General Sans for titles and subheadings */
-@import url("https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap");
-
-/* Import Switzer for clean, modern body text */
-@import url("https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap");
+/* Fonts loaded via <link> tags in index.html for non-blocking loading */
 
 /* Now define the theme and root variables after imports */
 @theme {
@@ -658,12 +651,6 @@ html, body {
   @keyframes marquee-right {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
-  }
-
-  /* Stats loading animation */
-  @keyframes statsFadeIn {
-    0% { opacity: 0; transform: translateY(8px); }
-    100% { opacity: 1; transform: translateY(0); }
   }
 }
 
