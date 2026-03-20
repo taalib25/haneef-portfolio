@@ -105,7 +105,7 @@ export default function Navbar() {
             <a
               href="#"
               className={cn(
-                'font-display font-semibold text-[0.75rem] uppercase tracking-[0.12em] transition-all duration-500',
+                'font-display font-semibold text-[1rem] uppercase tracking-[0.12em] transition-all duration-500',
                 scrolled
                   ? 'text-[var(--t1)]'
                   : 'text-[rgba(253,248,242,0.95)]'
@@ -130,7 +130,7 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open Menu"
             >
-              <Menu size={18} />
+              <Menu size={22} />
             </button>
           </div>
 

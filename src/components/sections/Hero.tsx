@@ -23,17 +23,36 @@ export default function Hero() {
       style={{
         height: '100dvh',
         minHeight: '600px',
-        // On mobile use crimson as base; desktop keeps the dark hero bg
-        background: isMobile ? 'var(--color-crimson)' : 'var(--bg-hero)',
+        // Both desktop and mobile use gradient with depth (crimson tones only)
+        background: `linear-gradient(
+          to bottom,
+          var(--color-crimson) 0%,
+          color-mix(in srgb, var(--color-crimson) 85%, #000) 60%,
+          color-mix(in srgb, var(--color-crimson) 95%, #000) 100%
+        )`,
       }}
     >
       {/* Desktop Layout */}
       {!isMobile ? (
         <>
-          {/* Portrait Image - Full height right panel */}
+          {/* Subtle radial glow behind portrait for depth - positioned at head level */}
           <div
-            className="absolute right-0 top-0 bottom-0 w-[30%] overflow-hidden"
-            style={{ zIndex: 1 }}
+            style={{
+              position: 'absolute',
+              top: '15%',
+              right: '15%',
+              width: '35%',
+              height: '50%',
+              background: 'radial-gradient(ellipse at center, rgba(253,248,242,0.06) 0%, transparent 65%)',
+              zIndex: 0,
+              pointerEvents: 'none',
+            }}
+          />
+
+          {/* Portrait Image - Full height right panel with 20% padding */}
+          <div
+            className="absolute right-0 top-0 bottom-0 overflow-hidden"
+            style={{ zIndex: 1, width: '30%', paddingRight: '20%' }}
           >
             <img
               src={potrait}
@@ -101,7 +120,7 @@ export default function Hero() {
           </motion.div>
         </>
       ) : (
-        // Mobile Layout — crimson gradient background, poster typography
+        // Mobile Layout — gradient background with depth, poster typography
         <div className="relative h-full w-full">
 
           {/* VOTE massive outline text — decorative watermark behind portrait */}
@@ -126,28 +145,25 @@ export default function Hero() {
             </motion.span>
           </div>
 
-          {/*
-           * Gradient overlay: light crimson at top → deeper crimson at bottom.
-           * Pure crimson tones only - no black, so the image keeps its natural colors.
-           */}
+          {/* Subtle radial glow behind portrait for depth */}
           <div
             style={{
               position: 'absolute',
-              inset: 0,
-              background: `linear-gradient(
-                to bottom,
-                color-mix(in srgb, var(--color-crimson) 25%, #fff) 0%,
-                color-mix(in srgb, var(--color-crimson) 55%, #fff) 50%,
-                var(--color-crimson) 100%
-              )`,
-              zIndex: -1,
+              top: '10%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '70%',
+              height: '60%',
+              background: 'radial-gradient(ellipse at center, rgba(253,248,242,0.08) 0%, transparent 70%)',
+              zIndex: 0,
+              pointerEvents: 'none',
             }}
           />
 
-          {/* Portrait — sits on top of the crimson gradient, with bottom fade for text legibility */}
+          {/* Portrait — moved 10% up, with bottom fade for text legibility */}
           <div
-            className="absolute inset-0 flex items-start justify-center pt-2"
-            style={{ zIndex: 1 }}
+            className="absolute inset-0 flex items-start justify-center"
+            style={{ zIndex: 1, marginTop: '-8%' }}
           >
             <div
               style={{
@@ -165,13 +181,11 @@ export default function Hero() {
           </div>
 
           {/*
-           * Bottom text block — poster typography.
-           * Font is sized to ~42vw so that "HANEEF" and "MOHAMED" fill the screen width
-           * and bleed slightly past the edges — clipped by overflow-hidden for poster effect.
+           * Bottom text block — poster typography, moved 10% up.
            */}
           <div
             className="absolute bottom-0 left-0 right-0 px-2 pb-8 flex flex-col items-center justify-end"
-            style={{ zIndex: 10 }}
+            style={{ zIndex: 10, marginTop: '-10%' }}
           >
             {/* Identity label — centered on mobile */}
             <motion.h1
