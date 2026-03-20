@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '../../lib/cn';
-import potrait from '../../assets/potrait.png';
+import potrait from '../../assets/potrait.webp';
 
 const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
 
