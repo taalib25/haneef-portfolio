@@ -5,12 +5,18 @@
 /* Import display font */
 @import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap");
 
+/* Import General Sans for titles and subheadings */
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap");
+
 /* Import Switzer for clean, modern body text */
 @import url("https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap");
 
 /* Now define the theme and root variables after imports */
 @theme {
   --font-display: "Clash Display", "DM Serif Display", Georgia, serif;
+
+  /* General Sans for titles and subheadings */
+  --font-sans: "General Sans", system-ui, -apple-system, sans-serif;
 
   /* Clean, readable body font */
   --font-body: "Switzer", system-ui, -apple-system, sans-serif;
@@ -214,6 +220,10 @@ html {
   font-family: var(--font-body);
 }
 
+.font-sans {
+  font-family: var(--font-sans);
+}
+
 .font-mono {
   font-family: var(--font-mono);
 }
@@ -232,6 +242,17 @@ html {
 [class*="text-t-hero"],
 [class*="text-t-philosophy"] {
   letter-spacing: -0.025em;
+}
+
+/* General Sans for titles and subheadings - clean, neutral spacing */
+.font-sans {
+  letter-spacing: -0.01em;
+}
+
+.font-sans[class*="text-[1."],
+.font-sans[class*="text-t-xl"],
+.font-sans[class*="text-t-2xl"] {
+  letter-spacing: -0.015em;
 }
 
 /* Switzer body text - zero tracking for clean readability */
