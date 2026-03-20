@@ -25,44 +25,44 @@
   --font-mono: "Clash Display", "DM Serif Display", Georgia, serif;
 
   /* ── SURFACES - Simplified Color Scheme */
-  --color-bg: #fdf8f2;
-  --color-bg-card: #ffffff;
-  --color-bg-card-hover: #fff9f4;
-  --color-bg-hero: #780000;
-  --color-bg-campaign: #fdf0d5;
+  --color-bg: #F5F8FA;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-hover: #F0F5F8;
+  --color-bg-hero: #042B44;
+  --color-bg-campaign: #EBF4F8;
 
   /* ── COLOR PALETTE */
-  --color-crimson: #c1121f;
-  --color-crimson-dark: #780000;
-  --color-crimson-dim: rgba(193, 18, 31, 0.08);
-  --color-crimson-border: rgba(193, 18, 31, 0.18);
+  --color-crimson: #096B90;
+  --color-crimson-dark: #042B44;
+  --color-crimson-dim: rgba(9, 107, 144, 0.08);
+  --color-crimson-border: rgba(9, 107, 144, 0.18);
 
-  --color-navy: #003049;
-  --color-navy-light: #669bbc;
-  --color-navy-dim: rgba(0, 48, 73, 0.08);
-  --color-navy-border: rgba(0, 48, 73, 0.15);
+  --color-navy: #042B44;
+  --color-navy-light: #71B7D5;
+  --color-navy-dim: rgba(4, 43, 68, 0.08);
+  --color-navy-border: rgba(4, 43, 68, 0.15);
 
-  /* ── TEXT COLORS — Simplified to warm brown palette */
-  --color-t1: #0A0408; /* Primary headings */
-  --color-t2: #2D1F1B; /* Body text - darker for readability */
-  --color-t3: #7A6560; /* Tertiary text */
-  --color-ta: #c1121f; /* Accent text */
+  /* ── TEXT COLORS — Navy theme palette */
+  --color-t1: #051014; /* Primary headings */
+  --color-t2: #1A3A4A; /* Body text - darker for readability */
+  --color-t3: #5A7A8A; /* Tertiary text */
+  --color-ta: #096B90; /* Accent text */
 
   /* ── HERO TEXT */
-  --color-ht1: #fdf8f2; /* Hero primary */
-  --color-ht2: rgba(253, 248, 242, 0.85); /* Hero secondary */
-  --color-hta: #fdf0d5; /* Hero accent */
+  --color-ht1: #F5F8FA; /* Hero primary */
+  --color-ht2: rgba(245, 248, 250, 0.80); /* Hero secondary */
+  --color-hta: #A1CCDC; /* Hero accent */
 
-  /* ── CAMPAIGN TEXT — warm brown for body */
-  --color-ct1: #0A0408;
-  --color-ct2: #2D1F1B; /* Darker for readability on cream */
-  --color-cta: #780000;
-  --color-cb: rgba(120, 0, 0, 0.15);
+  /* ── CAMPAIGN TEXT — navy */
+  --color-ct1: #051014;
+  --color-ct2: #1A3A4A; /* Darker for readability on cream */
+  --color-cta: #042B44;
+  --color-cb: rgba(4, 43, 68, 0.14);
 
   /* ── BORDERS */
-  --color-border: rgba(15, 6, 8, 0.08);
-  --color-border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
-  --color-border-strong: rgba(15, 6, 8, 0.16);
+  --color-border: rgba(8, 23, 30, 0.08);
+  --color-border-medium: rgba(8, 23, 30, 0.10); /* For horizontal rules between entries */
+  --color-border-strong: rgba(8, 23, 30, 0.16);
 
   /* ── TYPOGRAPHY SCALES — Increased for better readability */
   --text-t-xs: 0.8rem; /* Section labels */
@@ -79,39 +79,51 @@
 
 :root {
   /* ── SURFACES */
-  --bg: #fdf8f2;
-  --bg-card: #ffffff;
-  --bg-card-hover: #fff9f4;
-  --bg-hero: #780000;
-  --bg-campaign: #fdf0d5;
+  --bg: #F5F8FA;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F0F5F8;
+  --bg-hero: #042B44;
+  --bg-campaign: #EBF4F8;
 
-  /* ── COLOR PALETTE — Crimson only, no navy */
-  --crimson: #c1121f;
-  --crimson-dark: #780000;
-  --crimson-dim: rgba(193, 18, 31, 0.08);
-  --crimson-border: rgba(193, 18, 31, 0.18);
+  /* ── COLOR PALETTE — Navy as primary */
+  --crimson: #096B90;
+  --crimson-dark: #042B44;
+  --crimson-dim: rgba(9, 107, 144, 0.08);
+  --crimson-border: rgba(9, 107, 144, 0.18);
 
-  /* ── TEXT COLORS — Simplified warm brown palette */
-  --t1: #0A0408; /* Primary headings */
-  --t2: #2D1F1B; /* Body text - darker for readability */
-  --t3: #7A6560; /* Tertiary text */
-  --ta: #c1121f; /* Accent */
+  /* ── TEXT COLORS — Navy theme palette */
+  --t1: #051014; /* Primary headings */
+  --t2: #1A3A4A; /* Body text - darker for readability */
+  --t3: #5A7A8A; /* Tertiary text */
+  --ta: #096B90; /* Accent */
 
   /* ── TEXT ON HERO */
-  --ht1: #fdf8f2;
-  --ht2: rgba(253, 248, 242, 0.85);
-  --hta: #fdf0d5;
+  --ht1: #F5F8FA;
+  --ht2: rgba(245, 248, 250, 0.80);
+  --hta: #A1CCDC;
 
-  /* ── TEXT ON CAMPAIGN — warm brown */
-  --ct1: #0A0408;
-  --ct2: #2D1F1B; /* Darker for readability */
-  --cta: #780000;
-  --cb: rgba(120, 0, 0, 0.15);
+  /* ── TEXT ON CAMPAIGN — navy */
+  --ct1: #051014;
+  --ct2: #1A3A4A; /* Darker for readability */
+  --cta: #042B44;
+  --cb: rgba(4, 43, 68, 0.14);
 
   /* ── BORDERS */
-  --border: rgba(15, 6, 8, 0.08);
-  --border-medium: rgba(15, 6, 8, 0.10); /* For horizontal rules between entries */
-  --border-strong: rgba(15, 6, 8, 0.16);
+  --border: rgba(8, 23, 30, 0.08);
+  --border-medium: rgba(8, 23, 30, 0.10); /* For horizontal rules between entries */
+  --border-strong: rgba(8, 23, 30, 0.16);
+
+  /* ── CAMPAIGN SECTION - Navy accent colors */
+  --campaign-border: rgba(9, 107, 144, 0.15);
+  --campaign-border-light: rgba(9, 107, 144, 0.12);
+  --campaign-border-medium: rgba(9, 107, 144, 0.18);
+  --campaign-bg-subtle: rgba(9, 107, 144, 0.07);
+  --campaign-bg-subtle-2: rgba(9, 107, 144, 0.06);
+  --campaign-text-muted: rgba(9, 107, 144, 0.45);
+  --campaign-number-faint: rgba(9, 107, 144, 0.12);
+  --campaign-number-hover: rgba(9, 107, 144, 0.28);
+  --campaign-ghost-number: rgba(9, 107, 144, 0.07);
+  --campaign-line: rgba(9, 107, 144, 0.18);
 
   /* ── TYPOGRAPHY SCALES — Increased for better readability */
   --t-xs: 0.8rem; /* Section labels */
@@ -361,7 +373,7 @@ p {
   }
 
   .phase-col-div {
-    background: rgba(193, 18, 31, 0.18);
+    background: rgba(9, 107, 144, 0.18);
     width: 1px;
     align-self: stretch;
   }
@@ -600,6 +612,54 @@ html, body {
 
   .tag-pill {
     font-size: 0.7rem !important;
+  }
+
+  /* District Trainings carousel scrollbar */
+  .district-carousel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .district-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Marquee animation for district trainings chips */
+  .marquee-row {
+    animation-duration: 25s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .marquee-left {
+    animation-name: marquee-left;
+  }
+  .marquee-right {
+    animation-name: marquee-right;
+  }
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  /* Stats loading animation */
+  @keyframes statsFadeIn {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes skeletonPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .stats-skeleton {
+    animation: skeletonPulse 1.2s ease-in-out infinite;
+  }
+  .stats-skeleton.done {
+    opacity: 0 !important;
+    pointer-events: none;
+    animation: none;
   }
 }
 
@@ -962,51 +1022,51 @@ html, body {
 }
 
 /* ============================================
-   ALTERNATE THEME — Cosmos Navy
-   Activated via: <html data-theme="navy">
+   ALTERNATE THEME — Crimson Red
+   Activated via: <html data-theme="crimson">
    ============================================ */
 
-[data-theme="navy"] {
-  /* ── SURFACES — same warm light base */
-  --bg:              #F5F8FA;
+[data-theme="crimson"] {
+  /* ── SURFACES — warm cream base */
+  --bg:              #FDF8F2;
   --bg-card:         #FFFFFF;
-  --bg-card-hover:   #F0F5F8;
-  --bg-hero:         #042B44;
-  --bg-campaign:     #EBF4F8;
+  --bg-card-hover:   #FFF9F4;
+  --bg-hero:         #780000;
+  --bg-campaign:     #FDF0D5;
 
-  /* ── PRIMARY ACCENT — Ocean Teal replaces Crimson */
-  --crimson:         #096B90;
-  --crimson-dark:    #042B44;
-  --crimson-dim:     rgba(9, 107, 144, 0.08);
-  --crimson-border:  rgba(9, 107, 144, 0.18);
+  /* ── PRIMARY ACCENT — Crimson Red */
+  --crimson:         #C1121F;
+  --crimson-dark:    #780000;
+  --crimson-dim:     rgba(193, 18, 31, 0.08);
+  --crimson-border:  rgba(193, 18, 31, 0.18);
 
   /* ── SECONDARY ACCENT */
-  --navy:            #042B44;
-  --navy-light:      #71B7D5;
-  --navy-dim:        rgba(4, 43, 68, 0.08);
-  --navy-border:     rgba(4, 43, 68, 0.15);
+  --navy:            #780000;
+  --navy-light:      #E0A4A4;
+  --navy-dim:        rgba(120, 0, 0, 0.08);
+  --navy-border:     rgba(120, 0, 0, 0.15);
 
-  /* ── TEXT — use near-black from palette */
-  --t1:  #051014;
-  --t2:  #1A3A4A; /* Darker for better readability */
-  --t3:  #5A7A8A;
-  --ta:  #096B90;
+  /* ── TEXT — warm brown palette */
+  --t1:  #0A0408;
+  --t2:  #2D1F1B;
+  --t3:  #7A6560;
+  --ta:  #C1121F;
 
-  /* ── HERO TEXT — on deep navy surface */
-  --ht1: #F5F8FA;
-  --ht2: rgba(245, 248, 250, 0.80);
-  --hta: #A1CCDC;
+  /* ── HERO TEXT — on crimson surface */
+  --ht1: #FDF8F2;
+  --ht2: rgba(253, 248, 242, 0.85);
+  --hta: #FDF0D5;
 
-  /* ── CAMPAIGN TEXT — on blue-tinted cream */
-  --ct1: #051014;
-  --ct2: #1A3A4A; /* Darker for better readability */
-  --cta: #042B44;
-  --cb:  rgba(4, 43, 68, 0.14);
+  /* ── CAMPAIGN TEXT — on cream */
+  --ct1: #0A0408;
+  --ct2: #2D1F1B;
+  --cta: #780000;
+  --cb:  rgba(120, 0, 0, 0.15);
 
   /* ── BORDERS */
-  --border:        rgba(8, 23, 30, 0.08);
-  --border-medium: rgba(8, 23, 30, 0.10);
-  --border-strong: rgba(8, 23, 30, 0.16);
+  --border:        rgba(15, 6, 8, 0.08);
+  --border-medium: rgba(15, 6, 8, 0.10);
+  --border-strong: rgba(15, 6, 8, 0.16);
 
   /* ── CAMPAIGN SECTION - Crimson accent colors */
   --campaign-border: rgba(193, 18, 31, 0.15);
@@ -1021,18 +1081,18 @@ html, body {
   --campaign-line: rgba(193, 18, 31, 0.18);
 }
 
-/* Navy theme overrides for campaign section */
-[data-theme="navy"] {
-  --campaign-border: rgba(9, 107, 144, 0.15);
-  --campaign-border-light: rgba(9, 107, 144, 0.12);
-  --campaign-border-medium: rgba(9, 107, 144, 0.18);
-  --campaign-bg-subtle: rgba(9, 107, 144, 0.07);
-  --campaign-bg-subtle-2: rgba(9, 107, 144, 0.06);
-  --campaign-text-muted: rgba(9, 107, 144, 0.45);
-  --campaign-number-faint: rgba(9, 107, 144, 0.12);
-  --campaign-number-hover: rgba(9, 107, 144, 0.28);
-  --campaign-ghost-number: rgba(9, 107, 144, 0.07);
-  --campaign-line: rgba(9, 107, 144, 0.18);
+/* Crimson theme overrides for campaign section */
+[data-theme="crimson"] {
+  --campaign-border: rgba(193, 18, 31, 0.15);
+  --campaign-border-light: rgba(193, 18, 31, 0.12);
+  --campaign-border-medium: rgba(193, 18, 31, 0.18);
+  --campaign-bg-subtle: rgba(193, 18, 31, 0.07);
+  --campaign-bg-subtle-2: rgba(193, 18, 31, 0.06);
+  --campaign-text-muted: rgba(193, 18, 31, 0.45);
+  --campaign-number-faint: rgba(193, 18, 31, 0.12);
+  --campaign-number-hover: rgba(193, 18, 31, 0.28);
+  --campaign-ghost-number: rgba(193, 18, 31, 0.07);
+  --campaign-line: rgba(193, 18, 31, 0.18);
 }
 
 /* ============================================
@@ -1048,42 +1108,42 @@ html, body {
    TIMELINE - Type-based Color Classes
    ============================================ */
 
-/* LEADERSHIP - uses crimson/accent color */
+/* LEADERSHIP - uses primary accent color */
 .timeline-leadership {
-  --timeline-color: var(--crimson);
-  --timeline-color-dim: rgba(193, 18, 31, 0.08);
-  --timeline-color-border: rgba(193, 18, 31, 0.20);
-}
-
-/* PROFESSIONAL - uses navy color */
-.timeline-professional {
-  --timeline-color: var(--navy);
-  --timeline-color-dim: rgba(0, 48, 73, 0.08);
-  --timeline-color-border: rgba(0, 48, 73, 0.20);
-}
-
-/* DISTRICT - uses navy-light color */
-.timeline-district {
-  --timeline-color: var(--navy-light);
-  --timeline-color-dim: rgba(102, 155, 188, 0.08);
-  --timeline-color-border: rgba(102, 155, 188, 0.20);
-}
-
-/* Navy theme overrides */
-[data-theme="navy"] .timeline-leadership {
   --timeline-color: var(--crimson);
   --timeline-color-dim: rgba(9, 107, 144, 0.08);
   --timeline-color-border: rgba(9, 107, 144, 0.20);
 }
 
-[data-theme="navy"] .timeline-professional {
+/* PROFESSIONAL - uses secondary accent color */
+.timeline-professional {
   --timeline-color: var(--navy);
   --timeline-color-dim: rgba(4, 43, 68, 0.08);
   --timeline-color-border: rgba(4, 43, 68, 0.20);
 }
 
-[data-theme="navy"] .timeline-district {
+/* DISTRICT - uses navy-light color */
+.timeline-district {
   --timeline-color: var(--navy-light);
   --timeline-color-dim: rgba(113, 183, 213, 0.08);
   --timeline-color-border: rgba(113, 183, 213, 0.20);
+}
+
+/* Crimson theme overrides */
+[data-theme="crimson"] .timeline-leadership {
+  --timeline-color: var(--crimson);
+  --timeline-color-dim: rgba(193, 18, 31, 0.08);
+  --timeline-color-border: rgba(193, 18, 31, 0.20);
+}
+
+[data-theme="crimson"] .timeline-professional {
+  --timeline-color: var(--navy);
+  --timeline-color-dim: rgba(120, 0, 0, 0.08);
+  --timeline-color-border: rgba(120, 0, 0, 0.20);
+}
+
+[data-theme="crimson"] .timeline-district {
+  --timeline-color: var(--navy-light);
+  --timeline-color-dim: rgba(224, 164, 164, 0.08);
+  --timeline-color-border: rgba(224, 164, 164, 0.20);
 }

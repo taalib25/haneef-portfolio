@@ -7,9 +7,41 @@ import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const educationData = [
+  {
+    institution: 'Achievers International Campus',
+    qualification: 'Master of Business Administration',
+    year: '2026–Present',
+    status: 'Reading',
+    active: true,
+  },
+  {
+    institution: 'Ivey Campus',
+    qualification: 'Post Graduate Diploma in Strategic Management and Leadership',
+    year: '2025–Present',
+    status: 'Reading',
+    active: true,
+  },
+  {
+    institution: 'CIM (Chartered Institute of Marketing)',
+    qualification: 'Diploma in Marketing',
+    year: '',
+    status: 'Completed',
+    active: false,
+  },
+  {
+    institution: 'Amal International School',
+    qualification: 'Primary & Secondary Education',
+    year: '',
+    status: '',
+    active: false,
+  },
+];
+
 export default function Work() {
   const containerRef = useRef<HTMLElement>(null);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const statsRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -42,6 +74,27 @@ export default function Work() {
 
     return () => ctx.revert();
   }, [prefersReducedMotion]);
+
+  // Fade out skeleton when stats section comes into view
+  useEffect(() => {
+    if (!statsRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            const skeleton = statsRef.current?.querySelector('.stats-skeleton');
+            if (skeleton) skeleton.classList.add('done');
+          }, 400);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(statsRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="work" ref={containerRef} className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg)]">
@@ -183,21 +236,271 @@ export default function Work() {
           </div>
         </div>
 
-        {/* Education Block */}
+        {/* Education Section */}
         <motion.div
-          className="flex flex-col md:flex-row gap-4 md:gap-2 pt-10 mt-12 border-t border-[var(--border)]"
           initial={!prefersReducedMotion ? { opacity: 0, y: 40 } : { opacity: 1 }}
           whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
           transition={!prefersReducedMotion ? { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 } : undefined}
           viewport={{ once: true, amount: 0.1 }}
         >
-          <p className="font-body text-[0.95rem] text-[var(--t2)] font-medium">
-            Diploma in Marketing · CIM · Strategy College of Business
+          {/* Section Header */}
+          <div className="mt-14 md:mt-16 mb-10 md:mb-12">
+            <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase mb-6">
+              Education
+            </h2>
+          </div>
+
+          {/* Education Rows */}
+          {educationData.map((edu, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'baseline',
+                padding: '1.25rem 0',
+                borderBottom: '1px solid rgba(15,6,8,0.07)',
+              }}
+            >
+              {/* Left: institution + qualification */}
+              <div>
+                <p className="font-sans font-bold text-[var(--t1)]" style={{ fontSize: '1.15rem', letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: '0.15rem' }}>
+                  {edu.institution}
+                </p>
+                <p className="font-body text-[var(--t2)]" style={{ fontSize: '0.9rem', fontWeight: 450, lineHeight: 1.4 }}>
+                  {edu.qualification}
+                </p>
+              </div>
+              {/* Right: year + status */}
+              {(edu.year || edu.status) && (
+                <div style={{ textAlign: 'right', flexShrink: 0, marginLeft: '1rem' }}>
+                  {edu.year && (
+                    <p className="font-sans text-[var(--ta)]" style={{ fontSize: '0.85rem', letterSpacing: '0.04em', fontWeight: 500 }}>
+                      {edu.year}
+                    </p>
+                  )}
+                  {edu.status && (
+                    edu.active ? (
+                      <span
+                        className="font-sans uppercase"
+                        style={{
+                          fontSize: '9px',
+                          letterSpacing: '0.10em',
+                          marginTop: '3px',
+                          display: 'inline-block',
+                          padding: '3px 10px',
+                          background: 'rgba(193,18,31,0.08)',
+                          border: '1px solid rgba(193,18,31,0.20)',
+                          color: 'var(--crimson)',
+                          borderRadius: '2px',
+                        }}
+                      >
+                        {edu.status}
+                      </span>
+                    ) : (
+                      <p className="font-sans text-[var(--t3)] uppercase" style={{ fontSize: '9px', letterSpacing: '0.10em', marginTop: '3px', fontWeight: 500 }}>
+                        {edu.status}
+                      </p>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Unified Statistics Bar — Full Width Edge-to-Edge */}
+        <motion.div
+          ref={statsRef}
+          className="mt-14 md:mt-16"
+          style={{ margin: '3.5rem calc(-1.25rem) 0', padding: '0 1.25rem' }}
+          initial={!prefersReducedMotion ? { opacity: 0, y: 30 } : { opacity: 1 }}
+          whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+          transition={!prefersReducedMotion ? { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 } : undefined}
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <p className="font-mono text-[9.5px] tracking-[0.10em] uppercase mb-3"
+             style={{ color: 'rgba(245,248,250,0.35)' }}>
+            THE FOUNDATION
           </p>
-          <span className="hidden md:inline text-[var(--t2)]">·</span>
-          <p className="font-body text-[0.95rem] text-[var(--t2)] font-medium">
-            Primary & Secondary Education · Amal International School
+          <div
+            style={{
+              background: '#042B44',
+              padding: 'clamp(1rem, 2.5vw, 1.5rem)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+            className="max-md:grid-cols-2 max-md:gap-px"
+          >
+            {/* Skeleton loader — shows first, fades out */}
+            <div
+              className="stats-skeleton"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, 1fr)',
+                background: '#042B44',
+                zIndex: 2,
+                transition: 'opacity 0.4s ease',
+              }}
+            >
+              {[0, 1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: '0.75rem 1rem',
+                    borderRight: i < 3 ? '1px solid rgba(245,248,250,0.05)' : 'none',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                  }}
+                >
+                  <div style={{ width: '50px', height: '28px', background: 'rgba(245,248,250,0.08)', borderRadius: '4px' }} />
+                  <div style={{ width: '60px', height: '10px', background: 'rgba(245,248,250,0.05)', borderRadius: '2px' }} />
+                </div>
+              ))}
+            </div>
+
+            {/* Actual content */}
+            <div
+              className="stats-content"
+              style={{ position: 'relative', zIndex: 1 }}
+            >
+              {[
+                { label: '20+', sublabel: 'District Trainings', detail: 'Conferences, Assemblies, PETS & RYLA' },
+                { label: '10+', sublabel: 'Years in', detail: 'the Rotary Movement · Since 2016' },
+                { label: '5+', sublabel: 'Years with', detail: 'Rotaract Club of Colombo Mid Town' },
+                { label: '40', sublabel: 'Year Legacy', detail: "Carrying the Founders' Vision Forward" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: '0.75rem 1rem',
+                    borderRight: i < 3 ? '1px solid rgba(245,248,250,0.1)' : 'none',
+                    textAlign: 'center',
+                    opacity: 0,
+                    animation: `statsFadeIn 0.5s ease ${0.3 + i * 0.12}s forwards`,
+                  }}
+                  className="max-md:border-right-none max-md:border-b max-md:border-b-[rgba(245,248,250,0.1)] max-md:last:border-b-0 max-md:py-3"
+                >
+                  <p className="font-display text-[clamp(2rem,6vw,2.75rem)] leading-[1] tracking-[-0.02em] font-bold"
+                     style={{ color: '#F5F8FA', marginBottom: '0' }}>
+                    {stat.label}
+                  </p>
+                  <p className="font-sans text-[0.7rem] tracking-[0.02em]"
+                     style={{ color: 'rgba(245,248,250,0.6)', fontWeight: 500, marginBottom: '0.1rem' }}>
+                    {stat.sublabel}
+                  </p>
+                  <p className="font-body text-[0.6rem] tracking-[0.01em]"
+                     style={{ color: 'rgba(245,248,250,0.35)', fontWeight: 400 }}>
+                    {stat.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* District Trainings & Forums List */}
+        <motion.div
+          className="mt-8 md:mt-10"
+          initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
+          whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+          transition={!prefersReducedMotion ? { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.25 } : undefined}
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <p className="font-mono text-[9.5px] text-[var(--ta)] tracking-[0.10em] uppercase mb-4">
+            DISTRICT TRAININGS & FORUMS
           </p>
+          <div style={{ height: 1, background: 'rgba(15,6,8,0.08)', marginBottom: '1rem' }} />
+
+          {/* Mobile: 4-row infinite marquee chips */}
+          <div className="md:hidden" style={{ overflow: 'hidden', margin: '0 -1.25rem' }}>
+            {[
+              ['PETS SETS (2024)', 'PETS SETS (2023)', 'PETS SETS (2019)', '35th Dist. Assembly (2025)', '34th Dist. Conference (2025)', '34th Dist. Assembly (2024)'],
+              ['33rd Dist. Conference (2024)', '33rd Dist. Assembly (2023)', '32nd Dist. Conference (2023)', '32nd Training Assembly (2022)', '31st Dist. Assembly (2021)', '30th Dist. Assembly (2020)'],
+              ['29th Dist. Conference (2020)', '29th Dist. Assembly (2019)', '28th Dist. Conference (2019)', 'RYLA (2023)', 'RYLA (2019)', 'Rotasia Bangalore (2024)'],
+              ['Rotary Dist. Conference (2023)', 'Rotary Dist. Conference (2024)', 'Rotary Dist. Conference (2025)', 'Rotary Learning Assembly (2024)', 'PETS SETS (2024)', 'PETS SETS (2023)'],
+            ].map((row, rowIndex) => (
+              <div
+                key={rowIndex}
+                className={`marquee-row ${rowIndex % 2 === 0 ? 'marquee-left' : 'marquee-right'}`}
+                style={{
+                  display: 'flex',
+                  gap: '0.5rem',
+                  marginBottom: '0.5rem',
+                  width: 'fit-content',
+                }}
+              >
+                {/* Double the items for seamless loop */}
+                {[...row, ...row].map((event, i) => (
+                  <span
+                    key={i}
+                    className="font-body"
+                    style={{
+                      flexShrink: 0,
+                      fontSize: '0.65rem',
+                      fontWeight: 500,
+                      color: 'var(--t3)',
+                      background: 'rgba(15,6,8,0.03)',
+                      border: '1px solid rgba(15,6,8,0.06)',
+                      borderRadius: '100px',
+                      padding: '0.35rem 0.7rem',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {event}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: Grid */}
+          <div
+            className="hidden md:grid"
+            style={{
+              gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+              gap: '0.4rem 2rem',
+            }}
+          >
+            {[
+              'PETS SETS (2024) — President Elect',
+              'PETS SETS (2023) — RDSC',
+              'PETS SETS (2019) — Proxy',
+              '35th Rotaract District Assembly (2025)',
+              '34th Rotaract District Conference (2025)',
+              '34th Rotaract District Assembly (2024)',
+              '33rd Rotaract District Conference (2024)',
+              '33rd Rotaract District Assembly (2023)',
+              '32nd Rotaract District Conference (2023)',
+              '32nd Rotaract District Training Assembly (2022)',
+              '31st Rotaract District Assembly (2021)',
+              '30th Rotaract District Assembly (2020)',
+              '29th Rotaract District Conference (2020)',
+              '29th Rotaract District Assembly (2019)',
+              '28th Rotaract District Conference (2019)',
+              'Rotary Youth Leadership Awards (2023)',
+              'Rotary Youth Leadership Awards (2019)',
+              'Rotasia Bangalore (2024)',
+              'Rotary District Conference (2023)',
+              'Rotary District Conference (2024)',
+              'Rotary District Conference (2025)',
+              'Rotary District Learning Assembly (2024)',
+            ].map((event, i) => (
+              <p
+                key={i}
+                className="font-body text-[var(--t2)]"
+                style={{ fontSize: '0.8rem', fontWeight: 450, lineHeight: 1.6 }}
+              >
+                {event}
+              </p>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
