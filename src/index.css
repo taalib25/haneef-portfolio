@@ -76,6 +76,7 @@
   --bg-card: #FFFFFF;
   --bg-card-hover: #F0F5F8;
   --bg-hero: #042B44;
+  --bg-hero-rgb: 4,43,68;
   --bg-campaign: #EBF4F8;
 
   /* ── COLOR PALETTE — Navy as primary */
@@ -447,6 +448,12 @@ html, body {
 @media (max-width: 767px) {
   /* Typography Scale - Mobile */
 
+  /* Global body text size on mobile - 13px with comfortable line height */
+  .font-body, p {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+  }
+
   /* Hero section */
   #hero h1 {
     font-size: clamp(2.5rem, 11vw, 4rem) !important;
@@ -484,9 +491,9 @@ html, body {
     letter-spacing: 0.02em !important; /* Increased from -0.015em */
   }
 
-  /* Body text - minimum 15px */
+  /* Body text - 13px on mobile */
   p.font-body {
-    font-size: 0.9375rem !important;
+    font-size: 0.8125rem !important;
     line-height: 1.7 !important;
   }
 
@@ -534,7 +541,31 @@ html, body {
 
   /* Between timeline entries */
   .timeline-entry {
-    padding-bottom: 1.75rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  /* Hero entry has slightly more padding */
+  .timeline-entry.hero-entry {
+    padding-bottom: 2rem !important;
+  }
+
+  /* Timeline entry font sizes - mobile optimized */
+  .timeline-entry .entry-year {
+    font-size: 1.1rem;
+  }
+  .timeline-entry .entry-role {
+    font-size: 0.875rem;
+  }
+  .timeline-entry .entry-org {
+    font-size: 0.75rem;
+  }
+  .timeline-entry .entry-body p {
+    font-size: 0.8125rem;
+    line-height: 1.65;
+  }
+  .timeline-entry .tag-pill {
+    font-size: 0.65rem;
+    padding: 1px 6px;
   }
 
   /* Between paragraphs */
@@ -591,6 +622,29 @@ html, body {
   .value-item {
     grid-template-columns: 1fr !important;
     gap: 0.5rem !important;
+  }
+
+  /* TASK 1: Vision & Mission less padding on mobile */
+  .campaign-promise-statement {
+    padding: 1.5rem 1.25rem !important;
+  }
+  .campaign-promise-statement p {
+    font-size: 0.875rem;
+    line-height: 1.75;
+  }
+  .campaign-promise-statement h3 {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* TASK 2: Three Challenges stronger dividers on mobile */
+  #campaign .group {
+    border-top: 1.5px solid rgba(193, 18, 31, 0.22) !important;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+  #campaign .group:last-child {
+    border-bottom: 1.5px solid rgba(193, 18, 31, 0.22) !important;
   }
 }
 
@@ -651,6 +705,31 @@ html, body {
   @keyframes marquee-right {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
+  }
+
+  /* Education text smaller on mobile */
+  .education-row .edu-institution { font-size: 0.875rem !important; }
+  .education-row .edu-qualification { font-size: 0.8rem !important; }
+  .education-row .edu-year { font-size: 0.7rem !important; }
+  .reading-pill { font-size: 7px !important; padding: 1px 5px !important; }
+
+  /* Stats row - stack vertically on mobile */
+  .stats-row { 
+    display: flex !important;
+    flex-direction: column !important; 
+    gap: 0.75rem !important; 
+  }
+  .stat-item { 
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: baseline !important; 
+    border-bottom: 1px solid rgba(245,248,250,0.1) !important; 
+    border-right: none !important;
+    padding-bottom: 0.5rem !important; 
+    text-align: left !important;
+  }
+  .stat-item:last-child {
+    border-bottom: none !important;
   }
 }
 
@@ -952,8 +1031,24 @@ html, body {
   }
 
   /* Philosophy three principles - stack on mobile */
-  #philosophy .flex.flex-col.md\:flex-row {
-    gap: 2rem !important;
+  #philosophy .principles-container {
+    gap: 1.5rem !important;
+  }
+
+  #philosophy .principle-column {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    border-left: none !important;
+  }
+
+  #philosophy .principle-column h3 {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  #philosophy .principle-column p {
+    margin-bottom: 0 !important;
   }
 
   #philosophy .flex-1 {
@@ -1010,6 +1105,22 @@ html, body {
   section .mb-4 {
     margin-bottom: 0.5rem !important;
   }
+}
+
+/* ============================================
+   STRATEGIC PILLARS - Darker Grid Lines
+   ============================================ */
+
+/* TASK 5: Pillars darker grid lines + bigger numbers (all screens) */
+#campaign .relative.flex {
+  border-top: 1.5px solid rgba(193, 18, 31, 0.30) !important;
+}
+#campaign .relative.flex:last-child {
+  border-bottom: 1.5px solid rgba(193, 18, 31, 0.30) !important;
+}
+#campaign .w-12,
+#campaign .md\:w-14 {
+  border-right: 1.5px solid rgba(193, 18, 31, 0.30) !important;
 }
 
 /* ============================================

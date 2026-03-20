@@ -156,10 +156,10 @@ export default function Philosophy() {
               : undefined
           }
           viewport={{ once: true, amount: 0.1 }}
-          className="w-full flex flex-col md:flex-row gap-12 md:gap-16"
+          className="w-full flex flex-col md:flex-row gap-12 md:gap-16 principles-container"
         >
           {/* Column 1 */}
-          <div className="flex-1 py-8 md:py-0 md:px-8 md:border-r border-(--border) md:first:pl-0">
+          <div className="principle-column flex-1 py-8 md:py-0 md:px-8 md:border-r border-(--border) md:first:pl-0">
             <h3 className="font-sans text-t-lg text-(--t2) font-semibold mb-6" style={{ letterSpacing: '0.01em' }}>
               Visionary yet grounded
             </h3>
@@ -169,7 +169,7 @@ export default function Philosophy() {
           </div>
 
           {/* Column 2 */}
-          <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 md:border-r border-(--border)">
+          <div className="principle-column flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 md:border-r border-(--border)">
             <h3 className="font-sans text-t-lg text-(--t2) font-semibold mb-6" style={{ letterSpacing: '0.01em' }}>
               Facilitate, don't control
             </h3>
@@ -179,7 +179,7 @@ export default function Philosophy() {
           </div>
 
           {/* Column 3 */}
-          <div className="flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 border-(--border) md:last:pr-0">
+          <div className="principle-column flex-1 py-8 md:py-0 md:px-8 border-t md:border-t-0 border-(--border) md:last:pr-0">
             <h3 className="font-sans text-t-lg text-(--t2) font-semibold mb-6" style={{ letterSpacing: '0.01em' }}>
               Lead with purpose
             </h3>

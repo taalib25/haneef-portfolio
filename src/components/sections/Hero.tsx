@@ -154,11 +154,11 @@ export default function Hero() {
             }}
           />
 
-          {/* Bottom gradient — crimson fade */}
+          {/* Bottom gradient — css token fade */}
           <div
             className="absolute bottom-0 left-0 right-0 h-[55%]"
             style={{
-              background: 'linear-gradient(to top, #780000 0%, rgba(120,0,0,0.95) 30%, rgba(120,0,0,0.6) 60%, transparent 100%)',
+              background: 'linear-gradient(to top, var(--bg-hero) 0%, rgba(var(--bg-hero-rgb), 0.90) 28%, rgba(var(--bg-hero-rgb), 0.50) 58%, transparent 100%)',
             }}
           />
 
@@ -172,20 +172,26 @@ export default function Hero() {
           />
 
           {/* Text block — centered, lower 15% */}
-          <div className="absolute bottom-0 left-0 right-0 px-6 pb-10 flex flex-col items-center text-center" style={{ marginBottom: '12%', zIndex: 2 }}>
+          <div className="absolute bottom-0 left-0 right-0 px-6 pb-10 flex flex-col" style={{ marginBottom: '12%', zIndex: 2, textAlign: 'center', alignItems: 'center' }}>
             <motion.h1
-              className="font-display font-bold uppercase text-[#FDF8F2] mb-4"
+              className="font-display uppercase"
               style={{
-                fontSize: 'clamp(6rem, 35vw, 10rem)',
-                lineHeight: 0.88,
-                textShadow: '0 4px 40px rgba(0,0,0,0.7), 0 2px 15px rgba(0,0,0,0.5)',
+                fontSize: '18vw',
+                lineHeight: 0.85,
+                letterSpacing: '-0.025em',
+                textAlign: 'center',
+                textTransform: 'uppercase',
+                color: '#F5F8FA',
+                fontWeight: 900,
+                marginBottom: '0.75rem',
+                textShadow: '0 2px 24px rgba(0,0,0,0.4)',
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.15 }}
             >
-              <span style={{ display: 'block', letterSpacing: '0.04em' }}>HANEEF</span>
-              <span style={{ display: 'block', letterSpacing: '0.04em' }}>MOHAMED</span>
+              <span style={{ display: 'block' }}>HANEEF</span>
+              <span style={{ display: 'block' }}>MOHAMED</span>
             </motion.h1>
 
             <motion.p

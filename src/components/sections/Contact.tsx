@@ -6,8 +6,22 @@ export default function Contact() {
 
   return (
     <footer id="contact" className="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 bg-[#0a1628] overflow-hidden">
-      {/* Subtle background text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+      {/* Mobile-only massive VOTE HANEEF text */}
+      <div 
+        className="block md:hidden text-center"
+        style={{
+          fontSize: '17vw',
+          lineHeight: 0.88,
+          letterSpacing: '-0.02em',
+          color: '#F5F8FA',
+          marginBottom: '1.5rem',
+        }}
+      >
+        <span className="font-display font-black uppercase">VOTE HANEEF</span>
+      </div>
+
+      {/* Subtle background text - desktop only */}
+      <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none overflow-hidden">
         <span
           className="font-display font-black uppercase whitespace-nowrap select-none"
           style={{
@@ -23,8 +37,9 @@ export default function Contact() {
 
       <div className="relative max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-end pb-8 md:pb-12">
-          {/* Left - Big Statement */}
+          {/* Left - Big Statement - desktop only */}
           <motion.div
+            className="hidden md:block"
             initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
             whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -58,20 +73,20 @@ export default function Contact() {
               </a>
             </div>
 
-            {/* Social */}
+            {/* Social - desktop only */}
             <a 
               href="https://linkedin.com/in/haneefmohamed"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-body text-[0.85rem] text-[rgba(253,248,242,0.4)] hover:text-[rgba(253,248,242,0.8)] transition-colors tracking-wide"
+              className="hidden md:inline-flex items-center gap-1 font-body text-[0.85rem] text-[rgba(253,248,242,0.4)] hover:text-[rgba(253,248,242,0.8)] transition-colors tracking-wide"
             >
               LinkedIn ↗
             </a>
           </motion.div>
         </div>
 
-        {/* Bottom - Minimal Footer */}
-        <div className="mt-16 pt-8 border-t border-[rgba(253,248,242,0.08)]">
+        {/* Bottom - Minimal Footer - desktop only */}
+        <div className="hidden md:block mt-16 pt-8 border-t border-[rgba(253,248,242,0.08)]">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <p className="font-body text-[0.75rem] text-[rgba(253,248,242,0.35)]">
               © 2025 Haneef Mohamed · RTR. Colombo Mid Town · District 3220

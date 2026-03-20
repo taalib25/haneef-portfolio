@@ -232,6 +232,7 @@ export default function Work() {
           {educationData.map((edu, i) => (
             <div
               key={i}
+              className="education-row"
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -242,10 +243,10 @@ export default function Work() {
             >
               {/* Left: institution + qualification */}
               <div>
-                <p className="font-sans font-bold text-[var(--t1)]" style={{ fontSize: '1.15rem', letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: '0.15rem' }}>
+                <p className="edu-institution font-sans font-bold text-[var(--t1)]" style={{ fontSize: '1.15rem', letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: '0.15rem' }}>
                   {edu.institution}
                 </p>
-                <p className="font-body text-[var(--t2)]" style={{ fontSize: '0.9rem', fontWeight: 450, lineHeight: 1.4 }}>
+                <p className="edu-qualification font-body text-[var(--t2)]" style={{ fontSize: '0.9rem', fontWeight: 450, lineHeight: 1.4 }}>
                   {edu.qualification}
                 </p>
               </div>
@@ -253,14 +254,14 @@ export default function Work() {
               {(edu.year || edu.status) && (
                 <div style={{ textAlign: 'right', flexShrink: 0, marginLeft: '1rem' }}>
                   {edu.year && (
-                    <p className="font-sans text-[var(--ta)]" style={{ fontSize: '0.85rem', letterSpacing: '0.04em', fontWeight: 500 }}>
+                    <p className="edu-year font-sans text-[var(--ta)]" style={{ fontSize: '0.85rem', letterSpacing: '0.04em', fontWeight: 500 }}>
                       {edu.year}
                     </p>
                   )}
                   {edu.status && (
                     edu.active ? (
                       <span
-                        className="font-sans uppercase"
+                        className="reading-pill font-sans uppercase"
                         style={{
                           fontSize: '9px',
                           letterSpacing: '0.10em',
@@ -307,7 +308,7 @@ export default function Work() {
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
             }}
-            className="max-md:grid-cols-2 max-md:gap-px"
+            className="stats-row max-md:grid-cols-2 max-md:gap-px"
           >
             {[
               { label: '20+', sublabel: 'District Trainings', detail: 'Conferences, Assemblies, PETS & RYLA' },
@@ -317,12 +318,12 @@ export default function Work() {
             ].map((stat, i) => (
               <div
                 key={i}
+                className="stat-item"
                 style={{
                   padding: '0.75rem 1rem',
                   borderRight: i < 3 ? '1px solid rgba(245,248,250,0.1)' : 'none',
                   textAlign: 'center',
                 }}
-                className="max-md:border-right-none max-md:border-b max-md:border-b-[rgba(245,248,250,0.1)] max-md:last:border-b-0 max-md:py-3"
               >
                 <p className="font-display text-[clamp(2rem,6vw,2.75rem)] leading-[1] tracking-[-0.02em] font-bold"
                    style={{ color: '#F5F8FA', marginBottom: '0' }}>
@@ -342,102 +343,104 @@ export default function Work() {
         </motion.div>
 
         {/* District Trainings & Forums List */}
-        <motion.div
-          className="mt-8 md:mt-10"
-          initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
-          whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-          transition={!prefersReducedMotion ? { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.25 } : undefined}
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <p className="font-mono text-[9.5px] text-[var(--ta)] tracking-[0.10em] uppercase mb-4">
-            DISTRICT TRAININGS & FORUMS
-          </p>
-          <div style={{ height: 1, background: 'rgba(15,6,8,0.08)', marginBottom: '1rem' }} />
-
-          {/* Mobile: 4-row infinite marquee chips */}
-          <div className="md:hidden" style={{ overflow: 'hidden', margin: '0 -1.25rem' }}>
-            {[
-              ['PETS SETS (2024)', 'PETS SETS (2023)', 'PETS SETS (2019)', '35th Dist. Assembly (2025)', '34th Dist. Conference (2025)', '34th Dist. Assembly (2024)'],
-              ['33rd Dist. Conference (2024)', '33rd Dist. Assembly (2023)', '32nd Dist. Conference (2023)', '32nd Training Assembly (2022)', '31st Dist. Assembly (2021)', '30th Dist. Assembly (2020)'],
-              ['29th Dist. Conference (2020)', '29th Dist. Assembly (2019)', '28th Dist. Conference (2019)', 'RYLA (2023)', 'RYLA (2019)', 'Rotasia Bangalore (2024)'],
-              ['Rotary Dist. Conference (2023)', 'Rotary Dist. Conference (2024)', 'Rotary Dist. Conference (2025)', 'Rotary Learning Assembly (2024)', 'PETS SETS (2024)', 'PETS SETS (2023)'],
-            ].map((row, rowIndex) => (
-              <div
-                key={rowIndex}
-                className={`marquee-row ${rowIndex % 2 === 0 ? 'marquee-left' : 'marquee-right'}`}
-                style={{
-                  display: 'flex',
-                  gap: '0.5rem',
-                  marginBottom: '0.5rem',
-                  width: 'fit-content',
-                }}
-              >
-                {/* Double the items for seamless loop */}
-                {[...row, ...row].map((event, i) => (
-                  <span
-                    key={i}
-                    className="font-body"
-                    style={{
-                      flexShrink: 0,
-                      fontSize: '0.65rem',
-                      fontWeight: 500,
-                      color: 'var(--t3)',
-                      background: 'rgba(15,6,8,0.03)',
-                      border: '1px solid rgba(15,6,8,0.06)',
-                      borderRadius: '100px',
-                      padding: '0.35rem 0.7rem',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    {event}
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop: Grid */}
-          <div
-            className="hidden md:grid"
-            style={{
-              gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-              gap: '0.4rem 2rem',
-            }}
+        <div className="hidden md:block">
+          <motion.div
+            className="mt-8 md:mt-10"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
+            transition={!prefersReducedMotion ? { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.25 } : undefined}
+            viewport={{ once: true, amount: 0.1 }}
           >
-            {[
-              'PETS SETS (2024) — President Elect',
-              'PETS SETS (2023) — RDSC',
-              'PETS SETS (2019) — Proxy',
-              '35th Rotaract District Assembly (2025)',
-              '34th Rotaract District Conference (2025)',
-              '34th Rotaract District Assembly (2024)',
-              '33rd Rotaract District Conference (2024)',
-              '33rd Rotaract District Assembly (2023)',
-              '32nd Rotaract District Conference (2023)',
-              '32nd Rotaract District Training Assembly (2022)',
-              '31st Rotaract District Assembly (2021)',
-              '30th Rotaract District Assembly (2020)',
-              '29th Rotaract District Conference (2020)',
-              '29th Rotaract District Assembly (2019)',
-              '28th Rotaract District Conference (2019)',
-              'Rotary Youth Leadership Awards (2023)',
-              'Rotary Youth Leadership Awards (2019)',
-              'Rotasia Bangalore (2024)',
-              'Rotary District Conference (2023)',
-              'Rotary District Conference (2024)',
-              'Rotary District Conference (2025)',
-              'Rotary District Learning Assembly (2024)',
-            ].map((event, i) => (
-              <p
-                key={i}
-                className="font-body text-[var(--t2)]"
-                style={{ fontSize: '0.8rem', fontWeight: 450, lineHeight: 1.6 }}
-              >
-                {event}
-              </p>
-            ))}
-          </div>
-        </motion.div>
+            <p className="font-mono text-[9.5px] text-[var(--ta)] tracking-[0.10em] uppercase mb-4">
+              DISTRICT TRAININGS & FORUMS
+            </p>
+            <div style={{ height: 1, background: 'rgba(15,6,8,0.08)', marginBottom: '1rem' }} />
+
+            {/* Mobile: 4-row infinite marquee chips */}
+            <div className="md:hidden" style={{ overflow: 'hidden', margin: '0 -1.25rem' }}>
+              {[
+                ['PETS SETS (2024)', 'PETS SETS (2023)', 'PETS SETS (2019)', '35th Dist. Assembly (2025)', '34th Dist. Conference (2025)', '34th Dist. Assembly (2024)'],
+                ['33rd Dist. Conference (2024)', '33rd Dist. Assembly (2023)', '32nd Dist. Conference (2023)', '32nd Training Assembly (2022)', '31st Dist. Assembly (2021)', '30th Dist. Assembly (2020)'],
+                ['29th Dist. Conference (2020)', '29th Dist. Assembly (2019)', '28th Dist. Conference (2019)', 'RYLA (2023)', 'RYLA (2019)', 'Rotasia Bangalore (2024)'],
+                ['Rotary Dist. Conference (2023)', 'Rotary Dist. Conference (2024)', 'Rotary Dist. Conference (2025)', 'Rotary Learning Assembly (2024)', 'PETS SETS (2024)', 'PETS SETS (2023)'],
+              ].map((row, rowIndex) => (
+                <div
+                  key={rowIndex}
+                  className={`marquee-row ${rowIndex % 2 === 0 ? 'marquee-left' : 'marquee-right'}`}
+                  style={{
+                    display: 'flex',
+                    gap: '0.5rem',
+                    marginBottom: '0.5rem',
+                    width: 'fit-content',
+                  }}
+                >
+                  {/* Double the items for seamless loop */}
+                  {[...row, ...row].map((event, i) => (
+                    <span
+                      key={i}
+                      className="font-body"
+                      style={{
+                        flexShrink: 0,
+                        fontSize: '0.65rem',
+                        fontWeight: 500,
+                        color: 'var(--t3)',
+                        background: 'rgba(15,6,8,0.03)',
+                        border: '1px solid rgba(15,6,8,0.06)',
+                        borderRadius: '100px',
+                        padding: '0.35rem 0.7rem',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {event}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: Grid */}
+            <div
+              className="hidden md:grid"
+              style={{
+                gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+                gap: '0.4rem 2rem',
+              }}
+            >
+              {[
+                'PETS SETS (2024) — President Elect',
+                'PETS SETS (2023) — RDSC',
+                'PETS SETS (2019) — Proxy',
+                '35th Rotaract District Assembly (2025)',
+                '34th Rotaract District Conference (2025)',
+                '34th Rotaract District Assembly (2024)',
+                '33rd Rotaract District Conference (2024)',
+                '33rd Rotaract District Assembly (2023)',
+                '32nd Rotaract District Conference (2023)',
+                '32nd Rotaract District Training Assembly (2022)',
+                '31st Rotaract District Assembly (2021)',
+                '30th Rotaract District Assembly (2020)',
+                '29th Rotaract District Conference (2020)',
+                '29th Rotaract District Assembly (2019)',
+                '28th Rotaract District Conference (2019)',
+                'Rotary Youth Leadership Awards (2023)',
+                'Rotary Youth Leadership Awards (2019)',
+                'Rotasia Bangalore (2024)',
+                'Rotary District Conference (2023)',
+                'Rotary District Conference (2024)',
+                'Rotary District Conference (2025)',
+                'Rotary District Learning Assembly (2024)',
+              ].map((event, i) => (
+                <p
+                  key={i}
+                  className="font-body text-[var(--t2)]"
+                  style={{ fontSize: '0.8rem', fontWeight: 450, lineHeight: 1.6 }}
+                >
+                  {event}
+                </p>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

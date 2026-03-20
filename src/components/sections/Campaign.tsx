@@ -339,7 +339,7 @@ export default function Campaign() {
         </div>
 
         {/* ── CIGR FRAMEWORK */}
-        <div className="mb-32 px-4 md:px-6 lg:px-8">
+        <div className="mb-32 px-4 md:px-6 lg:px-8 bg-white">
           <div className="max-w-6xl mx-auto">
           {/* Section header - left aligned, large */}
           <div className="mb-6">
@@ -361,7 +361,7 @@ export default function Campaign() {
         </div>
 
         {/* ── STRATEGIC PILLARS */}
-        <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
+        <div className="mb-20 md:mb-24 px-4 md:px-6 lg:px-8" style={{ background: 'var(--bg-campaign)' }}>
           <div className="max-w-6xl mx-auto">
           <div className="mb-10">
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
@@ -497,7 +497,7 @@ export default function Campaign() {
               </div>
               <div className="flex-1 pt-[0.25rem]">
                 <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-1">
-                  Phase 01 — First Quarter
+                  Phase 01 · First Quarter
                 </p>
                 <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Purpose-Led Leadership
@@ -524,7 +524,7 @@ export default function Campaign() {
               </div>
               <div className="flex-1 pt-[0.25rem]">
                 <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-1">
-                  Phase 02 — Second Quarter
+                  Phase 02 · Second Quarter
                 </p>
                 <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Change Management
@@ -551,7 +551,7 @@ export default function Campaign() {
               </div>
               <div className="flex-1 pt-[0.25rem]">
                 <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-1">
-                  Phase 03 — Second Half
+                  Phase 03 · Second Half
                 </p>
                 <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Impact Realisation
@@ -578,7 +578,7 @@ export default function Campaign() {
                 01
               </span>
               <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-2">
-                Phase 01 — First Quarter
+                Phase 01 · First Quarter
               </p>
               <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Purpose-Led Leadership
@@ -601,7 +601,7 @@ export default function Campaign() {
                 02
               </span>
               <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-2">
-                Phase 02 — Second Quarter
+                Phase 02 · Second Quarter
               </p>
               <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Change Management
@@ -624,7 +624,7 @@ export default function Campaign() {
                 03
               </span>
               <p className="font-display text-[9px] tracking-[0.06em] text-[var(--crimson)] uppercase mb-2">
-                Phase 03 — Second Half
+                Phase 03 · Second Half
               </p>
               <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Impact Realisation
