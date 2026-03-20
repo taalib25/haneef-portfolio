@@ -54,15 +54,6 @@ export default function Hero() {
           <div className="absolute inset-0 flex flex-col justify-end pb-[10%]" style={{ zIndex: 10 }}>
             <div className="w-[65%] pl-8 md:pl-12 lg:pl-16">
               {/* Identity label */}
-              <motion.p
-                className="font-display text-[0.65rem] tracking-[0.10em] uppercase mb-4"
-                style={{ color: 'rgba(253,248,242,0.50)' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, ease: EASE_SMOOTH }}
-              >
-                RTR. HANEEF MOHAMED · DISTRICT 3220
-              </motion.p>
 
               {/* HANEEF MOHAMED - Really big bold text */}
               <motion.h1
@@ -153,7 +144,7 @@ export default function Hero() {
             }}
           />
 
-          {/* Portrait — sits on top of the crimson gradient, scaled larger */}
+          {/* Portrait — sits on top of the crimson gradient, with bottom fade for text legibility */}
           <div
             className="absolute inset-0 flex items-start justify-center pt-2"
             style={{ zIndex: 1 }}
@@ -166,6 +157,9 @@ export default function Hero() {
                 backgroundRepeat: 'no-repeat',
                 width: '100%',
                 height: '85%',
+                /* Fade from transparent at bottom to full image at top */
+                maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
               }}
             />
           </div>
@@ -180,21 +174,6 @@ export default function Hero() {
             style={{ zIndex: 10 }}
           >
             {/* Identity label — centered on mobile */}
-            <motion.p
-              className="font-display uppercase mb-1"
-              style={{
-                fontSize: '0.65rem',
-                letterSpacing: '0.10em',
-                color: 'rgba(253,248,242,0.55)',
-                textAlign: 'center',
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-            >
-              RTR. HANEEF MOHAMED · DISTRICT 3220
-            </motion.p>
-
             <motion.h1
               className="font-display uppercase"
               style={{
@@ -205,12 +184,14 @@ export default function Hero() {
                 color: '#FDF8F2',
                 fontWeight: 900,
                 marginBottom: '0.4rem',
+                marginTop: '-10%',
+                textShadow: '0 2px 20px rgba(0,0,0,0.25)',
               }}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE_SMOOTH, delay: 0.1 }}
             >
-              <span style={{ display: 'block' }}>HANEEF</span>
+              <span style={{ display: 'block', fontSize: '21vw' }}>HANEEF</span>
               <span style={{ display: 'block' }}>MOHAMED</span>
             </motion.h1>
 
