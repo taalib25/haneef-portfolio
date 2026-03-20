@@ -387,7 +387,7 @@ export default function Campaign() {
                 <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   Rotaractor Value Chain
                 </h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
+                <div className="h-px w-full bg-[var(--border)] mb-3" />
                 <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.75] max-w-[640px]">
                   Map the entire member journey from recruitment to alumni
                   engagement. Each year in Rotaract should provide clear
@@ -409,7 +409,7 @@ export default function Campaign() {
                 <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   The Bridge Programme
                 </h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
+                <div className="h-px w-full bg-[var(--border)] mb-3" />
                 <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.75] max-w-[640px]">
                   A structured mentorship initiative that connects Rotaractors
                   with Rotarians in their professional fields. Career guidance
@@ -430,7 +430,7 @@ export default function Campaign() {
                 <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   Strategic Alliances
                 </h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
+                <div className="h-px w-full bg-[var(--border)] mb-3" />
                 <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.75] max-w-[640px]">
                   Partnerships must evolve from transactional sponsorships into
                   meaningful long-term collaborations that support both community
@@ -451,7 +451,7 @@ export default function Campaign() {
                 <h4 className="font-sans text-[1rem] md:text-[1.15rem] font-bold text-[var(--ct1)] tracking-[0.012em] leading-[1.1] uppercase mb-2">
                   Governance & Accountability
                 </h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
+                <div className="h-px w-full bg-[var(--border)] mb-3" />
                 <p className="font-body text-[0.9375rem] text-[var(--ct2)] leading-[1.75] max-w-[640px]">
                   Digital reporting systems will improve transparency across the
                   district and allow us to measure success by real impact — not
@@ -502,7 +502,7 @@ export default function Campaign() {
                 <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Purpose-Led Leadership
                 </h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-2" />
+                <div className="h-px w-full bg-[var(--border-medium)] mb-2" />
                 <p className="font-body text-[0.8125rem] text-[var(--ct2)] leading-[1.7]">
                   Workshops that help club leaders define their purpose and align
                   their activities with meaningful outcomes. Member wellbeing
@@ -529,7 +529,7 @@ export default function Campaign() {
                 <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Change Management
                 </h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-2" />
+                <div className="h-px w-full bg-[var(--border-medium)] mb-2" />
                 <p className="font-body text-[0.8125rem] text-[var(--ct2)] leading-[1.7]">
                   Digital systems that simplify reporting, attendance tracking, and
                   financial management. Clubs receive governance support to
@@ -556,7 +556,7 @@ export default function Campaign() {
                 <h4 className="font-sans text-[1.05rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-2">
                   Impact Realisation
                 </h4>
-                <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-2" />
+                <div className="h-px w-full bg-[var(--border-medium)] mb-2" />
                 <p className="font-body text-[0.8125rem] text-[var(--ct2)] leading-[1.7]">
                   A public digital dashboard showcasing the district's collective
                   contribution to global development goals. Culminating in the
@@ -583,7 +583,7 @@ export default function Campaign() {
               <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Purpose-Led Leadership
               </h4>
-              <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
+              <div className="h-px w-full bg-[var(--border)] mb-3" />
               <p className="font-body text-[0.875rem] text-[var(--ct2)] leading-[1.7]">
                 Workshops that help club leaders define their purpose and align
                 their activities with meaningful outcomes. Member wellbeing
@@ -606,7 +606,7 @@ export default function Campaign() {
               <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Change Management
               </h4>
-              <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
+              <div className="h-px w-full bg-[var(--border)] mb-3" />
               <p className="font-body text-[0.875rem] text-[var(--ct2)] leading-[1.7]">
                 Digital systems that simplify reporting, attendance tracking, and
                 financial management. Clubs receive governance support to
@@ -629,7 +629,7 @@ export default function Campaign() {
               <h4 className="font-sans text-[1.1rem] font-bold text-[var(--ct1)] tracking-[0.015em] leading-[1.15] mb-3">
                 Impact Realisation
               </h4>
-              <div className="h-px w-full bg-[rgba(15,6,8,0.07)] mb-3" />
+              <div className="h-px w-full bg-[var(--border)] mb-3" />
               <p className="font-body text-[0.875rem] text-[var(--ct2)] leading-[1.7]">
                 A public digital dashboard showcasing the district's collective
                 contribution to global development goals. Culminating in the

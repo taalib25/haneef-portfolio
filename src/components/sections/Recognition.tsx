@@ -115,10 +115,6 @@ export default function Recognition() {
                 <h3 className="font-sans text-[1.1rem] font-bold text-(--t1) tracking-[0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson) mb-2">
                   {award.title}{award.level && <span className="text-[rgba(122,101,96,0.6)]"> — {award.level}</span>}
                 </h3>
-                      {award.level}
-                    </span>
-                  )}
-                </div>
 
                 {/* Divider */}
                 <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-3" />
