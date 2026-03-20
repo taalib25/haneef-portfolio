@@ -81,14 +81,14 @@ export default function Recognition() {
             >
               {/* Desktop grid layout */}
               <div className="hidden md:grid md:grid-cols-[120px_1fr_1.5fr] md:gap-10 md:items-baseline">
-                {/* Year */}
-                <span className="font-mono text-[9px] tracking-[0.06em] text-[var(--campaign-text-muted)] flex-shrink-0">
+                {/* Year - stays in one line, faded */}
+                <span className="font-display text-[1.1rem] font-semibold text-[rgba(122,101,96,0.5)] tracking-[0.01em] flex-shrink-0 whitespace-nowrap">
                   {award.year}
                 </span>
 
-                {/* Award Title */}
+                {/* Award Title with level text */}
                 <h3 className="font-sans text-[1.2rem] font-bold text-(--t1) tracking-[0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson)">
-                  {award.title}
+                  {award.title}{award.level && <span className="text-[rgba(122,101,96,0.6)]"> — {award.level}</span>}
                 </h3>
 
                 {/* Event + Context */}
@@ -106,15 +106,19 @@ export default function Recognition() {
 
               {/* Mobile layout */}
               <div className="md:hidden">
-                {/* Year badge */}
-                <span className="font-mono text-[9px] tracking-[0.06em] text-[var(--campaign-text-muted)] inline-block mb-2">
+                {/* Year - stays in one line, faded */}
+                <span className="font-display text-[1.05rem] font-semibold text-[rgba(122,101,96,0.5)] tracking-[0.01em] inline-block mb-1 whitespace-nowrap">
                   {award.year}
                 </span>
 
-                {/* Award Title */}
+                {/* Award Title with level text */}
                 <h3 className="font-sans text-[1.1rem] font-bold text-(--t1) tracking-[0.015em] leading-[1.1] transition-colors duration-200 ease group-hover:text-(--crimson) mb-2">
-                  {award.title}
+                  {award.title}{award.level && <span className="text-[rgba(122,101,96,0.6)]"> — {award.level}</span>}
                 </h3>
+                      {award.level}
+                    </span>
+                  )}
+                </div>
 
                 {/* Divider */}
                 <div className="h-px w-full bg-[rgba(15,6,8,0.08)] mb-3" />

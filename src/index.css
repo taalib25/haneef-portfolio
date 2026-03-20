@@ -298,6 +298,19 @@ p {
 }
 
 /* ============================================
+   RUNNING WORD HIGHLIGHT ANIMATION
+   ============================================ */
+
+.running-word {
+  position: relative;
+  display: inline-block;
+}
+
+.running-highlight {
+  transition: none;
+}
+
+/* ============================================
    CAMPAIGN SECTION — Three-Phase Action Plan
    ============================================ */
 

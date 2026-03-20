@@ -14,17 +14,26 @@ export default function Campaign() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // "Running for" highlight animation
-      ScrollTrigger.create({
-        trigger: runningRef.current,
-        start: "top 80%",
-        once: true,
-        onEnter: () => {
-          setTimeout(() => {
-            runningRef.current?.classList.add("highlighted");
-          }, 300);
-        },
-      });
+      // "Running for" highlight animation - follows scroll and stays
+      if (runningRef.current) {
+        const word = runningRef.current;
+        const highlight = word.querySelector('.running-highlight');
+        
+        if (highlight) {
+          gsap.to(highlight, {
+            width: "calc(100% + 16px)",
+            ease: "none",
+            scrollTrigger: {
+              trigger: word,
+              start: "top 80%",
+              end: "top 30%",
+              scrub: 2,
+              toggleActions: "play none none none",
+              once: true,
+            },
+          });
+        }
+      }
 
       // Three-Phase Action Plan animations
       phaseStepsRef.current.forEach((el, i) => {
@@ -111,86 +120,102 @@ export default function Campaign() {
           }}
         />
 
-        {/* Badge */}
-        <p className="font-display text-[9px] tracking-[0.14em] text-[rgba(253,240,213,0.55)] uppercase mb-6">
-          [ 04 — District Representative ]
-        </p>
-
         {/* "Running for" with highlight */}
-        <div className="font-sans text-[clamp(2rem,7vw,4rem)] font-bold text-[#FDF8F2] leading-[0.92] tracking-[0.025em] mb-4">
-          <span ref={runningRef} className="running-word relative inline">
-            Running for
+        <div className="font-display text-[clamp(2.5rem,10vw,5rem)] font-bold text-white leading-[0.92] tracking-[0.02em] uppercase mb-8">
+          <span ref={runningRef} className="running-word relative inline-block">
+            <span className="running-text relative z-10 mix-blend-difference text-white">RUNNING FOR</span>
+            <span className="running-highlight absolute left-[-10px] bottom-[-10px] h-[125%] bg-white rounded-[8px] z-0" style={{ width: '0%' }}></span>
           </span>
         </div>
 
-        <div className="font-sans text-[clamp(1.3rem,4vw,2.2rem)] font-bold leading-[1.1] tracking-[0.02em] mb-5">
-          <span className="text-[#FDF8F2]">District Rotaract Representative</span>
+        <div className="font-display font-bold leading-[0.95] tracking-[0.02em] uppercase mb-4">
+          <span className="text-[clamp(3rem,12vw,6rem)] text-[#FDF8F2]">DISTRICT ROTARACT</span>
           <br />
-          <span className="text-[rgba(255,180,180,0.95)]">
-            District 3220 — Sri Lanka & Maldives
-          </span>
+          <span className="text-[clamp(3.5rem,14vw,7rem)] text-[#FDF8F2]">REPRESENTATIVE</span>
         </div>
 
-        <p className="font-display text-[9px] tracking-[0.12em] text-[rgba(253,240,213,0.45)] uppercase">
-          Term 2025–2026
-        </p>
+        <div className="font-display text-[clamp(0.9rem,2.5vw,1.2rem)] font-medium leading-[1.4] tracking-[0.03em] uppercase">
+          <span className="text-[rgba(253,240,213,0.4)]">DISTRICT 3220 — SRI LANKA & MALDIVES</span>
+          <span className="text-[rgba(253,240,213,0.4)] mx-2">·</span>
+          <span className="text-[rgba(253,240,213,0.5)]">2025—2026</span>
+        </div>
+
       </div>
 
-      {/* Vision & Mission - Highlighted rounded boxes */}
-      <div className="px-4 md:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-          {/* Vision Box */}
-          <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
-            <p className="font-sans text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[0.02em]">
-              Vision
-            </p>
-            <p className="font-body text-[0.95rem] text-[rgba(253,248,242,0.9)] leading-[1.8] font-[450]">
-              To transform our district into a place where youth leadership is
-              recognised as a professional standard and Rotaract clubs serve as
-              centers for innovation, leadership, and meaningful community impact.
-            </p>
-          </div>
+        {/* Vision & Mission - Highlighted rounded boxes */}
+        <div className="px-4 md:px-6 lg:px-8 py-12 md:py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {/* Vision Box */}
+            <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
+              <h3 className="font-display text-[clamp(1.8rem,4vw,2.2rem)] font-bold text-white mb-5 tracking-[0.015em] uppercase">
+                Vision
+              </h3>
+              <p className="font-body text-[1rem] text-[rgba(253,248,242,0.95)] leading-[1.75] font-[450]">
+                To transform our district into a place where youth leadership is
+                recognised as a professional standard and Rotaract clubs serve as
+                centers for innovation, leadership, and meaningful community impact.
+              </p>
+            </div>
 
-          {/* Mission Box */}
-          <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
-            <p className="font-sans text-[1.5rem] md:text-[1.8rem] font-bold text-[rgba(253,248,242,0.7)] mb-4 tracking-[0.02em]">
-              Mission
-            </p>
-            <p className="font-body text-[0.95rem] text-[rgba(253,248,242,0.9)] leading-[1.8] font-[450]">
-              To empower Rotaract clubs and members through stronger digital
-              systems, transparent financial governance, and a clear path that
-              connects every member to mentorship, professional development,
-              and global opportunities.
-            </p>
-          </div>
+            {/* Mission Box */}
+            <div className="bg-[var(--crimson-dark)] rounded-2xl p-8 md:p-10 border border-[rgba(255,255,255,0.1)]">
+              <h3 className="font-display text-[clamp(1.8rem,4vw,2.2rem)] font-bold text-white mb-5 tracking-[0.015em] uppercase">
+                Mission
+              </h3>
+              <p className="font-body text-[1rem] text-[rgba(253,248,242,0.95)] leading-[1.75] font-[450]">
+                To empower Rotaract clubs and members through stronger digital
+                systems, transparent financial governance, and a clear path that
+                connects every member to mentorship, professional development,
+                and global opportunities.
+              </p>
+            </div>
         </div>
       </div>
 
-      {/* ── THE PROMISE BLOCK - Elegant italic centered */}
-      <div className="py-14 md:py-16 px-4 md:px-6 lg:px-8">
+      {/* ── THE PROMISE BLOCK - Quote section */}
+      <div className="py-16 md:py-24 px-4 md:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="h-[1px] w-24 bg-[var(--crimson)] mx-auto mb-8" />
-          <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-6">
-            The Promise
-          </p>
-          <blockquote className="font-sans text-[clamp(1.3rem,3.5vw,2rem)] text-[var(--ct1)] leading-[1.5] font-medium italic">
-            "To transform our district into a place where youth leadership is
-            recognised as a professional standard."
-          </blockquote>
-          <p className="font-body text-[0.85rem] text-[var(--crimson)] mt-6 font-[500]">
-            — Haneef Mohamed, DRR Candidate, District 3220
-          </p>
-          <div className="h-[1px] w-24 bg-[var(--crimson)] mx-auto mt-8" />
+          {/* Accent line */}
+          <div className="h-[1px] w-20 bg-[var(--crimson)] mx-auto mb-8" />
+          
+          {/* Section title */}
+          <div className="inline-block mb-10">
+            <p className="font-display text-[clamp(0.9rem,2vw,1.1rem)] tracking-[0.12em] text-[var(--ct1)] uppercase font-semibold">
+              The Promise
+            </p>
+          </div>
+          
+          {/* Quote with attribution below, right-aligned */}
+          <div className="max-w-3xl mx-auto">
+            {/* Quote - original style */}
+            <blockquote className="font-sans text-[clamp(1.3rem,3.5vw,2rem)] text-[var(--ct1)] leading-[1.5] font-medium italic text-left mb-4">
+              "To transform our district into a place where youth leadership is
+              recognised as a professional standard."
+            </blockquote>
+            
+            {/* Attribution - below quote, right-aligned, super subtle */}
+            <div className="flex flex-col items-end">
+              <p className="font-sans text-[0.7rem] text-[var(--ct3)] tracking-[0.08em] uppercase opacity-60">
+                Haneef Mohamed
+              </p>
+              <p className="font-sans text-[0.65rem] text-[var(--ct3)] tracking-[0.05em] uppercase opacity-40">
+                DRR Candidate, District 3220
+              </p>
+            </div>
+          </div>
+          
+          <div className="h-[1px] w-20 bg-[var(--crimson)] mx-auto mt-12" />
         </div>
       </div>
 
       {/* ── WHY I AM RUNNING */}
       <div className="max-w-3xl mx-auto mb-20 md:mb-24 px-4 md:px-6 lg:px-8">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-[32px] h-[2px] bg-[var(--crimson)]" />
-          <p className="font-display text-[0.7rem] text-[var(--crimson)] tracking-[0.10em] uppercase">
-            Why I Am Running
-          </p>
+        <div className="text-center md:text-left mb-10">
+          <div className="inline-block">
+            <p className="font-display text-[clamp(0.9rem,2vw,1.1rem)] tracking-[0.12em] text-[var(--ct1)] uppercase font-semibold">
+              Why I Am Running
+            </p>
+          </div>
         </div>
         <div className="font-body text-[1.0625rem] text-[var(--ct2)] leading-[1.75] space-y-6 italic">
           <p>
@@ -224,7 +249,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Reality
             </p>
-            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[0.025em] leading-[0.92] uppercase">
+            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[0.025em] leading-[0.92] uppercase">
               Three Challenges We Must Face
             </h3>
           </div>
@@ -236,7 +261,7 @@ export default function Campaign() {
               className="group flex gap-6 md:gap-10 items-start py-8 border-t border-[var(--campaign-border-light)] hover:border-t-[var(--crimson)] transition-colors duration-200"
             >
               <div className="flex-shrink-0 w-[60px]">
-                <span className="font-sans text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
+                <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
                   01
                 </span>
                 <span className="font-display text-[8.5px] tracking-[0.10em] text-[var(--crimson)] uppercase">
@@ -262,7 +287,7 @@ export default function Campaign() {
               className="group flex gap-6 md:gap-10 items-start py-8 border-t border-[var(--campaign-border-light)] hover:border-t-[var(--crimson)] transition-colors duration-200"
             >
               <div className="flex-shrink-0 w-[60px]">
-                <span className="font-sans text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
+                <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
                   02
                 </span>
                 <span className="font-display text-[8.5px] tracking-[0.10em] text-[var(--crimson)] uppercase">
@@ -289,7 +314,7 @@ export default function Campaign() {
               className="group flex gap-6 md:gap-10 items-start py-8 border-t border-b border-[var(--campaign-border-light)] hover:border-t-[var(--crimson)] transition-colors duration-200"
             >
               <div className="flex-shrink-0 w-[60px]">
-                <span className="font-sans text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
+                <span className="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-[var(--campaign-number-faint)] group-hover:text-[var(--campaign-number-hover)] transition-colors duration-200 leading-none block">
                   03
                 </span>
                 <span className="font-display text-[8.5px] tracking-[0.10em] text-[var(--crimson)] uppercase">
@@ -321,7 +346,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--cta)] uppercase mb-4">
               Strategic Framework
             </p>
-            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[0.025em] leading-[0.92] uppercase mb-2">
+            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--cta)] tracking-[0.025em] leading-[0.92] uppercase mb-2">
               CIGR Analysis
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450]">
@@ -342,7 +367,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               Four Strategic Pillars
             </p>
-            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase mb-4">
+            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase mb-4">
               The Framework
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450]">
@@ -447,7 +472,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Commitment
             </p>
-            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase">
+            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase">
               Three-Phase Action Plan
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450] mt-2">
@@ -458,14 +483,14 @@ export default function Campaign() {
           {/* Mobile: vertical step track */}
           <div className="phase-track md:hidden relative">
             {/* Connecting line */}
-            <div className="absolute left-[15px] top-2 bottom-10 w-px bg-[var(--campaign-line)]" />
+            <div className="absolute left-[15px] top-2 bottom-10 w-px bg-[var(--crimson-border)]" />
 
             {/* Phase 1 */}
             <div
               ref={(el) => { phaseStepsRef.current[0] = el; }}
               className="phase-step flex gap-4 pb-8"
             >
-              <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson)] bg-[var(--bg)] flex items-center justify-center relative z-10">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson-border)] bg-[var(--bg)] flex items-center justify-center relative z-10">
                 <span className="font-sans text-[0.875rem] font-bold text-[var(--crimson)]">
                   01
                 </span>
@@ -492,7 +517,7 @@ export default function Campaign() {
               ref={(el) => { phaseStepsRef.current[1] = el; }}
               className="phase-step flex gap-4 pb-8"
             >
-              <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson)] bg-[var(--bg)] flex items-center justify-center relative z-10">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson-border)] bg-[var(--bg)] flex items-center justify-center relative z-10">
                 <span className="font-sans text-[0.875rem] font-bold text-[var(--crimson)]">
                   02
                 </span>
@@ -519,7 +544,7 @@ export default function Campaign() {
               ref={(el) => { phaseStepsRef.current[2] = el; }}
               className="phase-step flex gap-4 pb-8"
             >
-              <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson)] bg-[var(--bg)] flex items-center justify-center relative z-10">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full border-[1.5px] border-[var(--crimson-border)] bg-[var(--bg)] flex items-center justify-center relative z-10">
                 <span className="font-sans text-[0.875rem] font-bold text-[var(--crimson)]">
                   03
                 </span>
@@ -623,7 +648,7 @@ export default function Campaign() {
             <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
               The Principles
             </p>
-            <h3 className="font-sans text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase">
+            <h3 className="font-display text-[clamp(1.5rem,4vw,2.2rem)] font-bold text-[var(--ct1)] tracking-[0.025em] leading-[0.92] uppercase">
               Core Values
             </h3>
             <p className="font-body text-[0.875rem] italic text-[var(--ct2)] font-[450] mt-2">
