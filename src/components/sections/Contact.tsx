@@ -5,103 +5,79 @@ export default function Contact() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <footer id="contact" className="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 overflow-hidden"
+    <footer id="contact" className="relative py-16 md:py-24 px-6 md:px-8 lg:px-12"
       style={{
         scrollMarginTop: '80px',
-        overscrollBehavior: 'contain',
-        background: 'linear-gradient(180deg, #5BA3C4 0%, #3A8FB7 50%, #2A7A9E 100%)',
+        background: 'linear-gradient(180deg, #096B90 0%, #042B44 100%)',
       }}
     >
-      {/* Mobile-only massive VOTE HANEEF text — left aligned */}
-      <div 
-        className="block md:hidden"
-        style={{
-          fontSize: '17vw',
-          lineHeight: 0.88,
-          letterSpacing: '-0.02em',
-          color: '#F5F8FA',
-          marginBottom: '2rem',
-        }}
-        aria-hidden="true"
-      >
-        <span className="font-display font-black uppercase block">VOTE</span>
-        <span className="font-display font-black uppercase block">HANEEF.</span>
-      </div>
-
-      {/* Subtle background text - desktop only */}
-      <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none overflow-hidden" aria-hidden="true">
-        <span
-          className="font-display font-black uppercase whitespace-nowrap select-none"
-          style={{
-            fontSize: 'clamp(10rem, 30vw, 20rem)',
-            color: 'transparent',
-            WebkitTextStroke: '1px rgba(253,248,242,0.04)',
-            letterSpacing: '0.05em',
-          }}
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={!prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 }}
+          whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
         >
-          VOTE
-        </span>
-      </div>
+          <h2 className="font-display text-[clamp(1.5rem,4vw,2.5rem)] text-[#FDF8F2] leading-[0.95] tracking-[0.02em] uppercase mb-10 md:mb-14">
+            Let's Connect
+          </h2>
+        </motion.div>
 
-      <div className="relative max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-end pb-8 md:pb-12">
-          {/* Left - Big Statement - desktop only */}
-          <motion.div
-            className="hidden md:block"
-            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
-            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-[clamp(3.5rem,10vw,7rem)] text-[#FDF8F2] leading-[0.85] tracking-[0.01em] uppercase mb-6">
-              VOTE
-              <br />
-              HANEEF.
-            </h2>
-            <p className="font-body text-[0.85rem] text-[rgba(253,248,242,0.4)] tracking-wide">
-              District 3220 — Sri Lanka & Maldives · 2025–2026
-            </p>
-          </motion.div>
-
-          {/* Right - Contact & Links */}
-          <motion.div
-            className="flex flex-col gap-8 md:pb-2"
-            initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
-            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-          >
-            {/* Contact */}
-            <div className="space-y-3">
-              <a href="mailto:haneef.rotaract3220@gmail.com" className="block font-body text-[0.95rem] text-[rgba(253,248,242,0.7)] hover:text-[#FDF8F2] transition-colors">
-                haneef.rotaract3220@gmail.com
-              </a>
-              <a href="tel:+94770447021" className="block font-body text-[0.95rem] text-[rgba(253,248,242,0.7)] hover:text-[#FDF8F2] transition-colors">
-                +94 77 044 7021
-              </a>
-            </div>
-
-            {/* Social - desktop only */}
-            <a 
-              href="https://linkedin.com/in/haneefmohamed"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1 font-body text-[0.85rem] text-[rgba(253,248,242,0.4)] hover:text-[rgba(253,248,242,0.8)] transition-colors tracking-wide"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: 'rgba(253,248,242,0.08)' }}>
+          {[
+            { label: 'Email', value: 'haneef.rotaract3220@gmail.com', href: 'mailto:haneef.rotaract3220@gmail.com' },
+            { label: 'Phone', value: '+94 77 044 7021', href: 'tel:+94770447021' },
+            { label: 'Website', value: 'haneefrotaract3220.com', href: 'https://www.haneefrotaract3220.com' },
+            { label: 'LinkedIn', value: 'haneef-mohamed', href: 'https://www.linkedin.com/in/haneef-mohamed' },
+          ].map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              className="group flex flex-col justify-center p-6 md:p-8 hover:bg-[rgba(253,248,242,0.04)] transition-colors duration-300"
+              style={{ background: '#042B44' }}
+              initial={!prefersReducedMotion ? { opacity: 0 } : { opacity: 1 }}
+              whileInView={!prefersReducedMotion ? { opacity: 1 } : undefined}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              viewport={{ once: true }}
             >
-              LinkedIn ↗
-            </a>
-          </motion.div>
+              <span className="font-body text-[0.65rem] uppercase tracking-[0.15em] text-[rgba(253,248,242,0.4)] mb-2">
+                {item.label}
+              </span>
+              <span className="font-body text-[0.9rem] text-[#F5F8FA] group-hover:text-white transition-colors">
+                {item.value}
+              </span>
+            </motion.a>
+          ))}
         </div>
 
-        {/* Bottom - Copyright — visible on all screens */}
-        <div className="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-[rgba(253,248,242,0.08)]">
-          <div className="flex flex-col gap-3">
-            <p className="font-body text-[0.65rem] md:text-[0.75rem] text-[rgba(253,248,242,0.3)]">
-              © 2025 Rtr. IPP Haneef Mohamed · RTR. Colombo Mid Town · District 3220
-            </p>
-            <p className="font-body text-[0.6rem] md:text-[0.7rem] text-[rgba(253,248,242,0.2)] hidden md:block">
-              10+ years Rotary · 5+ years Rotaract · 40-year legacy
-            </p>
+        <motion.div
+          className="mt-px"
+          style={{ background: 'rgba(253,248,242,0.08)' }}
+          initial={!prefersReducedMotion ? { opacity: 0 } : { opacity: 1 }}
+          whileInView={!prefersReducedMotion ? { opacity: 1 } : undefined}
+          transition={{ duration: 0.4, delay: 0.35 }}
+          viewport={{ once: true }}
+        >
+          <div className="p-6 md:p-8" style={{ background: '#042B44' }}>
+            <span className="font-body text-[0.65rem] uppercase tracking-[0.15em] text-[rgba(253,248,242,0.4)] mb-2 block">
+              Address
+            </span>
+            <span className="font-body text-[0.9rem] text-[#F5F8FA]">
+              77/9, Anagarika Dharmapala Mawatha, Dehiwela
+            </span>
+          </div>
+        </motion.div>
+
+        <div className="mt-12 md:mt-16 pt-8 border-t border-[rgba(253,248,242,0.08)]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+            <span className="font-body text-[0.7rem] text-[rgba(253,248,242,0.35)]">
+              © 2025 Rtr. IPP Haneef Mohamed
+            </span>
+            <span className="font-body text-[0.65rem] text-[rgba(253,248,242,0.25)]">
+              RTR. Colombo Mid Town · District 3220
+            </span>
           </div>
         </div>
       </div>

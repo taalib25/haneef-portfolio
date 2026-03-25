@@ -338,64 +338,7 @@ export default function Rotaract() {
         </div>
       </div>
 
-      {/* TODO: Re-enable when DRR campaign is active
-      <Campaign />
-
-      <section className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-[var(--bg)]">
-        <div className="max-w-6xl mx-auto">
-          <motion.div {...fadeInUp}>
-            <div className="h-[2px] w-full bg-[var(--crimson)] mb-12" />
-
-            <motion.div className="mb-10" {...titleAnimation}>
-              <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase">
-                Campaign Contact
-              </h2>
-              <p className="font-body text-[var(--t2)] mt-2 max-w-xl">
-                For DRR campaign inquiries, collaboration opportunities, or to learn more about the vision for District 3220.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <a
-                href="mailto:haneef.rotaract3220@gmail.com"
-                className="group flex items-center gap-4 p-6 border border-[var(--border)] rounded-lg hover:border-[var(--crimson)] transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-[var(--crimson-dim)] flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-[var(--crimson)]" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <p className="font-sans text-[0.8rem] uppercase tracking-wider text-[var(--t3)] mb-1">
-                    Email
-                  </p>
-                  <p className="font-body text-[var(--t1)] group-hover:text-[var(--crimson)] transition-colors">
-                    haneef.rotaract3220@gmail.com
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href="tel:+94770447021"
-                className="group flex items-center gap-4 p-6 border border-[var(--border)] rounded-lg hover:border-[var(--crimson)] transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-[var(--crimson-dim)] flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-[var(--crimson)]" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <p className="font-sans text-[0.8rem] uppercase tracking-wider text-[var(--t3)] mb-1">
-                    Phone
-                  </p>
-                  <p className="font-body text-[var(--t1)] group-hover:text-[var(--crimson)] transition-colors">
-                    +94 77 044 7021
-                  </p>
-                </div>
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <Contact />
-      */}
     </main>
   );
 }
