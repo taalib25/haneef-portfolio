@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/layout/Navbar';
 
 const Home = lazy(() => import('./pages/Home'));
@@ -51,6 +52,7 @@ export default function App() {
           </Routes>
         </Suspense>
       </div>
+      <Analytics />
     </BrowserRouter>
   );
 }
