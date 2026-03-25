@@ -94,6 +94,7 @@ export default function Philosophy() {
       id="philosophy"
       ref={containerRef}
       className="py-14 md:py-20 px-4 md:px-6 lg:px-8 bg-(--bg)"
+      style={{ scrollMarginTop: '80px' }}
     >
       {/* 2px crimson line at top of section opener (full width) */}
       <div className="h-[2px] w-full bg-(--crimson) mb-12" />

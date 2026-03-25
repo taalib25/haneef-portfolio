@@ -113,6 +113,7 @@ export default function Campaign() {
       id="campaign"
       ref={containerRef}
       className="py-14 md:py-20 bg-[var(--bg-campaign)] text-[var(--ct1)]"
+      style={{ scrollMarginTop: '80px' }}
     >
       {/* ── DRR BANNER - Full width edge-to-edge */}
       <div className="bg-[var(--crimson-dark)] relative overflow-hidden w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] px-4 md:px-6 lg:px-8 py-14 md:py-20 text-center">

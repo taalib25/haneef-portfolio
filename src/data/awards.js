@@ -31,7 +31,7 @@ export const awardsData = [
     year: "2025",
     title: "Club Excellence Award",
     event: "Rotary International",
-    context: "Rotary International recognition for outstanding club performance under Haneef's presidency.",
+    context: "Rotary International recognition for outstanding club performance under Rtr. IPP Haneef's presidency.",
     level: null
   },
   {

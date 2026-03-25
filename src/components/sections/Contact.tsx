@@ -7,12 +7,9 @@ export default function Contact() {
   return (
     <footer id="contact" className="relative py-20 md:py-32 px-4 md:px-6 lg:px-8 overflow-hidden"
       style={{
-        background: `linear-gradient(
-          to bottom,
-          color-mix(in srgb, var(--color-crimson) 90%, #000) 0%,
-          color-mix(in srgb, var(--color-crimson) 75%, #000) 50%,
-          color-mix(in srgb, var(--color-crimson) 95%, #000) 100%
-        )`,
+        scrollMarginTop: '80px',
+        overscrollBehavior: 'contain',
+        background: 'linear-gradient(180deg, #5BA3C4 0%, #3A8FB7 50%, #2A7A9E 100%)',
       }}
     >
       {/* Mobile-only massive VOTE HANEEF text — left aligned */}
@@ -25,13 +22,14 @@ export default function Contact() {
           color: '#F5F8FA',
           marginBottom: '2rem',
         }}
+        aria-hidden="true"
       >
         <span className="font-display font-black uppercase block">VOTE</span>
         <span className="font-display font-black uppercase block">HANEEF.</span>
       </div>
 
       {/* Subtle background text - desktop only */}
-      <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none overflow-hidden" aria-hidden="true">
         <span
           className="font-display font-black uppercase whitespace-nowrap select-none"
           style={{
@@ -99,7 +97,7 @@ export default function Contact() {
         <div className="mt-12 md:mt-16 pt-6 md:pt-8 border-t border-[rgba(253,248,242,0.08)]">
           <div className="flex flex-col gap-3">
             <p className="font-body text-[0.65rem] md:text-[0.75rem] text-[rgba(253,248,242,0.3)]">
-              © 2025 Haneef Mohamed · RTR. Colombo Mid Town · District 3220
+              © 2025 Rtr. IPP Haneef Mohamed · RTR. Colombo Mid Town · District 3220
             </p>
             <p className="font-body text-[0.6rem] md:text-[0.7rem] text-[rgba(253,248,242,0.2)] hidden md:block">
               10+ years Rotary · 5+ years Rotaract · 40-year legacy
