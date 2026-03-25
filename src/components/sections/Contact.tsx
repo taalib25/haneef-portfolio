@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
+import { Mail, Phone, Globe, MapPin, Linkedin } from 'lucide-react';
 
 export default function Contact() {
   const prefersReducedMotion = useReducedMotion();
@@ -8,78 +9,93 @@ export default function Contact() {
     <footer id="contact" className="relative py-16 md:py-24 px-6 md:px-8 lg:px-12"
       style={{
         scrollMarginTop: '80px',
-        background: 'linear-gradient(180deg, #096B90 0%, #042B44 100%)',
+        background: 'linear-gradient(180deg, #3A8FB7 0%, #2A7A9E 100%)',
       }}
     >
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={!prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 }}
-          whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true }}
-        >
-          <h2 className="font-display text-[clamp(1.5rem,4vw,2.5rem)] text-[#FDF8F2] leading-[0.95] tracking-[0.02em] uppercase mb-10 md:mb-14">
-            Let's Connect
-          </h2>
-        </motion.div>
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12 md:gap-16">
+          <motion.div
+            className="md:w-1/2"
+            initial={!prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 }}
+            whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+          >
+            <div className="relative">
+              <div className="absolute -left-4 top-0 w-1 h-full bg-[rgba(253,248,242,0.3)]" />
+              <div className="pl-6">
+                <span className="font-body text-[0.7rem] uppercase tracking-[0.2em] text-[rgba(253,248,242,0.5)] block mb-4">
+                  Contact
+                </span>
+                <h2 className="font-display text-[clamp(2.5rem,7vw,5rem)] text-[#FDF8F2] leading-[0.85] tracking-[-0.03em] uppercase">
+                  Let's<br />Connect
+                </h2>
+                <div className="mt-6 flex items-center gap-3">
+                  <div className="w-12 h-px bg-[rgba(253,248,242,0.4)]" />
+                  <span className="font-body text-[0.75rem] text-[rgba(253,248,242,0.5)] tracking-wide">
+                    Reach out anytime
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: 'rgba(253,248,242,0.08)' }}>
-          {[
-            { label: 'Email', value: 'haneef.rotaract3220@gmail.com', href: 'mailto:haneef.rotaract3220@gmail.com' },
-            { label: 'Phone', value: '+94 77 044 7021', href: 'tel:+94770447021' },
-            { label: 'Website', value: 'haneefrotaract3220.com', href: 'https://www.haneefrotaract3220.com' },
-            { label: 'LinkedIn', value: 'haneef-mohamed', href: 'https://www.linkedin.com/in/haneef-mohamed' },
-          ].map((item, index) => (
-            <motion.a
-              key={index}
-              href={item.href}
-              target={item.href.startsWith('http') ? '_blank' : undefined}
-              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="group flex flex-col justify-center p-6 md:p-8 hover:bg-[rgba(253,248,242,0.04)] transition-colors duration-300"
-              style={{ background: '#042B44' }}
-              initial={!prefersReducedMotion ? { opacity: 0 } : { opacity: 1 }}
-              whileInView={!prefersReducedMotion ? { opacity: 1 } : undefined}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              viewport={{ once: true }}
-            >
-              <span className="font-body text-[0.65rem] uppercase tracking-[0.15em] text-[rgba(253,248,242,0.4)] mb-2">
-                {item.label}
-              </span>
-              <span className="font-body text-[0.9rem] text-[#F5F8FA] group-hover:text-white transition-colors">
-                {item.value}
-              </span>
-            </motion.a>
-          ))}
+          <div className="md:w-1/2 md:pt-2">
+            <div className="flex flex-col gap-5">
+              {[
+                { icon: Mail, value: 'haneef.rotaract3220@gmail.com', href: 'mailto:haneef.rotaract3220@gmail.com' },
+                { icon: Phone, value: '+94 77 044 7021', href: 'tel:+94770447021' },
+                { icon: Globe, value: 'haneefrotaract3220.com', href: 'https://www.haneefrotaract3220.com' },
+                { icon: Linkedin, value: 'haneef-mohamed', href: 'https://www.linkedin.com/in/haneef-mohamed' },
+                { icon: MapPin, value: '77/9, Anagarika Dharmapala Mawatha, Dehiwela', href: null },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="flex items-center gap-4"
+                  initial={!prefersReducedMotion ? { opacity: 0, x: 16 } : { opacity: 1 }}
+                  whileInView={!prefersReducedMotion ? { opacity: 1, x: 0 } : undefined}
+                  transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-10 h-10 rounded-full border border-[rgba(253,248,242,0.2)] flex items-center justify-center shrink-0">
+                    <item.icon className="w-4 h-4 text-[#FDF8F2]" strokeWidth={1.5} />
+                  </div>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="font-body text-[0.9rem] text-[rgba(253,248,242,0.85)] hover:text-[#FDF8F2] transition-colors"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="font-body text-[0.9rem] text-[rgba(253,248,242,0.85)]">
+                      {item.value}
+                    </span>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <motion.div
-          className="mt-px"
-          style={{ background: 'rgba(253,248,242,0.08)' }}
+          className="mt-12 md:mt-16 pt-6 border-t border-[rgba(253,248,242,0.15)]"
           initial={!prefersReducedMotion ? { opacity: 0 } : { opacity: 1 }}
           whileInView={!prefersReducedMotion ? { opacity: 1 } : undefined}
-          transition={{ duration: 0.4, delay: 0.35 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div className="p-6 md:p-8" style={{ background: '#042B44' }}>
-            <span className="font-body text-[0.65rem] uppercase tracking-[0.15em] text-[rgba(253,248,242,0.4)] mb-2 block">
-              Address
-            </span>
-            <span className="font-body text-[0.9rem] text-[#F5F8FA]">
-              77/9, Anagarika Dharmapala Mawatha, Dehiwela
-            </span>
-          </div>
-        </motion.div>
-
-        <div className="mt-12 md:mt-16 pt-8 border-t border-[rgba(253,248,242,0.08)]">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-            <span className="font-body text-[0.7rem] text-[rgba(253,248,242,0.35)]">
+            <span className="font-body text-[0.7rem] text-[rgba(253,248,242,0.5)]">
               © 2025 Rtr. IPP Haneef Mohamed
             </span>
-            <span className="font-body text-[0.65rem] text-[rgba(253,248,242,0.25)]">
+            <span className="font-body text-[0.65rem] text-[rgba(253,248,242,0.4)]">
               RTR. Colombo Mid Town · District 3220
             </span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
