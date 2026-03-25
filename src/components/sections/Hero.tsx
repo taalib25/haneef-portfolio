@@ -27,11 +27,18 @@ export default function Hero() {
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
 
-  // Preload image
   useEffect(() => {
+    const cacheKey = 'hero-image-loaded';
+    if (sessionStorage.getItem(cacheKey) === 'true') {
+      setImageLoaded(true);
+      return;
+    }
     const img = new Image();
     img.src = potrait;
-    img.onload = () => setImageLoaded(true);
+    img.onload = () => {
+      sessionStorage.setItem(cacheKey, 'true');
+      setImageLoaded(true);
+    };
   }, []);
 
   return (

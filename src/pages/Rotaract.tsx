@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,7 +7,7 @@ import { timelineData } from '../data/timeline';
 import { awardsData } from '../data/awards';
 import Campaign from '../components/sections/Campaign';
 import Contact from '../components/sections/Contact';
-import { Mail, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +25,6 @@ export default function Rotaract() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
   const awardItemsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -83,14 +82,6 @@ export default function Rotaract() {
     return () => ctx.revert();
   }, [prefersReducedMotion]);
 
-  const navigateTimeline = (direction: 'prev' | 'next') => {
-    if (direction === 'prev') {
-      setActiveTimelineIndex((prev) => (prev > 0 ? prev - 1 : rotaractTimeline.length - 1));
-    } else {
-      setActiveTimelineIndex((prev) => (prev < rotaractTimeline.length - 1 ? prev + 1 : 0));
-    }
-  };
-
   const fadeInUp = {
     initial: !prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 },
     whileInView: !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 },
@@ -137,17 +128,15 @@ export default function Rotaract() {
               <div className="space-y-6 md:space-y-8 md:pl-8">
                 {rotaractTimeline.map((item, index) => {
                   const colors = TYPE_COLORS[item.type] || TYPE_COLORS.LEADERSHIP;
-                  const isActive = index === activeTimelineIndex;
 
                   return (
                     <motion.div
                       key={`${item.year}-${index}`}
                       ref={(el) => { entriesRef.current[index] = el; }}
-                      className={`relative pl-4 md:pl-6 py-4 border-l-2 md:border-l-0 transition-all duration-300 ${isActive ? 'opacity-100' : 'md:opacity-70'}`}
+                      className="relative pl-4 md:pl-6 py-4 border-l-2 md:border-l-0"
                       style={{
                         borderLeftColor: colors.main,
                       }}
-                      onClick={() => setActiveTimelineIndex(index)}
                     >
                       <div
                         className="absolute left-[-5px] md:left-[-29px] top-5 w-2.5 h-2.5 rounded-full hidden md:block"
@@ -215,25 +204,7 @@ export default function Rotaract() {
                 })}
               </div>
 
-              <div className="flex justify-center gap-4 mt-8 md:hidden" aria-live="polite" aria-atomic="true">
-                <button
-                  onClick={() => navigateTimeline('prev')}
-                  className="p-2 rounded-full border border-[var(--border)] hover:border-[var(--crimson)] hover:text-[var(--crimson)] transition-colors"
-                  aria-label="Previous timeline item"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <span className="font-body text-[var(--t2)] py-2">
-                  {activeTimelineIndex + 1} / {rotaractTimeline.length}
-                </span>
-                <button
-                  onClick={() => navigateTimeline('next')}
-                  className="p-2 rounded-full border border-[var(--border)] hover:border-[var(--crimson)] hover:text-[var(--crimson)] transition-colors"
-                  aria-label="Next timeline item"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+
             </div>
           </motion.section>
 

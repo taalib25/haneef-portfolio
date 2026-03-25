@@ -1,9 +1,18 @@
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import { Mail, Phone, Globe, MapPin, Linkedin } from 'lucide-react';
+import { openAppOrWeb, deepLinks } from '../../lib/deepLinks';
 
 export default function Contact() {
   const prefersReducedMotion = useReducedMotion();
+
+  const contactItems = [
+    { icon: Mail, value: 'haneef.rotaract3220@gmail.com', href: 'mailto:haneef.rotaract3220@gmail.com' },
+    { icon: Phone, value: '+94 77 044 7021', href: 'tel:+94770447021' },
+    { icon: Globe, value: 'haneefrotaract3220.com', href: 'https://www.haneefrotaract3220.com' },
+    { icon: Linkedin, value: 'haneef-mohamed', deepLink: deepLinks.linkedin('haneef-mohamed') },
+    { icon: MapPin, value: '77/9, Anagarika Dharmapala Mawatha, Dehiwela', href: null },
+  ];
 
   return (
     <footer id="contact" className="relative py-16 md:py-24 px-6 md:px-8 lg:px-12"
@@ -28,13 +37,7 @@ export default function Contact() {
 
           <div className="md:w-1/2 md:pt-2">
             <div className="flex flex-col gap-5">
-              {[
-                { icon: Mail, value: 'haneef.rotaract3220@gmail.com', href: 'mailto:haneef.rotaract3220@gmail.com' },
-                { icon: Phone, value: '+94 77 044 7021', href: 'tel:+94770447021' },
-                { icon: Globe, value: 'haneefrotaract3220.com', href: 'https://www.haneefrotaract3220.com' },
-                { icon: Linkedin, value: 'haneef-mohamed', href: 'https://www.linkedin.com/in/haneef-mohamed' },
-                { icon: MapPin, value: '77/9, Anagarika Dharmapala Mawatha, Dehiwela', href: null },
-              ].map((item, index) => (
+              {contactItems.map((item, index) => (
                 <motion.div
                   key={index}
                   className="flex items-center gap-4"
@@ -46,7 +49,14 @@ export default function Contact() {
                   <div className="w-10 h-10 rounded-full border border-[rgba(253,248,242,0.2)] flex items-center justify-center shrink-0">
                     <item.icon className="w-4 h-4 text-[#FDF8F2]" strokeWidth={1.5} />
                   </div>
-                  {item.href ? (
+                  {item.deepLink ? (
+                    <button
+                      onClick={(e) => openAppOrWeb(item.deepLink!, e)}
+                      className="font-body text-[0.9rem] text-[rgba(253,248,242,0.85)] hover:text-[#FDF8F2] transition-colors text-left"
+                    >
+                      {item.value}
+                    </button>
+                  ) : item.href ? (
                     <a
                       href={item.href}
                       target={item.href.startsWith('http') ? '_blank' : undefined}

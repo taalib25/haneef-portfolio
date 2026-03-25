@@ -13,6 +13,7 @@ export default defineConfig({
         drop_debugger: true,
       },
     },
+    assetsInlineLimit: 0,
   },
   server: {
     warmup: {
