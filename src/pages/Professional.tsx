@@ -1,34 +1,18 @@
 import { motion } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-import { Briefcase, GraduationCap, Award, TrendingUp, Users, Globe } from 'lucide-react';
 import Contact from '../components/sections/Contact';
 
 const services = [
-  {
-    icon: TrendingUp,
-    title: 'Digital Marketing',
-    description: 'Data-driven campaigns that build brand presence and drive measurable engagement across digital channels.',
-  },
-  {
-    icon: Award,
-    title: 'Public Relations',
-    description: 'Strategic reputation management and media relations that shape public perception and build lasting credibility.',
-  },
-  {
-    icon: Globe,
-    title: 'Media Buying',
-    description: 'Strategic media placement and procurement to maximize reach and optimize advertising investment.',
-  },
-  {
-    icon: Users,
-    title: 'Brand Strategy',
-    description: 'Comprehensive brand positioning and messaging frameworks that resonate with target audiences.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Business Development',
-    description: 'Growth strategies and partnership development that expand market presence and drive revenue.',
-  },
+  { title: 'Public Relations Consultancy', description: 'Shaping narratives that move markets and build lasting trust.' },
+  { title: 'Crisis Communications', description: 'When silence isn\'t an option — strategic responses that protect and rebuild.' },
+  { title: 'High-Level Media Relations', description: 'Direct access to the right desks, the right editors, the right moments.' },
+  { title: 'Reputation Management', description: 'Your name is your currency. We help you spend it wisely.' },
+  { title: 'Digital Marketing & ORM', subtitle: 'Online Reputation Management', description: 'Controlling the first page of Google, one strategy at a time.' },
+  { title: 'Creative Solutions', description: 'Ideas that break templates and start conversations.' },
+  { title: 'Intel-Driven Communications', subtitle: 'data-driven insights', description: 'Strategy backed by numbers, not gut feelings.' },
+  { title: 'Internal Communications', description: 'Aligning teams from the inside out — because culture starts with clarity.' },
+  { title: 'Brand Capacity Building', description: 'Teaching brands to stand on their own, long after we step away.' },
+  { title: 'Media Buying', description: 'Every rupee placed with precision. Maximum reach, minimum waste.' },
 ];
 
 const workExperience = [
@@ -111,10 +95,17 @@ export default function Professional() {
   const prefersReducedMotion = useReducedMotion();
 
   const fadeInUp = {
-    initial: !prefersReducedMotion ? { opacity: 0, y: 24 } : { opacity: 1 },
+    initial: !prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 },
     whileInView: !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 },
-    transition: !prefersReducedMotion ? { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } : undefined,
-    viewport: { once: true, amount: 0.1 },
+    transition: !prefersReducedMotion ? { duration: 0.35, ease: [0.33, 1, 0.68, 1] as const } : undefined,
+    viewport: { once: true, amount: 0.2 },
+  };
+
+  const titleAnimation = {
+    initial: !prefersReducedMotion ? { opacity: 0, y: 10 } : { opacity: 1 },
+    whileInView: !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 },
+    transition: !prefersReducedMotion ? { duration: 0.3, ease: [0.33, 1, 0.68, 1] as const } : undefined,
+    viewport: { once: true, amount: 0.3 },
   };
 
   return (
@@ -134,32 +125,37 @@ export default function Professional() {
           </motion.div>
 
           <motion.section className="mb-20 md:mb-24" {...fadeInUp}>
-            <div className="mb-10">
-              <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
-                Expertise
-              </p>
+            <motion.div className="mb-8" {...titleAnimation}>
               <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase">
                 Services
               </h2>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-0 border-t border-[var(--border)]">
               {services.map((service, index) => (
                 <motion.div
                   key={service.title}
-                  className="group bg-[var(--bg-campaign)] border border-[var(--border)] p-6 hover:border-[var(--crimson)] transition-colors duration-200"
-                  initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
-                  whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                  transition={!prefersReducedMotion ? { duration: 0.5, delay: index * 0.05 } : undefined}
+                  className="group py-4 md:py-5 border-b border-[var(--border)] hover:border-[var(--crimson)] transition-colors duration-200"
+                  initial={!prefersReducedMotion ? { opacity: 0, x: -8 } : { opacity: 1 }}
+                  whileInView={!prefersReducedMotion ? { opacity: 1, x: 0 } : undefined}
+                  transition={{ duration: 0.2, delay: index * 0.02 }}
                   viewport={{ once: true }}
                 >
-                  <service.icon className="w-6 h-6 text-[var(--crimson)] mb-4" strokeWidth={1.5} />
-                  <h3 className="font-sans text-[1.1rem] font-bold text-[var(--t1)] tracking-[0.012em] mb-2 group-hover:text-[var(--crimson)] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="font-body text-[0.875rem] text-[var(--t2)] leading-[1.65]">
-                    {service.description}
-                  </p>
+                  <div className="flex flex-col md:flex-row md:items-start md:gap-6">
+                    <div className="md:w-56 md:shrink-0">
+                      <h3 className="font-body text-[0.95rem] font-medium text-[var(--t1)] group-hover:text-[var(--crimson)] transition-colors leading-snug">
+                        {service.title}
+                      </h3>
+                      {service.subtitle && (
+                        <span className="block font-body text-[0.75rem] text-[var(--t3)] mt-0.5">
+                          {service.subtitle}
+                        </span>
+                      )}
+                    </div>
+                    <p className="font-body text-[0.9rem] text-[var(--t2)] leading-relaxed md:pt-0.5">
+                      {service.description}
+                    </p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -218,67 +214,45 @@ export default function Professional() {
           </motion.section>
 
           <motion.section {...fadeInUp}>
-            <div className="mb-10">
-              <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
-                Academic
-              </p>
-              <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase flex items-center gap-3">
-                <GraduationCap className="w-8 h-8 text-[var(--crimson)]" strokeWidth={1.5} />
+            <motion.div className="mb-10" {...titleAnimation}>
+              <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase">
                 Education
               </h2>
-            </div>
+            </motion.div>
 
             <div className="space-y-0">
               {educationData.map((edu, index) => (
                 <motion.div
                   key={edu.institution}
-                  className="education-row"
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'baseline',
-                    padding: '1rem 0',
-                    borderBottom: '1px solid rgba(15,6,8,0.07)',
-                  }}
-                  initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
+                  className="group py-5 border-b border-[var(--border)] hover:border-[var(--crimson)] transition-colors duration-200"
+                  initial={!prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 }}
                   whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
-                  transition={!prefersReducedMotion ? { duration: 0.5, delay: index * 0.05 } : undefined}
+                  transition={!prefersReducedMotion ? { duration: 0.3, delay: index * 0.04 } : undefined}
                   viewport={{ once: true }}
                 >
-                  <div>
-                    <p className="font-sans font-bold text-[var(--t1)]" style={{ fontSize: '1.15rem', letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: '0.15rem' }}>
-                      {edu.institution}
-                    </p>
-                    <p className="font-body text-[var(--t2)]" style={{ fontSize: '0.9rem', fontWeight: 450, lineHeight: 1.4 }}>
-                      {edu.qualification}
-                    </p>
-                  </div>
-                  <div style={{ textAlign: 'right', flexShrink: 0, marginLeft: '1rem' }}>
-                    <p className="font-sans text-[var(--ta)]" style={{ fontSize: '0.85rem', letterSpacing: '0.04em', fontWeight: 500 }}>
-                      {edu.year}
-                    </p>
-                    {edu.active ? (
-                      <span
-                        className="font-sans uppercase"
-                        style={{
-                          fontSize: '9px',
-                          letterSpacing: '0.10em',
-                          marginTop: '3px',
-                          display: 'inline-block',
-                          padding: '3px 10px',
-                          background: 'color-mix(in srgb, var(--crimson) 8%, transparent)',
-                          border: '1px solid color-mix(in srgb, var(--crimson) 20%, transparent)',
-                          color: 'var(--crimson)',
-                          borderRadius: '2px',
-                        }}
-                      >
-                        {edu.status}
-                      </span>
-                    ) : (
-                      <p className="font-sans text-[var(--t3)] uppercase" style={{ fontSize: '9px', letterSpacing: '0.10em', marginTop: '3px', fontWeight: 500 }}>
-                        {edu.status}
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-body font-semibold text-[0.95rem] text-[var(--t1)] leading-snug mb-1">
+                        {edu.institution}
                       </p>
-                    )}
+                      <p className="font-body text-[0.8rem] text-[var(--t2)] leading-relaxed">
+                        {edu.qualification}
+                      </p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <p className="font-body text-[0.8rem] text-[var(--t3)] leading-snug">
+                        {edu.year}
+                      </p>
+                      {edu.active ? (
+                        <span className="inline-block mt-1.5 font-body text-[0.65rem] uppercase tracking-wider px-2 py-0.5 bg-[var(--crimson-dim)] border border-[var(--crimson-border)] text-[var(--crimson)] rounded-[2px]">
+                          {edu.status}
+                        </span>
+                      ) : (
+                        <p className="mt-1.5 font-body text-[0.65rem] text-[var(--t3)] uppercase tracking-wider">
+                          {edu.status}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
