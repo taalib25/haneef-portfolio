@@ -34,16 +34,16 @@ export default function Rotaract() {
         if (!prefersReducedMotion) {
           gsap.fromTo(
             el,
-            { opacity: 0, y: 20 },
+            { opacity: 0, y: 12 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.55,
-              ease: 'power2.out',
-              delay: i * 0.08,
+              duration: 0.3,
+              ease: 'power3.out',
+              delay: i * 0.05,
               scrollTrigger: {
                 trigger: el,
-                start: 'top 85%',
+                start: 'top 92%',
                 toggleActions: 'play none none none',
                 once: true,
               },
@@ -59,16 +59,16 @@ export default function Rotaract() {
         if (!prefersReducedMotion) {
           gsap.fromTo(
             el,
-            { opacity: 0, y: 14 },
+            { opacity: 0, y: 10 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.55,
-              ease: 'power2.out',
-              delay: i * 0.07,
+              duration: 0.25,
+              ease: 'power3.out',
+              delay: i * 0.04,
               scrollTrigger: {
                 trigger: el,
-                start: 'top 86%',
+                start: 'top 92%',
                 toggleActions: 'play none none none',
                 once: true,
               },
@@ -92,16 +92,16 @@ export default function Rotaract() {
   };
 
   const fadeInUp = {
-    initial: !prefersReducedMotion ? { opacity: 0, y: 24 } : { opacity: 1 },
+    initial: !prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 },
     whileInView: !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 },
-    transition: !prefersReducedMotion ? { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } : undefined,
-    viewport: { once: true, amount: 0.15 },
+    transition: !prefersReducedMotion ? { duration: 0.35, ease: [0.33, 1, 0.68, 1] as const } : undefined,
+    viewport: { once: true, amount: 0.2 },
   };
 
   const titleAnimation = {
-    initial: !prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 },
+    initial: !prefersReducedMotion ? { opacity: 0, y: 10 } : { opacity: 1 },
     whileInView: !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 },
-    transition: !prefersReducedMotion ? { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } : undefined,
+    transition: !prefersReducedMotion ? { duration: 0.3, ease: [0.33, 1, 0.68, 1] as const } : undefined,
     viewport: { once: true, amount: 0.3 },
   };
 
@@ -240,14 +240,16 @@ export default function Rotaract() {
           <motion.section className="mb-20 md:mb-24" {...fadeInUp}>
             <motion.div className="mb-10" {...titleAnimation}>
               <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase">
-                Before Rotaract
+                Interact Journey
               </h2>
               <p className="font-body text-[var(--t2)] mt-2 text-sm">
                 Interact Club of Amal International School
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="relative">
+              <div className="absolute left-[11px] md:left-6 top-0 bottom-0 w-px bg-[var(--border)]" />
+
               {[
                 { year: '2016–17', role: 'President' },
                 { year: '2015–16', role: 'Assistant Secretary' },
@@ -255,18 +257,22 @@ export default function Rotaract() {
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-baseline gap-4 py-4 border-b border-[var(--border)] md:border-b-0 md:flex-col md:p-6 md:border md:rounded-lg md:hover:border-[var(--crimson)] transition-colors"
-                  initial={!prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 }}
+                  className="relative pl-10 md:pl-14 py-5 border-l-2 border-[var(--crimson)] md:border-l-0"
+                  initial={!prefersReducedMotion ? { opacity: 0, y: 12 } : { opacity: 1 }}
                   whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
-                  transition={{ duration: 0.4, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.25, delay: index * 0.08, ease: [0.33, 1, 0.68, 1] }}
                   viewport={{ once: true, amount: 0.2 }}
                 >
-                  <span className="font-display text-[1.1rem] font-bold text-[var(--crimson)] shrink-0">
-                    {item.year}
-                  </span>
-                  <span className="font-body text-[0.95rem] text-[var(--t2)]">
-                    {item.role}
-                  </span>
+                  <div className="absolute left-[-5px] md:left-[-9px] top-6 w-2.5 h-2.5 rounded-full bg-[var(--crimson)]" />
+
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="font-display text-[1.1rem] md:text-[1.2rem] font-bold text-[var(--crimson)]">
+                      {item.year}
+                    </span>
+                    <span className="font-body text-[0.95rem] text-[var(--t2)]">
+                      {item.role}
+                    </span>
+                  </div>
                 </motion.div>
               ))}
             </div>

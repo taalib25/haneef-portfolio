@@ -173,9 +173,6 @@ export default function Professional() {
               <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] text-[var(--t1)] leading-[0.95] tracking-[0.025em] uppercase">
                 Work Experience
               </h2>
-              <p className="font-body text-[var(--t2)] mt-2 text-sm">
-                Latest roles first
-              </p>
             </div>
 
             <div className="space-y-0">

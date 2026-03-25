@@ -13,7 +13,7 @@ export default function Contact() {
       }}
     >
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12 md:gap-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10 md:gap-16">
           <motion.div
             className="md:w-1/2"
             initial={!prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 }}
@@ -21,23 +21,9 @@ export default function Contact() {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
           >
-            <div className="relative">
-              <div className="absolute -left-4 top-0 w-1 h-full bg-[rgba(253,248,242,0.3)]" />
-              <div className="pl-6">
-                <span className="font-body text-[0.7rem] uppercase tracking-[0.2em] text-[rgba(253,248,242,0.5)] block mb-4">
-                  Contact
-                </span>
-                <h2 className="font-display text-[clamp(2.5rem,7vw,5rem)] text-[#FDF8F2] leading-[0.85] tracking-[-0.03em] uppercase">
-                  Let's<br />Connect
-                </h2>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="w-12 h-px bg-[rgba(253,248,242,0.4)]" />
-                  <span className="font-body text-[0.75rem] text-[rgba(253,248,242,0.5)] tracking-wide">
-                    Reach out anytime
-                  </span>
-                </div>
-              </div>
-            </div>
+            <h2 className="font-display text-[clamp(3rem,10vw,6rem)] text-[#FDF8F2] leading-[0.85] tracking-[-0.03em] uppercase">
+              Let's<br />Connect
+            </h2>
           </motion.div>
 
           <div className="md:w-1/2 md:pt-2">
