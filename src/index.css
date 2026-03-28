@@ -247,7 +247,6 @@ html {
 }
 
 .font-display.text-\[clamp\(2\.5rem\,5vw\,4rem\)\],
-.font-display.text-\[clamp\([23]rem\,.*\)\],
 [class*="text-t-3xl"],
 [class*="text-t-4xl"],
 [class*="text-t-hero"],
@@ -350,7 +349,7 @@ p {
 }
 
 /* Hide mobile track content on desktop */
-.md\\:phase-track-hidden {
+.phase-track-hidden {
   display: block;
 }
 
@@ -361,7 +360,7 @@ p {
 
 @media (min-width: 768px) {
   /* Hide mobile track on desktop */
-  .md\\:phase-track-hidden {
+  .phase-track-hidden {
     display: none !important;
   }
 
