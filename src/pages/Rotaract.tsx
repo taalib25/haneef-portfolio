@@ -22,7 +22,16 @@ const rotaractTimeline = timelineData.filter(
   (item) => item.type === 'LEADERSHIP' || item.type === 'DISTRICT'
 );
 
-const featuredImages = [
+type FeaturedImage = {
+  src: string;
+  alt: string;
+  awardTitle: string;
+  caption: string;
+  cropBottom?: boolean;
+  portrait45?: boolean;
+};
+
+const featuredImages: FeaturedImage[] = [
   {
     src: haneef1,
     alt: 'Most Popular Rotaractor award',
@@ -32,10 +41,11 @@ const featuredImages = [
   },
   {
     src: haneef2,
-    alt: 'Mrs India volunteer leadership',
+    alt: 'Volunteer of the Year award',
     awardTitle: 'Volunteer of the Year',
     caption: 'Volunteer of the Year',
     cropBottom: false,
+    portrait45: true,
   },
 ];
 const featuredImageByAwardTitle = new Map(
@@ -245,7 +255,7 @@ export default function Rotaract() {
                         {item.organisation}
                       </p>
 
-                      <div className={roleImage ? 'md:grid md:grid-cols-[1fr_320px] md:gap-6 md:items-start' : undefined}>
+                      <div className={roleImage ? 'md:grid md:grid-cols-[1fr_460px] md:gap-8 md:items-start' : undefined}>
                         <div>
                           <div className="font-body text-[0.95rem] text-[var(--t2)] leading-[1.75] mb-3">
                             {item.body.split('\n\n').map((paragraph, i) => (
@@ -280,7 +290,7 @@ export default function Rotaract() {
                               <img
                                 src={roleImage.src}
                                 alt={roleImage.alt}
-                                className={roleImage.landscapeOnly ? 'w-full aspect-[16/9] object-cover' : 'w-full h-auto max-h-[220px] md:max-h-none object-contain'}
+                                className={roleImage.landscapeOnly ? 'w-full aspect-[16/9] object-cover' : 'w-full h-auto max-h-[220px] md:max-h-[420px] object-contain'}
                                 loading="lazy"
                                 decoding="async"
                               />
@@ -352,7 +362,10 @@ export default function Rotaract() {
             </motion.div>
 
             <div className="space-y-0">
-              {awardsData.map((award, index) => (
+              {awardsData.map((award, index) => {
+                const featured = featuredImageByAwardTitle.get(award.title);
+
+                return (
                 <Fragment key={`${award.year}-${award.title}-${index}`}>
                   <div
                     ref={(el) => { awardItemsRef.current[index] = el; }}
@@ -402,11 +415,7 @@ export default function Rotaract() {
                     </div>
                   </div>
 
-                  {(() => {
-                    const featured = featuredImageByAwardTitle.get(award.title);
-                    if (!featured) return null;
-
-                    return (
+                  {featured && (
                       <div
                         ref={(el) => {
                           featuredImageRefs.current[featured.imageIndex] = el;
@@ -419,7 +428,9 @@ export default function Rotaract() {
                             alt={featured.alt}
                             className={featured.cropBottom
                               ? 'w-full h-[230px] md:h-[500px] object-cover object-top'
-                              : 'w-full h-auto max-h-[250px] md:max-h-[520px] object-contain'}
+                              : featured.portrait45
+                                ? 'w-full max-w-[340px] md:max-w-[430px] mx-auto aspect-[4/5] object-contain object-center'
+                                : 'w-full h-auto max-h-[250px] md:max-h-[520px] object-contain'}
                             loading={featured.imageIndex === 0 ? 'eager' : 'lazy'}
                             fetchPriority={featured.imageIndex === 0 ? 'high' : 'auto'}
                             decoding="async"
@@ -429,10 +440,10 @@ export default function Rotaract() {
                           {featured.caption}
                         </p>
                       </div>
-                    );
-                  })()}
+                  )}
                 </Fragment>
-              ))}
+                );
+              })}
             </div>
           </motion.section>
         </div>

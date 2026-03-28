@@ -754,6 +754,29 @@ html, body {
    TIMELINE SECTION — Mobile
    ============================================ */
 
+@media (min-width: 768px) {
+  .timeline-body {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  .timeline-path-column {
+    justify-content: flex-start !important;
+  }
+
+  .timeline-entries-container {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    text-align: left !important;
+  }
+
+  .timeline-entry {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+  }
+}
+
 @media (max-width: 767px) {
   /* Remove two-column layout */
   .timeline-body {

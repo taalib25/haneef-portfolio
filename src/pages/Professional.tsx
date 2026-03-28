@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import Contact from '../components/sections/Contact';
 
@@ -93,6 +94,18 @@ const educationData = [
 
 export default function Professional() {
   const prefersReducedMotion = useReducedMotion();
+  const workSectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: workSectionRef,
+    offset: ['start 85%', 'end 20%'],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 26,
+    mass: 0.2,
+  });
+  const progressScale = useTransform(smoothProgress, [0, 1], [0, 1]);
+  const lineScale = prefersReducedMotion ? 1 : progressScale;
 
   const fadeInUp = {
     initial: !prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 },
@@ -159,7 +172,7 @@ export default function Professional() {
             </div>
           </motion.section>
 
-          <motion.section className="mb-20 md:mb-24" {...fadeInUp}>
+          <motion.section className="mb-20 md:mb-24" ref={workSectionRef} {...fadeInUp}>
             <div className="mb-10">
               <p className="font-display text-[9.5px] tracking-[0.13em] text-[var(--crimson)] uppercase mb-4">
                 Career
@@ -169,23 +182,37 @@ export default function Professional() {
               </h2>
             </div>
 
-            <div className="timeline-body flex gap-0 md:gap-12 lg:gap-16 text-left">
-              <div className="timeline-path-column hidden md:flex md:w-28 lg:w-32 shrink-0 justify-center relative">
+            <div className="timeline-body relative flex gap-0 md:gap-6 lg:gap-8 text-left">
+              <div className="timeline-path-column hidden md:flex md:w-10 lg:w-12 shrink-0 justify-start relative">
                 <div
-                  className="absolute top-0 left-1/2 -translate-x-1/2"
+                  className="absolute top-0 left-0"
                   style={{
                     width: '2px',
                     height: '100%',
                     background: 'color-mix(in srgb, var(--navy) 18%, transparent)',
                   }}
                 />
+                <motion.div
+                  className="absolute top-0 left-0 w-[2px] h-full origin-top"
+                  style={{
+                    scaleY: lineScale,
+                    background: 'var(--timeline-color)',
+                  }}
+                />
               </div>
 
-              <div className="timeline-entries-container flex-1 text-left">
+              <div className="timeline-entries-container relative flex-1 text-left">
+              <motion.div
+                className="md:hidden absolute left-0 top-0 w-[2px] h-full origin-top"
+                style={{
+                  scaleY: lineScale,
+                  background: 'var(--timeline-color)',
+                }}
+              />
               {workExperience.map((job, index) => (
                 <motion.div
                   key={`${job.company}-${index}`}
-                  className="timeline-entry timeline-professional group relative pl-4 md:pl-8 text-left"
+                  className="timeline-entry timeline-professional group relative pl-4 md:pl-6 text-left"
                   style={{
                     paddingTop: '0.5rem',
                     paddingBottom: index === workExperience.length - 1 ? '0.25rem' : '1.75rem',
@@ -199,7 +226,7 @@ export default function Professional() {
                   <div
                     className="timeline-dot absolute rounded-full hidden md:block"
                     style={{
-                      left: '-1.55rem',
+                      left: '-0.8rem',
                       top: '1rem',
                       width: '10px',
                       height: '10px',
