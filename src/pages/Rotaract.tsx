@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -75,28 +75,43 @@ const roleImageByTitle = new Map([
 
 export default function Rotaract() {
   const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  ));
   const timelineRef = useRef<HTMLDivElement>(null);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
   const awardItemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const featuredImageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
+    const mql = window.matchMedia('(max-width: 767px)');
+    const onChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+    setIsMobile(mql.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
+
+  useEffect(() => {
     const ctx = gsap.context(() => {
       entriesRef.current.forEach((el, i) => {
         if (!el) return;
         if (!prefersReducedMotion) {
+          const leadershipDuration = isMobile ? 0.2 : 0.24;
+          const leadershipDelay = i * (isMobile ? 0.016 : 0.03);
+          const leadershipStart = isMobile ? 'top 97%' : 'top 92%';
+
           gsap.fromTo(
             el,
             { opacity: 0, y: 12 },
             {
               opacity: 1,
               y: 0,
-              duration: 0.24,
+              duration: leadershipDuration,
               ease: 'power3.out',
-              delay: i * 0.03,
+              delay: leadershipDelay,
               scrollTrigger: {
                 trigger: el,
-                start: 'top 92%',
+                start: leadershipStart,
                 toggleActions: 'play none none none',
                 once: true,
               },
@@ -160,7 +175,7 @@ export default function Rotaract() {
     });
 
     return () => ctx.revert();
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, isMobile]);
 
   const fadeInUp = {
     initial: !prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 },

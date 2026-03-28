@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, Award, Menu, X, House } from 'lucide-react';
 import potrait from '../../assets/potrait.webp';
+import { getRoutePreloadHandlers } from '../../lib/routePreload';
 
 const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
 
@@ -19,6 +20,8 @@ export default function Hero() {
     mql.addEventListener('change', handler);
     return () => mql.removeEventListener('change', handler);
   }, []);
+
+  const preloadHandlers = (href: string) => getRoutePreloadHandlers(href);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -208,6 +211,7 @@ export default function Hero() {
                     >
                       <Link
                         to="/professional"
+                        {...preloadHandlers('/professional')}
                         className="group relative inline-flex items-center gap-3 px-6 py-3.5 font-display text-[0.68rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
                         style={{
                           background: 'rgba(253,248,242,0.1)',
@@ -222,6 +226,7 @@ export default function Hero() {
 
                       <Link
                         to="/rotaract"
+                        {...preloadHandlers('/rotaract')}
                         className="group relative inline-flex items-center gap-3 px-6 py-3.5 font-display text-[0.68rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
                         style={{
                           background: 'rgba(253,248,242,0.1)',
@@ -404,6 +409,7 @@ export default function Hero() {
                 >
                   <Link
                     to="/professional"
+                    {...preloadHandlers('/professional')}
                     className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
                     style={{ background: 'rgba(253,248,242,0.13)' }}
                   >
@@ -412,6 +418,7 @@ export default function Hero() {
                   </Link>
                   <Link
                     to="/rotaract"
+                    {...preloadHandlers('/rotaract')}
                     className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
                     style={{ background: 'rgba(253,248,242,0.13)' }}
                   >
@@ -456,6 +463,7 @@ export default function Hero() {
                     >
                       <Link
                         to="/"
+                        {...preloadHandlers('/')}
                         onClick={() => setMobileQuickMenuOpen(false)}
                         className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
                         style={{ background: 'rgba(253,248,242,0.12)' }}
@@ -465,6 +473,7 @@ export default function Hero() {
                       </Link>
                       <Link
                         to="/professional"
+                        {...preloadHandlers('/professional')}
                         onClick={() => setMobileQuickMenuOpen(false)}
                         className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
                         style={{ background: 'rgba(253,248,242,0.12)' }}
@@ -474,6 +483,7 @@ export default function Hero() {
                       </Link>
                       <Link
                         to="/rotaract"
+                        {...preloadHandlers('/rotaract')}
                         onClick={() => setMobileQuickMenuOpen(false)}
                         className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
                         style={{ background: 'rgba(253,248,242,0.12)' }}

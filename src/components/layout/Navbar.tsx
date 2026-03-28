@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/cn';
+import { getRoutePreloadHandlers } from '../../lib/routePreload';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -39,6 +40,8 @@ export default function Navbar() {
     return location.pathname === href;
   };
 
+  const preloadHandlers = (href: string) => getRoutePreloadHandlers(href);
+
   return (
     <>
       <nav
@@ -52,6 +55,7 @@ export default function Navbar() {
         <div className="flex w-full max-w-6xl mx-auto justify-between md:justify-center items-center h-full gap-8">
           <Link
             to="/"
+            {...preloadHandlers('/')}
             className={cn(
               'hidden md:block font-display font-semibold text-[0.85rem] uppercase tracking-[0.14em] transition-all duration-500',
               'relative group',
@@ -82,6 +86,7 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 to={link.href}
+                {...preloadHandlers(link.href)}
                 className={cn(
                   'font-display font-medium text-[0.8rem] uppercase tracking-[0.12em] transition-all duration-300',
                   'relative group',
@@ -109,6 +114,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center justify-between w-full">
             <Link
               to="/"
+              {...preloadHandlers('/')}
               className={cn(
                 'font-display font-semibold text-[1rem] uppercase tracking-[0.12em] transition-all duration-500',
                 isHomePage
@@ -199,6 +205,7 @@ export default function Navbar() {
                   >
                     <Link
                       to={link.href}
+                      {...preloadHandlers(link.href)}
                       onClick={() => setMobileMenuOpen(false)}
                       className={cn(
                         'font-display text-[1.5rem] uppercase transition-colors',

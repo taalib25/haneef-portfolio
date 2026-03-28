@@ -1,10 +1,16 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+import {
+  loadHome,
+  loadProfessional,
+  loadRotaract,
+  preloadAllRoutesOnIdle,
+} from './lib/routePreload';
 
-const Home = lazy(() => import('./pages/Home'));
-const Professional = lazy(() => import('./pages/Professional'));
-const Rotaract = lazy(() => import('./pages/Rotaract'));
+const Home = lazy(loadHome);
+const Professional = lazy(loadProfessional);
+const Rotaract = lazy(loadRotaract);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -22,17 +28,10 @@ function PageLoader() {
   );
 }
 
-function PrefetchLinks() {
-  const { pathname } = useLocation();
+function RuntimePreload() {
   useEffect(() => {
-    const routes = ['/', '/professional', '/rotaract'];
-    routes.filter(r => r !== pathname).forEach(route => {
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = route;
-      document.head.appendChild(link);
-    });
-  }, [pathname]);
+    preloadAllRoutesOnIdle();
+  }, []);
   return null;
 }
 
@@ -40,7 +39,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <PrefetchLinks />
+      <RuntimePreload />
       <div className="min-h-[100dvh] bg-[var(--bg)] text-[var(--t1)] font-body selection:bg-[var(--crimson)] selection:text-[var(--t1)]">
         <Navbar />
         <Suspense fallback={<PageLoader />}>
