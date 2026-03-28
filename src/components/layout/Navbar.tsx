@@ -28,6 +28,28 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.documentElement.style.overflowY = 'hidden';
+      document.body.style.overflowY = 'hidden';
+      return;
+    }
+
+    document.documentElement.style.overflowY = '';
+    document.body.style.overflowY = '';
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    document.documentElement.style.overflowY = '';
+    document.body.style.overflowY = '';
+
+    return () => {
+      document.documentElement.style.overflowY = '';
+      document.body.style.overflowY = '';
+    };
+  }, [location.pathname]);
+
   // Hide navbar on Home page - AFTER all hooks
   if (isHomePage) {
     return null;

@@ -35,10 +35,22 @@ function RuntimePreload() {
   return null;
 }
 
+function GlobalScrollGuard() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.style.overflowY = '';
+    document.body.style.overflowY = '';
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <GlobalScrollGuard />
       <RuntimePreload />
       <div className="min-h-[100dvh] bg-[var(--bg)] text-[var(--t1)] font-body selection:bg-[var(--crimson)] selection:text-[var(--t1)]">
         <Navbar />
