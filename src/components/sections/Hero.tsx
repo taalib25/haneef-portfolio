@@ -6,6 +6,10 @@ import potrait from '../../assets/potrait.webp';
 import { getRoutePreloadHandlers } from '../../lib/routePreload';
 
 const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
+const MOBILE_SWITCHER_BOTTOM_OFFSET = 16;
+const MOBILE_SWITCHER_APPROX_HEIGHT = 40;
+const MOBILE_TEXT_TO_SWITCHER_GAP = 6;
+const MOBILE_BOTTOM_RESERVED = MOBILE_SWITCHER_BOTTOM_OFFSET + MOBILE_SWITCHER_APPROX_HEIGHT + MOBILE_TEXT_TO_SWITCHER_GAP;
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
@@ -50,7 +54,7 @@ export default function Hero() {
       id="hero"
       className="relative w-full overflow-x-hidden"
       style={{
-        height: isMobile ? '100dvh' : '100dvh',
+        height: isMobile ? '100svh' : '100dvh',
         minHeight: isMobile ? '100dvh' : '600px',
         scrollMarginTop: '80px',
         background: `linear-gradient(
@@ -244,7 +248,12 @@ export default function Hero() {
               </>
             ) : (
               /* Mobile Layout */
-              <div className="relative h-full w-full">
+              <div
+                className="relative h-full w-full"
+                style={{
+                  paddingTop: 'max(env(safe-area-inset-top, 0px), 8px)',
+                }}
+              >
                 {/* VOTE watermark */}
                 <div
                   className="absolute inset-0 flex items-center justify-center overflow-hidden"
@@ -286,7 +295,7 @@ export default function Hero() {
                 {/* Portrait */}
                 <div
                   className="absolute inset-0 flex items-start justify-center"
-                  style={{ zIndex: 1, transform: 'translateY(-2%)' }}
+                  style={{ zIndex: 1, transform: 'translateY(1%)' }}
                 >
                   <motion.img
                     src={potrait}
@@ -320,7 +329,7 @@ export default function Hero() {
                 {/* Text + Buttons */}
                 <div
                   className="absolute left-0 right-0 px-5 md:px-8 flex flex-col items-center justify-end"
-                  style={{ zIndex: 10, bottom: 'calc(env(safe-area-inset-bottom, 0px) + 86px)' }}
+                  style={{ zIndex: 10, bottom: `calc(env(safe-area-inset-bottom, 0px) + ${MOBILE_BOTTOM_RESERVED}px)` }}
                 >
                   {/* Name */}
                   <motion.div
@@ -397,7 +406,7 @@ export default function Hero() {
                   className="fixed left-1/2 -translate-x-1/2 w-[248px] max-w-[calc(100%-1.5rem)] rounded-xl p-1.5 flex items-center gap-1.5"
                   style={{
                     zIndex: 30,
-                    bottom: 'calc(env(safe-area-inset-bottom, 0px) + 16px)',
+                    bottom: `calc(env(safe-area-inset-bottom, 0px) + ${MOBILE_SWITCHER_BOTTOM_OFFSET}px)`,
                     background: 'rgba(8, 45, 69, 0.62)',
                     backdropFilter: 'blur(12px)',
                     border: '1px solid rgba(253,248,242,0.22)',

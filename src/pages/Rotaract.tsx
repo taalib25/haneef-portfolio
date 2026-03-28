@@ -75,119 +75,137 @@ const roleImageByTitle = new Map([
 
 export default function Rotaract() {
   const prefersReducedMotion = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(() => (
+  const [isMobileViewport, setIsMobileViewport] = useState(() => (
     typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+  ));
+  const [isCoarsePointer, setIsCoarsePointer] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
   ));
   const timelineRef = useRef<HTMLDivElement>(null);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
   const awardItemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const featuredImageRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const useDesktopGsapReveal = !prefersReducedMotion && !isMobileViewport && !isCoarsePointer;
+  const useMobileInViewReveal = !prefersReducedMotion && !useDesktopGsapReveal;
 
   useEffect(() => {
-    const mql = window.matchMedia('(max-width: 767px)');
-    const onChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
-    setIsMobile(mql.matches);
-    mql.addEventListener('change', onChange);
-    return () => mql.removeEventListener('change', onChange);
+    const viewportMql = window.matchMedia('(max-width: 767px)');
+    const pointerMql = window.matchMedia('(pointer: coarse)');
+    const onViewportChange = (event: MediaQueryListEvent) => setIsMobileViewport(event.matches);
+    const onPointerChange = (event: MediaQueryListEvent) => setIsCoarsePointer(event.matches);
+
+    setIsMobileViewport(viewportMql.matches);
+    setIsCoarsePointer(pointerMql.matches);
+
+    viewportMql.addEventListener('change', onViewportChange);
+    pointerMql.addEventListener('change', onPointerChange);
+    return () => {
+      viewportMql.removeEventListener('change', onViewportChange);
+      pointerMql.removeEventListener('change', onPointerChange);
+    };
   }, []);
 
   useEffect(() => {
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+    if (!useDesktopGsapReveal) {
+      const allElements = [
+        ...entriesRef.current,
+        ...awardItemsRef.current,
+        ...featuredImageRefs.current,
+      ];
+
+      allElements.forEach((el) => {
+        if (!el) return;
+        gsap.set(el, { opacity: 1, y: 0, scale: 1, clearProps: 'transform' });
+      });
+      return;
+    }
+
     const ctx = gsap.context(() => {
       entriesRef.current.forEach((el, i) => {
         if (!el) return;
-        if (!prefersReducedMotion) {
-          const leadershipDuration = isMobile ? 0.2 : 0.24;
-          const leadershipDelay = i * (isMobile ? 0.016 : 0.03);
-          const leadershipStart = isMobile ? 'top 97%' : 'top 92%';
-
-          gsap.fromTo(
-            el,
-            { opacity: 0, y: 12 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: leadershipDuration,
-              ease: 'power3.out',
-              delay: leadershipDelay,
-              scrollTrigger: {
-                trigger: el,
-                start: leadershipStart,
-                toggleActions: 'play none none none',
-                once: true,
-              },
-            }
-          );
-        } else {
-          gsap.set(el, { opacity: 1, y: 0 });
-        }
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 12 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.24,
+            ease: 'power3.out',
+            delay: i * 0.03,
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          }
+        );
       });
 
       awardItemsRef.current.forEach((el, i) => {
         if (!el) return;
-        if (!prefersReducedMotion) {
-          gsap.fromTo(
-            el,
-            { opacity: 0, y: 10 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.2,
-              ease: 'power3.out',
-              delay: i * 0.025,
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 92%',
-                toggleActions: 'play none none none',
-                once: true,
-              },
-            }
-          );
-        } else {
-          gsap.set(el, { opacity: 1, y: 0 });
-        }
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 10 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.2,
+            ease: 'power3.out',
+            delay: i * 0.025,
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          }
+        );
       });
 
       featuredImageRefs.current.forEach((el, i) => {
         if (!el) return;
-        if (!prefersReducedMotion) {
-          gsap.fromTo(
-            el,
-            { opacity: 0, y: 20, scale: 0.98 },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.38,
-              ease: 'power3.out',
-              delay: i * 0.06,
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-                once: true,
-              },
-            }
-          );
-        } else {
-          gsap.set(el, { opacity: 1, y: 0, scale: 1 });
-        }
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 20, scale: 0.98 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.38,
+            ease: 'power3.out',
+            delay: i * 0.06,
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          }
+        );
       });
     });
+    ScrollTrigger.refresh();
 
-    return () => ctx.revert();
-  }, [prefersReducedMotion, isMobile]);
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, [useDesktopGsapReveal]);
 
   const fadeInUp = {
-    initial: !prefersReducedMotion ? { opacity: 0, y: 16 } : { opacity: 1 },
-    whileInView: !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 },
-    transition: !prefersReducedMotion ? { duration: 0.35, ease: [0.33, 1, 0.68, 1] as const } : undefined,
+    initial: useDesktopGsapReveal ? { opacity: 0, y: 16 } : { opacity: 1 },
+    whileInView: useDesktopGsapReveal ? { opacity: 1, y: 0 } : { opacity: 1 },
+    transition: useDesktopGsapReveal ? { duration: 0.35, ease: [0.33, 1, 0.68, 1] as const } : undefined,
     viewport: { once: true, amount: 0.2 },
   };
 
   const titleAnimation = {
-    initial: !prefersReducedMotion ? { opacity: 0, y: 10 } : { opacity: 1 },
-    whileInView: !prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 },
-    transition: !prefersReducedMotion ? { duration: 0.3, ease: [0.33, 1, 0.68, 1] as const } : undefined,
+    initial: useDesktopGsapReveal ? { opacity: 0, y: 10 } : { opacity: 1 },
+    whileInView: useDesktopGsapReveal ? { opacity: 1, y: 0 } : { opacity: 1 },
+    transition: useDesktopGsapReveal ? { duration: 0.3, ease: [0.33, 1, 0.68, 1] as const } : undefined,
     viewport: { once: true, amount: 0.3 },
   };
 
@@ -230,6 +248,10 @@ export default function Rotaract() {
                       key={`${item.year}-${index}`}
                       ref={(el) => { entriesRef.current[index] = el; }}
                       className="relative pl-4 md:pl-6 py-4 border-l-2 md:border-l-0"
+                      initial={useMobileInViewReveal ? { opacity: 0.96, y: 8 } : undefined}
+                      whileInView={useMobileInViewReveal ? { opacity: 1, y: 0 } : undefined}
+                      transition={useMobileInViewReveal ? { duration: 0.24, delay: index * 0.015, ease: [0.33, 1, 0.68, 1] } : undefined}
+                      viewport={useMobileInViewReveal ? { once: true, amount: 0.08 } : undefined}
                       style={{
                         borderLeftColor: colors.main,
                       }}
@@ -346,9 +368,9 @@ export default function Rotaract() {
                 <motion.div
                   key={item.year}
                   className="relative pl-10 md:pl-14 py-5 border-l-2 border-[var(--crimson)] md:border-l-0"
-                  initial={!prefersReducedMotion ? { opacity: 0, y: 12 } : { opacity: 1 }}
-                  whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
-                  transition={{ duration: 0.25, delay: index * 0.08, ease: [0.33, 1, 0.68, 1] }}
+                  initial={useDesktopGsapReveal ? { opacity: 0, y: 12 } : { opacity: 1 }}
+                  whileInView={useDesktopGsapReveal ? { opacity: 1, y: 0 } : undefined}
+                  transition={useDesktopGsapReveal ? { duration: 0.25, delay: index * 0.08, ease: [0.33, 1, 0.68, 1] } : undefined}
                   viewport={{ once: true, amount: 0.2 }}
                 >
                   <div className="absolute left-[-5px] md:left-[-9px] top-6 w-2.5 h-2.5 rounded-full bg-[var(--crimson)]" />
@@ -385,6 +407,7 @@ export default function Rotaract() {
                   <div
                     ref={(el) => { awardItemsRef.current[index] = el; }}
                     className="award-item py-4 md:py-5 border-b border-[var(--campaign-border-light)] first:border-t first:border-[var(--campaign-border-light)] transition-colors duration-200 group hover:border-[var(--crimson)]"
+                    style={useMobileInViewReveal ? { opacity: 1, transform: 'none' } : undefined}
                   >
                     <div className="hidden md:grid md:grid-cols-[100px_1fr_1.5fr] md:gap-8 md:items-baseline">
                       <span className="font-display text-[1rem] font-semibold text-[var(--t3)] tracking-[0.01em]">
@@ -436,6 +459,7 @@ export default function Rotaract() {
                           featuredImageRefs.current[featured.imageIndex] = el;
                         }}
                         className="py-6 md:py-14"
+                        style={useMobileInViewReveal ? { opacity: 1, transform: 'none' } : undefined}
                       >
                         <div className="overflow-hidden md:rounded-lg" style={{ borderTop: '2px solid var(--ta)' }}>
                           <img

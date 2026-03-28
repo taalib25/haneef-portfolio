@@ -459,7 +459,7 @@ html, body {
 @media (max-width: 767px) {
   #hero {
     padding: 0 !important;
-    height: 100dvh !important;
+    height: 100svh !important;
     min-height: 100dvh !important;
   }
 
@@ -539,7 +539,7 @@ html, body {
   }
 
   /* Spacing - Scale everything down */
-  section {
+  section:not(#hero) {
     padding-top: 3.5rem !important;
     padding-bottom: 3.5rem !important;
     padding-left: 1.25rem !important;
@@ -856,29 +856,8 @@ html, body {
     max-width: 100% !important;
   }
 
-  /* Portrait image on mobile */
-  #hero img[alt="Haneef Mohamed"] {
-    width: 100% !important;
-    height: 55vw !important;
-    max-height: 300px !important;
-    object-fit: cover !important;
-    object-position: top center !important;
-  }
-
-  /* Hero name spacing */
-  #hero h1 {
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
-  }
-
-  /* Hero CTAs - full width stacked */
-  #hero a[href^="#"] {
-    width: 100% !important;
-    min-height: 48px !important;
-  }
-
   /* Section scroll margins */
-  section {
+  section:not(#hero) {
     scroll-margin-top: 80px !important;
   }
 }
@@ -1005,8 +984,8 @@ html, body {
     padding: 1rem 1.25rem 0 !important;
   }
 
-  /* Name */
-  #hero h1 {
+  /* Name (legacy selector intentionally disabled) */
+  .legacy-hero-disabled #hero h1 {
     padding: 0.5rem 1.25rem 0 !important;
   }
 
