@@ -167,7 +167,7 @@ export default function Rotaract() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[var(--bg)]">
+    <main className="relative min-h-[100dvh] bg-[var(--bg)] pb-[max(env(safe-area-inset-bottom),0px)]">
       <div className="h-[2px] w-full bg-[var(--crimson)]" />
 
       <div className="py-14 md:py-20 px-4 md:px-6 lg:px-8">
@@ -275,12 +275,12 @@ export default function Rotaract() {
                         </div>
 
                         {roleImage && (
-                          <div className={roleImage.landscapeOnly ? 'hidden md:block' : 'mt-4 md:mt-0'}>
+                          <div className={roleImage.landscapeOnly ? 'hidden md:block' : 'mt-5 md:mt-0'}>
                             <div className="overflow-hidden rounded-md border border-[var(--border)]">
                               <img
                                 src={roleImage.src}
                                 alt={roleImage.alt}
-                                className={roleImage.landscapeOnly ? 'w-full aspect-[16/9] object-cover' : 'w-full h-auto object-contain'}
+                                className={roleImage.landscapeOnly ? 'w-full aspect-[16/9] object-cover' : 'w-full h-auto max-h-[220px] md:max-h-none object-contain'}
                                 loading="lazy"
                                 decoding="async"
                               />
@@ -411,15 +411,15 @@ export default function Rotaract() {
                         ref={(el) => {
                           featuredImageRefs.current[featured.imageIndex] = el;
                         }}
-                        className="py-10 md:py-14"
+                        className="py-6 md:py-14"
                       >
                         <div className="overflow-hidden md:rounded-lg" style={{ borderTop: '2px solid var(--ta)' }}>
                           <img
                             src={featured.src}
                             alt={featured.alt}
                             className={featured.cropBottom
-                              ? 'w-full h-[280px] md:h-[500px] object-cover object-top'
-                              : 'w-full h-auto max-h-[320px] md:max-h-[520px] object-contain'}
+                              ? 'w-full h-[230px] md:h-[500px] object-cover object-top'
+                              : 'w-full h-auto max-h-[250px] md:max-h-[520px] object-contain'}
                             loading={featured.imageIndex === 0 ? 'eager' : 'lazy'}
                             fetchPriority={featured.imageIndex === 0 ? 'high' : 'auto'}
                             decoding="async"

@@ -457,6 +457,12 @@ html, body {
 }
 
 @media (max-width: 767px) {
+  #hero {
+    padding: 0 !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+  }
+
   /* Typography Scale - Mobile */
 
   /* Global body text size on mobile - 13px with comfortable line height */

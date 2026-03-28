@@ -16,7 +16,7 @@ function ScrollToTop() {
 
 function PageLoader() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[var(--bg)]">
+    <div className="min-h-[100dvh] flex items-center justify-center bg-[var(--bg)]">
       <div className="w-6 h-6 border-2 border-[var(--crimson)] border-t-transparent rounded-full animate-spin" />
     </div>
   );
@@ -41,7 +41,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <PrefetchLinks />
-      <div className="min-h-screen bg-[var(--bg)] text-[var(--t1)] font-body selection:bg-[var(--crimson)] selection:text-[var(--t1)]">
+      <div className="min-h-[100dvh] bg-[var(--bg)] text-[var(--t1)] font-body selection:bg-[var(--crimson)] selection:text-[var(--t1)]">
         <Navbar />
         <Suspense fallback={<PageLoader />}>
           <Routes>

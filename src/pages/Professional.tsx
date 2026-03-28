@@ -109,7 +109,7 @@ export default function Professional() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[var(--bg)]">
+    <main className="relative min-h-[100dvh] bg-[var(--bg)] pb-[max(env(safe-area-inset-bottom),0px)]">
       <div className="py-14 md:py-20 px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div className="mb-16 md:mb-20" {...fadeInUp}>

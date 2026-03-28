@@ -47,8 +47,8 @@ export default function Hero() {
       id="hero"
       className="relative w-full overflow-x-hidden"
       style={{
-        height: isMobile ? '132svh' : '100dvh',
-        minHeight: isMobile ? '132svh' : '600px',
+        height: isMobile ? '100dvh' : '100dvh',
+        minHeight: isMobile ? '100dvh' : '600px',
         scrollMarginTop: '80px',
         background: `linear-gradient(
           to bottom,
@@ -281,7 +281,7 @@ export default function Hero() {
                 {/* Portrait */}
                 <div
                   className="absolute inset-0 flex items-start justify-center"
-                  style={{ zIndex: 1, transform: 'translateY(-4%)' }}
+                  style={{ zIndex: 1, transform: 'translateY(-2%)' }}
                 >
                   <motion.img
                     src={potrait}
@@ -294,8 +294,8 @@ export default function Hero() {
                     style={{
                       objectFit: 'contain',
                       objectPosition: 'center top',
-                      width: '94%',
-                      height: '79%',
+                      width: '92%',
+                      height: '66%',
                       maskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
                       WebkitMaskImage: 'linear-gradient(to bottom, black 50%, transparent 100%)',
                     }}
@@ -315,7 +315,7 @@ export default function Hero() {
                 {/* Text + Buttons */}
                 <div
                   className="absolute left-0 right-0 px-5 md:px-8 flex flex-col items-center justify-end"
-                  style={{ zIndex: 10, bottom: 'max(38svh, 292px)' }}
+                  style={{ zIndex: 10, bottom: 'calc(env(safe-area-inset-bottom, 0px) + 86px)' }}
                 >
                   {/* Name */}
                   <motion.div
