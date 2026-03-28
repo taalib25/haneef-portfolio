@@ -7,6 +7,7 @@ export default function Contact() {
   const prefersReducedMotion = useReducedMotion();
 
   const contactItems = [
+    { icon: Mail, value: 'haneef@prwiresl.com', href: 'mailto:haneef@prwiresl.com' },
     { icon: Mail, value: 'haneef.rotaract3220@gmail.com', href: 'mailto:haneef.rotaract3220@gmail.com' },
     { icon: Phone, value: '+94 77 044 7021', href: 'tel:+94770447021' },
     { icon: Globe, value: 'haneefrotaract3220.com', href: 'https://www.haneefrotaract3220.com' },
@@ -88,7 +89,7 @@ export default function Contact() {
               © 2025 Rtr. IPP Haneef Mohamed
             </span>
             <span className="font-body text-[0.65rem] text-[rgba(253,248,242,0.4)]">
-              RTR. Colombo Mid Town · District 3220
+              RTR. Cinnamon Gardens · District 3220
             </span>
           </div>
         </motion.div>

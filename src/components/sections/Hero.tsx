@@ -46,7 +46,6 @@ export default function Hero() {
       id="hero"
       className="relative w-full overflow-x-hidden"
       style={{
-        height: '100vh',
         height: '100dvh',
         minHeight: '600px',
         scrollMarginTop: '80px',
@@ -176,7 +175,18 @@ export default function Hero() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.5 }}
                     >
-                      PR Strategist · Rotaract President · DRR Candidate 2025
+                      PR Strategist · Rotaract President
+                    </motion.p>
+
+                    {/* Description */}
+                    <motion.p
+                      className="font-sans font-light text-[clamp(0.85rem,1.1vw,0.95rem)] leading-relaxed mt-6 max-w-2xl"
+                      style={{ color: 'rgba(253,248,242,0.75)' }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.6 }}
+                    >
+                      Public Relations professional driven by the power of perspective. I build narratives, strengthen reputations, and create meaningful connections that inspire action. My Rotaract journey shaped my ability to lead with clarity and build networks that create opportunities. At the core of everything I do is a simple intention: create work that matters and lead with Purpose in Focus.
                     </motion.p>
 
                     {/* Navigation Buttons - Artistic Integration */}
@@ -332,7 +342,22 @@ export default function Hero() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.5 }}
                   >
-                    PR Strategist · Rotaract President · DRR Candidate 2025
+                    PR Strategist · Rotaract President
+                  </motion.p>
+
+                  {/* Description - Mobile */}
+                  <motion.p
+                    className="font-sans font-light text-center px-8"
+                    style={{
+                      fontSize: 'clamp(0.8rem, 2.8vw, 0.9rem)',
+                      color: 'rgba(253,248,242,0.75)',
+                      lineHeight: 1.6,
+                    }}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.6 }}
+                  >
+                    Public Relations professional driven by perspective. I build narratives, strengthen reputations, and create connections that inspire action. My Rotaract journey shaped my leadership and network-building. At my core: create work that matters and lead with Purpose in Focus.
                   </motion.p>
 
                   {/* Navigation Buttons - Mobile */}
