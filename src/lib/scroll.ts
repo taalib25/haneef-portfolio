@@ -9,14 +9,15 @@ const isTouchDevice = typeof window !== 'undefined' && (
   navigator.maxTouchPoints > 0 ||
   window.matchMedia('(pointer: coarse)').matches
 )
+const hasFinePointer = typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches
 const prefersReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-const shouldUseLenis = !isTouchDevice && !prefersReduced
+const shouldUseLenis = hasFinePointer && !isTouchDevice && !prefersReduced
 
 export const lenis = shouldUseLenis
   ? new Lenis({
     lerp: 0.14,
     smoothWheel: true,
-    syncTouch: false,
+    syncTouch: true,
     touchMultiplier: 1,
     duration: 0.72,
     easing: (t) => 1 - Math.pow(1 - t, 3),

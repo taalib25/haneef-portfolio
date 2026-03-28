@@ -106,8 +106,6 @@ export default function Rotaract() {
   }, []);
 
   useEffect(() => {
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-
     if (!useDesktopGsapReveal) {
       const allElements = [
         ...entriesRef.current,
@@ -191,7 +189,6 @@ export default function Rotaract() {
 
     return () => {
       ctx.revert();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [useDesktopGsapReveal]);
 
