@@ -1,13 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 import { timelineData } from '../data/timeline';
 import { awardsData } from '../data/awards';
-import Campaign from '../components/sections/Campaign';
 import Contact from '../components/sections/Contact';
-import { Mail, Phone } from 'lucide-react';
+import haneef1 from '../assets/haneef_1.webp';
+import haneef2 from '../assets/haneef_2.webp';
+import haneef3 from '../assets/haneef_3.webp';
+import haneef4 from '../assets/haneef_4.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,11 +22,19 @@ const rotaractTimeline = timelineData.filter(
   (item) => item.type === 'LEADERSHIP' || item.type === 'DISTRICT'
 );
 
+const featuredImages = [
+  { src: haneef1, alt: 'RSAMDIO appointment ceremony', afterIndex: 0, caption: 'RSAMDIO Appointment' },
+  { src: haneef2, alt: 'Most Popular Rotaractor award', afterIndex: 2, caption: 'Most Popular Rotaractor' },
+  { src: haneef3, alt: 'Mrs India volunteer leadership', afterIndex: 5, caption: 'Mrs. India Volunteer Lead' },
+  { src: haneef4, alt: 'Award recognition moment', afterIndex: 8, caption: 'Recognition' },
+];
+
 export default function Rotaract() {
   const prefersReducedMotion = useReducedMotion();
   const timelineRef = useRef<HTMLDivElement>(null);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
   const awardItemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const featuredImageRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -75,6 +85,32 @@ export default function Rotaract() {
           );
         } else {
           gsap.set(el, { opacity: 1, y: 0 });
+        }
+      });
+
+      featuredImageRefs.current.forEach((el, i) => {
+        if (!el) return;
+        if (!prefersReducedMotion) {
+          gsap.fromTo(
+            el,
+            { opacity: 0, y: 20, scale: 0.98 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.5,
+              ease: 'power3.out',
+              delay: i * 0.1,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%',
+                toggleActions: 'play none none none',
+                once: true,
+              },
+            }
+          );
+        } else {
+          gsap.set(el, { opacity: 1, y: 0, scale: 1 });
         }
       });
     });
@@ -227,7 +263,7 @@ export default function Rotaract() {
                 { year: '2014–15', role: 'Public Relations Director' },
               ].map((item, index) => (
                 <motion.div
-                  key={index}
+                  key={item.year}
                   className="relative pl-10 md:pl-14 py-5 border-l-2 border-[var(--crimson)] md:border-l-0"
                   initial={!prefersReducedMotion ? { opacity: 0, y: 12 } : { opacity: 1 }}
                   whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : undefined}
@@ -261,54 +297,77 @@ export default function Rotaract() {
 
             <div className="space-y-0">
               {awardsData.map((award, index) => (
-                <div
-                  key={index}
-                  ref={(el) => { awardItemsRef.current[index] = el; }}
-                  className="award-item py-4 md:py-5 border-b border-[var(--campaign-border-light)] first:border-t first:border-[var(--campaign-border-light)] transition-colors duration-200 group hover:border-[var(--crimson)]"
-                >
-                  <div className="hidden md:grid md:grid-cols-[100px_1fr_1.5fr] md:gap-8 md:items-baseline">
-                    <span className="font-display text-[1rem] font-semibold text-[var(--t3)] tracking-[0.01em]">
-                      {award.year}
-                    </span>
-                    <h3 className="font-sans text-[1.1rem] font-bold text-[var(--t1)] tracking-[0.015em] leading-[1.1] group-hover:text-[var(--crimson)] transition-colors">
-                      {award.title}
-                      {award.level && (
-                        <span className="text-[var(--t3)]"> — {award.level}</span>
-                      )}
-                    </h3>
-                    <div>
-                      <p className="font-body text-[0.95rem] text-[var(--t2)] leading-[1.75]">
+                <Fragment key={`${award.year}-${award.title}-${index}`}>
+                  <div
+                    ref={(el) => { awardItemsRef.current[index] = el; }}
+                    className="award-item py-4 md:py-5 border-b border-[var(--campaign-border-light)] first:border-t first:border-[var(--campaign-border-light)] transition-colors duration-200 group hover:border-[var(--crimson)]"
+                  >
+                    <div className="hidden md:grid md:grid-cols-[100px_1fr_1.5fr] md:gap-8 md:items-baseline">
+                      <span className="font-display text-[1rem] font-semibold text-[var(--t3)] tracking-[0.01em]">
+                        {award.year}
+                      </span>
+                      <h3 className="font-sans text-[1.1rem] font-bold text-[var(--t1)] tracking-[0.015em] leading-[1.1] group-hover:text-[var(--crimson)] transition-colors">
+                        {award.title}
+                        {award.level && (
+                          <span className="text-[var(--t3)]"> — {award.level}</span>
+                        )}
+                      </h3>
+                      <div>
+                        <p className="font-body text-[0.95rem] text-[var(--t2)] leading-[1.75]">
+                          {award.event}
+                        </p>
+                        {award.context && (
+                          <p className="font-body text-[0.875rem] text-[var(--t3)] leading-[1.65] mt-1">
+                            {award.context}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="md:hidden">
+                      <span className="font-display text-[0.95rem] font-semibold text-[var(--t3)] tracking-[0.01em] block mb-1">
+                        {award.year}
+                      </span>
+                      <h3 className="font-sans text-[1rem] font-bold text-[var(--t1)] tracking-[0.015em] leading-[1.1] group-hover:text-[var(--crimson)] transition-colors mb-2">
+                        {award.title}
+                        {award.level && (
+                          <span className="text-[var(--t3)]"> — {award.level}</span>
+                        )}
+                      </h3>
+                      <div className="h-px w-full bg-[var(--border-light)] mb-2" />
+                      <p className="font-body text-[0.9rem] text-[var(--t2)] leading-[1.72]">
                         {award.event}
                       </p>
                       {award.context && (
-                        <p className="font-body text-[0.875rem] text-[var(--t3)] leading-[1.65] mt-1">
+                        <p className="font-body text-[0.85rem] text-[var(--t3)] leading-[1.65] mt-1">
                           {award.context}
                         </p>
                       )}
                     </div>
                   </div>
 
-                  <div className="md:hidden">
-                    <span className="font-display text-[0.95rem] font-semibold text-[var(--t3)] tracking-[0.01em] block mb-1">
-                      {award.year}
-                    </span>
-                    <h3 className="font-sans text-[1rem] font-bold text-[var(--t1)] tracking-[0.015em] leading-[1.1] group-hover:text-[var(--crimson)] transition-colors mb-2">
-                      {award.title}
-                      {award.level && (
-                        <span className="text-[var(--t3)]"> — {award.level}</span>
-                      )}
-                    </h3>
-                    <div className="h-px w-full bg-[var(--border-light)] mb-2" />
-                    <p className="font-body text-[0.9rem] text-[var(--t2)] leading-[1.72]">
-                      {award.event}
-                    </p>
-                    {award.context && (
-                      <p className="font-body text-[0.85rem] text-[var(--t3)] leading-[1.65] mt-1">
-                        {award.context}
+                  {featuredImages.some(img => img.afterIndex === index) && (
+                    <div
+                      ref={(el) => {
+                        const featuredIndex = featuredImages.findIndex(img => img.afterIndex === index);
+                        featuredImageRefs.current[featuredIndex] = el;
+                      }}
+                      className="py-10 md:py-14"
+                    >
+                      <div className="overflow-hidden md:rounded-lg" style={{ borderTop: '2px solid var(--ta)' }}>
+                        <img
+                          src={featuredImages.find(img => img.afterIndex === index)?.src}
+                          alt={featuredImages.find(img => img.afterIndex === index)?.alt || 'Award moment'}
+                          className="w-full h-[280px] md:h-[500px] object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                      <p className="font-body text-[0.75rem] text-[var(--t3)] mt-4 text-center uppercase tracking-[0.10em]">
+                        {featuredImages.find(img => img.afterIndex === index)?.caption}
                       </p>
-                    )}
-                  </div>
-                </div>
+                    </div>
+                  )}
+                </Fragment>
               ))}
             </div>
           </motion.section>
