@@ -1249,9 +1249,9 @@ html, body {
 
 /* PROFESSIONAL - uses secondary accent color */
 .timeline-professional {
-  --timeline-color: var(--navy);
-  --timeline-color-dim: rgba(4, 43, 68, 0.08);
-  --timeline-color-border: rgba(4, 43, 68, 0.20);
+  --timeline-color: var(--crimson);
+  --timeline-color-dim: rgba(193, 18, 31, 0.08);
+  --timeline-color-border: rgba(193, 18, 31, 0.20);
 }
 
 /* DISTRICT - uses navy-light color */
@@ -1269,9 +1269,9 @@ html, body {
 }
 
 [data-theme="crimson"] .timeline-professional {
-  --timeline-color: var(--navy);
-  --timeline-color-dim: rgba(120, 0, 0, 0.08);
-  --timeline-color-border: rgba(120, 0, 0, 0.20);
+  --timeline-color: var(--crimson);
+  --timeline-color-dim: rgba(193, 18, 31, 0.08);
+  --timeline-color-border: rgba(193, 18, 31, 0.20);
 }
 
 [data-theme="crimson"] .timeline-district {

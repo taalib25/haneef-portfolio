@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, Award, Menu, X, House } from 'lucide-react';
@@ -315,11 +315,11 @@ export default function Hero() {
                 {/* Text + Buttons */}
                 <div
                   className="absolute left-0 right-0 px-5 md:px-8 flex flex-col items-center justify-end"
-                  style={{ zIndex: 10, bottom: 'max(34svh, 248px)' }}
+                  style={{ zIndex: 10, bottom: 'max(38svh, 292px)' }}
                 >
                   {/* Name */}
                   <motion.div
-                    className="w-full max-w-[92vw] mx-auto flex flex-col items-center"
+                    className="w-full max-w-[92vw]"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
@@ -367,16 +367,16 @@ export default function Hero() {
 
                   {/* Description - Mobile */}
                   <motion.p
-                    className="font-sans italic text-center max-w-[34ch] mx-auto"
+                    className="font-sans italic text-center max-w-[36ch] mx-auto"
                     style={{
                       fontSize: 'clamp(0.86rem, 3vw, 0.96rem)',
                       color: 'rgba(253,248,242,0.84)',
                       lineHeight: 1.72,
                       letterSpacing: '0.01em',
                       fontWeight: 360,
-                      paddingLeft: '0.75rem',
-                      paddingRight: '0.75rem',
-                      marginTop: '0.35rem',
+                      paddingLeft: '1rem',
+                      paddingRight: '1rem',
+                      marginTop: '0.5rem',
                     }}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}

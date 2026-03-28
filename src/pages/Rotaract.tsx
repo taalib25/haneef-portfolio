@@ -23,12 +23,45 @@ const rotaractTimeline = timelineData.filter(
 );
 
 const featuredImages = [
-  { src: haneef1, alt: 'RSAMDIO appointment ceremony', afterIndex: 0, caption: 'RSAMDIO Appointment' },
-  { src: haneef2, alt: 'Most Popular Rotaractor award', afterIndex: 2, caption: 'Most Popular Rotaractor' },
-  { src: haneef3, alt: 'Mrs India volunteer leadership', afterIndex: 5, caption: 'Mrs. India Volunteer Lead' },
-  { src: haneef4, alt: 'Award recognition moment', afterIndex: 8, caption: 'Recognition' },
+  {
+    src: haneef1,
+    alt: 'Most Popular Rotaractor award',
+    awardTitle: 'Most Popular Rotaractor',
+    caption: 'Most Popular Rotaractor',
+    cropBottom: true,
+  },
+  {
+    src: haneef2,
+    alt: 'Mrs India volunteer leadership',
+    awardTitle: 'Volunteer of the Year',
+    caption: 'Volunteer of the Year',
+    cropBottom: false,
+  },
 ];
-const featuredImageByAwardIndex = new Map(featuredImages.map((image, index) => [image.afterIndex, { ...image, imageIndex: index }]));
+const featuredImageByAwardTitle = new Map(
+  featuredImages.map((image, index) => [image.awardTitle, { ...image, imageIndex: index }])
+);
+
+const roleImageByTitle = new Map([
+  [
+    'Committee Member CSR',
+    {
+      src: haneef3,
+      alt: 'RSAMDIO appointment ceremony',
+      caption: 'RSAMDIO Appointment',
+      landscapeOnly: false,
+    },
+  ],
+  [
+    'Director of Strategic Alliance',
+    {
+      src: haneef4,
+      alt: 'Mrs India volunteer leadership role',
+      caption: 'Mrs. India Volunteer Lead',
+      landscapeOnly: true,
+    },
+  ],
+]);
 
 export default function Rotaract() {
   const prefersReducedMotion = useReducedMotion();
@@ -165,6 +198,7 @@ export default function Rotaract() {
               <div className="space-y-6 md:space-y-8 md:pl-8">
                 {rotaractTimeline.map((item, index) => {
                   const colors = TYPE_COLORS[item.type] || TYPE_COLORS.LEADERSHIP;
+                  const roleImage = roleImageByTitle.get(item.title);
 
                   return (
                     <motion.div
@@ -211,31 +245,52 @@ export default function Rotaract() {
                         {item.organisation}
                       </p>
 
-                      <div className="font-body text-[0.95rem] text-[var(--t2)] leading-[1.75] mb-3">
-                        {item.body.split('\n\n').map((paragraph, i) => (
-                          <p key={i} className="mb-2 last:mb-0">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
+                      <div className={roleImage ? 'md:grid md:grid-cols-[1fr_320px] md:gap-6 md:items-start' : undefined}>
+                        <div>
+                          <div className="font-body text-[0.95rem] text-[var(--t2)] leading-[1.75] mb-3">
+                            {item.body.split('\n\n').map((paragraph, i) => (
+                              <p key={i} className="mb-2 last:mb-0">
+                                {paragraph}
+                              </p>
+                            ))}
+                          </div>
 
-                      {item.statPills && item.statPills.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
-                          {item.statPills.map((pill, i) => (
-                            <span
-                              key={i}
-                              className="font-body text-[0.75rem] font-medium px-2.5 py-1 rounded border"
-                              style={{
-                                color: colors.main,
-                                borderColor: colors.border,
-                                background: colors.dim,
-                              }}
-                            >
-                              {pill}
-                            </span>
-                          ))}
+                          {item.statPills && item.statPills.length > 0 && (
+                            <div className="flex flex-wrap gap-2">
+                              {item.statPills.map((pill, i) => (
+                                <span
+                                  key={i}
+                                  className="font-body text-[0.75rem] font-medium px-2.5 py-1 rounded border"
+                                  style={{
+                                    color: colors.main,
+                                    borderColor: colors.border,
+                                    background: colors.dim,
+                                  }}
+                                >
+                                  {pill}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                      )}
+
+                        {roleImage && (
+                          <div className={roleImage.landscapeOnly ? 'hidden md:block' : 'mt-4 md:mt-0'}>
+                            <div className="overflow-hidden rounded-md border border-[var(--border)]">
+                              <img
+                                src={roleImage.src}
+                                alt={roleImage.alt}
+                                className={roleImage.landscapeOnly ? 'w-full aspect-[16/9] object-cover' : 'w-full h-auto object-contain'}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
+                            <p className="font-body text-[0.7rem] text-[var(--t3)] mt-2 uppercase tracking-[0.08em]">
+                              {roleImage.caption}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </motion.div>
                   );
                 })}
@@ -348,7 +403,7 @@ export default function Rotaract() {
                   </div>
 
                   {(() => {
-                    const featured = featuredImageByAwardIndex.get(index);
+                    const featured = featuredImageByAwardTitle.get(award.title);
                     if (!featured) return null;
 
                     return (
@@ -362,7 +417,9 @@ export default function Rotaract() {
                           <img
                             src={featured.src}
                             alt={featured.alt}
-                            className="w-full h-[280px] md:h-[500px] object-cover"
+                            className={featured.cropBottom
+                              ? 'w-full h-[280px] md:h-[500px] object-cover object-top'
+                              : 'w-full h-auto max-h-[320px] md:max-h-[520px] object-contain'}
                             loading={featured.imageIndex === 0 ? 'eager' : 'lazy'}
                             fetchPriority={featured.imageIndex === 0 ? 'high' : 'auto'}
                             decoding="async"
