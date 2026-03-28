@@ -145,14 +145,18 @@
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 0;
+  height: 0;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--crimson-dark);
-  border-radius: 3px;
+  background: transparent;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: transparent;
+}
+
+* {
+  scrollbar-width: none;
 }
 
 body {

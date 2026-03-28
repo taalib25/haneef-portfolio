@@ -110,8 +110,6 @@ export default function Professional() {
 
   return (
     <main className="relative min-h-screen bg-[var(--bg)]">
-      <div className="h-[2px] w-full bg-[var(--crimson)]" />
-
       <div className="py-14 md:py-20 px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div className="mb-16 md:mb-20" {...fadeInUp}>
@@ -171,45 +169,111 @@ export default function Professional() {
               </h2>
             </div>
 
-            <div className="space-y-0">
+            <div className="timeline-body flex gap-0 md:gap-12 lg:gap-16 text-left">
+              <div className="timeline-path-column hidden md:flex md:w-28 lg:w-32 shrink-0 justify-center relative">
+                <div
+                  className="absolute top-0 left-1/2 -translate-x-1/2"
+                  style={{
+                    width: '2px',
+                    height: '100%',
+                    background: 'color-mix(in srgb, var(--navy) 18%, transparent)',
+                  }}
+                />
+              </div>
+
+              <div className="timeline-entries-container flex-1 text-left">
               {workExperience.map((job, index) => (
                 <motion.div
                   key={`${job.company}-${index}`}
-                  className="group py-8 border-t border-[var(--border)] last:border-b hover:border-t-[var(--crimson)] transition-colors duration-200"
+                  className="timeline-entry timeline-professional group relative pl-4 md:pl-8 text-left"
+                  style={{
+                    paddingTop: '0.5rem',
+                    paddingBottom: index === workExperience.length - 1 ? '0.25rem' : '1.75rem',
+                    borderLeft: 'none',
+                  }}
                   initial={!prefersReducedMotion ? { opacity: 0, y: 20 } : { opacity: 1 }}
                   whileInView={!prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1 }}
                   transition={!prefersReducedMotion ? { duration: 0.5, delay: index * 0.05 } : undefined}
                   viewport={{ once: true }}
                 >
-                  <div className="flex justify-between items-baseline mb-3 pb-3 border-b border-[var(--border-light)]">
-                    <p className="font-body text-[0.9rem] text-[var(--t2)] font-medium">
+                  <div
+                    className="timeline-dot absolute rounded-full hidden md:block"
+                    style={{
+                      left: '-1.55rem',
+                      top: '1rem',
+                      width: '10px',
+                      height: '10px',
+                      background: 'var(--timeline-color)',
+                      zIndex: 10,
+                    }}
+                  />
+
+                  <div className="w-full pt-3 text-left">
+                    <div
+                      className="font-display leading-[1] tracking-[0.02em] block mb-[0.2rem]"
+                      style={{
+                        fontSize: 'clamp(1.05rem, 2.1vw, 1.35rem)',
+                        color: 'var(--timeline-color)',
+                        fontWeight: 700,
+                        fontFeatureSettings: "'liga' 0",
+                      }}
+                    >
+                      {job.period}
+                    </div>
+
+                    <div
+                      className="w-[26px] h-[2px] mb-[0.85rem]"
+                      style={{ background: 'var(--timeline-color)' }}
+                    />
+
+                    <h3
+                      className="font-sans text-[var(--t1)] leading-[1.08] tracking-[0.005em] block mb-[0.2rem]"
+                      style={{
+                        fontSize: 'clamp(1.08rem, 2.1vw, 1.38rem)',
+                        fontWeight: 650,
+                      }}
+                    >
+                      {job.role}
+                    </h3>
+
+                    <p
+                      className="font-body text-[0.85rem] md:text-[0.92rem] mb-[0.75rem]"
+                      style={{
+                        color: 'var(--t3)',
+                        fontWeight: 500,
+                      }}
+                    >
                       {job.company}
                     </p>
-                    <p className="font-body text-[0.85rem] text-[var(--t3)]">
-                      {job.period}
+
+                    <div
+                      className="divider h-px w-full mb-[0.9rem]"
+                      style={{ background: 'color-mix(in srgb, var(--timeline-color) 12%, transparent)' }}
+                    />
+
+                    <p className="font-body text-[0.95rem] md:text-[1rem] text-[var(--t2)] leading-[1.75] mb-4">
+                      {job.description}
                     </p>
-                  </div>
 
-                  <h3 className="font-display font-bold text-[1.35rem] md:text-[1.5rem] text-[var(--t1)] uppercase mb-3 leading-[1.1]">
-                    {job.role}
-                  </h3>
-
-                  <p className="font-body text-[1rem] text-[var(--t2)] leading-[1.75] mb-4">
-                    {job.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {job.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-body text-[0.75rem] font-medium text-[var(--crimson)] bg-[var(--crimson-dim)] border border-[var(--crimson-border)] px-3 py-1 rounded-[2px]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="flex flex-wrap gap-2 mt-3 md:mt-4">
+                      {job.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="tag-pill font-body font-medium px-3 py-1.5 rounded text-xs md:text-sm border"
+                          style={{
+                            color: 'var(--timeline-color)',
+                            borderColor: 'var(--timeline-color-border)',
+                            backgroundColor: 'var(--timeline-color-dim)',
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               ))}
+              </div>
             </div>
           </motion.section>
 

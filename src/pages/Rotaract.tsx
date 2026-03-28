@@ -28,6 +28,7 @@ const featuredImages = [
   { src: haneef3, alt: 'Mrs India volunteer leadership', afterIndex: 5, caption: 'Mrs. India Volunteer Lead' },
   { src: haneef4, alt: 'Award recognition moment', afterIndex: 8, caption: 'Recognition' },
 ];
+const featuredImageByAwardIndex = new Map(featuredImages.map((image, index) => [image.afterIndex, { ...image, imageIndex: index }]));
 
 export default function Rotaract() {
   const prefersReducedMotion = useReducedMotion();
@@ -47,9 +48,9 @@ export default function Rotaract() {
             {
               opacity: 1,
               y: 0,
-              duration: 0.3,
+              duration: 0.24,
               ease: 'power3.out',
-              delay: i * 0.05,
+              delay: i * 0.03,
               scrollTrigger: {
                 trigger: el,
                 start: 'top 92%',
@@ -72,9 +73,9 @@ export default function Rotaract() {
             {
               opacity: 1,
               y: 0,
-              duration: 0.25,
+              duration: 0.2,
               ease: 'power3.out',
-              delay: i * 0.04,
+              delay: i * 0.025,
               scrollTrigger: {
                 trigger: el,
                 start: 'top 92%',
@@ -98,9 +99,9 @@ export default function Rotaract() {
               opacity: 1,
               y: 0,
               scale: 1,
-              duration: 0.5,
+              duration: 0.38,
               ease: 'power3.out',
-              delay: i * 0.1,
+              delay: i * 0.06,
               scrollTrigger: {
                 trigger: el,
                 start: 'top 90%',
@@ -346,27 +347,33 @@ export default function Rotaract() {
                     </div>
                   </div>
 
-                  {featuredImages.some(img => img.afterIndex === index) && (
-                    <div
-                      ref={(el) => {
-                        const featuredIndex = featuredImages.findIndex(img => img.afterIndex === index);
-                        featuredImageRefs.current[featuredIndex] = el;
-                      }}
-                      className="py-10 md:py-14"
-                    >
-                      <div className="overflow-hidden md:rounded-lg" style={{ borderTop: '2px solid var(--ta)' }}>
-                        <img
-                          src={featuredImages.find(img => img.afterIndex === index)?.src}
-                          alt={featuredImages.find(img => img.afterIndex === index)?.alt || 'Award moment'}
-                          className="w-full h-[280px] md:h-[500px] object-cover"
-                          loading="lazy"
-                        />
+                  {(() => {
+                    const featured = featuredImageByAwardIndex.get(index);
+                    if (!featured) return null;
+
+                    return (
+                      <div
+                        ref={(el) => {
+                          featuredImageRefs.current[featured.imageIndex] = el;
+                        }}
+                        className="py-10 md:py-14"
+                      >
+                        <div className="overflow-hidden md:rounded-lg" style={{ borderTop: '2px solid var(--ta)' }}>
+                          <img
+                            src={featured.src}
+                            alt={featured.alt}
+                            className="w-full h-[280px] md:h-[500px] object-cover"
+                            loading={featured.imageIndex === 0 ? 'eager' : 'lazy'}
+                            fetchPriority={featured.imageIndex === 0 ? 'high' : 'auto'}
+                            decoding="async"
+                          />
+                        </div>
+                        <p className="font-body text-[0.75rem] text-[var(--t3)] mt-4 text-center uppercase tracking-[0.10em]">
+                          {featured.caption}
+                        </p>
                       </div>
-                      <p className="font-body text-[0.75rem] text-[var(--t3)] mt-4 text-center uppercase tracking-[0.10em]">
-                        {featuredImages.find(img => img.afterIndex === index)?.caption}
-                      </p>
-                    </div>
-                  )}
+                    );
+                  })()}
                 </Fragment>
               ))}
             </div>

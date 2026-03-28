@@ -45,13 +45,8 @@ export default function Navbar() {
         className={cn(
           'fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out',
           'h-[52px] md:h-[52px] px-4 md:px-6 lg:px-8',
-          // Home page: transparent when not scrolled, light bg when scrolled
-          // Other pages: always light bg with dark text
-          isHomePage
-            ? scrolled
-              ? 'bg-[rgba(253,248,242,0.85)] backdrop-blur-[16px] saturate-[180%] border-b border-[rgba(15,6,8,0.06)]'
-              : 'bg-transparent border-none'
-            : 'bg-[rgba(253,248,242,0.95)] backdrop-blur-[16px] saturate-[180%] border-b border-[rgba(15,6,8,0.06)]'
+          'bg-[rgba(253,248,242,0.18)] border-none backdrop-blur-[6px] saturate-[115%]',
+          'md:bg-[rgba(253,248,242,0.28)] md:backdrop-blur-[8px] md:saturate-[120%] md:border-b md:border-[rgba(15,6,8,0.04)]'
         )}
       >
         <div className="flex w-full max-w-6xl mx-auto justify-between md:justify-center items-center h-full gap-8">

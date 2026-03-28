@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, Award } from 'lucide-react';
+import { Briefcase, Award, Menu, X, House } from 'lucide-react';
 import potrait from '../../assets/potrait.webp';
 
 const EASE_SMOOTH = [0.16, 1, 0.3, 1] as const;
@@ -10,6 +10,7 @@ export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [mobileQuickMenuOpen, setMobileQuickMenuOpen] = useState(false);
 
   useEffect(() => {
     const mql = window.matchMedia('(max-width: 767px)');
@@ -46,8 +47,8 @@ export default function Hero() {
       id="hero"
       className="relative w-full overflow-x-hidden"
       style={{
-        height: '100dvh',
-        minHeight: '600px',
+        height: isMobile ? '132svh' : '100dvh',
+        minHeight: isMobile ? '132svh' : '600px',
         scrollMarginTop: '80px',
         background: `linear-gradient(
           to bottom,
@@ -127,7 +128,7 @@ export default function Hero() {
                 {/* Portrait Image */}
                 <div
                   className="absolute right-0 top-0 overflow-hidden"
-                  style={{ zIndex: 1, width: '32%', height: '100%', right: '4%' }}
+                  style={{ zIndex: 1, width: '37.5%', height: '110%', right: '10%', top: '-4%' }}
                 >
                   <motion.img
                     src={potrait}
@@ -141,47 +142,56 @@ export default function Hero() {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      objectPosition: '40% 8%',
+                      objectPosition: '38% 10%',
                       maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)',
                       WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, black 100%)',
+                    }}
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 right-0 pointer-events-none"
+                    style={{
+                      height: '14%',
+                      background: 'linear-gradient(to bottom, transparent 0%, rgba(42, 122, 158, 0.12) 45%, rgba(42, 122, 158, 0.28) 100%)',
+                      filter: 'blur(10px)',
+                      opacity: 0.7,
                     }}
                   />
                 </div>
 
                 {/* Text Content + Navigation Buttons */}
                 <div className="absolute inset-0 flex flex-col justify-end pb-[8%]" style={{ zIndex: 10 }}>
-                  <div className="w-[65%] pl-8 md:pl-12 lg:pl-16">
+                  <div className="w-[61%] pl-12 md:pl-16 lg:pl-20">
                     {/* HANEEF MOHAMED */}
                     <motion.div
                       initial={{ opacity: 0, y: 40 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
                     >
-                      <span className="font-display font-light text-[clamp(0.8rem,1.5vw,1.2rem)] tracking-[0.25em] uppercase block mb-3" style={{ color: 'rgba(253,248,242,0.55)' }}>
+                      <span className="font-display font-light text-[clamp(0.72rem,1.32vw,1.05rem)] tracking-[0.25em] uppercase block mb-3" style={{ color: 'rgba(253,248,242,0.55)' }}>
                         Rtr. IPP
                       </span>
-                      <h1 className="font-display font-bold text-[clamp(4rem,12vw,11rem)] leading-[0.72] tracking-[-0.02em] text-[#FDF8F2] uppercase">
+                      <h1 className="font-display font-black text-[clamp(3.05rem,8.45vw,7.6rem)] leading-[0.75] tracking-[-0.024em] text-[#FDF8F2] uppercase">
                         HANEEF
                         <br />
-                        <span className="text-[clamp(3.5rem,10vw,9.5rem)]">MOHAMED</span>
+                        <span className="text-[clamp(2.8rem,7.8vw,6.9rem)]">MOHAMED</span>
                       </h1>
                     </motion.div>
 
                     {/* Sub-headline */}
                     <motion.p
-                      className="font-display font-light text-[clamp(0.9rem,1.2vw,1rem)] tracking-wide mt-6"
-                      style={{ color: 'rgba(253,248,242,0.65)' }}
+                      className="font-display uppercase text-[clamp(0.82rem,1.12vw,0.95rem)] tracking-[0.11em] mt-6"
+                      style={{ color: 'rgba(253,248,242,0.76)', fontWeight: 500 }}
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.5 }}
                     >
-                      PR Strategist · Rotaract President
+                      PR Strategist • Rotaract President
                     </motion.p>
 
                     {/* Description */}
                     <motion.p
-                      className="font-sans font-light text-[clamp(0.85rem,1.1vw,0.95rem)] leading-relaxed mt-6 max-w-2xl"
-                      style={{ color: 'rgba(253,248,242,0.75)' }}
+                      className="font-sans italic text-[clamp(0.84rem,1.04vw,0.93rem)] leading-[1.9] mt-6 max-w-[74ch] tracking-[0.012em]"
+                      style={{ color: 'rgba(253,248,242,0.83)', fontWeight: 360 }}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.6 }}
@@ -191,14 +201,14 @@ export default function Hero() {
 
                     {/* Navigation Buttons - Artistic Integration */}
                     <motion.div
-                      className="flex flex-row gap-4 mt-10"
+                      className="flex flex-row gap-4 mt-8"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.7 }}
                     >
                       <Link
                         to="/professional"
-                        className="group relative inline-flex items-center gap-3 px-6 py-3.5 font-display text-[0.75rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
+                        className="group relative inline-flex items-center gap-3 px-6 py-3.5 font-display text-[0.68rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
                         style={{
                           background: 'rgba(253,248,242,0.1)',
                           backdropFilter: 'blur(12px)',
@@ -206,13 +216,13 @@ export default function Hero() {
                         }}
                       >
                         <span className="absolute inset-0 bg-[rgba(253,248,242,0.15)] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                        <Briefcase size={16} className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
+                        <Briefcase size={14} className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
                         <span className="relative z-10">Professional</span>
                       </Link>
 
                       <Link
                         to="/rotaract"
-                        className="group relative inline-flex items-center gap-3 px-6 py-3.5 font-display text-[0.75rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
+                        className="group relative inline-flex items-center gap-3 px-6 py-3.5 font-display text-[0.68rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
                         style={{
                           background: 'rgba(253,248,242,0.1)',
                           backdropFilter: 'blur(12px)',
@@ -220,7 +230,7 @@ export default function Hero() {
                         }}
                       >
                         <span className="absolute inset-0 bg-[rgba(253,248,242,0.15)] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                        <Award size={16} className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
+                        <Award size={14} className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
                         <span className="relative z-10">Rotaract</span>
                       </Link>
                     </motion.div>
@@ -271,7 +281,7 @@ export default function Hero() {
                 {/* Portrait */}
                 <div
                   className="absolute inset-0 flex items-start justify-center"
-                  style={{ zIndex: 1 }}
+                  style={{ zIndex: 1, transform: 'translateY(-4%)' }}
                 >
                   <motion.img
                     src={potrait}
@@ -291,67 +301,82 @@ export default function Hero() {
                     }}
                     aria-hidden="true"
                   />
+                  <div
+                    className="absolute bottom-[20%] left-[8%] right-[8%] pointer-events-none"
+                    style={{
+                      height: '10%',
+                      background: 'linear-gradient(to bottom, transparent 0%, rgba(42, 122, 158, 0.16) 50%, rgba(42, 122, 158, 0.24) 100%)',
+                      filter: 'blur(12px)',
+                      opacity: 0.55,
+                    }}
+                  />
                 </div>
 
                 {/* Text + Buttons */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 px-6 md:px-8 pb-12 flex flex-col items-center justify-end"
-                  style={{ zIndex: 10 }}
+                  className="absolute left-0 right-0 px-5 md:px-8 flex flex-col items-center justify-end"
+                  style={{ zIndex: 10, bottom: 'max(34svh, 248px)' }}
                 >
                   {/* Name */}
                   <motion.div
+                    className="w-full max-w-[92vw] mx-auto flex flex-col items-center"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
                   >
-                    <span className="font-display font-light uppercase tracking-[0.25em] block mb-3 text-center" style={{ fontSize: 'clamp(0.7rem, 3vw, 1rem)', color: 'rgba(253,248,242,0.55)' }}>
+                    <span className="font-display font-light uppercase tracking-[0.25em] block mb-2 text-center" style={{ fontSize: 'clamp(0.7rem, 3vw, 1rem)', color: 'rgba(253,248,242,0.55)' }}>
                       Rtr. IPP
                     </span>
                     <h1
                       className="font-display uppercase"
                       style={{
-                        fontSize: 'clamp(3.5rem, 18vw, 5rem)',
-                        lineHeight: 0.72,
-                        letterSpacing: '-0.03em',
+                        fontSize: 'clamp(2.9rem, 15.2vw, 4.35rem)',
+                        lineHeight: 0.8,
+                        letterSpacing: '-0.022em',
                         textAlign: 'center',
                         color: '#FDF8F2',
-                        fontWeight: 900,
-                        marginBottom: '0.4rem',
-                        textShadow: '0 2px 20px rgba(0,0,0,0.25)',
+                        fontWeight: 950,
+                        marginBottom: '0.15rem',
+                        textShadow: '0 4px 12px rgba(0,0,0,0.25), 0 14px 34px rgba(0,0,0,0.45), 0 0 28px rgba(9,36,53,0.28)',
                       }}
                     >
-                      <span style={{ display: 'block', fontSize: 'clamp(4rem, 23vw, 6rem)' }}>HANEEF</span>
-                      <span style={{ display: 'block', fontSize: 'clamp(3rem, 17vw, 4.5rem)' }}>MOHAMED</span>
+                      <span style={{ display: 'block', fontSize: 'clamp(2.95rem, 15.8vw, 4.45rem)' }}>HANEEF</span>
+                      <span style={{ display: 'block', fontSize: 'clamp(2.9rem, 15.4vw, 4.35rem)' }}>MOHAMED</span>
                     </h1>
                   </motion.div>
 
                   {/* Sub-headline */}
                   <motion.p
-                    className="font-display font-light"
+                    className="font-display uppercase"
                     style={{
-                      fontSize: 'clamp(0.65rem, 2.5vw, 0.8rem)',
-                      fontWeight: 400,
-                      color: 'rgba(253,248,242,0.70)',
-                      letterSpacing: '0.03em',
-                      lineHeight: 1.5,
+                      fontSize: 'clamp(0.7rem, 2.55vw, 0.84rem)',
+                      fontWeight: 520,
+                      color: 'rgba(253,248,242,0.78)',
+                      letterSpacing: '0.085em',
+                      lineHeight: 1.45,
                       textAlign: 'center',
-                      paddingLeft: '1.5rem',
-                      paddingRight: '1.5rem',
+                      paddingLeft: '1.2rem',
+                      paddingRight: '1.2rem',
                     }}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.5 }}
                   >
-                    PR Strategist · Rotaract President
+                    PR Strategist • Rotaract President
                   </motion.p>
 
                   {/* Description - Mobile */}
                   <motion.p
-                    className="font-sans font-light text-center px-8"
+                    className="font-sans italic text-center max-w-[34ch] mx-auto"
                     style={{
-                      fontSize: 'clamp(0.8rem, 2.8vw, 0.9rem)',
-                      color: 'rgba(253,248,242,0.75)',
-                      lineHeight: 1.6,
+                      fontSize: 'clamp(0.86rem, 3vw, 0.96rem)',
+                      color: 'rgba(253,248,242,0.84)',
+                      lineHeight: 1.72,
+                      letterSpacing: '0.01em',
+                      fontWeight: 360,
+                      paddingLeft: '0.75rem',
+                      paddingRight: '0.75rem',
+                      marginTop: '0.35rem',
                     }}
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -360,42 +385,105 @@ export default function Hero() {
                     Public Relations professional driven by perspective. I build narratives, strengthen reputations, and create connections that inspire action. My Rotaract journey shaped my leadership and network-building. At my core: create work that matters and lead with Purpose in Focus.
                   </motion.p>
 
-                  {/* Navigation Buttons - Mobile */}
-                  <motion.div
-                    className="flex flex-col gap-3 w-full max-w-[320px] mt-8"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.7 }}
-                  >
-                    <Link
-                      to="/professional"
-                      className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-display text-[0.7rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
-                      style={{
-                        background: 'rgba(253,248,242,0.12)',
-                        backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(253,248,242,0.25)',
-                      }}
-                    >
-                      <span className="absolute inset-0 bg-[rgba(253,248,242,0.2)] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                      <Briefcase size={14} className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
-                      <span className="relative z-10">Professional</span>
-                    </Link>
-
-                    <Link
-                      to="/rotaract"
-                      className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-display text-[0.7rem] tracking-[0.15em] uppercase text-[#FDF8F2] overflow-hidden rounded-lg transition-all duration-300"
-                      style={{
-                        background: 'rgba(253,248,242,0.12)',
-                        backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(253,248,242,0.25)',
-                      }}
-                    >
-                      <span className="absolute inset-0 bg-[rgba(253,248,242,0.2)] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-                      <Award size={14} className="relative z-10 opacity-70 group-hover:opacity-100 transition-opacity" />
-                      <span className="relative z-10">Rotaract</span>
-                    </Link>
-                  </motion.div>
                 </div>
+
+                {/* Floating Route Switcher - Mobile */}
+                <motion.div
+                  className="fixed left-1/2 -translate-x-1/2 w-[248px] max-w-[calc(100%-1.5rem)] rounded-xl p-1.5 flex items-center gap-1.5"
+                  style={{
+                    zIndex: 30,
+                    bottom: 'calc(env(safe-area-inset-bottom, 0px) + 16px)',
+                    background: 'rgba(8, 45, 69, 0.62)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(253,248,242,0.22)',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                  }}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.85 }}
+                >
+                  <Link
+                    to="/professional"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
+                    style={{ background: 'rgba(253,248,242,0.13)' }}
+                  >
+                    <Briefcase size={11} className="opacity-85" />
+                    <span>Professional</span>
+                  </Link>
+                  <Link
+                    to="/rotaract"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
+                    style={{ background: 'rgba(253,248,242,0.13)' }}
+                  >
+                    <Award size={11} className="opacity-85" />
+                    <span>Rotaract</span>
+                  </Link>
+                </motion.div>
+
+                {/* Quick Hamburger - Mobile Home */}
+                <motion.button
+                  type="button"
+                  className="fixed top-4 right-4 inline-flex items-center justify-center"
+                  style={{
+                    zIndex: 35,
+                    color: 'rgba(245, 248, 250, 0.82)',
+                    textShadow: '0 2px 10px rgba(0,0,0,0.28)',
+                  }}
+                  onClick={() => setMobileQuickMenuOpen((v) => !v)}
+                  aria-label="Open quick navigation"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.65 }}
+                >
+                  {mobileQuickMenuOpen ? <X size={17} /> : <Menu size={17} />}
+                </motion.button>
+
+                <AnimatePresence>
+                  {mobileQuickMenuOpen && (
+                    <motion.div
+                      className="fixed top-14 right-3 w-[170px] rounded-xl p-1.5 flex flex-col gap-1.5"
+                      style={{
+                        zIndex: 36,
+                        background: 'rgba(8, 45, 69, 0.72)',
+                        backdropFilter: 'blur(12px)',
+                        border: '1px solid rgba(253,248,242,0.2)',
+                        boxShadow: '0 12px 28px rgba(0,0,0,0.26)',
+                      }}
+                      initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Link
+                        to="/"
+                        onClick={() => setMobileQuickMenuOpen(false)}
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
+                        style={{ background: 'rgba(253,248,242,0.12)' }}
+                      >
+                        <House size={11} />
+                        <span>Home</span>
+                      </Link>
+                      <Link
+                        to="/professional"
+                        onClick={() => setMobileQuickMenuOpen(false)}
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
+                        style={{ background: 'rgba(253,248,242,0.12)' }}
+                      >
+                        <Briefcase size={11} />
+                        <span>Professional</span>
+                      </Link>
+                      <Link
+                        to="/rotaract"
+                        onClick={() => setMobileQuickMenuOpen(false)}
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
+                        style={{ background: 'rgba(253,248,242,0.12)' }}
+                      >
+                        <Award size={11} />
+                        <span>Rotaract</span>
+                      </Link>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             )}
           </motion.div>

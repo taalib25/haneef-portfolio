@@ -5,16 +5,16 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 export const lenis = new Lenis({
-  lerp: 0.075,
+  lerp: 0.14,
   smoothWheel: true,
-  syncTouch: false,
-  touchMultiplier: 1.8,
-   duration: 1.2, // Longer duration = smoother scroll
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -8 * t)), // Natural easing curve
-    orientation: 'vertical',
-    gestureOrientation: 'vertical',
-    wheelMultiplier: 1, // Don't amplify wheel input
-    infinite: false,
+  syncTouch: true,
+  touchMultiplier: 1.25,
+  duration: 0.72,
+  easing: (t) => 1 - Math.pow(1 - t, 3),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  wheelMultiplier: 1,
+  infinite: false,
 })
 
 gsap.ticker.add((time) => lenis.raf(time * 1000))
