@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/layout/Navbar';
 import {
   loadHome,
@@ -39,8 +40,48 @@ function GlobalScrollGuard() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    document.documentElement.style.overflowY = '';
-    document.body.style.overflowY = '';
+    const unlockScroll = () => {
+      const root = document.documentElement;
+      const body = document.body;
+      const isMobileSafeMode = root.classList.contains('mobile-safe-scroll');
+
+      root.style.overflowY = '';
+      body.style.overflowY = '';
+
+      if (isMobileSafeMode) {
+        root.style.overflowY = 'auto';
+        body.style.overflowY = 'auto';
+      }
+    };
+
+    const onPageShow = () => unlockScroll();
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        unlockScroll();
+      }
+    };
+
+    window.addEventListener('pageshow', onPageShow);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    return () => {
+      window.removeEventListener('pageshow', onPageShow);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
+    const isMobileSafeMode = root.classList.contains('mobile-safe-scroll');
+
+    root.style.overflowY = '';
+    body.style.overflowY = '';
+
+    if (isMobileSafeMode) {
+      root.style.overflowY = 'auto';
+      body.style.overflowY = 'auto';
+    }
   }, [pathname]);
 
   return null;
@@ -61,6 +102,7 @@ export default function App() {
             <Route path="/rotaract" element={<Rotaract />} />
           </Routes>
         </Suspense>
+        <Analytics />
       </div>
     </BrowserRouter>
   );

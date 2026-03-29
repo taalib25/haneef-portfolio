@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../../lib/cn';
 import { getRoutePreloadHandlers } from '../../lib/routePreload';
@@ -14,6 +14,11 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobileSafeMode, setIsMobileSafeMode] = useState(() => (
+    typeof document !== 'undefined' && document.documentElement.classList.contains('mobile-safe-scroll')
+  ));
+  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const mobileMenuPanelRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
 
   // Home page has dark hero background, other pages have light backgrounds
@@ -29,7 +34,33 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    const updateSafeMode = () => {
+      setIsMobileSafeMode(document.documentElement.classList.contains('mobile-safe-scroll'));
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') updateSafeMode();
+    };
+
+    updateSafeMode();
+    window.addEventListener('resize', updateSafeMode);
+    window.addEventListener('pageshow', updateSafeMode);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    return () => {
+      window.removeEventListener('resize', updateSafeMode);
+      window.removeEventListener('pageshow', updateSafeMode);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
     if (mobileMenuOpen) {
+      if (isMobileSafeMode) {
+        document.documentElement.style.overflowY = '';
+        document.body.style.overflowY = '';
+        return;
+      }
+
       document.documentElement.style.overflowY = 'hidden';
       document.body.style.overflowY = 'hidden';
       return;
@@ -37,7 +68,7 @@ export default function Navbar() {
 
     document.documentElement.style.overflowY = '';
     document.body.style.overflowY = '';
-  }, [mobileMenuOpen]);
+  }, [mobileMenuOpen, isMobileSafeMode]);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -49,6 +80,23 @@ export default function Navbar() {
       document.body.style.overflowY = '';
     };
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen || !isMobileSafeMode) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
+      if (mobileMenuPanelRef.current?.contains(target)) return;
+      if (mobileMenuButtonRef.current?.contains(target)) return;
+      setMobileMenuOpen(false);
+    };
+
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown);
+    };
+  }, [mobileMenuOpen, isMobileSafeMode]);
 
   // Hide navbar on Home page - AFTER all hooks
   if (isHomePage) {
@@ -155,6 +203,8 @@ export default function Navbar() {
             </Link>
 
             <button
+              ref={mobileMenuButtonRef}
+              type="button"
               className={cn(
                 'transition-colors',
                 isHomePage
@@ -163,10 +213,10 @@ export default function Navbar() {
                     : 'text-[var(--ht1)]'
                   : 'text-[var(--t2)]'
               )}
-              onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open Menu"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
             >
-              <Menu size={22} />
+              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
 
@@ -176,87 +226,121 @@ export default function Navbar() {
 
       <AnimatePresence>
         {mobileMenuOpen && (
-          <>
+          isMobileSafeMode ? (
             <motion.div
-              className="fixed inset-0 z-[60] bg-black/30"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setMobileMenuOpen(false)}
-            />
-
-            <motion.div
-              className="fixed top-0 right-0 z-[61] flex flex-col h-full w-[min(280px,85vw)] p-6"
-              style={{ background: 'rgba(253,248,242,0.97)' }}
-              initial={{ x: '100%', opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: '100%', opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              ref={mobileMenuPanelRef}
+              className="fixed right-4 top-[62px] z-[61] w-[min(260px,85vw)] rounded-xl border border-[rgba(8,23,30,0.12)] p-4 shadow-[0_14px_36px_rgba(8,23,30,0.18)]"
+              style={{ background: 'rgba(253,248,242,0.97)', backdropFilter: 'blur(8px)' }}
+              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.98 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex justify-end mb-12">
-                <motion.button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-[var(--t1)] hover:text-[var(--ta)] transition-colors"
-                  aria-label="Close menu"
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </motion.button>
-              </div>
-
-              <motion.div
-                className="flex flex-col gap-8 mt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.1, duration: 0.2 }}
-              >
-                {navLinks.map((link, index) => (
-                  <motion.div
-                    key={link.name + index}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.15 + (index * 0.05),
-                      duration: 0.3,
-                      ease: [0.16, 1, 0.3, 1]
-                    }}
+              <div className="flex flex-col gap-3">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    {...preloadHandlers(link.href)}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      'font-display text-[0.8rem] uppercase tracking-[0.12em] px-3 py-2 rounded-lg transition-colors',
+                      isActive(link.href)
+                        ? 'text-[var(--crimson)] bg-[rgba(9,107,144,0.08)]'
+                        : 'text-[var(--t1)] hover:text-[var(--ta)]'
+                    )}
                   >
-                    <Link
-                      to={link.href}
-                      {...preloadHandlers(link.href)}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={cn(
-                        'font-display text-[1.5rem] uppercase transition-colors',
-                        isActive(link.href)
-                          ? 'text-[var(--crimson)]'
-                          : 'text-[var(--t1)]'
-                      )}
-                    >
-                      {link.name}
-                    </Link>
-                  </motion.div>
+                    {link.name}
+                  </Link>
                 ))}
-              </motion.div>
-
+              </div>
+              <a
+                href="mailto:haneef.rotaract3220@gmail.com"
+                className="font-body text-[0.82rem] text-[var(--t2)] block mt-4 px-3"
+              >
+                haneef.rotaract3220@gmail.com
+              </a>
+            </motion.div>
+          ) : (
+            <>
               <motion.div
-                className="mt-auto pb-8"
+                className="fixed inset-0 z-[60] bg-black/30"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.35, duration: 0.2 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={() => setMobileMenuOpen(false)}
+              />
+
+              <motion.div
+                className="fixed top-0 right-0 z-[61] flex flex-col h-full w-[min(280px,85vw)] p-6"
+                style={{ background: 'rgba(253,248,242,0.97)' }}
+                initial={{ x: '100%', opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: '100%', opacity: 0 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
-                <a
-                  href="mailto:haneef.rotaract3220@gmail.com"
-                  className="font-body text-[0.95rem] text-[var(--t2)]"
+                <div className="flex justify-end mb-12">
+                  <motion.button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-[var(--t1)] hover:text-[var(--ta)] transition-colors"
+                    aria-label="Close menu"
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <X size={24} />
+                  </motion.button>
+                </div>
+
+                <motion.div
+                  className="flex flex-col gap-8 mt-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1, duration: 0.2 }}
                 >
-                  haneef.rotaract3220@gmail.com
-                </a>
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.name + index}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.15 + (index * 0.05),
+                        duration: 0.3,
+                        ease: [0.16, 1, 0.3, 1]
+                      }}
+                    >
+                      <Link
+                        to={link.href}
+                        {...preloadHandlers(link.href)}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={cn(
+                          'font-display text-[1.5rem] uppercase transition-colors',
+                          isActive(link.href)
+                            ? 'text-[var(--crimson)]'
+                            : 'text-[var(--t1)]'
+                        )}
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  className="mt-auto pb-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.35, duration: 0.2 }}
+                >
+                  <a
+                    href="mailto:haneef.rotaract3220@gmail.com"
+                    className="font-body text-[0.95rem] text-[var(--t2)]"
+                  >
+                    haneef.rotaract3220@gmail.com
+                  </a>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </>
+            </>
+          )
         )}
       </AnimatePresence>
     </>

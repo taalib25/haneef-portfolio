@@ -171,6 +171,18 @@ body {
   overflow-x: hidden;
 }
 
+html.mobile-safe-scroll,
+html.mobile-safe-scroll body {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+html.mobile-safe-scroll body {
+  overscroll-behavior-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 100%; /* Base font-size 16px for proper scaling */
@@ -932,6 +944,19 @@ html, body {
     inset: 0 !important;
     background: rgba(15, 6, 8, 0.35) !important;
     z-index: 999 !important;
+  }
+
+  html.mobile-safe-scroll .nav-drawer,
+  html.mobile-safe-scroll .nav-drawer.open {
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  html.mobile-safe-scroll .nav-overlay {
+    display: none !important;
   }
 }
 

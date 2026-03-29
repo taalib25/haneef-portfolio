@@ -2,17 +2,18 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import './lib/scroll'; // Lenis + GSAP initialization
+import { initSmoothScroll } from './lib/scroll';
 
-// Lenis + GSAP integration is handled in scroll.ts
+const cleanupSmoothScroll = initSmoothScroll();
 
-// Create a wrapper component to handle Lenis initialization
-function AppWithSmoothScroll() {
-  return <App />;
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => {
+    cleanupSmoothScroll();
+  });
 }
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AppWithSmoothScroll />
+    <App />
   </StrictMode>,
 );

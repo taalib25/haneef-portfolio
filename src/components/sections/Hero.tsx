@@ -10,12 +10,16 @@ const MOBILE_SWITCHER_BOTTOM_OFFSET = 16;
 const MOBILE_SWITCHER_APPROX_HEIGHT = 40;
 const MOBILE_TEXT_TO_SWITCHER_GAP = 6;
 const MOBILE_BOTTOM_RESERVED = MOBILE_SWITCHER_BOTTOM_OFFSET + MOBILE_SWITCHER_APPROX_HEIGHT + MOBILE_TEXT_TO_SWITCHER_GAP;
+const MOBILE_SAFE_CONTENT_BOTTOM = 28;
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [mobileQuickMenuOpen, setMobileQuickMenuOpen] = useState(false);
+  const [isMobileSafeMode, setIsMobileSafeMode] = useState(() => (
+    typeof document !== 'undefined' && document.documentElement.classList.contains('mobile-safe-scroll')
+  ));
 
   useEffect(() => {
     const mql = window.matchMedia('(max-width: 767px)');
@@ -23,6 +27,26 @@ export default function Hero() {
     setIsMobile(mql.matches);
     mql.addEventListener('change', handler);
     return () => mql.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    const updateSafeMode = () => {
+      setIsMobileSafeMode(document.documentElement.classList.contains('mobile-safe-scroll'));
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') updateSafeMode();
+    };
+
+    updateSafeMode();
+    window.addEventListener('resize', updateSafeMode);
+    window.addEventListener('pageshow', updateSafeMode);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    return () => {
+      window.removeEventListener('resize', updateSafeMode);
+      window.removeEventListener('pageshow', updateSafeMode);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
   }, []);
 
   const preloadHandlers = (href: string) => getRoutePreloadHandlers(href);
@@ -34,6 +58,11 @@ export default function Hero() {
     mediaQuery.addEventListener('change', handler);
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
+
+  useEffect(() => {
+    if (!isMobileSafeMode) return;
+    setMobileQuickMenuOpen(false);
+  }, [isMobileSafeMode]);
 
   useEffect(() => {
     const cacheKey = 'hero-image-loaded';
@@ -48,6 +77,16 @@ export default function Hero() {
       setImageLoaded(true);
     };
   }, []);
+
+  useEffect(() => {
+    if (imageLoaded) return;
+    const failOpenTimer = window.setTimeout(() => {
+      setImageLoaded(true);
+    }, 1500);
+    return () => {
+      window.clearTimeout(failOpenTimer);
+    };
+  }, [imageLoaded]);
 
   return (
     <section
@@ -93,6 +132,7 @@ export default function Hero() {
                 #5BA3C4 0%,
                 #3A8FB7 100%
               )`,
+              pointerEvents: 'none',
             }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
@@ -329,7 +369,10 @@ export default function Hero() {
                 {/* Text + Buttons */}
                 <div
                   className="absolute left-0 right-0 px-5 md:px-8 flex flex-col items-center justify-end"
-                  style={{ zIndex: 10, bottom: `calc(env(safe-area-inset-bottom, 0px) + ${MOBILE_BOTTOM_RESERVED}px)` }}
+                  style={{
+                    zIndex: 10,
+                    bottom: `calc(env(safe-area-inset-bottom, 0px) + ${isMobileSafeMode ? MOBILE_SAFE_CONTENT_BOTTOM : MOBILE_BOTTOM_RESERVED}px)`
+                  }}
                 >
                   {/* Name */}
                   <motion.div
@@ -399,110 +442,156 @@ export default function Hero() {
                     Public Relations professional driven by perspective. I build narratives, strengthen reputations, and create connections that inspire action. My Rotaract journey shaped my leadership and network-building. At my core: create work that matters and lead with Purpose in Focus.
                   </motion.p>
 
-                </div>
-
-                {/* Floating Route Switcher - Mobile */}
-                <motion.div
-                  className="fixed left-1/2 -translate-x-1/2 w-[248px] max-w-[calc(100%-1.5rem)] rounded-xl p-1.5 flex items-center gap-1.5"
-                  style={{
-                    zIndex: 30,
-                    bottom: `calc(env(safe-area-inset-bottom, 0px) + ${MOBILE_SWITCHER_BOTTOM_OFFSET}px)`,
-                    background: 'rgba(8, 45, 69, 0.62)',
-                    backdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(253,248,242,0.22)',
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                  }}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.85 }}
-                >
-                  <Link
-                    to="/professional"
-                    {...preloadHandlers('/professional')}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
-                    style={{ background: 'rgba(253,248,242,0.13)' }}
-                  >
-                    <Briefcase size={11} className="opacity-85" />
-                    <span>Professional</span>
-                  </Link>
-                  <Link
-                    to="/rotaract"
-                    {...preloadHandlers('/rotaract')}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
-                    style={{ background: 'rgba(253,248,242,0.13)' }}
-                  >
-                    <Award size={11} className="opacity-85" />
-                    <span>Rotaract</span>
-                  </Link>
-                </motion.div>
-
-                {/* Quick Hamburger - Mobile Home */}
-                <motion.button
-                  type="button"
-                  className="fixed top-4 right-4 inline-flex items-center justify-center"
-                  style={{
-                    zIndex: 35,
-                    color: 'rgba(245, 248, 250, 0.82)',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.28)',
-                  }}
-                  onClick={() => setMobileQuickMenuOpen((v) => !v)}
-                  aria-label="Open quick navigation"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.65 }}
-                >
-                  {mobileQuickMenuOpen ? <X size={17} /> : <Menu size={17} />}
-                </motion.button>
-
-                <AnimatePresence>
-                  {mobileQuickMenuOpen && (
+                  {isMobileSafeMode && (
                     <motion.div
-                      className="fixed top-14 right-3 w-[170px] rounded-xl p-1.5 flex flex-col gap-1.5"
+                      className="mt-4 w-full max-w-[96vw] rounded-xl p-1.5 flex items-center gap-1.5"
                       style={{
-                        zIndex: 36,
-                        background: 'rgba(8, 45, 69, 0.72)',
+                        background: 'rgba(8, 45, 69, 0.62)',
                         backdropFilter: 'blur(12px)',
-                        border: '1px solid rgba(253,248,242,0.2)',
-                        boxShadow: '0 12px 28px rgba(0,0,0,0.26)',
+                        border: '1px solid rgba(253,248,242,0.22)',
+                        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
                       }}
-                      initial={{ opacity: 0, y: -8, scale: 0.96 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -8, scale: 0.96 }}
-                      transition={{ duration: 0.2 }}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.75 }}
                     >
                       <Link
                         to="/"
                         {...preloadHandlers('/')}
-                        onClick={() => setMobileQuickMenuOpen(false)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
-                        style={{ background: 'rgba(253,248,242,0.12)' }}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
+                        style={{ background: 'rgba(253,248,242,0.13)' }}
                       >
-                        <House size={11} />
+                        <House size={11} className="opacity-85" />
                         <span>Home</span>
                       </Link>
                       <Link
                         to="/professional"
                         {...preloadHandlers('/professional')}
-                        onClick={() => setMobileQuickMenuOpen(false)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
-                        style={{ background: 'rgba(253,248,242,0.12)' }}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
+                        style={{ background: 'rgba(253,248,242,0.13)' }}
                       >
-                        <Briefcase size={11} />
+                        <Briefcase size={11} className="opacity-85" />
                         <span>Professional</span>
                       </Link>
                       <Link
                         to="/rotaract"
                         {...preloadHandlers('/rotaract')}
-                        onClick={() => setMobileQuickMenuOpen(false)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
-                        style={{ background: 'rgba(253,248,242,0.12)' }}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
+                        style={{ background: 'rgba(253,248,242,0.13)' }}
                       >
-                        <Award size={11} />
+                        <Award size={11} className="opacity-85" />
                         <span>Rotaract</span>
                       </Link>
                     </motion.div>
                   )}
-                </AnimatePresence>
+                </div>
+
+                {!isMobileSafeMode && (
+                  <motion.div
+                    className="fixed left-1/2 -translate-x-1/2 w-[248px] max-w-[calc(100%-1.5rem)] rounded-xl p-1.5 flex items-center gap-1.5"
+                    style={{
+                      zIndex: 30,
+                      bottom: `calc(env(safe-area-inset-bottom, 0px) + ${MOBILE_SWITCHER_BOTTOM_OFFSET}px)`,
+                      background: 'rgba(8, 45, 69, 0.62)',
+                      backdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(253,248,242,0.22)',
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                    }}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: EASE_SMOOTH, delay: 0.85 }}
+                  >
+                    <Link
+                      to="/professional"
+                      {...preloadHandlers('/professional')}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
+                      style={{ background: 'rgba(253,248,242,0.13)' }}
+                    >
+                      <Briefcase size={11} className="opacity-85" />
+                      <span>Professional</span>
+                    </Link>
+                    <Link
+                      to="/rotaract"
+                      {...preloadHandlers('/rotaract')}
+                      className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2] transition-colors"
+                      style={{ background: 'rgba(253,248,242,0.13)' }}
+                    >
+                      <Award size={11} className="opacity-85" />
+                      <span>Rotaract</span>
+                    </Link>
+                  </motion.div>
+                )}
+
+                {!isMobileSafeMode && (
+                  <>
+                    <motion.button
+                      type="button"
+                      className="fixed top-4 right-4 inline-flex items-center justify-center"
+                      style={{
+                        zIndex: 35,
+                        color: 'rgba(245, 248, 250, 0.82)',
+                        textShadow: '0 2px 10px rgba(0,0,0,0.28)',
+                      }}
+                      onClick={() => setMobileQuickMenuOpen((v) => !v)}
+                      aria-label="Open quick navigation"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: EASE_SMOOTH, delay: 0.65 }}
+                    >
+                      {mobileQuickMenuOpen ? <X size={17} /> : <Menu size={17} />}
+                    </motion.button>
+
+                    <AnimatePresence>
+                      {mobileQuickMenuOpen && (
+                        <motion.div
+                          className="fixed top-14 right-3 w-[170px] rounded-xl p-1.5 flex flex-col gap-1.5"
+                          style={{
+                            zIndex: 36,
+                            background: 'rgba(8, 45, 69, 0.72)',
+                            backdropFilter: 'blur(12px)',
+                            border: '1px solid rgba(253,248,242,0.2)',
+                            boxShadow: '0 12px 28px rgba(0,0,0,0.26)',
+                          }}
+                          initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <Link
+                            to="/"
+                            {...preloadHandlers('/')}
+                            onClick={() => setMobileQuickMenuOpen(false)}
+                            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
+                            style={{ background: 'rgba(253,248,242,0.12)' }}
+                          >
+                            <House size={11} />
+                            <span>Home</span>
+                          </Link>
+                          <Link
+                            to="/professional"
+                            {...preloadHandlers('/professional')}
+                            onClick={() => setMobileQuickMenuOpen(false)}
+                            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
+                            style={{ background: 'rgba(253,248,242,0.12)' }}
+                          >
+                            <Briefcase size={11} />
+                            <span>Professional</span>
+                          </Link>
+                          <Link
+                            to="/rotaract"
+                            {...preloadHandlers('/rotaract')}
+                            onClick={() => setMobileQuickMenuOpen(false)}
+                            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg font-display text-[0.62rem] tracking-[0.1em] uppercase text-[#FDF8F2]"
+                            style={{ background: 'rgba(253,248,242,0.12)' }}
+                          >
+                            <Award size={11} />
+                            <span>Rotaract</span>
+                          </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </>
+                )}
               </div>
             )}
           </motion.div>

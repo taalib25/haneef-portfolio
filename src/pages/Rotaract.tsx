@@ -81,12 +81,15 @@ export default function Rotaract() {
   const [isCoarsePointer, setIsCoarsePointer] = useState(() => (
     typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
   ));
+  const [isMobileSafeMode, setIsMobileSafeMode] = useState(() => (
+    typeof document !== 'undefined' && document.documentElement.classList.contains('mobile-safe-scroll')
+  ));
   const timelineRef = useRef<HTMLDivElement>(null);
   const entriesRef = useRef<(HTMLDivElement | null)[]>([]);
   const awardItemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const featuredImageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const useDesktopGsapReveal = !prefersReducedMotion && !isMobileViewport && !isCoarsePointer;
-  const useMobileInViewReveal = !prefersReducedMotion && !useDesktopGsapReveal;
+  const useDesktopGsapReveal = !prefersReducedMotion && !isMobileViewport && !isCoarsePointer && !isMobileSafeMode;
+  const useMobileInViewReveal = !prefersReducedMotion && !useDesktopGsapReveal && !isMobileSafeMode;
 
   useEffect(() => {
     const viewportMql = window.matchMedia('(max-width: 767px)');
@@ -102,6 +105,26 @@ export default function Rotaract() {
     return () => {
       viewportMql.removeEventListener('change', onViewportChange);
       pointerMql.removeEventListener('change', onPointerChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const updateSafeMode = () => {
+      setIsMobileSafeMode(document.documentElement.classList.contains('mobile-safe-scroll'));
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') updateSafeMode();
+    };
+
+    updateSafeMode();
+    window.addEventListener('resize', updateSafeMode);
+    window.addEventListener('pageshow', updateSafeMode);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    return () => {
+      window.removeEventListener('resize', updateSafeMode);
+      window.removeEventListener('pageshow', updateSafeMode);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
     };
   }, []);
 
