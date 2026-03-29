@@ -23,13 +23,6 @@ const educationData = [
     active: true,
   },
   {
-    institution: 'CIM (Chartered Institute of Marketing)',
-    qualification: 'Diploma in Marketing',
-    year: '',
-    status: 'Completed',
-    active: false,
-  },
-  {
     institution: 'Amal International School',
     qualification: 'Primary & Secondary Education',
     year: '',
