@@ -35,7 +35,7 @@ export const timelineData = [
   {
     year: "Feb 2025–Present",
     type: "PROFESSIONAL",
-    title: "Business Growth Executive",
+    title: "Head of Business Development",
     organisation: "Wire Communication Consultancy Holdings",
     body: "Senior role within the Wire Communication group, overseeing business growth across subsidiaries including PR Wire.\n\nPR Wire (subsidiary):\n• PR Executive (Jul 2024 – Feb 2025)\n• Strategic PR & Reputation Executive (Apr 2023 – Jul 2024)",
     statPills: ["Group Level", "Business Growth"]
