@@ -19,7 +19,7 @@ const services = [
 const workExperience = [
   {
     company: 'Wire Communication Consultancy Holdings',
-    role: 'Business Growth Executive',
+    role: 'Head of Business Development',
     period: 'Feb 2025 – Present',
     description: 'Senior role overseeing business growth across subsidiaries including PR Wire. Managing strategic initiatives and expanding market presence.',
     tags: ['Business Growth', 'Strategic Planning', 'Group Level'],

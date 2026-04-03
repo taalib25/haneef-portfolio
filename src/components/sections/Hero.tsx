@@ -232,7 +232,7 @@ export default function Hero() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, ease: EASE_SMOOTH, delay: 0.5 }}
                     >
-                      PR Strategist • Rotaractor
+                      Communipreneur • Rotaractor
                     </motion.p>
 
                     {/* Description */}
@@ -419,7 +419,7 @@ export default function Hero() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, ease: EASE_SMOOTH, delay: 0.5 }}
                   >
-                    PR Strategist • Rotaractor
+                    Communipreneur • Rotaractor
                   </motion.p>
 
                   {/* Description - Mobile */}
