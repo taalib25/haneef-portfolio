@@ -104,6 +104,7 @@ export default function App() {
         </Suspense>
         <Analytics />
       </div>
+      <Analytics />
     </BrowserRouter>
   );
 }
